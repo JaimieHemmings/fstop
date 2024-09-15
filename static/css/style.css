@@ -1,0 +1,38 @@
+/*
+  Custom CSS Reset - Minified
+*/
+
+html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}body,h1,h2,h3,h4,h5,h6,ol,p,ul{margin:0;padding:0;font-weight:400}ol,ul{list-style:none}img{max-width:100%;height:auto}a{text-decoration:none}
+
+/*
+  Custom CSS Variables
+*/
+
+:root {
+  --col-black: #0b0b0f;
+  --col-grey: #121316;
+  --col-white: #c1c1c3;
+  --font-size-base: 1rem;
+}
+
+/*
+  Global Styles
+*/
+
+.bg-body-dark {
+  background-color: var(--col-black);
+}
+
+/*
+  Navigation Styles
+*/
+
+nav.navbar {
+  padding: 1.0625rem 1.5rem;
+  
+  .nav-link {
+    color: var(--col-white);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+  }
+}
