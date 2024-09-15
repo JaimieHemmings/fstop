@@ -11,7 +11,8 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
 :root {
   --col-black: #0b0b0f;
   --col-grey: #121316;
-  --col-white: #c1c1c3;
+  --col-white-200: #eaebeb;
+  --col-white-300: #c1c1c3;
   --font-size-base: 1rem;
 }
 
@@ -29,10 +30,71 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
 
 nav.navbar {
   padding: 1.0625rem 1.5rem;
+
+  .navbar-brand {
+    color: var(--col-white-200);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
   
   .nav-link {
-    color: var(--col-white);
+    color: var(--col-white-300);
     font-size: var(--font-size-base);
     font-weight: 500;
+  }
+}
+
+/*
+  Home Hero Styles
+*/
+
+.home-hero {
+  padding: 6.25rem 0;
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    padding: 3.3125rem 0;
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      color: var(--col-white-200);
+      font-size: calc(var(--font-size-base) * 4.25);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    p {
+      color: var(--col-white-300);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background-color: var(--col-grey);
+    z-index: 1;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -25%;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background-color: var(--col-grey);
+    transform: rotate(45deg);
   }
 }
