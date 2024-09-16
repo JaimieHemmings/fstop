@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<section class="section-padding contact background-primary">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="color-white-200 fw-600 pt-5">Contact Us</h2>
+        <p class="color-white-300 mt-3 pb-3 sub-text">We would love to hear from you! Please feel free to reach out to us with any questions or comments you may have. We are here to help!</p>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <form class="background-secondary p-5" method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-custom-red mt-3" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -9,11 +9,14 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'partials/home-hero.html' %}
-  {% include 'partials/learn.html' %}
-  {% include 'partials/trust.html' %}
-  {% include 'partials/services-home.html' %}
-  {% include 'partials/feedback.html' %}
+  {% include 'partials/home/home-hero.html' %}
+  {% include 'partials/home/learn.html' %}
+  {% include 'partials/home/trust.html' %}
+  {% include 'partials/home/services-home.html' %}
+  {% include 'partials/home/blog-feed.html' %}
+  {% include 'partials/home/feedback.html' %}
+  {% include 'partials/faq.html' %}
+  {% include 'partials/cta.html' %}
 {% endblock %}
 
 {% block postload_js %}

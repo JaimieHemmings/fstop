@@ -166,6 +166,23 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
   }
 }
 
+.sub-text {
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .sub-text {
+    max-width: 75%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .sub-text {
+    max-width: 100%;
+  }
+}
+
 /*
   Navigation Styles
 */
@@ -444,6 +461,111 @@ nav.navbar {
     
     .quote {
       padding-right: 15px;
+    }
+  }
+}
+
+/*
+  FAQ Section Styles
+*/
+
+.faq {
+  .accordion {
+    .accordion-item {
+      background-color: var(--col-black);
+
+      .accordion-button {
+        background-color: var(--col-black);
+        color: var(--col-white-200);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto;
+        font-size: calc(var(--font-size-base) * 1.25);
+
+        &:after {
+          background-color: var(--col-white-200);
+          border-radius: 50%;
+        }
+      }
+
+      .accordion-button:not(.collapsed) {
+        background-color: var(--col-black);
+        color: var(--col-white-200);
+      }
+
+      .accordion-body {
+        color: var(--col-white-300);
+      }
+    }
+  }
+}
+
+/*
+  CTA Section Styles
+*/
+
+.cta-bg {
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding: 50px 15px;
+
+  p {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+/*
+  Blog Feed Styles
+*/
+
+.blog-feed {
+
+  .news-wrapper {
+    background-color: var(--col-grey);
+    display: block;
+
+    .news-body {
+      padding: 30px 15px;
+    }
+  }
+}
+
+/*
+  Footer Styles
+*/
+
+footer .nav .nav-item .nav-link {
+  color: var(--col-white-200);
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--col-primary);
+  }
+}
+
+/*
+  Achievemts Styles
+*/
+
+ul.achievements {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  li {
+    flex-basis: 25%;
+    padding: 30px;
+    
+    .wrapper {
+      padding: 30px;
+      
+      p {
+        font-size: calc(var(--font-size-base) * 1.5);
+      }
+      
+      h3 {
+        font-size: calc(var(--font-size-base) * 1);
+      }
     }
   }
 }
