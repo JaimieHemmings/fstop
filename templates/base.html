@@ -12,6 +12,9 @@
   {% block extra_meta %}
   {% endblock %}
 
+  {% block extra_js %}
+  {% endblock %}
+
   {% block core_css %}
   <!-- Bootstrap CDN -->
   <link
@@ -34,9 +37,6 @@
   </script>
   <!-- Custom JS -->
   <script src="{% static 'js/main.js' %}"></script>
-  {% endblock %}
-
-  {% block extra_js %}
   {% endblock %}
 
   <title>FStop {% block extra_title %}{% endblock %}</title>

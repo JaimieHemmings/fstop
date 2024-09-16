@@ -1,6 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+{% endblock %}
+
 {% block content %}
-{% include 'partials/home-hero.html' %}
+  {% include 'partials/home-hero.html' %}
+  {% include 'partials/learn.html' %}
+  {% include 'partials/trust.html' %}
+  {% include 'partials/services-home.html' %}
+  {% include 'partials/feedback.html' %}
+{% endblock %}
+
+{% block postload_js %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper('.swiper', {
+    // Install Plugin To Swiper
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 5000,
+    },
+    loop: true,
+    // 2 cards per slide
+    slidesPerView: 2,
+    // pause on hover
+    pauseOnMouseEnter: true,
+  });
+</script>
 {% endblock %}
