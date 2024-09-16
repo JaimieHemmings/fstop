@@ -1,18 +1,34 @@
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
+from blog.models import Article
+
 
 def index(request):
     """
     A view that displays the index page
     """
-    return render(request, 'home/index.html')
+    context = {}
+
+    # Get the 2 latest Articles
+    articles = Article.objects.all().order_by('-date')[:2]
+    context['articles'] = articles
+
+    return render(request, 'home/index.html', context)
+
 
 def about(request):
     """
     A view that displays the about page
     """
+    context = {}
+    
+    # Get the 2 latest Articles
+    articles = Article.objects.all().order_by('-date')[:2]
+    context['articles'] = articles
+
     return render(request, 'home/about.html')
+
 
 def contact(request):
     """

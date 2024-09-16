@@ -13,7 +13,9 @@
   {% include 'partials/home/learn.html' %}
   {% include 'partials/home/trust.html' %}
   {% include 'partials/home/services-home.html' %}
-  {% include 'partials/home/blog-feed.html' %}
+  {% if articles %}
+    {% include 'partials/home/blog-feed.html' %}
+  {% endif %}
   {% include 'partials/home/feedback.html' %}
   {% include 'partials/faq.html' %}
   {% include 'partials/cta.html' %}
