@@ -592,3 +592,38 @@ ul.achievements {
     }
   }
 }
+
+@media screen and (max-width: 568px) {
+  .contact-list li {
+    flex-basis: 100%;
+  }
+}
+
+/*
+  Blog Page Styles
+*/
+
+.blog {
+
+  .blog-feed {
+
+    .blog-item {
+      padding: 30px;
+
+      .bg-img {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 200px;
+      }
+
+      .wrapper {
+        background-color: var(--col-grey);
+
+        h2 {
+          padding-top: 30px;
+        }
+      }
+    }
+  }
+}
