@@ -569,3 +569,26 @@ ul.achievements {
     }
   }
 }
+
+/*
+  Contact Flair Styles
+*/
+
+.contact-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  li {
+    flex-basis: 33%;
+    text-align: center;
+    margin-top: 2rem;
+
+    svg {
+      fill: var(--col-white-200);
+      width: 40px;
+      height: 40px;
+      max-width: 50px;
+    }
+  }
+}
