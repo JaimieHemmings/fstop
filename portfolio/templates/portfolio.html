@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="container-fluid background-primary section-padding">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-sm-12">
+        <h1 class="color-white-200 fw-600 text-center">Our Portfolio</h2>
+        <p class="color-white-300 mt-3 text-center sub-text">We are proud of our achievements and the recognition we have received from our peers and industry leaders, resulting in some impressive numbers</p>
+      </div>
+    </div>
+    <div class="album">
+      <div class="responsive-container-block bg">
+        <div class="responsive-container-block img-cont">
+          <img class="img" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.4.svg">
+          <img class="img" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.5.svg">
+          <img class="img img-last" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.6.svg">
+        </div>
+        <div class="responsive-container-block img-cont">
+          <img class="img img-big" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.11.svg">
+          <img class="img img-big img-last" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.10.svg">
+        </div>
+        <div class="responsive-container-block img-cont">
+          <img class="img" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.7.svg">
+          <img class="img" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.8.svg">
+          <img class="img" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.9.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% include 'partials/cta.html' %}
+{% endblock %}
