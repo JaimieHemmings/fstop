@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ContactForm
+from django.contrib import messages
 
 def index(request):
     """
@@ -16,4 +18,21 @@ def contact(request):
     """
     A view that displays the contact page
     """
-    return render(request, 'home/contact.html')
+    context = {}
+    form = ContactForm()
+    context['form'] = form
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Flash Message confirmation
+            messages.success(request, 'Your message has been sent!')
+            # Redirect to Contact page            
+            return redirect('/contact')
+        else:
+            # Flash Message error
+            messages.error(request, 'Error sending message. Please check the form.')
+            return redirect('/contact')
+
+    return render(request, 'home/contact.html', context)

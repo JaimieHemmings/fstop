@@ -44,8 +44,19 @@
 <body>
   {% include 'partials/navigation.html' %}
   {% if messages %}
-  <section class="message-container">
-
+  <section class="message-container container-fluid background-primary mt-5 pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissable fade show justify-content-between d-flex">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </section>
   {% endif %}
 
