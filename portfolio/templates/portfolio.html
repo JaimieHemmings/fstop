@@ -1,107 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-  <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
-{% endblock %}
-
 {% block extra_title %} | Portfolio
 {% endblock %}
 
 {% block content %}
+<section class="gallery background-primary section-padding mt-3">
+  <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+    <img class="image" src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+    <img class="image" src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" draggable="false" />
+    <img class="image" src="https://images.unsplash.com/photo-1618202133208-2907bebba9e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+    <img class="image" src="https://images.unsplash.com/photo-1495805442109-bf1cf975750b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+    <img class="image" src="https://images.unsplash.com/photo-1548021682-1720ed403a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+    <img class="image" src="https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80" draggable="false" />
+    <img class="image" src="https://images.unsplash.com/photo-1613346945084-35cccc812dd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1759&q=80" draggable="false" />
+    <img class="image" src="https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false" />
+  </div>
+</section>
 <section class="container-fluid background-primary section-padding">
   <div class="container">
-    <div class="row mb-5">
+    <div class="row">
       <div class="col-sm-12">
         <h1 class="color-white-200 fw-600 text-center">Our Portfolio</h2>
         <p class="color-white-300 mt-3 text-center sub-text">We are proud of our achievements and the recognition we have received from our peers and industry leaders, resulting in some impressive numbers</p>
       </div>
     </div>
-    <div class="album">
-      <div class="responsive-container-block bg">
-        <div class="responsive-container-block img-cont">
-
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.4.svg" data-lightbox="imageSet"
-            data-title="My caption">
-            <img
-              class="img"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.4.svg">
-          </a>
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.5.svg" data-lightbox="imageSet"
-            data-title="My caption">
-            <img
-              class="img"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.5.svg">
-          </a>
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.6.svg"
-            data-lightbox="imageSet"
-            data-title="My caption">
-            <img
-              class="img img-last"
-              data-lightbox="imageSet"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.6.svg">
-          </a>
-
-        </div>
-        <div class="responsive-container-block img-cont">
-
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.11.svg"
-            data-lightbox="imageSet"
-            data-title="My caption">
-            <img
-              class="img img-big"
-              data-lightbox="imageSet"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.11.svg">
-          </a>
-
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.10.svg"
-            data-lightbox="imageSet"
-            data-title="My caption">
-            <img
-              class="img img-big img-last"
-              data-lightbox="imageSet"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.10.svg">
-          </a>
-
-        </div>
-        <div class="responsive-container-block img-cont">
-
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.7.svg"
-            data-lightbox="imageSet"
-            data-title="My caption">
-            <img
-              class="img"
-              data-lightbox="imageSet"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.7.svg">
-          </a>
-
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.8.svg"
-            data-lightbox="imageSet"
-            data-title="My caption">
-            <img
-              class="img"
-              data-lightbox="imageSet"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.8.svg">
-          </a>
-
-          <a
-            href="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.9.svg"
-            data-lightbox="imageSet"
-            data-title="My caption">
-            <img class="img"
-              data-lightbox="imageSet"
-              src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/PP5.9.svg">
-          </a>
-
-        </div>
-      </div>
+  </div>
+</section>
+<!-- Gallery from https://codepen.io/Hyperplexed/pen/MWXBRBp -->
+<section class="section-padding background-primary">
+  <div class="container">
+    <div class="gallery-grid">
+      <img src="https://assets.codepen.io/1506195/unsplash-1.jpg" alt="" />
+      <img src="https://assets.codepen.io/1506195/unsplash-7.jpg" alt="" />
+      <img src="https://assets.codepen.io/1506195/unsplash-3.jpg" alt="" />
+      <img src="https://assets.codepen.io/1506195/unsplash-2.jpg" alt="" />
+      <img src="https://assets.codepen.io/1506195/unsplash-6.jpg" alt="" />
+      <img src="https://assets.codepen.io/1506195/unsplash-0.jpg" alt="" />
+      <img src="https://assets.codepen.io/1506195/unsplash-8.jpg" alt="" />
     </div>
   </div>
 </section>
@@ -109,10 +45,5 @@
 {% endblock %}
 
 {% block postload_js %}
-<script
-  src="https://code.jquery.com/jquery-1.12.4.js"
-  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
-  crossorigin="anonymous">
-</script>
-<script src="{% static 'js/lightbox.js' %}"></script>
+ <script src="{% static 'js/gallery.js' %}" defer></script>
 {% endblock %}
