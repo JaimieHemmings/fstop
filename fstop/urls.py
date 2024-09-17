@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('blog/', include('blog.urls')),
+    path('control-panel/', include('controlpanel.urls')),
 ]
 
 if settings.DEBUG:

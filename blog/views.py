@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Article
 
+
 def blog(request):
     """
     A view to return the blog page
@@ -10,6 +11,7 @@ def blog(request):
     context['articles'] = articles
 
     return render(request, 'blog.html', context)
+
 
 def article(request, slug):
     """

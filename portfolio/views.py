@@ -4,4 +4,5 @@ def portfolio(request):
     """
     A view to return the portfolio page
     """
-    return render(request, 'portfolio.html')
+    context = {}
+    return render(request, 'portfolio.html', context)
