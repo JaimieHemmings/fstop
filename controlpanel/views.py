@@ -6,6 +6,11 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+"""
+This file contains the views for the control panel
+All views require the user to be logged in and a superuser
+"""
+
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def control_panel(request):
@@ -80,3 +85,29 @@ def toggle_read(request, message_id):
 
     return cp_messages(request)
 
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def delete_message_confirm(request, message_id):
+    """
+    A view to confirm the deletion of a message
+    """
+    context = {}
+    message = Message.objects.get(id=message_id)
+    context['message'] = message
+
+
+    return render(request, 'delete-message-confirm.html', context)
+
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def delete_message(request, message_id):
+    """
+    A view to delete a message
+    """
+    message = Message.objects.get(id=message_id)
+    message.delete()
+    messages.success(request, 'Message deleted successfully')
+
+    return cp_messages(request)

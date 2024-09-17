@@ -105,7 +105,6 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
     p {
       font-weight: 400;
       font-size: 1rem;
-      color: #000;
     }
   }
 }

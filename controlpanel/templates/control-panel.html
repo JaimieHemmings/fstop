@@ -56,6 +56,24 @@
               <p>{{ user.date_joined }}</p>              
             </div>
           {% endfor %}
+          <div class="d-flex justify-content-end pt-3 pb-3">
+            <a href="#" class="btn btn-secondary disabled mx-3"><s>Manage</s></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="cp-section-wrapper">
+          <h2>Most Recent Payment Requests</h2>
+          <p class="mb-3">Manage Payment Requests</p>
+          <hr>
+          <ul>
+            <li>Add things here</li>
+          </ul>
+          <div class="d-flex justify-content-end pt-3 pb-3">
+            <a href="#" class="btn btn-success mx-3">Create New</a>
+            <a href="#" class="btn btn-primary">View All</a>
+          </div>
         </div>
       </div>
 
@@ -65,15 +83,21 @@
           <p class="mb-3">Manage Messages</p>
           <hr>
           <ul class="messages-quick">
+            {% if latest_messages %}
             {% for message in latest_messages %}
             <li class="message-item">
               <p>{{ message.fname }} {{ message.lname }}</p>
               <p>{{ message.email }}</p>
               <p>{{ message.created_at }}</p>
             {% endfor %}
+            {% else %}
+            <li class="message-item">
+              <p>No messages to display.</p>
+            </li>
+            {% endif %}
           </ul>
           <div class="d-flex justify-content-end mb-3">
-            <p><a href="#" class="btn btn-primary">View All</a></p>
+            <p><a href="{% url 'cp_messages' %}" class="btn btn-primary">View All</a></p>
           </div>
         </div>
       </div>

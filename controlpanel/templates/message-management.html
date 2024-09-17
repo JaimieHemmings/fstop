@@ -9,6 +9,8 @@
     </div>
   </div>
   <div class="row background-white">
+
+  {% if formMessages %}
   {% for message in formMessages %}
 
   <div class="col-sm-12 d-flex flex-row justify-content-between {% if not message.read %}background-wet-asphalt text-white{% endif %} border-bottom-peter-river pt-2 pb-2">
@@ -28,10 +30,15 @@
       <a href="{% url 'toggle_read' message.id %}" class="btn btn-secondary my-2">
         Mark as {% if message.read %}Unread{% else %}Read{% endif %}
       </a>
-      <a href="#" class="btn btn-danger">Delete</a>
+      <a href="{% url 'delete_message_confirm' message.id %}" class="btn btn-danger">Delete</a>
     </div>
   </div>
   {% endfor %}
+  {% else %}
+  <div class="col-sm-12 text-center pt-5 pb-5">
+    <p>No messages to display.</p>
+  </div>
+  {% endif %}
   </div>
 </div>
 {% endblock %}
