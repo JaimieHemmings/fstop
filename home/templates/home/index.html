@@ -12,6 +12,7 @@
   {% include 'partials/home/home-hero.html' %}
   {% include 'partials/home/learn.html' %}
   {% include 'partials/home/trust.html' %}
+  {% include 'partials/home/img-slider.html' %}
   {% include 'partials/home/services-home.html' %}
   {% if articles %}
     {% include 'partials/home/blog-feed.html' %}
@@ -22,6 +23,7 @@
 {% endblock %}
 
 {% block postload_js %}
+<script src="{% static 'js/slider.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   var swiper = new Swiper('.swiper', {
