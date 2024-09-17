@@ -3,6 +3,7 @@ from django.db import models
 class Article(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
+    exerpt = models.CharField(max_length=255)
     body = models.TextField()
     body_continued = models.TextField()
     date = models.DateTimeField(auto_now_add=True)

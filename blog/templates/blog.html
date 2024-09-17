@@ -16,12 +16,15 @@
       {% for article in articles %}
       <div class="col-sm-6 mt-3 blog-item">
           <div class="row wrapper">
-            <div class="col-sm-4 bg-img" style="background-image: url({% static 'img/home-img.webp' %})">>
+            <div
+              class="col-sm-4 bg-img"
+              style="background-image: url({{ article.thumb.url }})"
+            >
             </div>
             <div class="col-sm-8 pl-3 pb-5">
-              <h2 class="color-white-200 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-              <p class="color-white-300 pb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Quisquam, voluptates.</p>
-              <a href="#" class="btn btn-custom-red">Read More</a>
+              <h2 class="color-white-200 mb-3">{{ article.title }}</h2>
+              <p class="color-white-300 pb-3">{{ article.exerpt }}</p>
+              <a href="{% url 'article' article.slug %}" class="btn btn-custom-red">Read More</a>
             </div>
           </div>
       </div>

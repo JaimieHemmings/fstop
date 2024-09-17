@@ -11,12 +11,12 @@
     <div class="row mt-5">
       {% for article in articles %}
         <div class="col-sm-6">
-          <a href="#" class="news-wrapper">
-            <img src="{% static 'img/blog-placeholder-img.webp' %}" class="img-fluid" alt="Blog Post Image">
+          <a href="{% url 'article' article.slug %}" class="news-wrapper">
+            <img src="{{ article.thumb.url }}" class="img-fluid" alt="{{ article.title }}">
             <div class="news-body">
-              <h3 class="color-white-200 mb-2">Blog Post Title</h3>
-              <span class="date color-white-300 mb-2">January 1, 2022</span>
-              <p class="color-white-300 excerpt pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien.</p>
+              <h3 class="color-white-200 mb-2">{{ article.title }}</h3>
+              <span class="date color-white-300 mb-2">{{ article.date|date:"d/m/y" }}</span>
+              <p class="color-white-300 excerpt pt-2">{{ article.exerpt }}</p>
             </div>
           </a>
         </div>

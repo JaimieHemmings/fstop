@@ -1,1 +1,39 @@
 {% extends 'base.html' %}
+
+{% block content %}
+<section class="background-secondary section-padding pb-1">
+  <div class="row">
+    <div class="col-sm-12 text-center mb-5">
+      <img src="{{ article.cover_image.url }}" alt="{{ article.title }}" class="img-fluid">
+    </div>
+  </div>
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="color-white-200 mb-3">{{ article.title }}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="color-white-300 mb-3">{{ article.date|date:"d/m/y" }}</p>
+      </div>
+      <div class="col-sm-12">
+        <p class="color-white-300 mb-5">
+          {{ article.body|safe }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 mb-5">
+        <img src="{{ article.body_image.url }}" alt="{{ article.title }}" class="img-fluid">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="color-white-300 mb-3">{{ article.body_continued|safe }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% include 'partials/cta.html' %}
+{% endblock %}
