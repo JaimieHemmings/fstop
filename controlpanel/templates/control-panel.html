@@ -28,6 +28,7 @@
           <h2>Latest Articles</h2>
           <p class="mb-3">Manage your latest articles.</p>
           <hr>
+          {% if latest_articles %}
           <ul>
             {% for article in latest_articles %}
               <li class="d-flex flex-row justify-content-between mb-3">
@@ -39,6 +40,9 @@
               </li>
             {% endfor %}
           </ul>
+          {% else %}
+            <p>No articles to display.</p>
+          {% endif %}
           <div class="d-flex justify-content-end pt-3 pb-3">
             <a href="#" class="btn btn-success mx-3">Create Article</a>
             <a href="{% url 'cp_articles' %}" class="btn btn-primary">Go to Articles</a>
@@ -50,12 +54,16 @@
           <h2>Latest Users</h2>
           <p class="mb-3">Manage Users</p>
           <hr>
+          {% if latest_users %}
           {% for user in latest_users %}
             <div class="d-flex flex-row justify-content-between mb-3">
               <p>{{ user.username }}</p>
               <p>{{ user.date_joined }}</p>              
             </div>
           {% endfor %}
+          {% else %}
+            <p>No users to display.</p>
+          {% endif %}
           <div class="d-flex justify-content-end pt-3 pb-3">
             <a href="#" class="btn btn-secondary disabled mx-3"><s>Manage</s></a>
           </div>
