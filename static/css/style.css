@@ -669,7 +669,7 @@ ul.achievements {
 }
 
 #image-track > .image {
-  width: 20vmin;
+  width: 40vmin;
   aspect-ratio: 0.6;
   object-fit: cover;
   object-position: 100% center;
@@ -692,6 +692,12 @@ ul.achievements {
 @media screen and (max-width: 768px) {
   .slide-gallery {
     height: 100vh;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  #image-track > .image {
+    width: 20vmin;
   }
 }
     

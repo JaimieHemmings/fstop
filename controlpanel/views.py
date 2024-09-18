@@ -226,13 +226,18 @@ def add_slider_image(request):
     context['form'] = form
 
     if request.method == 'POST':
-        form = AddSliderImage(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Slider image added successfully')
-            return redirect(cp_portfolio)
+        num_of_slider_images = SliderImages.objects.all().count()
+        if num_of_slider_images < 9:
+            form = AddSliderImage(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Slider image added successfully')
+                return redirect(cp_portfolio)
+            else:
+                context['form'] = form
         else:
-            context['form'] = form
+            messages.error(request, 'You can only have a maximum of 9 slider images')
+            return redirect(cp_portfolio)
 
     return render(request, 'portfolio/add-slider-image.html', context)
 

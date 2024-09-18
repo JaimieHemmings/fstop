@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}| 500{% endblock %}
+
+{% block content %}
+<section class="section-padding contact background-primary">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 class="color-white-200 fw-600 pt-5">500</h1>
+        <p class="color-white-300 mt-3 pb-3 sub-text">Internal Server Error</p>
+        <p class="color-white-300 mt-3 pb-3 sub-text">Something went wrong! Go back to the Home page?</p>
+      </div>
+      <div class="col-sm-12 p-5 d-flex justify-content-center">
+        <a href="{% url 'home' %}" class="btn btn-custom-red">Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-padding about-hero background-primary achievement-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 class="color-white-200 fw-600 pt-5">When you need to innovate, you need collaboration</h2>
+        <p class="color-white-300 mt-3 pb-3 sub-text">are passionate about creating innovative solutions for our clients. We work closely with you to understand your needs and develop custom solutions that meet your unique requirements. </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

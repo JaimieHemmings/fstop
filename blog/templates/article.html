@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block extra_title %}
+| {{ article.title }}
+{% endblock %}
+
 {% block content %}
 <section class="background-secondary section-padding pb-1">
   <div class="row">
