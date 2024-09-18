@@ -1,29 +1,49 @@
 <li class="nav-item">
-  <a href="{% url 'about' %}" class="nav-link px-2">
+  <a
+    {% if '/about/' in request.path %} aria-current="page" {% endif %}
+    href="{% url 'about' %}"
+    class='nav-link px-2{% if "/about/" in request.path %} active{% endif %}'
+  >
     About
   </a>
 </li>
 
-<li class="nav-item"></li>
-  <a href="#" class="nav-link px-2">
+<li class="nav-item">
+  <a 
+    {% if '/services/' in request.path %} aria-current="page" {% endif %}
+    href="#"
+    class='nav-link px-2{% if "/services/" in request.path %} active{% endif %}'
+  >
     Services
   </a>
 </li>
 
 <li class="nav-item">
-  <a href="{% url 'portfolio' %}" class="nav-link px-2">
+  <a
+    {% if '/portfolio/' in request.path %} aria-current="page" {% endif %}
+    href="{% url 'portfolio' %}"
+    class='nav-link px-2{% if "/portfolio/" in request.path %} active{% endif %}'
+  >
     Portfolio
   </a>
 </li>
 
 <li class="nav-item">
-  <a href="{% url 'blog' %}" class="nav-link px-2">
+  <a
+    {% if '/blog/' in request.path %} aria-current="page" {% endif %}
+    href="{% url 'blog' %}"
+    class='nav-link px-2{% if "/blog/" in request.path %} active{% endif %}'
+  >
     Blog
   </a>
 </li>
 
 <li class="nav-item">
-  <a href="{% url 'contact' %}" class="nav-link px-2">
+  <a
+    {% if '/contact/' in request.path %} aria-current="page" {% endif %}
+    href="{% url 'contact' %}"
+    class='nav-link px-2{% if "/contact/" in request.path %} active{% endif %}'
+  >
     Contact
   </a>
 </li>
@@ -31,12 +51,16 @@
 {% if user.is_authenticated %}
 
 <li class="nav-item">
-  <a href="{% url 'control_panel' %}" class="nav-link px-2">
+  <a
+    {% if '/control-panel/' in request.path %} aria-current="page" {% endif %}
+    href="{% url 'control_panel' %}" class="nav-link px-2">
     Admin
   </a>
 </li>
 <li class="nav-item">
-  <a href="{% url 'account_logout' %}" class="nav-link px-2">
+  <a
+    {% if '/logout/' in request.path %} aria-current="page" {% endif %}  
+    href="{% url 'account_logout' %}" class="nav-link px-2">
     Logout
   </a>
 </li>
@@ -44,12 +68,16 @@
 {% else %}
 
 <li class="nav-item">
-  <a href="{% url 'account_login' %}" class="nav-link px-2">
+  <a
+    {% if '/login/' in request.path %} aria-current="page" {% endif %} 
+    href="{% url 'account_login' %}" class="nav-link px-2">
     Login
   </a>
 </li>
 <li class="nav-item">
-  <a href="{% url 'account_signup' %}" class="nav-link px-2">
+  <a
+  {% if '/signup/' in request.path %} aria-current="page" {% endif %}
+  href="{% url 'account_signup' %}" class="nav-link px-2">
     Register
   </a>
 </li>

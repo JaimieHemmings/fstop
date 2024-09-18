@@ -222,6 +222,11 @@ nav.navbar {
       color: var(--col-primary);
     }
   }
+  
+
+  .nav-link.active {
+    color: var(--col-primary);
+  }
 }
 
 /*
@@ -563,6 +568,10 @@ footer .nav .nav-item .nav-link {
   &:hover {
     color: var(--col-primary);
   }
+}
+
+footer .nav .nav-item .nav-link.active {
+  color: var(--col-primary);
 }
 
 /*
