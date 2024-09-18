@@ -21,6 +21,15 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
   Global Styles
 */
 
+.article-body {
+  margin-bottom: 15px;
+
+  p {
+    color: var(--col-white-300);
+    margin-bottom: 15px;
+  }
+}
+
 .fw-100 {
   font-weight: 100;
 }
