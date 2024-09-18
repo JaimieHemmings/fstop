@@ -47,6 +47,11 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
   border-bottom: 2px solid var(--color-peter-river);
 }
 
+.helptext {
+  display: block;
+  margin-bottom: 15px;
+}
+
 /*
   Index Styles
 */

@@ -15,3 +15,6 @@ class Article(models.Model):
     cover_image = models.ImageField(default='default.png', blank=True)
     body_image = models.ImageField(default='default.png', blank=True)
     last_modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title

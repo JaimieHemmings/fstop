@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_title %}
+| Home
+{% endblock %}
+
 {% block extra_css %}
 <link
   rel="stylesheet"
@@ -12,7 +16,9 @@
   {% include 'partials/home/home-hero.html' %}
   {% include 'partials/home/learn.html' %}
   {% include 'partials/home/trust.html' %}
-  {% include 'partials/home/img-slider.html' %}
+  {% if slider_images %}
+    {% include 'partials/home/img-slider.html' %}
+  {% endif %}
   {% include 'partials/home/services-home.html' %}
   {% if articles %}
     {% include 'partials/home/blog-feed.html' %}

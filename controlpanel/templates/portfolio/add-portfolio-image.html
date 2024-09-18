@@ -1,0 +1,25 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Add Portfolio Image
+{% endblock %}
+
+{% block content %}
+<div class="container pt-5 mb-5">
+  <div class="row mb-5">
+    <div class="col-sm-12 text-center">
+      <h1>Add Portfolio Image</h1>
+      <p class="mb-3">Add a new image</p>
+    </div>
+  </div>
+  <div class="row p-5 background-white">
+    <form action="{% url 'add_portfolio_image' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form }}
+      <div class="d-flex flex-row justify-content-end mt-5">
+        <button type="submit" class="btn btn-primary">Add Image</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

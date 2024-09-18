@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
 from blog.models import Article
+from portfolio.models import SliderImages
 
 
 def index(request):
@@ -9,7 +10,9 @@ def index(request):
     A view that displays the index page
     """
     context = {}
-
+    # Get slider Images
+    slider_images = SliderImages.objects.all()
+    context['slider_images'] = slider_images
     # Get the 2 latest Articles
     articles = Article.objects.all().order_by('-date')[:2]
     context['articles'] = articles

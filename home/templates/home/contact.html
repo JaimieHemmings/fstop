@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
-{% block content%}
+{% block extra_title %}
+| Contact
+{% endblock %}
 
+{% block content%}
 <section class="section-padding contact background-primary">
   <div class="container">
     <div class="row">
@@ -20,5 +23,4 @@
   </div>
 </section>
 {% include 'partials/contact/contact-flair.html' %}
-
 {% endblock %}

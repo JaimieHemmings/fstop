@@ -16,22 +16,17 @@
   </div>
 </section>
 
+{% if portfolioImages %}
 <section class="container-fluid slide-gallery background-secondary">
   <div class="container">
 
     <div id="slide">
-      <div class="item" style="background-image: url(https://images.unsplash.com/photo-1613346945084-35cccc812dd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1759&q=80);">
+      {% for img in portfolioImages %}
+      <div
+      class="item"
+      style="background-image: url({{ img.image.url }});">
       </div>
-      <div class="item" style="background-image: url(https://images.unsplash.com/photo-1613346945084-35cccc812dd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1759&q=80);">
-      </div>
-      <div class="item" style="background-image: url(https://images.unsplash.com/photo-1548021682-1720ed403a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
-      </div>
-      <div class="item" style="background-image: url(https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
-      </div>
-      <div class="item" style="background-image: url(https://images.unsplash.com/photo-1548021682-1720ed403a5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
-      </div>
-      <div class="item" style="background-image: url(https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
-      </div>
+      {% endfor %}
     </div>
     <div class="buttons">
       <button id="prev">
@@ -47,6 +42,16 @@
     </div>
   </div>
 </section>
+{% else %}
+<section class="container-fluid background-secondary section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p class="color-white-300">No images uploaded yet</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
 {% include 'partials/cta.html' %}
 {% endblock %}
 

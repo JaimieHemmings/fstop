@@ -1,0 +1,58 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Manage Messages
+{% endblock %}
+
+{% block content %}
+<div class="container pt-5 mb-5">
+  <div class="row mb-5">
+    <div class="col-sm-12 text-center">
+      <h1>Message Management</h1>
+      <p class="mb-3">Manage your Messages.</p>
+    </div>
+  </div>
+  <div class="row background-white">
+
+  {% if formMessages %}
+  {% for message in formMessages %}
+
+  <div class="col-sm-12 {% if not message.read %}background-wet-asphalt text-white{% endif %} border-bottom-peter-river pt-2 pb-2">
+    <div class="row">
+      <div class="col-sm-12 pb-3">
+        <p>{{ message.created_at }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 pb-3">
+        <div class="sender-info">
+          <p>From:</p>
+          <p>{{ message.fname }} {{ message.lname }}</p>
+          <p>{{ message.email }}</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="message-body pb-3">
+          <p>Message:</p>
+          <p>{{ message.message }}</p>
+        </div>
+      </div>
+      <div class="col-md-3">        
+        <div class="buttons d-flex flex-column justify-content-center">
+          <a href="{% url 'toggle_read' message.id %}" class="btn btn-secondary my-2">
+            Mark as {% if message.read %}Unread{% else %}Read{% endif %}
+          </a>
+          <a href="{% url 'delete_message_confirm' message.id %}" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="col-sm-12 text-center pt-5 pb-5">
+    <p>No messages to display.</p>
+  </div>
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

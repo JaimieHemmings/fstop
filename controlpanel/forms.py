@@ -1,0 +1,89 @@
+from django import forms
+from blog.models import Article
+from portfolio.models import SliderImages, PortfolioImages
+
+class CreateArticleForm(forms.ModelForm):
+  class Meta:
+        model = Article
+        fields = ['title', 'exerpt', 'thumb', 'cover_image', 'body', 'body_image', 'body_continued']
+
+  def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'title': 'Enter the title of the article',
+            'exerpt': 'Emter a small exerpt of the article',
+            'body': 'Enter the article content before the image break',
+            'body_continued': 'Enter the remaining content of the article',
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields['title'].widget.attrs['autofocus'] = True
+
+        # Create helper text for each field
+        help_text = {
+            'title': 'Enter the title of the article',
+            'exerpt': 'Enter the exerpt of the article',
+            'body': 'Enter the article content before the image break',
+            'body_continued': 'Enter the remaining content of the article',
+            'thumb': 'Enter the thumbnail image for the article',
+            'cover_image': 'Enter the cover image for the article',
+            'body_image': 'Enter the body image for the article',
+        }
+
+        for field in self.fields:
+            # Add classes to each field
+            self.fields[field].widget.attrs['class'] = 'form form-control mt-2'
+            # Add help text to each field after the field
+            self.fields[field].help_text = help_text[field]
+            # Add classes to the help text
+            self.fields[field].help_text = f'<small>{help_text[field]}</small>'
+            # Add placeholders if not the image fields
+            if field != 'thumb' and field != 'cover_image' and field != 'body_image':
+                self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+
+
+class AddSliderImage(forms.ModelForm):
+    class Meta:
+        model = SliderImages
+        fields = ['title', 'image', 'description']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'title': 'Enter the title of the image',
+            'description': 'Enter a description of the image',
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields['title'].widget.attrs['autofocus'] = True
+
+        for field in self.fields:
+            # Add classes to each field
+            self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
+            # Add placeholders if not the image fields
+            if field != 'image':
+                self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+
+
+class AddPortfolioImage(forms.ModelForm):
+    class Meta:
+        model = PortfolioImages
+        fields = ['title', 'image', 'description']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'title': 'Enter the title of the image',
+            'description': 'Enter a description of the image',
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields['title'].widget.attrs['autofocus'] = True
+
+        for field in self.fields:
+            # Add classes to each field
+            self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
+            # Add placeholders if not the image fields
+            if field != 'image':
+                self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+

@@ -1,0 +1,35 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Delete Portfolio Image
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+  <div class="row mb-5">
+    <div class="col-sm-12 text-center">
+      <h1>Delete Image</h1>
+      <p class="mb-3">Are you sure?</p>
+    </div>
+  </div>
+  <div class="row background-white p-3">
+    <div class="col-sm-4 mb-3">
+      <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid">
+    </div>
+    <div class="col-sm-8">
+      <h3>{{ image.title }}</h3>
+      <p>{{ image.description }}</p>
+      <p class="pb-3">{{ image.created_at }}</p>
+    </div>
+  </div>
+  <div class="row text-center background-white">
+    <div class="col-sm-12">
+      <p>Are you sure you want to delete this Image?</p>
+    </div>
+    <div class="d-flex flex-row justify-content-center pb-3 mt-3">
+      <a href="{% url 'delete_portfolio_image' image.id %}" class="btn btn-danger">Yes</a>
+      <a href="{% url 'cp_portfolio' %}" class="btn btn-secondary mx-3">No</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

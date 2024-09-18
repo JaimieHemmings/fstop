@@ -1,31 +1,36 @@
 {% extends 'cp-base.html' %}
-{% block content %}
 
+{% block extra_title %}
+| Manage Articles
+{% endblock %}
+
+{% block content %}
 <div class="container pt-5">
   <div class="row mb-5">
     <div class="col-sm-12 text-center">
       <h1>Article Management</h1>
       <p class="mb-3">Manage your articles.</p>
       <div class="d-flex flex-row justify-content-end">
-        <a href="#" class="btn btn-success mx-3">Create Article</a>
+        <a href="{% url 'add_article' %}" class="btn btn-success mx-3">Create Article</a>
       </div>
     </div>
   </div>
   <div class="row background-white pt-3 pb-3">
     {% for article in articles %}
-    <div class="col-sm-12 pt-2 pb-2 d-flex flex-row justify-content-between">
+    <div class="col-sm-9 pt-2 pb-2 d-flex flex-row justify-content-between">
       <div class="article-info">
         <h2>{{ article.title }}</h2>
-        <p>{{ article.exerpt }} - Author: <span>{{ article.author }}</span></p>
         <p>Created on: {{ article.date }}</p>
       </div>
+    </div>
+    <div class="col-sm-3 pb-3">
       <div class="buttons d-flex flex-row justify-content-end">
-        <a href="#" class="btn btn-secondary mx-3">Edit</a>
-        <a href="#" class="btn btn-danger">Delete</a>
+        <a href="{% url 'edit_article' article.id %}" class="btn btn-secondary mx-3">Edit</a>
+        <a href="{% url 'confirm_delete_article' article.id %}" class="btn btn-danger">Delete</a>
       </div>
     </div>
+    <hr>
     {% endfor %}
   </div>
 </div>
-
 {% endblock %}

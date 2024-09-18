@@ -1,6 +1,10 @@
 {% extends 'cp-base.html' %}
-{% block content %}
 
+{% block extra_title %}
+| Delete Message
+{% endblock %}
+
+{% block content %}
 <div class="container mt-5 pt-5">
   <div class="row mb-5">
     <div class="col-sm-12 text-center">
@@ -27,7 +31,5 @@
       <a href="{% url 'cp_messages' %}" class="btn btn-secondary mx-3">No</a>
     </div>
   </div>
-
 </div>
-
 {% endblock %}
