@@ -16,7 +16,6 @@ All views require the user to be logged in and a superuser
 """
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def control_panel(request):
     """
@@ -47,7 +46,7 @@ def control_panel(request):
 
     return render(request, 'control-panel.html', context)
 
-@login_required
+
 @user_passes_test(lambda u: u.is_superuser)
 def cp_articles(request):
     """
@@ -62,7 +61,6 @@ def cp_articles(request):
     return render(request, 'articles/article-management.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def cp_messages(request):
     """
@@ -77,7 +75,6 @@ def cp_messages(request):
     return render(request, 'messages/message-management.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def toggle_read(request, message_id):
     """
@@ -91,7 +88,6 @@ def toggle_read(request, message_id):
     return cp_messages(request)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def delete_message_confirm(request, message_id):
     """
@@ -105,7 +101,6 @@ def delete_message_confirm(request, message_id):
     return render(request, 'messages/delete-message-confirm.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def delete_message(request, message_id):
     """
@@ -118,7 +113,6 @@ def delete_message(request, message_id):
     return cp_messages(request)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def add_article(request):
     """
@@ -144,7 +138,6 @@ def add_article(request):
     return render(request, 'articles/create-article.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def edit_article(request, article_id):
     """
@@ -172,7 +165,6 @@ def edit_article(request, article_id):
     return render(request, 'articles/edit-article.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def delete_article_confirm(request, article_id):
     """
@@ -186,7 +178,6 @@ def delete_article_confirm(request, article_id):
     return render(request, 'articles/confirm-delete-article.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def delete_article(request, article_id):
     """
@@ -199,7 +190,6 @@ def delete_article(request, article_id):
     return cp_articles(request)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def cp_portfolio(request):
     """
@@ -214,7 +204,6 @@ def cp_portfolio(request):
     return render(request, 'portfolio/portfolio-management.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def add_slider_image(request):
     """
@@ -242,7 +231,6 @@ def add_slider_image(request):
     return render(request, 'portfolio/add-slider-image.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def add_portfolio_image(request):
     """
@@ -264,7 +252,7 @@ def add_portfolio_image(request):
 
     return render(request, 'portfolio/add-portfolio-image.html', context)
 
-@login_required
+
 @user_passes_test(lambda u: u.is_superuser)
 def delete_slider_image_confirm(request, image_id):
     """
@@ -277,7 +265,6 @@ def delete_slider_image_confirm(request, image_id):
     return render(request, 'portfolio/delete-slider-image-confirm.html', context)
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def delete_portfolio_image_confirm(request, image_id):
     """
@@ -289,7 +276,7 @@ def delete_portfolio_image_confirm(request, image_id):
 
     return render(request, 'portfolio/delete-portfolio-image-confirm.html', context)
 
-@login_required
+
 @user_passes_test(lambda u: u.is_superuser)
 def delete_slider_image(request, image_id):
     """
@@ -302,7 +289,7 @@ def delete_slider_image(request, image_id):
     return redirect(cp_portfolio)
 
 
-@login_required
+
 @user_passes_test(lambda u: u.is_superuser)
 def delete_portfolio_image(request, image_id):
     """
@@ -313,4 +300,3 @@ def delete_portfolio_image(request, image_id):
     messages.success(request, 'Portfolio image deleted successfully')
 
     return redirect(cp_portfolio)
-
