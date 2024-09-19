@@ -12,6 +12,7 @@ urlpatterns = [
     path('portfolio/', include('portfolio.urls')),
     path('blog/', include('blog.urls')),
     path('control-panel/', include('controlpanel.urls')),
+    path('payments/', include('payments.urls')),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]

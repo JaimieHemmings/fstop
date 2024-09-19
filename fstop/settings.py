@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'portfolio',
     'blog',
     'controlpanel',
+    'payments',
 ]
 
 MIDDLEWARE = [
