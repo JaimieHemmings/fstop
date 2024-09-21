@@ -15,6 +15,8 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
   --col-white-300: #c1c1c3;
   --col-primary: #f53b00;
   --font-size-base: 1rem;
+  --color-emerald: #2ecc71;
+  --color-peter-river: #3498db;
 }
 
 /*
@@ -29,6 +31,27 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
     margin-bottom: 15px;
   }
 }
+
+.toast {
+  top: 75px;
+  right: 15px;
+
+  .border-b-success {
+    border-bottom: 2px solid var(--color-emerald);
+  }
+
+  .border-b-warning {
+    border-bottom: 2px solid orange;
+  }
+
+  .border-b-danger {
+    border-bottom: 2px solid var(--col-primary);
+  }
+
+  .border-b-info {
+    border-bottom: 2px solid var(--color-peter-river);
+  }
+ }
 
 .fw-100 {
   font-weight: 100;

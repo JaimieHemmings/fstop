@@ -23,6 +23,27 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
   color: var(--color-wet-asphalt);
  }
 
+ .toast {
+  top: 75px;
+  right: 15px;
+
+  .border-b-success {
+    border-bottom: 2px solid var(--color-emerald);
+  }
+
+  .border-b-warning {
+    border-bottom: 2px solid orange;
+  }
+
+  .border-b-danger {
+    border-bottom: 2px solid red;
+  }
+
+  .border-b-info {
+    border-bottom: 2px solid var(--color-peter-river);
+  }
+ }
+
 .cp-section-wrapper {
   margin-top: 15px;
   background: var(--color-clouds);
