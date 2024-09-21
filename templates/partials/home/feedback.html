@@ -12,78 +12,23 @@
       <div class="col-sm-12">
         <div class="swiper">
           <div class="swiper-wrapper">
+
+            {% for review in reviews %}
             <div class="swiper-slide">
               <div class="swiper-container">
                 <div class="swiper-half">
-                  <img src="{% static 'img/john.svg' %}" alt="Feedback 1" class="img-fluid">
+                  <img src="{{ review.user_img.url }}" alt="Feedback 1" class="img-fluid">
                 </div>
                 <div class="swiper-half pt-3">
-                  <h3 class="color-white-200 fw-600 mb-3 pl-3">John M</h3>
-                  <span class="color-white-300 pl-3">Innovative tech Solutions</span>
-                  <p class="color-white-300 pl-3 pt-3 quote">"We partnered with F. to revamp our brand identity and the transformation has been incredible. Our customer engagement has skyrocketed!"</p>
+                  <h3 class="color-white-200 fw-600 mb-3 pl-3">{{ review.name }}</h3>
+                  <span class="color-white-300 pl-3">{{ review.company }}</span>
+                  <p class="color-white-300 pl-3 pt-3 quote">"{{ review.content }}"</p>
                 </div>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div class="swiper-container">
-                <div class="swiper-half">
-                  <img src="{% static 'img/john.svg' %}" alt="Feedback 1" class="img-fluid">
-                </div>
-                <div class="swiper-half pt-3">
-                  <h3 class="color-white-200 fw-600 mb-3 pl-3">John M</h3>
-                  <span class="color-white-300 pl-3">Innovative tech Solutions</span>
-                  <p class="color-white-300 pl-3 pt-3 quote">"We partnered with F. to revamp our brand identity and the transformation has been incredible. Our customer engagement has skyrocketed!"</p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="swiper-container">
-                <div class="swiper-half">
-                  <img src="{% static 'img/john.svg' %}" alt="Feedback 1" class="img-fluid">
-                </div>
-                <div class="swiper-half pt-3">
-                  <h3 class="color-white-200 fw-600 mb-3 pl-3">John M</h3>
-                  <span class="color-white-300 pl-3">Innovative tech Solutions</span>
-                  <p class="color-white-300 pl-3 pt-3 quote">"We partnered with F. to revamp our brand identity and the transformation has been incredible. Our customer engagement has skyrocketed!"</p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="swiper-container">
-                <div class="swiper-half">
-                  <img src="{% static 'img/john.svg' %}" alt="Feedback 1" class="img-fluid">
-                </div>
-                <div class="swiper-half pt-3">
-                  <h3 class="color-white-200 fw-600 mb-3 pl-3">John M</h3>
-                  <span class="color-white-300 pl-3">Innovative tech Solutions</span>
-                  <p class="color-white-300 pl-3 pt-3 quote">"We partnered with F. to revamp our brand identity and the transformation has been incredible. Our customer engagement has skyrocketed!"</p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="swiper-container">
-                <div class="swiper-half">
-                  <img src="{% static 'img/john.svg' %}" alt="Feedback 1" class="img-fluid">
-                </div>
-                <div class="swiper-half pt-3">
-                  <h3 class="color-white-200 fw-600 mb-3 pl-3">John M</h3>
-                  <span class="color-white-300 pl-3">Innovative tech Solutions</span>
-                  <p class="color-white-300 pl-3 pt-3 quote">"We partnered with F. to revamp our brand identity and the transformation has been incredible. Our customer engagement has skyrocketed!"</p>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="swiper-container">
-                <div class="swiper-half">
-                  <img src="{% static 'img/john.svg' %}" alt="Feedback 1" class="img-fluid">
-                </div>
-                <div class="swiper-half pt-3">
-                  <h3 class="color-white-200 fw-600 mb-3 pl-3">John M</h3>
-                  <span class="color-white-300 pl-3">Innovative tech Solutions</span>
-                  <p class="color-white-300 pl-3 pt-3 quote">"We partnered with F. to revamp our brand identity and the transformation has been incredible. Our customer engagement has skyrocketed!"</p>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
+            
+            
           </div>
         </div>
       </div>

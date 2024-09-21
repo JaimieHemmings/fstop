@@ -1,6 +1,7 @@
 from django import forms
 from blog.models import Article
 from portfolio.models import SliderImages, PortfolioImages
+from reviews.models import Review
 
 class CreateArticleForm(forms.ModelForm):
   class Meta:
@@ -85,5 +86,29 @@ class AddPortfolioImage(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
             # Add placeholders if not the image fields
             if field != 'image':
+                self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+
+
+class AddReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['name', 'company', 'content', 'user_img']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'name': 'Enter the name of the reviewer',
+            'company': 'Enter the company of the reviewer',
+            'content': 'Enter the review content',
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields['name'].widget.attrs['autofocus'] = True
+
+        for field in self.fields:
+            # Add classes to each field
+            self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
+            # Add placeholders if not the image fields
+            if field != 'user_img':
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]
 

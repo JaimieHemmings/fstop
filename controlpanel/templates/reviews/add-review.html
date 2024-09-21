@@ -1,0 +1,28 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Add Review
+{% endblock %}
+
+{% block content %}
+<section class="container pt-5 mb-5">
+  <div class="row mb-5">
+    <div class="col-sm-12 text-center">
+      <h1>Add Review</h1>
+      <p class="mb-3">Add a new review</p>
+    </div>
+  </div>
+  <div class="row background-white p-5">
+    <div class="col-sm-12 mb-3">
+      <p>Please ensure user profile images are 250x250 px</p>
+    </div>
+    <div class="col-sm-12 pb-5">
+      <form method="POST" action="{% url 'add_review' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Add Review</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

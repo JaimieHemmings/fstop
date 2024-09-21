@@ -1,13 +1,14 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import user_passes_test, login_required
+from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 from blog.models import Article
 from home.models import Message
 from portfolio.models import PortfolioImages, SliderImages
-from .forms import CreateArticleForm, AddSliderImage, AddPortfolioImage
+from reviews.models import Review
+from .forms import CreateArticleForm, AddSliderImage, AddPortfolioImage, AddReviewForm
 
 
 """
@@ -23,26 +24,25 @@ def control_panel(request):
     """
     context = {}
 
-    # Get the number of registered users
+    # Get the number of required objects
     number_of_users = User.objects.all().count()
-    context["number_of_users"] = number_of_users
-
     number_of_articles = Article.objects.all().count()
-    context["number_of_articles"] = number_of_articles
-
     latest_articles = Article.objects.all().order_by('-date')[:5]
-    context["latest_articles"] = latest_articles
-
     latest_users = User.objects.all().order_by('-date_joined')[:5]
-    context["latest_users"] = latest_users
-
-    # Get the lastest messages
     latest_messages = Message.objects.all().order_by('-created_at')[:5]
-    context["latest_messages"] = latest_messages
-
-    # Get the number of unread messages
     unread_messages = Message.objects.filter(read=False).count()
-    context["unread_messages"] = unread_messages
+    latest_reviews = Review.objects.all().order_by('-created_at')[:5]
+
+    # Build context
+    context = {
+        'number_of_users': number_of_users,
+        'number_of_articles': number_of_articles,
+        'latest_articles': latest_articles,
+        'latest_users': latest_users,
+        'latest_messages': latest_messages,
+        'unread_messages': unread_messages,
+        'latest_reviews': latest_reviews,
+    }
 
     return render(request, 'control-panel.html', context)
 
@@ -300,3 +300,87 @@ def delete_portfolio_image(request, image_id):
     messages.success(request, 'Portfolio image deleted successfully')
 
     return redirect(cp_portfolio)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def manage_reviews(request):
+    """
+    A view to return the reviews page
+    """
+    reviews = Review.objects.all()
+
+    context = {
+        'reviews': reviews,
+    }
+
+    return render(request, 'reviews/review-management.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def add_review(request):
+    """
+    A view to add a review
+    """
+    form = AddReviewForm()
+
+    context = {
+        'form': form,
+    }
+
+    if request.method == 'POST':
+        form = AddReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Review added successfully')
+            return redirect(manage_reviews)
+        else:
+            context['form'] = form
+
+    return render(request, 'reviews/add-review.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def delete_review_confirm(request, review_id):
+    """
+    A view to confirm the deletion of a review
+    """
+    context = {}
+    review = Review.objects.get(id=review_id)
+    context['review'] = review
+
+    return render(request, 'reviews/delete-review-confirm.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def delete_review(request, review_id):
+    """
+    A view to delete a review
+    """
+    review = Review.objects.get(id=review_id)
+    review.delete()
+    messages.success(request, 'Review deleted successfully')
+
+    return redirect(manage_reviews)
+
+@user_passes_test(lambda u: u.is_superuser)
+def edit_review(request, review_id):
+    """
+    A view to edit a review
+    """
+    context = {}
+
+    review = Review.objects.get(id=review_id)
+    form = AddReviewForm(instance=review)
+    context['review'] = review
+    context['form'] = form
+
+    if request.method == 'POST':
+        form = AddReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Review updated successfully')
+            return redirect(manage_reviews)
+        else:
+            context['form'] = form
+
+    return render(request, 'reviews/edit-review.html', context)

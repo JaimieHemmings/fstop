@@ -89,7 +89,7 @@
         </div>
       </div>
 
-      <div class="col-sm-12">
+      <div class="col-sm-6">
         <div class="cp-section-wrapper">
           <h2>Latest Messages</h2>
           <p class="mb-3">Manage Messages</p>
@@ -109,6 +109,28 @@
           </ul>
           <div class="d-flex justify-content-end mb-3">
             <p><a href="{% url 'cp_messages' %}" class="btn btn-primary">View All</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="cp-section-wrapper">
+          <h2>Reviews</h2>
+          <p class="mb-3">Manage Reviews</p>
+          <hr>
+          <ul>
+            {% if latest_reviews %}
+            {% for review in latest_reviews %}
+            <li> {{ review.name }} - {{ review.company }}</li>
+            {% endfor %}
+            {% else %}
+            <li>
+              <p>No reviews to display</p>
+            </li>
+            {% endif %}
+          </ul>
+          <div class="d-flex justify-content-end mb-3">
+            <p><a href="{% url 'manage_reviews' %}" class="btn btn-primary">View All</a></p>
           </div>
         </div>
       </div>

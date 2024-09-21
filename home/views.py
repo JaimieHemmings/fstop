@@ -3,19 +3,23 @@ from .forms import ContactForm
 from django.contrib import messages
 from blog.models import Article
 from portfolio.models import SliderImages
-
+from reviews.models import Review
 
 def index(request):
     """
     A view that displays the index page
     """
-    context = {}
-    # Get slider Images
+    # Get objects
     slider_images = SliderImages.objects.all()
-    context['slider_images'] = slider_images
-    # Get the 2 latest Articles
     articles = Article.objects.all().order_by('-date')[:2]
-    context['articles'] = articles
+    reviews = Review.objects.all().order_by('-created_at')[:5]
+
+    # Build context
+    context = {
+        'slider_images': slider_images,
+        'articles': articles,
+        'reviews': reviews,
+    }
 
     return render(request, 'home/index.html', context)
 

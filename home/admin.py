@@ -2,6 +2,7 @@ from django.contrib import admin
 from blog.models import Article
 from portfolio.models import PortfolioImages, SliderImages
 from .models import Message
+from reviews.models import Review
 
 class MessageAdmin(admin.ModelAdmin):
     pass
@@ -15,7 +16,11 @@ class PortfolioImagesAdmin(admin.ModelAdmin):
 class SliderImagesAdmin(admin.ModelAdmin):
     pass
 
+class ReviewAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Message, MessageAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(PortfolioImages, PortfolioImagesAdmin)
 admin.site.register(SliderImages, SliderImagesAdmin)
+admin.site.register(Review, ReviewAdmin)

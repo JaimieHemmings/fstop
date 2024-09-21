@@ -206,9 +206,13 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
 nav.navbar {
   padding: 1.0625rem 1.5rem;
 
+  .navbar-toggler {
+    background: var(--col-white-300);
+  }
+
   .navbar-brand {
     color: var(--col-white-200);
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 700;
   }
   

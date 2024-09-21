@@ -80,4 +80,31 @@ urlpatterns = [
       views.delete_portfolio_image,
       name='delete_portfolio_image'
     ),
+
+    # Review Management URL's
+    path(
+      'manage-reviews/',
+      views.manage_reviews,
+      name='manage_reviews'
+    ),
+    path(
+      'manage-reviews/add-review/',
+      views.add_review,
+      name='add_review'
+    ),
+    path(
+      'manage-reviews/delete-review/<int:review_id>/',
+      views.delete_review_confirm,
+      name='delete_review_confirm'
+    ),
+    path(
+      'manage-reviews/delete-review/<int:review_id>/confirmed/',
+      views.delete_review,
+      name='delete_review'
+    ),
+    path(
+      'manage-reviews/edit-review/<int:review_id>/',
+      views.edit_review,
+      name='edit_review'
+    ),
 ]

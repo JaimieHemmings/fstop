@@ -23,7 +23,9 @@
   {% if articles %}
     {% include 'partials/home/blog-feed.html' %}
   {% endif %}
-  {% include 'partials/home/feedback.html' %}
+  {% if reviews %}
+    {% include 'partials/home/feedback.html' %}
+  {% endif %}
   {% include 'partials/faq.html' %}
   {% include 'partials/cta.html' %}
 {% endblock %}
