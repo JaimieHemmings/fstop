@@ -1,16 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block extra_title %}
 | {{ article.title }}
 {% endblock %}
 
 {% block content %}
-<section class="background-secondary section-padding pb-1">
-  <div class="row">
-    <div class="col-sm-12 text-center mb-5">
-      <img src="{{ article.cover_image.url }}" alt="{{ article.title }}" class="img-fluid">
+<section class="container-fluid slide-gallery background-secondary">
+  <div class="container">
+    <div id="slide">
+      <div
+      class="item"
+      style="background-image: url({{ article.slider_image_one.url }});">
+      </div>
+      <div
+      class="item"
+      style="background-image: url({{ article.slider_image_two.url }});">
+      </div>
+      <div
+      class="item"
+      style="background-image: url({{ article.slider_image_three.url }});">
+      </div>
+      <div
+      class="item"
+      style="background-image: url({{ article.slider_image_four.url }});">
+      </div>
+    </div>
+    <div class="buttons">
+      <button id="prev">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
+        </svg>
+      </button>
+      <button id="next">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+        </svg>       
+      </button>
     </div>
   </div>
+</section>
+<section class="background-secondary section-padding pb-1">
   <div class="container pb-5">
     <div class="row">
       <div class="col-sm-12 text-center">
@@ -38,4 +68,8 @@
   </div>
 </section>
 {% include 'partials/cta.html' %}
+{% endblock %}
+
+{% block postload_js %}
+ <script src="{% static 'js/gallery.js' %}" defer></script>
 {% endblock %}

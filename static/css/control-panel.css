@@ -167,3 +167,15 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
     flex: 1;
   }
 }
+
+/*
+  Reviews Management Styles
+*/
+
+.review-list li{
+  padding: 15px;
+
+  &:nth-child(even) {
+    background: var(--color-silver);
+  }
+}

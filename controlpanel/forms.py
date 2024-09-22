@@ -6,7 +6,18 @@ from reviews.models import Review
 class CreateArticleForm(forms.ModelForm):
   class Meta:
         model = Article
-        fields = ['title', 'exerpt', 'thumb', 'cover_image', 'body', 'body_image', 'body_continued']
+        fields = [
+            'title',
+            'exerpt',
+            'thumb',
+            'slider_image_one',
+            'slider_image_two',
+            'slider_image_three',
+            'slider_image_four',
+            'body',
+            'body_image',
+            'body_continued'
+            ]
 
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -27,7 +38,10 @@ class CreateArticleForm(forms.ModelForm):
             'body': 'Enter the article content before the image break',
             'body_continued': 'Enter the remaining content of the article',
             'thumb': 'Enter the thumbnail image for the article',
-            'cover_image': 'Enter the cover image for the article',
+            'slider_image_one': 'Enter the cover image for the article',
+            'slider_image_two': 'Enter the cover image for the article',
+            'slider_image_three': 'Enter the cover image for the article',
+            'slider_image_four': 'Enter the cover image for the article',            
             'body_image': 'Enter the body image for the article',
         }
 
@@ -38,8 +52,8 @@ class CreateArticleForm(forms.ModelForm):
             self.fields[field].help_text = help_text[field]
             # Add classes to the help text
             self.fields[field].help_text = f'<small>{help_text[field]}</small>'
-            # Add placeholders if not the image fields
-            if field != 'thumb' and field != 'cover_image' and field != 'body_image':
+            # If field is not image type
+            if field != 'thumb' and field != 'slider_image_one' and field != 'slider_image_two' and field != 'slider_image_three' and field != 'slider_image_four' and field != 'body_image':
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]
 
 
