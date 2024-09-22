@@ -107,4 +107,21 @@ urlpatterns = [
       views.edit_review,
       name='edit_review'
     ),
+
+    # Payment Management URL's
+    path(
+      'manage-payments/',
+      views.cp_payments,
+      name='cp_payments'
+    ),
+    path(
+      'manage-payments/new-payment/',
+      views.new_payment,
+      name='new_payment'
+    ),
+    path(
+      'manage-payments/view-details/<int:payment_id>/',
+      views.view_payment,
+      name='view_payment'
+    ),
 ]

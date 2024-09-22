@@ -9,6 +9,8 @@ from home.models import Message
 from portfolio.models import PortfolioImages, SliderImages
 from reviews.models import Review
 from .forms import CreateArticleForm, AddSliderImage, AddPortfolioImage, AddReviewForm
+from payments.models import Payment
+from .forms import NewPaymentForm
 
 
 """
@@ -32,6 +34,7 @@ def control_panel(request):
     latest_messages = Message.objects.all().order_by('-created_at')[:5]
     unread_messages = Message.objects.filter(read=False).count()
     latest_reviews = Review.objects.all().order_by('-created_at')[:5]
+    latest_payment_requests = Payment.objects.all().order_by('-date')[:5]
 
     # Build context
     context = {
@@ -42,6 +45,7 @@ def control_panel(request):
         'latest_messages': latest_messages,
         'unread_messages': unread_messages,
         'latest_reviews': latest_reviews,
+        'latest_payment_requests': latest_payment_requests,
     }
 
     return render(request, 'control-panel.html', context)
@@ -384,3 +388,66 @@ def edit_review(request, review_id):
             context['form'] = form
 
     return render(request, 'reviews/edit-review.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_payments(request):
+    """
+    A view to return the payments page
+    """
+    payments = Payment.objects.all()
+    context = {
+        'payments': payments,
+    }
+
+    return render(request, 'payments/payment-management.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def new_payment(request):
+    """
+    A view to add a payment
+    """
+    form = NewPaymentForm()
+
+    if request.method == 'POST':
+        form = NewPaymentForm(request.POST)
+        if form.is_valid():
+
+            # Use the email address to get the users name
+            email = form.cleaned_data['email']
+
+            try:
+                user = User.objects.get(email=email)
+            except User.DoesNotExist:
+                messages.error(request, 'No user found with that email address')
+                context = {
+                    'form': form,
+                }
+                return render(request, "payments/new-payment.html", context)
+            
+            name = user.first_name + ' ' + user.last_name
+            form.instance.name = name
+            form.save()
+            messages.success(request, 'Payment request added successfully')
+            return redirect(cp_payments)
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'payments/new-payment.html', context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def view_payment(request, payment_id):
+    """
+    A view to view the details of a payment
+    """
+    payment = Payment.objects.get(id=payment_id)
+
+    context = {
+        'payment': payment,
+    }
+
+    return render(request, 'payments/view-payment.html', context)

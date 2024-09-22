@@ -2,6 +2,7 @@ from django import forms
 from blog.models import Article
 from portfolio.models import SliderImages, PortfolioImages
 from reviews.models import Review
+from payments.models import Payment
 
 class CreateArticleForm(forms.ModelForm):
   class Meta:
@@ -126,3 +127,25 @@ class AddReviewForm(forms.ModelForm):
             if field != 'user_img':
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]
 
+
+class NewPaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ['email', 'amount', 'description']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'email': 'Enter the payees email address',
+            'amount': 'Enter the payment amount',
+            'description': 'Enter a description of the Services',
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields['email'].widget.attrs['autofocus'] = True
+
+        for field in self.fields:
+            # Add classes to each field
+            self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
+            # Add placeholders if not the image fields
+            self.fields[field].widget.attrs['placeholder'] = placeholders[field]

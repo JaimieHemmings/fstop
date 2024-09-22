@@ -1,0 +1,54 @@
+{% extends 'cp-base.html' %}
+{% load humanize %}
+
+{% block title %}| Payment Management{% endblock %}
+
+{% block content %}
+<section class="container mb-5">
+  <div class="row">
+    <div class="col-sm-12 text-center pt-5 pb-5">
+      <h1>Manage Payments</h1>
+      <p>See details of all payments</p>
+    </div>
+  </div>
+  <div class="row mt-3 p-1 background-white pt-5">
+    <div class="col-sm-12 d-flex flex-row justify-content-end p-3">
+        <a href="{% url 'new_payment' %}" class="btn btn-primary">New Payment Request</a>
+    </div>
+    <div class="col-sm-12 mt-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Created At</th>
+            <th scope="col">User</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if payments %}
+          {% for payment in payments %}
+          <tr>
+            <td>{{ payment.id }}</td>
+            <td>{{ payment.date|date:"l d/m/y" }}</td>
+            <td>{{ payment.name }}</td>
+            <td>£{{ payment.amount|intcomma }}</td>
+            <td>{% if payment == False %}Paid{% else %}Pending{% endif %}</td>
+            <td>
+              <a href="{% url 'view_payment' payment.id %}" class="btn btn-secondary">View</a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td colspan="6">No payments to display.</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}
