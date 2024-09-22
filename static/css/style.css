@@ -226,6 +226,15 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
   Navigation Styles
 */
 
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: initial;
+  right: 0;
+}
+
 nav.navbar {
   padding: 1.0625rem 1.5rem;
 
@@ -248,6 +257,10 @@ nav.navbar {
     &:hover {
       color: var(--col-primary);
     }
+  }
+
+  .nav-link.show {
+    color: var(--col-primary);
   }
   
 
@@ -817,5 +830,31 @@ ul.achievements {
     &:hover {
       background-color: var(--col-primary);
     }
+  }
+}
+
+/*
+  Register Form Styles
+*/
+
+.allauth-form {
+  label {
+    display: block;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    color: var(--col-white-200);
+  }
+
+  input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--col-white-300);
+    background-color: var(--col-black);
+    color: var(--col-white-200);
+  }
+
+  input[type="checkbox"] {
+    width: initial;
   }
 }

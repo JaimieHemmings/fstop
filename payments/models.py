@@ -1,7 +1,12 @@
 from django.db import models
 
 class Payment(models.Model):
-    name = models.CharField(max_length=255)
+    user_profile = models.ForeignKey(
+        'profiles.UserProfile',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='payments')
     email = models.EmailField()
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)

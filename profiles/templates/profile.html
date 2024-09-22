@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid section-padding background-secondary">
+  <div class="container">
+    <div class="row p-5 background-primary">
+      <div class="col-md-12">
+        <h1 class="color-white-200">Profile</h1>
+        <hr class="color-white-200">
+      </div>
+      <div class="col-sm-6 color-white-300">
+        <p class="pb-3">Username: <span>{{ user.username }}</span></p>
+        <p class="pb-3">Name: <span>{{ user.first_name }} {{ user.last_name }}</span></p>
+        <p class="pb-3">Email: <span>{{ user.email }}</span></p>
+        <p class="pb-3">Joined: <span>{{ user.date_joined }}</span></p>
+      </div>
+      <div class="col-sm-6 color-white-300">
+        <p class="pb-1">Address: </p>
+        <p class="pb-3"><address>
+          {% if user.profile.street_address1 %}
+          {{ user.profile.street_address1 }}
+          {% else %}
+          No Street Address Information
+          {% endif %}
+
+          <br>
+          
+          {% if user.profile.street_address2 %}
+          {{ user.profile.street_address2 }}
+          {% else %}
+          No Street Address Information
+          {% endif %}
+
+          <br>
+          
+          {% if user.profile.town_or_city %}
+          {{ user.profile.town_or_city }}
+          {% else %}
+          No town or city Information
+          {% endif %}
+
+          <br>
+          
+          {% if user.profile.county %}
+          {{ user.profile.county }}
+          {% else %}
+          No county Information
+          {% endif %}
+
+          <br>
+
+          
+          
+          {% if user.profile.postcode %}
+          {{ user.profile.postcode }}
+          {% else %}
+          No postcode Information
+          {% endif %}
+        </address></p>
+      </div>
+      <div class="col-sm-12 d-flex flex-row justify-content-end mb-3">
+        <a href="#" class="btn btn-custom-red">Edit Profile</a>
+      </div>
+      {% if payments %}
+      <div class="col-sm-12">
+        <h2 class="color-white-200">Payments</h2>
+        <hr class="color-white-200">
+      </div>
+      <div class="col-sm-12">
+        {% for payment in payments %}
+        <div class="row">
+          <div class="col-sm-6 color-white-300">
+            <p class="pb-3">Payment ID: <span>{{ payment.id }}</span></p>
+            <p class="pb-3">Date: <span>{{ payment.date }}</span></p>
+            <p class="pb-3">Amount: £<span>{{ payment.amount }}</span></p>
+          </div>
+          <div class="col-sm-6 color-white-300">
+            <p class="pb-3">Stripe Payment ID: <span>{{ payment.stripe_payment_id }}</span></p>
+            <p class="pb-3">Stripe Payment Intent ID: <span>{{ payment.stripe_payment_intent_id }}</span></p>
+            <p class="pb-3">Stripe Payment Status: <span>{{ payment.stripe_payment_status }}</span></p>
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% include 'partials/cta.html' %}
+{% endblock %}
