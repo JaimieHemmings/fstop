@@ -17,9 +17,12 @@ else:
     SECRET_KEY = 'django-insecure-(xcfpgr4x3)n+lk9i^a_03)4tamq&$n%y-dlhu19p$qby68x%5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = 'DEVELOPMENT' in os.environ 
 
-ALLOWED_HOSTS = ['localhost', 'fstop-photography.herokuapp.com']
+ALLOWED_HOSTS = [
+    'localhost',
+    'fstop-photography-6e5dee6954eb.herokuapp.com',
+    'fstops.co.uk']
 
 
 # Application definition
