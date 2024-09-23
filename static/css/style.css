@@ -601,13 +601,19 @@ nav.navbar {
   Footer Styles
 */
 
-footer .nav .nav-item .nav-link {
-  color: var(--col-white-200);
-  transition: color 0.3s ease-in-out;
-
-  &:hover {
-    color: var(--col-primary);
+footer {
+  .nav .nav-item .nav-link {
+    color: var(--col-white-200);
+    transition: color 0.3s ease-in-out;
+    
+    &:hover {
+      color: var(--col-primary);
+    }
   }
+    
+    .dropdown {
+      display: none;
+    }
 }
 
 footer .nav .nav-item .nav-link.active {

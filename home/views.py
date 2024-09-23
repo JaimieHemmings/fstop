@@ -5,6 +5,7 @@ from blog.models import Article
 from portfolio.models import SliderImages
 from reviews.models import Review
 
+
 def index(request):
     """
     A view that displays the index page
@@ -13,14 +14,12 @@ def index(request):
     slider_images = SliderImages.objects.all()
     articles = Article.objects.all().order_by('-date')[:2]
     reviews = Review.objects.all().order_by('-created_at')[:5]
-
     # Build context
     context = {
         'slider_images': slider_images,
         'articles': articles,
         'reviews': reviews,
     }
-
     return render(request, 'home/index.html', context)
 
 
@@ -29,7 +28,6 @@ def about(request):
     A view that displays the about page
     """
     context = {}
-    
     # Get the 2 latest Articles
     articles = Article.objects.all().order_by('-date')[:2]
     context['articles'] = articles
@@ -43,19 +41,14 @@ def contact(request):
     """
     context = {}
     form = ContactForm()
-    context['form'] = form
-
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
             # Flash Message confirmation
             messages.success(request, 'Your message has been sent!')
-            # Redirect to Contact page            
-            return redirect('/contact')
         else:
             # Flash Message error
             messages.error(request, 'Error sending message. Please check the form.')
-            return redirect('/contact')
-
+    context['form'] = form
     return render(request, 'home/contact.html', context)

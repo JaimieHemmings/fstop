@@ -7,7 +7,7 @@ def portfolio(request):
     """
     context = {}
     #Get all portfolio images
-    portfolioImages = PortfolioImages.objects.all()
-    context['portfolioImages'] = portfolioImages
+    portfolio_images = PortfolioImages.objects.all()
+    context['portfolio_images'] = portfolio_images
 
     return render(request, 'portfolio.html', context)

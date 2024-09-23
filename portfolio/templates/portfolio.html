@@ -16,12 +16,12 @@
   </div>
 </section>
 
-{% if portfolioImages %}
+{% if portfolio_images %}
 <section class="container-fluid slide-gallery background-secondary">
   <div class="container">
 
     <div id="slide">
-      {% for img in portfolioImages %}
+      {% for img in portfolio_images %}
       <div
       class="item"
       style="background-image: url({{ img.image.url }});">

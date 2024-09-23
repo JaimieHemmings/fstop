@@ -17,8 +17,8 @@
       <h2>Portfolio Images</h2>
       <p>These are the images that show up on the portfolio page</p>
     </div>
-    {% if portfolioImages %}
-    {% for image in portfolioImages %}
+    {% if portfolio_images %}
+    {% for image in portfolio_images %}
     <div class="col-sm-4">
       <div class="col-sm-4 mb-3">
         <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid mt-3">
@@ -46,8 +46,8 @@
       <h2>Slider Images</h2>
       <p>These are the images shown in the parallax slider</p>
     </div>
-    {% if sliderImages %}
-    {% for image in sliderImages %}
+    {% if slider_images %}
+    {% for image in slider_images %}
     <div class="col-sm-6">
       <div class="row">
 

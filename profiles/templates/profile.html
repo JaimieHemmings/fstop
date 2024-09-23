@@ -9,56 +9,62 @@
       </div>
       <div class="col-sm-6 color-white-300">
         <p class="pb-3">Username: <span>{{ user.username }}</span></p>
-        <p class="pb-3">Name: <span>{{ user.first_name }} {{ user.last_name }}</span></p>
+        <p class="pb-3">Name: <span>{{ userProfile.fname }} {{ userProfile.lname }}</span></p>
         <p class="pb-3">Email: <span>{{ user.email }}</span></p>
         <p class="pb-3">Joined: <span>{{ user.date_joined }}</span></p>
       </div>
       <div class="col-sm-6 color-white-300">
         <p class="pb-1">Address: </p>
         <p class="pb-3"><address>
-          {% if user.profile.street_address1 %}
-          {{ user.profile.street_address1 }}
+          {% if user_profile %}
+          {{ user_profile.street_address1 }}
           {% else %}
           No Street Address Information
           {% endif %}
 
           <br>
           
-          {% if user.profile.street_address2 %}
-          {{ user.profile.street_address2 }}
-          {% else %}
-          No Street Address Information
-          {% endif %}
+          {% if user_profile.street_address2 %}
+          {{ user_profile.street_address2 }}
 
           <br>
+          {% endif %}
           
-          {% if user.profile.town_or_city %}
-          {{ user.profile.town_or_city }}
+          {% if user_profile.town_or_city %}
+          {{ user_profile.town_or_city }}
           {% else %}
           No town or city Information
           {% endif %}
 
           <br>
           
-          {% if user.profile.county %}
-          {{ user.profile.county }}
+          {% if user_profile.county %}
+          {{ user_profile.county }}
           {% else %}
           No county Information
+          {% endif %}
+
+          <br>
+          
+          {% if user_profile.country %}
+          {{ user_profile.country }}
+          {% else %}
+          No country Information
           {% endif %}
 
           <br>
 
           
           
-          {% if user.profile.postcode %}
-          {{ user.profile.postcode }}
+          {% if user_profile.postcode %}
+          {{ user_profile.postcode }}
           {% else %}
           No postcode Information
           {% endif %}
         </address></p>
       </div>
       <div class="col-sm-12 d-flex flex-row justify-content-end mb-3">
-        <a href="#" class="btn btn-custom-red">Edit Profile</a>
+        <a href="{% url 'edit_profile' %}" class="btn btn-custom-red">Edit Profile</a>
       </div>
       {% if payments %}
       <div class="col-sm-12">
@@ -66,19 +72,39 @@
         <hr class="color-white-200">
       </div>
       <div class="col-sm-12">
-        {% for payment in payments %}
-        <div class="row">
-          <div class="col-sm-6 color-white-300">
-            <p class="pb-3">Payment ID: <span>{{ payment.id }}</span></p>
-            <p class="pb-3">Date: <span>{{ payment.date }}</span></p>
-            <p class="pb-3">Amount: £<span>{{ payment.amount }}</span></p>
-          </div>
-          <div class="col-sm-6 color-white-300">
-            <p class="pb-3">Stripe Payment ID: <span>{{ payment.stripe_payment_id }}</span></p>
-            <p class="pb-3">Stripe Payment Intent ID: <span>{{ payment.stripe_payment_intent_id }}</span></p>
-            <p class="pb-3">Stripe Payment Status: <span>{{ payment.stripe_payment_status }}</span></p>
-          </div>
-        {% endfor %}
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Stripe Payment ID</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for payment in payments %}
+            <tr>
+              <td>{{ payment.id }}</td>
+              <td>{{ payment.date }}</td>
+              <td>£{{ payment.amount }}</td>
+              <td>
+                {% if payment.sripte_payment_id %}
+                  {{ payment.stripe_payment_id }}
+                {% else %}
+                  Not Paid
+                {% endif %}
+              </td>
+              <td>{% if payment.paid == True %}Paid{% else %}Due{% endif %}</td>
+              <td>
+                <a href="#" class="btn btn-secondary">View</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
       {% endif %}
     </div>

@@ -9,15 +9,15 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     fname = models.CharField(max_length=50, blank=True, null=True)
     lname = models.CharField(max_length=50, blank=True, null=True)
-    country = CountryField(
-       blank_label='(select country)',
-       null=True,
-       blank=True)
-    postcode = models.CharField(max_length=20, blank=True, null=True)
-    town_or_city = models.CharField(max_length=40, blank=True, null=True)
     street_address1 = models.CharField(max_length=80, blank=True, null=True)
     street_address2 = models.CharField(max_length=80, blank=True, null=True)
+    town_or_city = models.CharField(max_length=40, blank=True, null=True)
     county = models.CharField(max_length=80, blank=True, null=True)
+    postcode = models.CharField(max_length=20, blank=True, null=True)
+    country = CountryField(
+       blank_label='(Select Country)',
+       null=True,
+       blank=True)
 
     def __str__(self):
         return self.user.username
