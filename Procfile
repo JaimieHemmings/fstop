@@ -1,0 +1,1 @@
+web: gunicorn fstop.wsgi:application
