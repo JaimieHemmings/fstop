@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ 
+DEBUG = False 
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -179,9 +179,8 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
     # Stripe
-    STRIPE_CURRENCY = 'usd'
+    STRIPE_CURRENCY = 'gbp'
     STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
     STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
     STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
     DEFAULT_FROM_EMAIL = ''
-
