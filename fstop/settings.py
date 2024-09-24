@@ -159,6 +159,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if 'USE_AWS' in os.environ:
+    print('Using S3 --------------------------------------------------------------------------')
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     #Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'fstop-photography'
