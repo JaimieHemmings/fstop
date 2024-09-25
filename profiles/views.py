@@ -5,6 +5,7 @@ from payments.models import Payment
 from .forms import UserProfileForm
 from .models import UserProfile
 from payments.models import Payment
+# from payments.forms import PaymentForm
 from django.contrib import messages
 import stripe
 
@@ -17,7 +18,11 @@ def profile(request):
     user = request.user
     user_profile = UserProfile.objects.get(user=user)
     payments = Payment.objects.filter(email=user.email)
-    context = {"user": user, "payments": payments, "user_profile": user_profile}
+    context = {
+        "user": user,
+        "payments": payments,
+        "user_profile": user_profile
+        }
     return render(request, "profile.html", context)
 
 
@@ -32,7 +37,8 @@ def edit_profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return render(request, "profile.html", {"user": request.user})
+            return render(
+                request, "profile.html", {"user": request.user})
         else:
             form = UserProfileForm(instance=profile)
     context = {
@@ -49,6 +55,22 @@ def make_payment(request, id):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    if request.method == "POST":
+
+        form_data = {
+            
+        }
+
+        form = PaymentForm(form_data)
+        if form.is_valid():
+            form.save()
+            stripe_payment_id = 0
+            return render(
+                request, "payment-success.html", stripe_payment_id)
+        else:
+            messages.error(
+                request, "Failed to make payment."
+                "Please ensure the form is valid.")
 
     order = get_object_or_404(Payment, pk=id)
     user_profile = UserProfile.objects.get(user=request.user)
@@ -69,7 +91,8 @@ def make_payment(request, id):
     if not stripe_public_key:
         messages.warning(
             request,
-            "Stripe public key is missing. Did you forget to set it in your environment?",
+            "Stripe public key is missing."
+            "Did you forget to set it in your environment?",
         )
 
     context = {
@@ -79,3 +102,16 @@ def make_payment(request, id):
     }
 
     return render(request, "make-payment.html", context)
+
+
+@login_required
+def payment_success(request, stripe_payment_id):
+    """
+    View to display payment success
+    """
+    payment = get_object_or_404(Payment, stripe_payment_id=stripe_payment_id)
+    context = {"payment": payment}
+    messages.success(
+        request, f"Payment success!"
+        "We will send a confirmation email to {payment.email}")
+    return render(request, "payment-success.html", context)
