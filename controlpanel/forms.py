@@ -4,8 +4,9 @@ from portfolio.models import SliderImages, PortfolioImages
 from reviews.models import Review
 from payments.models import Payment
 
+
 class CreateArticleForm(forms.ModelForm):
-  class Meta:
+    class Meta:
         model = Article
         fields = [
             'title',
@@ -20,7 +21,7 @@ class CreateArticleForm(forms.ModelForm):
             'body_continued'
             ]
 
-  def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
             'title': 'Enter the title of the article',
@@ -42,7 +43,7 @@ class CreateArticleForm(forms.ModelForm):
             'slider_image_one': 'Enter the cover image for the article',
             'slider_image_two': 'Enter the cover image for the article',
             'slider_image_three': 'Enter the cover image for the article',
-            'slider_image_four': 'Enter the cover image for the article',            
+            'slider_image_four': 'Enter the cover image for the article',
             'body_image': 'Enter the body image for the article',
         }
 
@@ -53,8 +54,9 @@ class CreateArticleForm(forms.ModelForm):
             self.fields[field].help_text = help_text[field]
             # Add classes to the help text
             self.fields[field].help_text = f'<small>{help_text[field]}</small>'
-            # If field is not image type
-            if field != 'thumb' and field != 'slider_image_one' and field != 'slider_image_two' and field != 'slider_image_three' and field != 'slider_image_four' and field != 'body_image':
+            # If field type is not an image
+            if self.fields[field].widget.input_type != 'file':
+                # Add placeholders if not the image fields
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]
 
 
@@ -72,10 +74,10 @@ class AddSliderImage(forms.ModelForm):
 
         # Set autofocus on first field to be filled in
         self.fields['title'].widget.attrs['autofocus'] = True
-
+        custom_classes = 'form form-control mt-1 mb-3'
         for field in self.fields:
             # Add classes to each field
-            self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
+            self.fields[field].widget.attrs['class'] = custom_classes
             # Add placeholders if not the image fields
             if field != 'image':
                 self.fields[field].widget.attrs['placeholder'] = placeholders[field]

@@ -6,18 +6,18 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY','abcdefg')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'abcdefg')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
-   '127.0.0.1',
+    '127.0.0.1',
     'localhost',
     'fstop-photography-6e5dee6954eb.herokuapp.com',
     'fstops.co.uk',
-    '.herokuapp.com',]
-
+    '.herokuapp.com',
+    ]
 
 # Application definition
 
@@ -109,9 +109,9 @@ WSGI_APPLICATION = 'fstop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 if 'DATABASE_URL' in os.environ:
-  DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL')),
-  }
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL')),
+    }
 else:
     DATABASES = {
         'default': {
@@ -125,16 +125,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': ('django.contrib.auth.password_validation'
+                 '.UserAttributeSimilarityValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': ('django.contrib.auth.'
+                 'password_validation.MinimumLengthValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': ('django.contrib.auth.'
+                 'password_validation.CommonPasswordValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': ('django.contrib.auth.'
+                 'password_validation.NumericPasswordValidator'),
     },
 ]
 
