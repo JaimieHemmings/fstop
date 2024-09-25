@@ -1,9 +1,10 @@
 from django.db import models
 
+
 # Create your models here.
 class PortfolioImages(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
-    image = models.ImageField(upload_to='portfolio/', blank=False, null=False)
+    image = models.ImageField(upload_to="portfolio/", blank=False, null=False)
     description = models.TextField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -13,7 +14,7 @@ class PortfolioImages(models.Model):
 
 class SliderImages(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
-    image = models.ImageField(upload_to='portfolio/', blank=False, null=False)
+    image = models.ImageField(upload_to="portfolio/", blank=False, null=False)
     description = models.TextField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

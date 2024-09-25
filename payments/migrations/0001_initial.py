@@ -4,24 +4,30 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Payment',
+            name="Payment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('email', models.EmailField(max_length=254)),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('date', models.DateTimeField(auto_now_add=True)),
-                ('paid', models.BooleanField(default=False)),
-                ('payment_id', models.CharField(max_length=255)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("email", models.EmailField(max_length=254)),
+                ("amount", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("date", models.DateTimeField(auto_now_add=True)),
+                ("paid", models.BooleanField(default=False)),
+                ("payment_id", models.CharField(max_length=255)),
+                ("description", models.TextField()),
             ],
         ),
     ]

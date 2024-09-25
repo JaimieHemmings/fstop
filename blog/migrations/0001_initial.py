@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,19 +14,42 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Article',
+            name="Article",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('slug', models.SlugField(max_length=255, unique=True)),
-                ('body', models.TextField()),
-                ('body_continued', models.TextField()),
-                ('date', models.DateTimeField(auto_now_add=True)),
-                ('thumb', models.ImageField(blank=True, default='default.png', upload_to='')),
-                ('cover_image', models.ImageField(blank=True, default='default.png', upload_to='')),
-                ('body_image', models.ImageField(blank=True, default='default.png', upload_to='')),
-                ('last_modified', models.DateTimeField(auto_now=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("slug", models.SlugField(max_length=255, unique=True)),
+                ("body", models.TextField()),
+                ("body_continued", models.TextField()),
+                ("date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "thumb",
+                    models.ImageField(blank=True, default="default.png", upload_to=""),
+                ),
+                (
+                    "cover_image",
+                    models.ImageField(blank=True, default="default.png", upload_to=""),
+                ),
+                (
+                    "body_image",
+                    models.ImageField(blank=True, default="default.png", upload_to=""),
+                ),
+                ("last_modified", models.DateTimeField(auto_now=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

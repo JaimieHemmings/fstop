@@ -5,23 +5,30 @@ from .models import Message
 from reviews.models import Review
 from payments.models import Payment
 
+
 class MessageAdmin(admin.ModelAdmin):
     pass
+
 
 class ArticleAdmin(admin.ModelAdmin):
     pass
 
+
 class PortfolioImagesAdmin(admin.ModelAdmin):
     pass
+
 
 class SliderImagesAdmin(admin.ModelAdmin):
     pass
 
+
 class ReviewAdmin(admin.ModelAdmin):
     pass
 
+
 class PaymentAdmin(admin.ModelAdmin):
     pass
+
 
 admin.site.register(Message, MessageAdmin)
 admin.site.register(Article, ArticleAdmin)

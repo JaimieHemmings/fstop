@@ -5,16 +5,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('payments', '0004_remove_payment_name_payment_user_profile'),
-        ('profiles', '0001_initial'),
+        ("payments", "0004_remove_payment_name_payment_user_profile"),
+        ("profiles", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='payment',
-            name='user_profile',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='payments', to='profiles.userprofile'),
+            model_name="payment",
+            name="user_profile",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="payments",
+                to="profiles.userprofile",
+            ),
         ),
     ]
