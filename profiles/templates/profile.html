@@ -91,7 +91,7 @@
               <td>{{ payment.date }}</td>
               <td>£{{ payment.amount }}</td>
               <td>
-                {% if payment.sripte_payment_id %}
+                {% if payment.stripe_payment_id %}
                   {{ payment.stripe_payment_id }}
                 {% else %}
                   Not Paid
@@ -99,7 +99,7 @@
               </td>
               <td>{% if payment.paid == True %}Paid{% else %}Due{% endif %}</td>
               <td>
-                <a href="#" class="btn btn-secondary">View</a>
+                <a href="{% url 'make_payment' payment.id %}" class="btn btn-secondary">View</a>
               </td>
             </tr>
             {% endfor %}

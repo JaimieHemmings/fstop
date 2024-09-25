@@ -7,7 +7,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,19 +15,54 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='UserProfile',
+            name="UserProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('profile_pic', models.ImageField(blank=True, default='profile_pics/default.png', upload_to='profile_pics')),
-                ('fname', models.CharField(blank=True, max_length=50, null=True)),
-                ('lname', models.CharField(blank=True, max_length=50, null=True)),
-                ('country', django_countries.fields.CountryField(blank=True, max_length=2, null=True)),
-                ('postcode', models.CharField(blank=True, max_length=20, null=True)),
-                ('town_or_city', models.CharField(blank=True, max_length=40, null=True)),
-                ('street_address1', models.CharField(blank=True, max_length=80, null=True)),
-                ('street_address2', models.CharField(blank=True, max_length=80, null=True)),
-                ('county', models.CharField(blank=True, max_length=80, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "profile_pic",
+                    models.ImageField(
+                        blank=True,
+                        default="profile_pics/default.png",
+                        upload_to="profile_pics",
+                    ),
+                ),
+                ("fname", models.CharField(blank=True, max_length=50, null=True)),
+                ("lname", models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    "country",
+                    django_countries.fields.CountryField(
+                        blank=True, max_length=2, null=True
+                    ),
+                ),
+                ("postcode", models.CharField(blank=True, max_length=20, null=True)),
+                (
+                    "town_or_city",
+                    models.CharField(blank=True, max_length=40, null=True),
+                ),
+                (
+                    "street_address1",
+                    models.CharField(blank=True, max_length=80, null=True),
+                ),
+                (
+                    "street_address2",
+                    models.CharField(blank=True, max_length=80, null=True),
+                ),
+                ("county", models.CharField(blank=True, max_length=80, null=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

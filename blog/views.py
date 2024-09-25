@@ -7,10 +7,10 @@ def blog(request):
     A view to return the blog page
     """
     context = {}
-    articles = Article.objects.all().order_by('-date')
-    context['articles'] = articles
+    articles = Article.objects.all().order_by("-date")
+    context["articles"] = articles
 
-    return render(request, 'blog.html', context)
+    return render(request, "blog.html", context)
 
 
 def article(request, slug):
@@ -19,6 +19,6 @@ def article(request, slug):
     """
     context = {}
     article = Article.objects.get(slug=slug)
-    context['article'] = article
+    context["article"] = article
 
-    return render(request, 'article.html', context)
+    return render(request, "article.html", context)

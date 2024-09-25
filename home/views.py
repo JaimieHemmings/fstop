@@ -12,15 +12,15 @@ def index(request):
     """
     # Get objects
     slider_images = SliderImages.objects.all()
-    articles = Article.objects.all().order_by('-date')[:2]
-    reviews = Review.objects.all().order_by('-created_at')[:5]
+    articles = Article.objects.all().order_by("-date")[:2]
+    reviews = Review.objects.all().order_by("-created_at")[:5]
     # Build context
     context = {
-        'slider_images': slider_images,
-        'articles': articles,
-        'reviews': reviews,
+        "slider_images": slider_images,
+        "articles": articles,
+        "reviews": reviews,
     }
-    return render(request, 'home/index.html', context)
+    return render(request, "home/index.html", context)
 
 
 def about(request):
@@ -29,10 +29,10 @@ def about(request):
     """
     context = {}
     # Get the 2 latest Articles
-    articles = Article.objects.all().order_by('-date')[:2]
-    context['articles'] = articles
+    articles = Article.objects.all().order_by("-date")[:2]
+    context["articles"] = articles
 
-    return render(request, 'home/about.html')
+    return render(request, "home/about.html")
 
 
 def contact(request):
@@ -41,14 +41,14 @@ def contact(request):
     """
     context = {}
     form = ContactForm()
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
             # Flash Message confirmation
-            messages.success(request, 'Your message has been sent!')
+            messages.success(request, "Your message has been sent!")
         else:
             # Flash Message error
-            messages.error(request, 'Error sending message. Please check the form.')
-    context['form'] = form
-    return render(request, 'home/contact.html', context)
+            messages.error(request, "Error sending message. Please check the form.")
+    context["form"] = form
+    return render(request, "home/contact.html", context)
