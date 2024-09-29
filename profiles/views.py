@@ -1,12 +1,14 @@
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.views.decorators.http import require_POST
+
 from payments.models import Payment
 from .forms import UserProfileForm
 from .models import UserProfile
 from payments.models import Payment
 # from payments.forms import PaymentForm
-from django.contrib import messages
 import stripe
 
 
@@ -102,6 +104,27 @@ def make_payment(request, id):
     }
 
     return render(request, "make-payment.html", context)
+
+
+@require_POST
+def cache_checkout_data(request):
+    """
+    View to cache checkout data
+    """
+    try:
+        pid = request.POST.get("client_secret").split("_secret")[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.paymentIntent.modify(pid, metadata={
+            "username": request.user,
+            "save_info": request.POST.get("save_info"),
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(
+            request,
+            "Sorry, your payment cannot be processed right now."
+                       "Please try again later.")
+        return HttpResponse(content=e, status=400)
 
 
 @login_required
