@@ -1,0 +1,48 @@
+
+<div class="col-sm-6 d-flex">
+  <div class="card flex-fill">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Latest Messages</h5>
+    </div>
+    <table class="table table-hover my-0">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if latest_messages %}
+        {% for message in latest_messages %}
+        <tr>
+          <td>{{ message.fname }} {{ message.lname }}</td>
+          <td>{{ message.created_at|date:"d/m/y" }}</td>
+
+          <td>
+            {% if message.read == True %}
+            <p class="badge bg-primary mb-0">Read</p>
+            {% else %}
+            <p class="badge bg-warning mb-0">Unread</p>
+            {% endif %}
+          </td>
+          <td>
+            <a href="" class="badge bg-secondary">View</a>
+          </td>
+          <td>
+            <a href="#" class="badge bg-danger">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td colspan="5">No messages found</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    <a href="{% url 'cp_messages' %}" class="card-footer d-block text-center text-dark small font-weight-bold">View All</a>
+  </div>
+</div>
