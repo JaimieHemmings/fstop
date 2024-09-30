@@ -82,5 +82,45 @@
         <a href="{% url 'cp_articles' %}" class="card-footer d-block text-center text-dark small font-weight-bold">View All</a>
       </div>
     </div>
+    <div class="col-sm-12 col-md-6 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Latest Payment Requests</h5>
+        </div>
+        <table class="table table-hover my-0">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if latest_payment_requests %}
+            {% for req in latest_payment_requests %}
+            <tr>
+              <td>{{ req.email }}</td>
+              <td>{{ req.date|date:"d/m/y" }}</td>
+              <td>£{{ req.amount|intcomma }}</td>
+              <td>
+                {% if req.paid == True %}
+                <p class="badge bg-success m-0">Paid</p>
+                {% else %}
+                <p class="badge bg-warning m-0">Unpaid</p>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="5">No Payment Requests Yet</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <a href="{% url 'cp_payments' %}" class="card-footer d-block text-center text-dark small font-weight-bold">View All</a>
+      </div>
+    </div>
   </div>
 {% endblock %}
