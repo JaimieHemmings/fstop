@@ -3,24 +3,31 @@
 {% block title %}| View Payment{% endblock %}
 
 {% block content %}
-<section class="container mb-5">
-  <div class="row">
-    <div class="col-sm-12 text-center pt-5 pb-5">
-      <h1>View Details</h1>
-      <p>Payment ID: {{ payment.id}}</p>
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Payment Details</h1>
+      </div>
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-sm-6">
+            
+            <p><strong>User: </strong>{{ payment.email }} - {% if payment.name %}{{ payment.name }}{% else %}No associated name found{% endif %}</p>
+            <p><strong>Email:</strong> {{ payment.email }}</p>
+            <p><strong>Created On:</strong> {{ payment.date|date:"d/m/y" }}</p>
+          </div>
+          <div class="col-sm-6">
+            <p><strong>Amount: </strong>£{{ payment.amount }}</p>
+            <p><strong>Status:</strong> {% if payment.status == True %}<span class="badge bg-success">Paid</span>{% else %}<span class="badge bg-warning">Pending</span>{% endif %}</p>
+          </div>
+          <hr>
+          <p><strong>Message:</strong></p>
+          <p>{{ payment.description|safe|linebreaks }}</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row mt-3 p-1 background-white pb-5 pt-5">
-    <div class="col-sm-12 py-3">
-      <h2 class="pb-5 text-center">Payment Request</h2>
-      <p>Created On: {{ payment.date }}</p>
-      <p>Request to: {{ payment.name }} - {{ payment.email }}</p>
-      <p>Amount: £{{ payment.amount }}</p>
-      <p>{{ payment.description }}</p>
-      <p>Status: {% if payment.status == True %}Paid{% else %}Pending{% endif %}</p>
-    </div>
-    <div class="col-sm-12">
-    </div>
-  </div>
-</section>
+</div>
 {% endblock %}

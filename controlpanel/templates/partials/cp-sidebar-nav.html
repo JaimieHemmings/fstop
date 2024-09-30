@@ -38,6 +38,17 @@
         </a>
       </li>
 
+      {% if '/manage-payments/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
+      <li class="sidebar-item">
+      {% endif %}
+        <a class="sidebar-link" href="{% url 'cp_payments' %}">
+          <i class="align-middle" data-feather="dollar-sign"></i>
+          <span class="align-middle">Payments</span>
+        </a>
+      </li>
+
       {% if '/contact/' in request.path %}
       <li class="sidebar-item active">
       {% else %}
