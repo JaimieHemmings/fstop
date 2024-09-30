@@ -13,6 +13,7 @@ from payments.models import Payment
 from .forms import CreateArticleForm, AddSliderImage
 from .forms import AddPortfolioImage, AddReviewForm
 from .forms import NewPaymentForm
+from home.forms import HomeHeroForm
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -20,7 +21,6 @@ def control_panel(request):
     """
     A view to return the control panel page
     """
-    
     latest_messages = Message.objects.all().order_by("-created_at")[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
     total_num_users = User.objects.all().count()
@@ -198,8 +198,8 @@ def edit_article(request, article_id):
             article.save()
             messages.success(request, "Article updated successfully")
             return cp_articles(request)
-        
-    context["article"] = article    
+
+    context["article"] = article
     context["latest_messages"] = latest_messages
     context["total_unread_messages"] = total_unread_messages
     context["unread_messages"] = unread_messages
@@ -261,7 +261,8 @@ def add_slider_image(request):
     if request.method == "POST":
         num_of_slider_images = SliderImages.objects.all().count()
         if num_of_slider_images > 9:
-            messages.error(request, "You can only have a maximum of 9 slider images")
+            messages.error(
+                request, "You can only have a maximum of 9 slider images")
             return redirect(cp_portfolio)
         form = AddSliderImage(request.POST, request.FILES)
         if form.is_valid():
@@ -297,7 +298,8 @@ def delete_slider_image_confirm(request, image_id):
     context = {}
     image = SliderImages.objects.get(id=image_id)
     context["image"] = image
-    return render(request, "portfolio/delete-slider-image-confirm.html", context)
+    return render(
+        request, "portfolio/delete-slider-image-confirm.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -309,7 +311,8 @@ def delete_portfolio_image_confirm(request, image_id):
     image = PortfolioImages.objects.get(id=image_id)
     context["image"] = image
 
-    return render(request, "portfolio/delete-portfolio-image-confirm.html", context)
+    return render(
+        request, "portfolio/delete-portfolio-image-confirm.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -430,7 +433,8 @@ def new_payment(request):
             try:
                 user = User.objects.get(email=email)
             except User.DoesNotExist:
-                messages.error(request, "No user found with that email address")
+                messages.error(
+                    request, "No user found with that email address")
                 context = {
                     "form": form,
                 }
@@ -471,13 +475,22 @@ def cp_cms_home(request):
     """
     A view to return the CMS homepage
     """
+    home_hero_data = HomePageHero.objects.get(id=1)
+    form = HomeHeroForm(instance=home_hero_data)
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
 
-    homepage_hero = HomePageHero.objects.get(id=1)
-    # homepage_about = HomePageAbout.objects.get(id=1)
+    if request.method == "POST":
+        form = HomeHeroForm(
+            request.POST, request.FILES, instance=home_hero_data)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Homepage data updated successfully")
+            return redirect(cp_cms_home)
 
     context = {
-        "homepage_hero": homepage_hero,
-        #"homepage_about": homepage_about,
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
     }
-
     return render(request, "cms/cms-homepage.html", context)

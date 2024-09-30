@@ -13,21 +13,12 @@
         <h1 class="card-title mb-0">Homepage Hero</h1>
       </div>
       <div class="card-body">
-        <p>{{ homepage_hero.hero_title }}</p>
-        <p>{{ homepage_hero.hero_subtitle }}</p>
-        <p>{{ homepage_hero.hero_image.url }}</p>
-      
-        <p>{{ homepage_hero.hero_list_one }}</p>
-        <p>{{ homepage_hero.hero_list_two }}</p>
-        <p>{{ homepage_hero.hero_list_three }}</p>
-        <p>{{ homepage_hero.hero_list_four }}</p>
-      
-        <p>{{ homepage_hero.data_one_title }}</p>
-        <p>{{ homepage_hero.data_one_value }}</p>
-        <p>{{ homepage_hero.data_two_title }}</p>
-        <p>{{ homepage_hero.data_two_value }}</p>
-        <p>{{ homepage_hero.data_three_title }}</p>
-        <p>{{ homepage_hero.data_three_value }}</p>
+        <form action="{% url 'cp_cms_home' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="d-flex flex-row justify-content-end pt-3 pb-3">
+            <button type="submit" class="btn btn-success">Save Changes</button>
+          </div>
       </div>
       <!--<div class="col-sm-12 py-3 justify-content-end d-flex flex-row">
         <a href="#" class="btn btn-danger mx-3">Delete Message</a>
