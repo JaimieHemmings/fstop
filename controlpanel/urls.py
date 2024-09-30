@@ -103,4 +103,5 @@ urlpatterns = [
 
     # CMS Paths
     path("cms-homepage/", views.cp_cms_home, name="cp_cms_home"),
+    path("cms-edit-hero/", views.cp_cms_hero, name="cp_cms_hero"),
 ]

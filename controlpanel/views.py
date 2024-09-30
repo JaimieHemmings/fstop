@@ -475,6 +475,21 @@ def cp_cms_home(request):
     """
     A view to return the CMS homepage
     """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request, "cms/cms-homepage.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_hero(request):
+    """
+    A view to return the CMS homepage
+    """
     home_hero_data = HomePageHero.objects.get(id=1)
     form = HomeHeroForm(instance=home_hero_data)
     unread_messages = Message.objects.filter(read=False)[:5]
@@ -486,11 +501,14 @@ def cp_cms_home(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Homepage data updated successfully")
-            return redirect(cp_cms_home)
+        else:
+            messages.error(
+                request, "There was an error updating the homepage data")
 
     context = {
         "form": form,
         "unread_messages": unread_messages,
         "total_unread_messages": total_unread_messages,
     }
-    return render(request, "cms/cms-homepage.html", context)
+
+    return render(request, "cms/home/cms-edit-hero.html", context)

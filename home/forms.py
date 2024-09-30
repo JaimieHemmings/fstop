@@ -66,17 +66,54 @@ class HomeHeroForm(forms.ModelForm):
             "data_two_title": "Data Two Title",
             "data_three_value": "Data Three Value",
             "data_three_title": "Data Three Title",
+            "cover_image": "",
+        }
+
+        helper_text = {
+            "hero_title": "The title for the hero section",
+            "hero_subtitle": "The subtitle for the hero section",
+            "hero_list_one": "The first item in the hero list",
+            "hero_list_two": "The second item in the hero list",
+            "hero_list_three": "The third item in the hero list",
+            "hero_list_four": "The fourth item in the hero list",
+            "data_one_value": "The value for the first data point",
+            "data_one_title": "The title for the first data point",
+            "data_two_value": "The value for the second data point",
+            "data_two_title": "The title for the second data point",
+            "data_three_value": "The value for the third data point",
+            "data_three_title": "The title for the third data point",
+            "hero_image": "The background image for the hero section",
+        }
+
+        field_labels = {
+            "hero_title": "Hero Title",
+            "hero_subtitle": "Hero Subtitle",
+            "hero_list_one": "Hero List One",
+            "hero_list_two": "Hero List Two",
+            "hero_list_three": "Hero List Three",
+            "hero_list_four": "Hero List Four",
+            "data_one_value": "Data One Value",
+            "data_one_title": "Data One Title",
+            "data_two_value": "Data Two Value",
+            "data_two_title": "Data Two Title",
+            "data_three_value": "Data Three Value",
+            "data_three_title": "Data Three Title",
+            "hero_image": "Hero Image",
         }
 
         for field in self.fields:
+            # Add helpertext to each field
+            self.fields[field].help_text = helper_text[field]
             # Set autofocus on first field to be filled in
+            if field == "hero_title":
+                self.fields[field].widget.attrs["autofocus"] = True
+            self.fields[field].widget.attrs["class"] = "form form-control mt-1"
+            # Set field labels
+            self.fields[field].label = field_labels[field]
+            # Set placeholders
             if field != "hero_image":
-                if field == "hero_title":
-                    self.fields[field].widget.attrs["autofocus"] = True
                 if self.fields[field].required:
                     placeholder = f"{placeholders[field]} *"
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs["placeholder"] = placeholder
-                self.fields[field].widget.attrs["class"] = "form form-control mt-3"
-                self.fields[field].label = False
