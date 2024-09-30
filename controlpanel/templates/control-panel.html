@@ -6,102 +6,79 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="col-sm-12">
-    <div class="row">
-
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col mt-0">
-                <h5>Registered Users</h5>
-                <p>All Users</p>
-              </div>
-              <div class="col-auto">
-                <div class="stat text-primary">
-                  <i class="align-middle" data-feather="users"></i>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-          {% else %}
-            <p>No users to display.</p>
-          {% endif %}
-          <div class="d-flex justify-content-end pt-3 pb-3">
-            <a href="#" class="btn btn-secondary disabled mx-3"><s>Manage</s></a>
-          </div>
+  <div class="row">
+    {% include 'small-card.html' with title="Users" num=total_num_users sub="Total Users" icon="user" %}
+    {% include 'small-card.html' with title="Articles" num=total_articles sub="Total Articles" icon="book" %}
+    {% include 'small-card.html' with title="Messages" num=total_unread_messages sub="Unread Messages" icon="message-square" %}
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Latest Messages</h5>
         </div>
-      </div>
-
-        
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col mt-0">
-                <h5>Total Articles</h5>
-                <p>Total Published</p>
-              </div>
-              <div class="col-auto">
-                <div class="stat text-primary">
-                  <i class="align-middle" data-feather="file-text"></i>
-                </div>
-              </div>
-            </div>
-            <h2 class="mt-1 mb-3">{{ total_articles }}</h2>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="cp-section-wrapper">
-          <h2>Latest Messages</h2>
-          <p class="mb-3">Manage Messages</p>
-          <hr>
-          <ul class="messages-quick">
+        <table class="table table-hover my-0">
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
             {% if latest_messages %}
             {% for message in latest_messages %}
-            <li class="message-item">
-              <p>{{ message.email }}</p>
-              <p>{{ message.created_at }}</p>
+            <tr>
+              <td>{{ message.fname }} {{ message.lname }}</td>
+              <td>{{ message.created_at|date:"d/m/y" }}</td>
+              <td>
+                {% if message.read == True %}
+                <p class="text-success m-0">Read</p>
+                {% else %}
+                <p class="text-warning m-0">Unread</p>
+                {% endif %}
+              </td>
+            </tr>
             {% endfor %}
             {% else %}
-            <li class="message-item">
-              <p>No messages to display.</p>
-            </li>
+            <tr>
+              <td colspan="5">No Articles yet</td>
+            </tr>
             {% endif %}
-          </ul>
-          <div class="d-flex justify-content-end mb-3">
-            <p><a href="{% url 'cp_messages' %}" class="btn btn-primary">View All</a></p>
-          </div>
-        </div>
+          </tbody>
+        </table>
+        <a href="#" class="card-footer d-block text-center text-dark small font-weight-bold">View All</a>
       </div>
-
-      <div class="col-sm-6">
-        <div class="cp-section-wrapper">
-          <h2>Reviews</h2>
-          <p class="mb-3">Manage Reviews</p>
-          <hr>
-          <ul>
-            {% if latest_reviews %}
-            {% for review in latest_reviews %}
-            <li> {{ review.name }} - {{ review.company }}</li>
+    </div>
+    <div class="col-sm-12 col-md-6 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Latest Articles</h5>
+        </div>
+        <table class="table table-hover my-0">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if latest_articles %}
+            {% for article in latest_articles %}
+            <tr>
+              <td>{{ article.title }}</td>
+              <td>{{ article.date|date:"d/m/y" }}</td>
+            </tr>
             {% endfor %}
             {% else %}
-            <li>
-              <p>No reviews to display</p>
-            </li>
+            <tr>
+              <td colspan="5">No Articles yet</td>
+            </tr>
             {% endif %}
-          </ul>
-          <div class="d-flex justify-content-end mb-3">
-            <p><a href="{% url 'manage_reviews' %}" class="btn btn-primary">View All</a></p>
-          </div>
-        </div>
+          </tbody>
+        </table>
+        <a href="#" class="card-footer d-block text-center text-dark small font-weight-bold">View All</a>
       </div>
-
     </div>
   </div>
-  {% include 'partials/dashboard/cp-message-card.html' %}
-  {% include 'partials/dashboard/cp-payments-card.html' %}
 {% endblock %}
