@@ -1,0 +1,38 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| CMS - Homepage
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Homepage Hero</h1>
+      </div>
+      <div class="card-body">
+        <p>{{ homepage_hero.hero_title }}</p>
+        <p>{{ homepage_hero.hero_subtitle }}</p>
+        <p>{{ homepage_hero.hero_image.url }}</p>
+      
+        <p>{{ homepage_hero.hero_list_one }}</p>
+        <p>{{ homepage_hero.hero_list_two }}</p>
+        <p>{{ homepage_hero.hero_list_three }}</p>
+        <p>{{ homepage_hero.hero_list_four }}</p>
+      
+        <p>{{ homepage_hero.data_one_title }}</p>
+        <p>{{ homepage_hero.data_one_value }}</p>
+        <p>{{ homepage_hero.data_two_title }}</p>
+        <p>{{ homepage_hero.data_two_value }}</p>
+        <p>{{ homepage_hero.data_three_title }}</p>
+        <p>{{ homepage_hero.data_three_value }}</p>
+      </div>
+      <!--<div class="col-sm-12 py-3 justify-content-end d-flex flex-row">
+        <a href="#" class="btn btn-danger mx-3">Delete Message</a>
+      </div>-->
+    </div>
+  </div>
+</div>
+{% endblock %}

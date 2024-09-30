@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 from django.utils import timezone
 from django.urls import reverse
 from blog.models import Article
-from home.models import Message
+from home.models import Message, HomePageHero, HomePageAbout
 from portfolio.models import PortfolioImages, SliderImages
 from reviews.models import Review
 from payments.models import Payment
@@ -464,3 +464,20 @@ def cp_analytics(request):
     A view to return the analytics page
     """
     return render(request, "analytics/analytics.html")
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_home(request):
+    """
+    A view to return the CMS homepage
+    """
+
+    homepage_hero = HomePageHero.objects.get(id=1)
+    # homepage_about = HomePageAbout.objects.get(id=1)
+
+    context = {
+        "homepage_hero": homepage_hero,
+        #"homepage_about": homepage_about,
+    }
+
+    return render(request, "cms/cms-homepage.html", context)

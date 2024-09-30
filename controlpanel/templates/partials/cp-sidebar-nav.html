@@ -6,7 +6,7 @@
     </a>
     <ul class="sidebar-nav">
       <li class="sidebar-header">
-        Pages
+        Admin
       </li>
 
       <li class="sidebar-item">
@@ -49,17 +49,6 @@
         </a>
       </li>
 
-      {% if '/contact/' in request.path %}
-      <li class="sidebar-item active">
-      {% else %}
-      <li class="sidebar-item">
-      {% endif %}
-        <a class="sidebar-link" href="{% url 'control_panel' %}">
-          <i class="align-middle" data-feather="image"></i>
-          <span class="align-middle">Portfolio</span>
-        </a>
-      </li>
-
       {% if '/analytics/' in request.path %}
       <li class="sidebar-item active">
       {% else %}
@@ -70,16 +59,55 @@
           <span class="align-middle">Analytics</span>
         </a>
       </li>
+
+      <li class="sidebar-header">
+        CMS
+      </li>
+
+      {% if '/homepage/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
+      <li class="sidebar-item">
+      {% endif %}
+        <a class="sidebar-link" href="{% url 'cp_cms_home' %}">
+          <i class="align-middle" data-feather="home"></i>
+          <span class="align-middle">Home Page</span>
+        </a>
+      </li>
+
+      {% if '/services/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
+      <li class="sidebar-item">
+      {% endif %}
+        <a class="sidebar-link" href="#">
+          <i class="align-middle" data-feather="list"></i>
+          <span class="align-middle">Services Page</span>
+        </a>
+      </li>
+
+      {% if '/portfolio/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
+      <li class="sidebar-item">
+      {% endif %}
+        <a class="sidebar-link" href="#">
+          <i class="align-middle" data-feather="camera"></i>
+          <span class="align-middle">Portfolio Page</span>
+        </a>
+      </li>
+
       
       <li class="sidebar-header">
         Other
       </li>
 
       <li class="sidebar-item">
-        <a class="sidebar-link" href="{% url 'home' %}">
+        <a class="sidebar-link" href="{% url 'cp_cms_home' %}">
           <i class="align-middle" data-feather="home"></i>
           <span class="align-middle">Main Site</span>
         </a>
+      </li>
 
     </ul>
   </div>

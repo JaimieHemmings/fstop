@@ -2,44 +2,44 @@
 
 <section
   class="container-fluid home-hero"
-  style="background-image: url({% static 'img/home-img.webp' %})">
+  style="background-image: url({{ homepage_hero.hero_image.url }})">
   <div class="container p-5">
     <div class="row">
       <div class="col-sm-8">
-        <h1>Lorem ipsum, dolor sit amet</h1>
-        <p class="pb-1">Amet consectetur. Nunc adipiscing mi aliquam mi nisi lobortis. Tellus eu gravida scelerisque aliquam fames eu risus vitae sollicitudin.</p>
+        <h1>{{ homepage_hero.hero_title }}</h1>
+        <p class="pb-1">{{ homepage_hero.hero_subtitle }}</p>
         <a href="{% url 'portfolio' %}" class="btn btn-custom-red">Portfolio</a>
         <a href="{% url 'contact' %}" class="btn btn-custom-black ml-3">Contact Us</a>
         <ul class="hero-list mt-3">
           <li>
             <img src="{% static 'img/tick-icon.svg' %}" alt="signature">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {{ homepage_hero.hero_list_one }}
           </li>
           <li>
             <img src="{% static 'img/tick-icon.svg' %}" alt="signature">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {{ homepage_hero.hero_list_two }}
           </li>
           <li>
             <img src="{% static 'img/tick-icon.svg' %}" alt="signature">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {{ homepage_hero.hero_list_three }}
           </li>
           <li>
             <img src="{% static 'img/tick-icon.svg' %}" alt="signature">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {{ homepage_hero.hero_list_four }}
           </li>
         </ul>
         <div class="row mt-5 credentials">
           <div class="col-sm-4">
-            <span>95%</span>
-            <h2>Lorem Ipsum</h2>
+            <span>{{ homepage_hero.data_one_value }}%</span>
+            <h2>{{ homepage_hero.data_one_title }}</h2>
           </div>
           <div class="col-sm-4">
-            <span>20+</span>
-            <h2>Lorem Ipsum</h2>
+            <span>{{ homepage_hero.data_two_value }}+</span>
+            <h2>{{ homepage_hero.data_two_title }}</h2>
           </div>
           <div class="col-sm-4">
-            <span>10+</span>
-            <h2>Years of experience</h2>
+            <span>{{ homepage_hero.data_three_value }}+</span>
+            <h2>{{ homepage_hero.data_three_title }}</h2>
           </div>
         </div>
       </div>

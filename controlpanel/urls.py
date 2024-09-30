@@ -100,4 +100,7 @@ urlpatterns = [
 
     # Analytics Paths
     path("analytics/", views.cp_analytics, name="cp_analytics"),
+
+    # CMS Paths
+    path("cms-homepage/", views.cp_cms_home, name="cp_cms_home"),
 ]

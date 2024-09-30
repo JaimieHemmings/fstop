@@ -4,6 +4,7 @@ from django.contrib import messages
 from blog.models import Article
 from portfolio.models import SliderImages
 from reviews.models import Review
+from .models import HomePageHero, HomePageAbout
 
 
 def index(request):
@@ -11,6 +12,8 @@ def index(request):
     A view that displays the index page
     """
     # Get objects
+    homepage_hero = HomePageHero.objects.get(id=1)
+
     slider_images = SliderImages.objects.all()
     articles = Article.objects.all().order_by("-date")[:2]
     reviews = Review.objects.all().order_by("-created_at")[:5]
@@ -19,6 +22,7 @@ def index(request):
         "slider_images": slider_images,
         "articles": articles,
         "reviews": reviews,
+        "homepage_hero": homepage_hero,
     }
     return render(request, "home/index.html", context)
 
