@@ -85,6 +85,25 @@ def cp_messages(request):
 
 
 @user_passes_test(lambda u: u.is_superuser)
+def view_message(request, message_id):
+    """
+    A view to view a message
+    """
+    message = Message.objects.get(id=message_id)
+    message.read = True
+    message.save()
+    total_unread_messages = Message.objects.filter(read=False).count()
+    unread_messages = Message.objects.filter(read=False)[:5]
+
+    context = {
+        "message": message,
+        "total_unread_messages": total_unread_messages,
+        "unread_messages": unread_messages,
+    }
+    return render(request, "messages/view-message.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
 def toggle_read(request, message_id):
     """
     A view to toggle the read status of a message

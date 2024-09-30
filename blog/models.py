@@ -31,6 +31,7 @@ class Article(models.Model):
     body_image = models.ImageField(
         upload_to=get_path, default="default.png")
     last_modified = models.DateTimeField(auto_now=True)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title

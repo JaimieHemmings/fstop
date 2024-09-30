@@ -20,5 +20,8 @@ def article(request, slug):
     context = {}
     article = Article.objects.get(slug=slug)
     context["article"] = article
+    # Incerement the view count
+    article.views += 1
+    article.save()
 
     return render(request, "article.html", context)

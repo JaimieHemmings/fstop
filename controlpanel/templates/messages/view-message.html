@@ -1,0 +1,25 @@
+{% extends 'cp-base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">View Message</h1>
+      </div>
+      <div class="card-body">
+        <p><strong>From: </strong>{{ message.fname }} {{ message.lname }}</p>
+        <p><strong>Email:</strong> {{ message.email }}</p>
+        <p><strong>Created On:</strong> {{ message.created_at|date:"d/m/y" }}</p>
+        <hr>
+        <p><strong>Message:</strong></p>
+        <p>{{ message.message }}</p>
+      </div>
+      <div class="col-sm-12 py-3 justify-content-end d-flex flex-row">
+        <a href="{% url 'delete_message_confirm' message.id %}" class="btn btn-danger mx-3">Delete Message</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

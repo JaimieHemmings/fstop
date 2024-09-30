@@ -22,7 +22,7 @@
           </div>
           <div class="list-group">
             {% for message in unread_messages %}
-            <a href="#" class="list-group-item">
+            <a href="{% url 'view_message' message.id %}" class="list-group-item">
               <div class="row g-0 align-items-center">
                 <div class="col-10 ps-2">
                   <div class="text-dark">{{ message.name }}</div>

@@ -27,6 +27,11 @@ urlpatterns = [
         "messages/toggle-read/<int:message_id>/", views.toggle_read, name="toggle_read"
     ),
     path(
+      "messages/view-message/<int:message_id>/",
+      views.view_message,
+      name="view_message"
+    ),
+    path(
         "messages/confirm-delete-message/<int:message_id>/",
         views.delete_message_confirm,
         name="delete_message_confirm",
