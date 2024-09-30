@@ -1,0 +1,62 @@
+
+<nav class="navbar navbar-expand navbar-light navbar-bg">
+  <a class="sidebar-toggle js-sidebar-toggle">
+    <i class="hamburger align-self-center"></i>
+  </a>
+  <div class="navbar-collapse collapse">
+    <ul class="navbar-nav navbar-align">
+      <li class="nav-item dropdown">
+        <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+          <div class="position-relative">
+            <i class="align-middle" data-feather="message-square"></i>
+            {% if total_unread_messages > 0 %}
+            <span class="indicator">{{ total_unread_messages }}</span>
+            {% endif %}
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+          <div class="dropdown-menu-header">
+            <div class="position-relative">
+              {{ total_unread_messages }} New Messages
+            </div>
+          </div>
+          <div class="list-group">
+            {% for message in latest_messages %}
+            <a href="#" class="list-group-item">
+              <div class="row g-0 align-items-center">
+                <div class="col-10 ps-2">
+                  <div class="text-dark">{{ message.name }}</div>
+                  <div class="text-muted small mt-1">{{ message.message|truncatechars:50 }}...</div>
+                  <div class="text-muted small mt-1">{{ message.created_at|timesince }} ago</div>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+          <div class="dropdown-menu-footer">
+            <a href="#" class="text-muted">Show all messages</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+          <i class="align-middle" data-feather="settings"></i>
+        </a>
+
+        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+          <i class="align-middle" data-feather="user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end">
+          <a class="dropdown-item" href="#">
+            <i class="align-middle me-1" data-feather="user"></i> Profile
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="align-middle me-1" data-feather="pie-chart"></i> Analytics
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
