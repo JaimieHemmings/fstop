@@ -34,16 +34,16 @@
   
             <td>
               {% if message.read == True %}
-              <a href="{% url 'toggle_read' message.id %}" class="badge bg-primary">Mark Unread</a>
+              <a href="{% url 'toggle_read' message.id %}" class="btn btn-success">Mark Unread</a>
               {% else %}
-              <a href="{% url 'toggle_read' message.id %}" class="badge bg-warning">Mark Read</a>
+              <a href="{% url 'toggle_read' message.id %}" class="btn btn-primary">Mark Read</a>
               {% endif %}
             </td>
             <td>
-              <a href="{% url 'view_message' message.id %}" class="badge bg-secondary">View</a>
+              <a href="{% url 'view_message' message.id %}" class="btn btn-secondary">View</a>
             </td>
             <td>
-              <a href="{% url 'delete_message_confirm' message.id %}" class="badge bg-danger">Delete</a>
+              <a href="{% url 'delete_message_confirm' message.id %}" class="btn btn-danger">Delete</a>
             </td>
           </tr>
           {% endfor %}

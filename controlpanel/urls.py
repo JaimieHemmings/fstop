@@ -97,4 +97,7 @@ urlpatterns = [
         views.view_payment,
         name="view_payment",
     ),
+
+    # Analytics Paths
+    path("analytics/", views.cp_analytics, name="cp_analytics"),
 ]

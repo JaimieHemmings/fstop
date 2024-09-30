@@ -456,3 +456,11 @@ def view_payment(request, payment_id):
         "payment": payment,
     }
     return render(request, "payments/view-payment.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_analytics(request):
+    """
+    A view to return the analytics page
+    """
+    return render(request, "analytics/analytics.html")

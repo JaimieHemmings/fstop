@@ -49,12 +49,12 @@
         </a>
       </li>
 
-      {% if '/contact/' in request.path %}
+      {% if '/analytics/' in request.path %}
       <li class="sidebar-item active">
       {% else %}
       <li class="sidebar-item">
       {% endif %}
-        <a class="sidebar-link" href="{% url 'control_panel' %}">
+        <a class="sidebar-link" href="{% url 'cp_analytics' %}">
           <i class="align-middle" data-feather="pie-chart"></i>
           <span class="align-middle">Analytics</span>
         </a>

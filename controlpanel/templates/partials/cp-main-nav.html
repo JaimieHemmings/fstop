@@ -25,7 +25,7 @@
             <a href="{% url 'view_message' message.id %}" class="list-group-item">
               <div class="row g-0 align-items-center">
                 <div class="col-10 ps-2">
-                  <div class="text-dark">{{ message.name }}</div>
+                  <div class="text-dark">{{ message.email }}</div>
                   <div class="text-muted small mt-1">{{ message.message|truncatechars:50 }}...</div>
                   <div class="text-muted small mt-1">{{ message.created_at|timesince }} ago</div>
                 </div>
@@ -34,7 +34,7 @@
             {% endfor %}
           </div>
           <div class="dropdown-menu-footer">
-            <a href="#" class="text-muted">Show all messages</a>
+            <a href="{% url 'cp_messages' %}" class="text-muted">Show all messages</a>
           </div>
         </div>
       </li>

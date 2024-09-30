@@ -33,9 +33,9 @@
               <td>{{ message.created_at|date:"d/m/y" }}</td>
               <td>
                 {% if message.read == True %}
-                <p class="text-success m-0">Read</p>
+                <p class="badge bg-success m-0">Read</p>
                 {% else %}
-                <p class="text-warning m-0">Unread</p>
+                <p class="badge bg-warning m-0">Unread</p>
                 {% endif %}
               </td>
             </tr>
