@@ -20,11 +20,12 @@ def control_panel(request):
     """
     A view to return the control panel page
     """
-    # Get the number of required objects
+    
     latest_messages = Message.objects.all().order_by("-created_at")[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
     total_num_users = User.objects.all().count()
     total_articles = Article.objects.all().count()
+    unread_messages = Message.objects.filter(read=False)[:5]
 
     latest_articles = Article.objects.all().order_by("-date")[:5]
     latest_users = User.objects.all().order_by("-date_joined")[:5]
@@ -38,6 +39,7 @@ def control_panel(request):
         "latest_users": latest_users,
         "latest_messages": latest_messages,
         "total_unread_messages": total_unread_messages,
+        "unread_messages": unread_messages,
         "latest_reviews": latest_reviews,
         "latest_payment_requests": latest_payment_requests,
     }
@@ -49,9 +51,16 @@ def cp_articles(request):
     """
     A view to return the articles page
     """
+    latest_messages = Message.objects.all().order_by("-created_at")[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
     articles = Article.objects.all()
+    unread_messages = Message.objects.filter(read=False)[:5]
+
     context = {
         "articles": articles,
+        "latest_messages": latest_messages,
+        "total_unread_messages": total_unread_messages,
+        "unread_messages": unread_messages,
     }
     return render(request, "articles/article-management.html", context)
 
@@ -61,9 +70,16 @@ def cp_messages(request):
     """
     A view to return the messages page
     """
+    latest_messages = Message.objects.all().order_by("-created_at")[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    unread_messages = Message.objects.filter(read=False)[:5]
     messages = Message.objects.all()
+
     context = {
         "form_messages": messages,
+        "latest_messages": latest_messages,
+        "total_unread_messages": total_unread_messages,
+        "unread_messages": unread_messages,
     }
     return render(request, "messages/message-management.html", context)
 
@@ -88,9 +104,17 @@ def delete_message_confirm(request, message_id):
     """
     A view to confirm the deletion of a message
     """
-    context = {}
+    latest_messages = Message.objects.all().order_by("-created_at")[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
     message = Message.objects.get(id=message_id)
-    context["message"] = message
+    unread_messages = Message.objects.filter(read=False)[:5]
+
+    context = {
+        "message": message,
+        "latest_messages": latest_messages,
+        "total_unread_messages": total_unread_messages,
+        "unread_messages": unread_messages,
+    }
     return render(request, "messages/delete-message-confirm.html", context)
 
 
@@ -110,7 +134,15 @@ def add_article(request):
     """
     A view to add an article
     """
-    context = {}
+    latest_messages = Message.objects.all().order_by("-created_at")[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    unread_messages = Message.objects.filter(read=False)[:5]
+
+    context = {
+        latest_messages: latest_messages,
+        total_unread_messages: total_unread_messages,
+        unread_messages: unread_messages
+    }
     form = CreateArticleForm()
     if request.method == "POST":
         form = CreateArticleForm(request.POST, request.FILES)
@@ -130,10 +162,14 @@ def edit_article(request, article_id):
     """
     A view to edit an article
     """
+    latest_messages = Message.objects.all().order_by("-created_at")[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    unread_messages = Message.objects.filter(read=False)[:5]
+
     context = {}
+
     article = Article.objects.get(id=article_id)
     form = CreateArticleForm(instance=article)
-    context["article"] = article
     if request.method == "POST":
         form = CreateArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid():
@@ -143,7 +179,13 @@ def edit_article(request, article_id):
             article.save()
             messages.success(request, "Article updated successfully")
             return cp_articles(request)
+        
+    context["article"] = article    
+    context["latest_messages"] = latest_messages
+    context["total_unread_messages"] = total_unread_messages
+    context["unread_messages"] = unread_messages
     context["form"] = form
+
     return render(request, "articles/edit-article.html", context)
 
 
@@ -152,7 +194,15 @@ def delete_article_confirm(request, article_id):
     """
     A view to confirm the deletion of an article
     """
-    context = {}
+    latest_messages = Message.objects.all().order_by("-created_at")[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    unread_messages = Message.objects.filter(read=False)[:5]
+
+    context = {
+        latest_messages: latest_messages,
+        total_unread_messages: total_unread_messages,
+        unread_messages: unread_messages
+    }
     article = Article.objects.get(id=article_id)
     context["article"] = article
     return render(request, "articles/confirm-delete-article.html", context)

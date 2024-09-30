@@ -9,23 +9,56 @@
         Pages
       </li>
 
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="{% url 'control_panel' %}">
+          <i class="align-middle" data-feather="sliders"></i>
+          <span class="align-middle">Dashboard</span>
+        </a>
+      </li>
+
+      {% if '/messages/' in request.path %}
       <li class="sidebar-item active">
-        <a class="sidebar-link" href="{% url 'control_panel' %}">
-          <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-        </a>
-      </li>
-
+      {% else %}
       <li class="sidebar-item">
+      {% endif %}
         <a class="sidebar-link" href="{% url 'cp_messages' %}">
-          <i class="align-middle" data-feather="message-square"></i> <span class="align-middle">Messages</span>
+          <i class="align-middle" data-feather="message-square"></i>
+          <span class="align-middle">Messages</span>
         </a>
       </li>
 
+      {% if '/articles/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
       <li class="sidebar-item">
-        <a class="sidebar-link" href="{% url 'control_panel' %}">
-          <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">Analytics</span>
+      {% endif %}
+        <a class="sidebar-link" href="{% url 'cp_articles' %}">
+          <i class="align-middle" data-feather="book"></i>
+          <span class="align-middle">Articles</span>
         </a>
       </li>
+
+      {% if '/contact/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
+      <li class="sidebar-item">
+      {% endif %}
+        <a class="sidebar-link" href="{% url 'control_panel' %}">
+          <i class="align-middle" data-feather="image"></i>
+          <span class="align-middle">Portfolio</span>
+        </a>
+      </li>
+
+      {% if '/contact/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
+      <li class="sidebar-item">
+      {% endif %}
+        <a class="sidebar-link" href="{% url 'control_panel' %}">
+          <i class="align-middle" data-feather="pie-chart"></i>
+          <span class="align-middle">Analytics</span>
+        </a>
+      </li>      
 
     </ul>
   </div>
