@@ -19,14 +19,14 @@
   {% if slider_images %}
     {% include 'partials/home/img-slider.html' %}
   {% endif %}
-  {% include 'partials/home/services-home.html' %}
+  {% include 'home/partials/services-home.html' %}
   {% if articles %}
     {% include 'partials/home/blog-feed.html' %}
   {% endif %}
   {% if reviews %}
     {% include 'partials/home/feedback.html' %}
   {% endif %}
-  {% include 'partials/faq.html' %}
+  {% include 'home/partials/faq.html' %}
   {% include 'partials/cta.html' %}
 {% endblock %}
 
@@ -48,6 +48,16 @@
     slidesPerView: 2,
     // pause on hover
     pauseOnMouseEnter: true,
+    breakpoints: {
+      1: {
+        slidesPerView: 1,
+        spaceBetween: 40,
+      },
+      996: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+    },
   });
 </script>
 {% endblock %}

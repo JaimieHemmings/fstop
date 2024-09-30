@@ -75,50 +75,6 @@
         </div>
       </div>
 
-      <div class="col-sm-12">
-        <div class="cp-section-wrapper">
-          <h2>Most Recent Payment Requests</h2>
-          <p class="mb-3">Manage Payment Requests</p>
-          <hr>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Created At</th>
-                <th scope="col">User</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% if latest_payment_requests %}
-              {% for payment in latest_payment_requests %}
-              <tr>
-                <td>{{ payment.id }}</td>
-                <td>{{ payment.date|date:"l d/m/y" }}</td>
-                <td>{{ payment.name }}</td>
-                <td>£{{ payment.amount|intcomma }}</td>
-                <td>{% if payment == False %}Paid{% else %}Pending{% endif %}</td>
-                <td>
-                  <a href="{% url 'view_payment' payment.id %}" class="btn btn-secondary">View</a>
-                </td>
-              </tr>
-              {% endfor %}
-              {% else %}
-              <tr>
-                <td colspan="6">No payments to display.</td>
-              </tr>
-              {% endif %}
-            </tbody>
-          </table>
-          <div class="d-flex justify-content-end pt-3 pb-3">
-            <a href="{% url 'new_payment' %}" class="btn btn-success mx-3">Create New</a>
-            <a href="{% url 'cp_payments' %}" class="btn btn-primary">View All</a>
-          </div>
-        </div>
-      </div>
-
       <div class="col-sm-6">
         <div class="cp-section-wrapper">
           <h2>Latest Messages</h2>
