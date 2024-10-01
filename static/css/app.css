@@ -19,3 +19,46 @@
     padding-bottom: 15px;
   }
 }
+
+.toast {
+  background: #fff;
+  border-radius: 5px;
+  padding: 5px 5px;
+  border: 1px solid #ccc;
+
+  .border-b-success {
+    border-bottom: 2px solid #28a745;
+  }
+
+  .border-b-warning {
+    border-bottom: 2px solid #ffc107;
+  }
+
+  .border-b-danger {
+    border-bottom: 2px solid #dc3545; 
+  }
+
+  .border-b-info {
+    border-bottom: 2px solid #17a2b8;
+  }
+ }
+
+.top-75 {
+  top: 75px;
+}
+
+.end-15 {
+  right: 15px;
+}
+
+.toast-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 5px;
+}
+
+.toast-body {
+  padding: 5px;
+  padding-top: 15px;
+}
