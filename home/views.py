@@ -13,6 +13,7 @@ def index(request):
     """
     # Get objects
     homepage_hero = HomePageHero.objects.get(id=1)
+    homepage_about = HomePageAbout.objects.get(id=1)
 
     slider_images = SliderImages.objects.all()
     articles = Article.objects.all().order_by("-date")[:2]
@@ -23,6 +24,7 @@ def index(request):
         "articles": articles,
         "reviews": reviews,
         "homepage_hero": homepage_hero,
+        "homepage_about": homepage_about,
     }
     return render(request, "home/index.html", context)
 

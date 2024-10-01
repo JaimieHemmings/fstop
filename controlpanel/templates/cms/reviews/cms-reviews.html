@@ -1,0 +1,52 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Manage Reviews
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">All Reviews</h1>
+      </div>
+      <table class="table table-hover my-0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Review</th>
+            <th>Actions</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if reviews %}
+          {% for review in reviews %}
+          <tr>
+            <td>{{ review.name }}</td>
+            <td>{{ review.company }}</td>
+            <td>{{ review.content|truncatechars:40 }}...</td>
+            <td>
+              <a href="{% url 'cms_edit_review' review.id %}" class="btn btn-secondary">Edit</a>
+            </td>
+            <td>
+              <a href="{% url 'cms_delete_review_confirm' review.id %}" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td colspan="5">No Reviews Yet</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+      <div class="col-sm-12 py-3 justify-content-end d-flex flex-row">
+        <a href="{% url 'add_cms_review' %}" class="btn btn-success mx-3">Add Review</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -13,7 +13,7 @@ from payments.models import Payment
 from .forms import CreateArticleForm, AddSliderImage
 from .forms import AddPortfolioImage, AddReviewForm
 from .forms import NewPaymentForm
-from home.forms import HomeHeroForm
+from home.forms import HomeHeroForm, editAboutSectionHomeForm
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -512,3 +512,121 @@ def cp_cms_hero(request):
     }
 
     return render(request, "cms/home/cms-edit-hero.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_reviews(request):
+    """
+    A view to return the CMS reviews page
+    """
+    reviews = Review.objects.all()
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    context = {
+        "reviews": reviews,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request, "cms/reviews/cms-reviews.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def add_cms_review(request):
+    """
+    A view to add a review
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    form = AddReviewForm()
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    if request.method == "POST":
+        form = AddReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Review added successfully")
+            return redirect(cp_cms_reviews)
+    context["form"] = form
+    return render(request, "cms/reviews/cms-add-review.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_edit_review(request, review_id):
+    """
+    A view to edit a review
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    review = Review.objects.get(id=review_id)
+    form = AddReviewForm(instance=review)
+    if request.method == "POST":
+        form = AddReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Review updated successfully")
+            return redirect(cp_cms_reviews)
+    context["form"] = form
+    return render(request, "cms/reviews/cms-edit-review.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_delete_review_confirm(request, review_id):
+    """
+    A view to confirm the deletion of a review
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    review = Review.objects.get(id=review_id)
+    context["review"] = review
+    return render(request, "cms/reviews/cms-delete-review-confirm.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_delete_review(request, review_id):
+    """
+    A view to delete a review
+    """
+    review = Review.objects.get(id=review_id)
+    review.delete()
+    messages.success(request, "Review deleted successfully")
+    return redirect(cp_cms_reviews)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_about_home_edit(request):
+    """
+    A view to return the CMS homepage about page
+    """
+    about_data = HomePageAbout.objects.get(id=1)
+    form = editAboutSectionHomeForm(instance=about_data)
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    if request.method == "POST":
+        form = editAboutSectionHomeForm(
+            request.POST, request.FILES, instance=about_data)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Homepage data updated successfully")
+        else:
+            messages.error(
+                request, "There was an error updating the homepage data")
+
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+
+    return render(request, "cms/home/cms-edit-about-home.html", context)

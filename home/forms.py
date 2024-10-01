@@ -1,5 +1,5 @@
 from django import forms
-from .models import Message, HomePageHero
+from .models import Message, HomePageHero, HomePageAbout
 
 
 class ContactForm(forms.ModelForm):
@@ -117,3 +117,38 @@ class HomeHeroForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs["placeholder"] = placeholder
+
+
+class editAboutSectionHomeForm(forms.ModelForm):
+    class Meta:
+        model = HomePageAbout
+        fields = [
+            "homepage_about_title",
+            "homepage_about_lead",
+            "homepage_about_subtitle",
+            "homepage_about_paragraph_one",
+            "homepage_about_paragraph_two",
+            "homepage_about_image",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            "homepage_about_title": "Enter the title of the about section",
+            "homepage_about_lead": "Enter the lead of the about section",
+            "homepage_about_subtitle": "Enter the subtitle of the about section",
+            "homepage_about_paragraph_one": "Enter the first paragraph of the about section",
+            "homepage_about_paragraph_two": "Enter the second paragraph of the about section",
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields["homepage_about_title"].widget.attrs["autofocus"] = True
+
+        for field in self.fields:
+            if field != "homepage_about_image":
+                # Add classes to each field
+                self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+                # Add placeholders
+                self.fields[field].widget.attrs["placeholder"] = (
+                    placeholders[field]
+                )

@@ -104,4 +104,10 @@ urlpatterns = [
     # CMS Paths
     path("cms-homepage/", views.cp_cms_home, name="cp_cms_home"),
     path("cms-edit-hero/", views.cp_cms_hero, name="cp_cms_hero"),
+    path("cms-reviews/", views.cp_cms_reviews, name="cp_cms_reviews"),
+    path("cms-add-review/", views.add_cms_review, name="add_cms_review"),
+    path("cms-edit-review/<int:review_id>/", views.cms_edit_review, name="cms_edit_review"),
+    path("cms-delete-review-confirm/<int:review_id>/", views.cms_delete_review_confirm, name="cms_delete_review_confirm"),
+    path("cms-delete-review/<int:review_id>/", views.cms_delete_review, name="cms_delete_review"),
+    path("cms-edit-about-home/", views.cp_cms_about_home_edit, name="cp_cms_about_home_edit"),
 ]

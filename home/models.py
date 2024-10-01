@@ -35,12 +35,12 @@ class HomePageHero(models.Model):
     
 
 class HomePageAbout(models.Model):
-    homepage_about_title = models.CharField(max_length=100, blank=False, null=False)
-    homepage_about_lead = models.CharField(max_length=200, blank=False, null=False)
-    homepage_about_subtitle = models.CharField(max_length=100, blank=False, null=False)
-    homepage_about_paragraph_one = models.TextField(blank=False, null=False)
-    homepage_about_paragraph_two = models.TextField(blank=False, null=False)
-    homepage_about_image = models.ImageField(upload_to="cms/home/")
+    homepage_about_title = models.CharField(max_length=100, blank=False, null=False, default="Enter a Title")
+    homepage_about_lead = models.CharField(max_length=200, blank=False, null=False, default="Enter a Lead")
+    homepage_about_subtitle = models.CharField(max_length=100, blank=False, null=False, default="Enter a Subtitle")
+    homepage_about_paragraph_one = models.TextField(blank=False, null=False, default="Enter a Paragraph")
+    homepage_about_paragraph_two = models.TextField(blank=False, null=False, default="Enter a Paragraph")
+    homepage_about_image = models.ImageField(upload_to="cms/home/", default="default.png")
 
     def __str__(self):
         return f"{self.homepage_about_title} - {self.homepage_about_subtitle}"

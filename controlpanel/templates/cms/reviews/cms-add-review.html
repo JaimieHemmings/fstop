@@ -1,0 +1,24 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Add Review
+{% endblock %}
+
+{% block content %}
+  <div class="row card">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Add Review</h5>
+    </div>
+    <div class="col-sm-12">
+      <form method="POST" action="{% url 'add_review' %}" class="pb-5" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Please ensure user images are 250px by 250px</p>
+        <div class="d-flex flex-row justify-content-end mt-3">
+          <button type="submit" class="btn btn-success">Add Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
