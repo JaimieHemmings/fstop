@@ -197,3 +197,11 @@ STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
 DEFAULT_FROM_EMAIL = ""
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.fstops.co.uk',
+    'https://fstops.co.uk',
+    'https://fstop-photography-6e5dee6954eb.herokuapp.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000/',
+]
