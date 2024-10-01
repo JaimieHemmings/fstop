@@ -111,4 +111,9 @@ urlpatterns = [
     path("cms-delete-review/<int:review_id>/", views.cms_delete_review, name="cms_delete_review"),
     path("cms-edit-about-home/", views.cp_cms_about_home_edit, name="cp_cms_about_home_edit"),
     path("cms-edit-trusted-by/", views.cp_cms_trusted_by_edit, name="cp_cms_trusted_by_edit"),
+    path("cms-faq-section/", views.cp_cms_faq, name="cp_cms_faq"),
+    path("cms-faq-section/add-faq/", views.cms_add_faq, name="cms_add_faq"),
+    path("cms-faq-section/edit-faq/<int:faq_id>/", views.cms_edit_faq, name="cms_edit_faq"),
+    path("cms-faq-section/delete-faq-confirm/<int:faq_id>/", views.cms_delete_faq_confirm, name="cms_delete_faq_confirm"),
+    path("cms-faq-section/delete-faq/<int:faq_id>/", views.cms_delete_faq, name="cms_delete_faq"),
 ]

@@ -1,0 +1,34 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Confirm Deletion
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Delete FAQ</h1>
+      </div>
+      <div class="card-body text-center row">
+        <div class="col-sm-12">
+          <p>{{ faq.faq_question }}</p>
+          <p>{{ faq.faq_answer }}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+
+        <div class="d-flex flex-row justify-content-end pt-3">
+          <p>Are you sure you want to delete this FAQ?</p>   
+        </div>
+        <div class="d-flex flex-row justify-content-end"> 
+          <a href="{% url 'cms_delete_faq' faq.id %}" class="btn btn-danger">Delete</a>
+          <a href="{% url 'cp_cms_reviews' %}" class="btn btn-secondary mx-3">Cancel</a>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

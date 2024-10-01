@@ -1,5 +1,5 @@
 from django import forms
-from .models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy
+from .models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQs
 
 
 class ContactForm(forms.ModelForm):
@@ -182,3 +182,25 @@ class HomePageTrustedByForm(forms.ModelForm):
         # set classes
         for field in self.fields:
             self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+
+
+class HomePageFAQsForm(forms.ModelForm):
+    class Meta:
+        model = HomePageFAQs
+        fields = ["faq_question", "faq_answer"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            "faq_question": "Enter a question for the FAQ section",
+            "faq_answer": "Enter an answer for the FAQ section",
+        }
+
+
+
+        # Set autofocus on first field to be filled in
+        self.fields["faq_question"].widget.attrs["autofocus"] = True
+        # set classes
+        for field in self.fields:
+            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+            self.fields[field].widget.attrs["placeholder"] = placeholders[field]

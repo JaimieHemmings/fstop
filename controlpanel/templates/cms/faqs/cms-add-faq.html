@@ -1,0 +1,23 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Add FAQ
+{% endblock %}
+
+{% block content %}
+  <div class="row card">
+    <div class="card-header">
+      <h1 class="card-title mb-0">Add FAQ Element</h5>
+    </div>
+    <div class="col-sm-12">
+
+      <form action="{% url 'cms_add_faq' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <div class="d-flex flex-row justify-content-end mt-5 p-3">
+          <button type="submit" class="btn btn-success">Add FAQ Element</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

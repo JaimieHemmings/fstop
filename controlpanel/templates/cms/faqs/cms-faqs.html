@@ -1,0 +1,46 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Manage FAQ's
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">All FAQ's</h1>
+      </div>
+      <table class="table table-hover my-0">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Actions</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if faqs %}
+          {% for faq in faqs %}
+          <tr>
+            <td>{{ faq.faq_question }}</td>
+            <td>{{ faq.faq_answer }}</td>
+            <td><a href="{% url 'cms_edit_faq' faq.id %}" class="btn btn-secondary">Edit</a></td>
+            <td><a href="{% url 'cms_delete_faq_confirm' faq.id %}" class="btn btn-danger">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td colspan="5">No FAQ's Yet</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+      <div class="col-sm-12 justify-content-end d-flex p-3">
+        <a href="{% url 'cms_add_faq' %}" class="btn btn-success">Add FAQ</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

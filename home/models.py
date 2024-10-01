@@ -69,3 +69,11 @@ class HomePageTrustedBy(models.Model):
 
     def __str__(self):
         return f"{ self.trusted_by_title }"
+    
+
+class HomePageFAQs(models.Model):
+    faq_question = models.CharField(max_length=100, blank=False, null=False)
+    faq_answer = models.TextField(blank=False, null=False)
+
+    def __str__(self):
+        return f"{self.faq_question}"

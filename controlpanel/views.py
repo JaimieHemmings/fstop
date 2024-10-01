@@ -6,14 +6,14 @@ from django.template.defaultfilters import slugify
 from django.utils import timezone
 from django.urls import reverse
 from blog.models import Article
-from home.models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy
+from home.models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQs
 from portfolio.models import PortfolioImages, SliderImages
 from reviews.models import Review
 from payments.models import Payment
 from .forms import CreateArticleForm, AddSliderImage
 from .forms import AddPortfolioImage, AddReviewForm
 from .forms import NewPaymentForm
-from home.forms import HomeHeroForm, editAboutSectionHomeForm, HomePageTrustedByForm
+from home.forms import HomeHeroForm, editAboutSectionHomeForm, HomePageTrustedByForm, HomePageFAQsForm
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -659,3 +659,95 @@ def cp_cms_trusted_by_edit(request):
                 request, "There was an error updating the homepage data")
 
     return render(request, "cms/home/cms-edit-trusted-by.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_faq(request):
+    """
+    A view to return the CMS homepage about page
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    faqs = HomePageFAQs.objects.all()
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "faqs": faqs,
+    }
+    return render(request, "cms/faqs/cms-faqs.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_add_faq(request):
+    """
+    A view to add a FAQ
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    form = HomePageFAQsForm()
+    if request.method == "POST":
+        form = HomePageFAQsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "FAQ added successfully")
+            return redirect(cp_cms_faq)
+    context["form"] = form
+    return render(request, "cms/faqs/cms-add-faq.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_edit_faq(request, faq_id):
+    """
+    A view to edit a FAQ
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    faq = HomePageFAQs.objects.get(id=faq_id)
+    form = HomePageFAQsForm(instance=faq)
+    context["faq"] = faq
+    if request.method == "POST":
+        form = HomePageFAQsForm(request.POST, instance=faq)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "FAQ updated successfully")
+            return redirect(cp_cms_faq)
+    context["form"] = form
+    return render(request, "cms/faqs/cms-edit-faq.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_delete_faq_confirm(request, faq_id):
+    """
+    A view to confirm the deletion of a FAQ
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    
+    faq = HomePageFAQs.objects.get(id=faq_id)
+
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "faq": faq,
+    }
+    return render(request, "cms/faqs/cms-faq-confirm-delete.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_delete_faq(request, faq_id):
+    """
+    A view to delete a FAQ
+    """
+    faq = HomePageFAQs.objects.get(id=faq_id)
+    faq.delete()
+    messages.success(request, "FAQ deleted successfully")
+    return redirect(cp_cms_faq)

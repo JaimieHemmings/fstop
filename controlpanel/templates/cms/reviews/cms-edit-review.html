@@ -10,7 +10,7 @@
       <h5 class="card-title mb-0">Edit Review</h5>
     </div>
     <div class="col-sm-12">
-      <form method="POST" action="{% url 'add_review' %}" class="pb-5" enctype="multipart/form-data">
+      <form method="POST" action="{% url 'edit_review' review.id %}" class="pb-5" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <p>Please ensure user images are 250px by 250px</p>
