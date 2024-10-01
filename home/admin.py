@@ -1,7 +1,7 @@
 from django.contrib import admin
 from blog.models import Article
 from portfolio.models import PortfolioImages, SliderImages
-from .models import Message, HomePageHero, HomePageAbout
+from .models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy
 from reviews.models import Review
 from payments.models import Payment
 
@@ -38,6 +38,9 @@ class HomePageAboutAdmin(admin.ModelAdmin):
     pass
 
 
+class HomePageTrustedByAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Message, MessageAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(PortfolioImages, PortfolioImagesAdmin)
@@ -46,3 +49,4 @@ admin.site.register(Review, ReviewAdmin)
 admin.site.register(Payment, PaymentAdmin)
 admin.site.register(HomePageHero, HomePageHeroAdmin)
 admin.site.register(HomePageAbout, HomePageAboutAdmin)
+admin.site.register(HomePageTrustedBy, HomePageTrustedByAdmin)

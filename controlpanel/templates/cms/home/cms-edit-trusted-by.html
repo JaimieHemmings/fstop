@@ -1,0 +1,41 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| CMS - Edit Homepage Hero
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Homepage Trusted By</h1>
+      </div>
+      <div class="card-body">
+        <form class="p-3" action="{% url 'cp_cms_trusted_by_edit' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="row">
+            <div class="col-sm-12">
+              {% if forloop.counter == 1 %}
+              <label for="id_trusted_by_title" class="mb-1">Title</label>
+              {% endif %}
+              {% if forloop.counter == 2 %}
+              <label for="id_trusted_by_lead" class="mb-1">Lead Text</label>
+              {% endif %}
+              {% if forloop.counter == 3 %}
+              <p>Images</p>
+              {% endif %}
+              {{ field }}
+            </div>
+          </div>
+            {% endfor %}
+          <div class="d-flex flex-row justify-content-end pt-3 pb-3">
+            <button type="submit" class="btn btn-success">Save Changes</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

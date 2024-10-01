@@ -4,7 +4,7 @@ from django.contrib import messages
 from blog.models import Article
 from portfolio.models import SliderImages
 from reviews.models import Review
-from .models import HomePageHero, HomePageAbout
+from .models import HomePageHero, HomePageAbout, HomePageTrustedBy
 
 
 def index(request):
@@ -14,6 +14,7 @@ def index(request):
     # Get objects
     homepage_hero = HomePageHero.objects.get(id=1)
     homepage_about = HomePageAbout.objects.get(id=1)
+    homepage_trusted_by = HomePageTrustedBy.objects.get(id=1)
 
     slider_images = SliderImages.objects.all()
     articles = Article.objects.all().order_by("-date")[:2]
@@ -25,6 +26,7 @@ def index(request):
         "reviews": reviews,
         "homepage_hero": homepage_hero,
         "homepage_about": homepage_about,
+        "homepage_trusted_by": homepage_trusted_by,
     }
     return render(request, "home/index.html", context)
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Message, HomePageHero, HomePageAbout
+from .models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy
 
 
 class ContactForm(forms.ModelForm):
@@ -152,3 +152,33 @@ class editAboutSectionHomeForm(forms.ModelForm):
                 self.fields[field].widget.attrs["placeholder"] = (
                     placeholders[field]
                 )
+
+
+class HomePageTrustedByForm(forms.ModelForm):
+    class Meta:
+        model = HomePageTrustedBy
+        fields = [
+            "trusted_by_title",
+            "trusted_by_lead",
+            "img_one",
+            "img_two",
+            "img_three",
+            "img_four",
+            "img_five",
+            "img_six",
+            "img_seven",
+            "img_eight",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            "trusted_by_title": "Enter the title of the trusted by section",
+            "trusted_by_lead": "Enter the lead of the trusted by section",
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields["trusted_by_title"].widget.attrs["autofocus"] = True
+        # set classes
+        for field in self.fields:
+            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"

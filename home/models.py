@@ -11,10 +11,11 @@ class Message(models.Model):
 
     def __str__(self):
         return (
-            f"{self.fname} {self.lname} - {self.created_at.strftime('%d/%m/%Y %H:%M')}"
+            f"{self.fname} {self.lname} -"
+            " {self.created_at.strftime('%d/%m/%Y %H:%M')}"
         )
-    
-    
+
+
 class HomePageHero(models.Model):
     hero_title = models.CharField(max_length=50, blank=False, null=False)
     hero_subtitle = models.TextField(max_length=200, blank=False, null=False)
@@ -32,16 +33,39 @@ class HomePageHero(models.Model):
 
     def __str__(self):
         return f"{self.hero_title} - {self.hero_subtitle}"
-    
+
 
 class HomePageAbout(models.Model):
-    homepage_about_title = models.CharField(max_length=100, blank=False, null=False, default="Enter a Title")
-    homepage_about_lead = models.CharField(max_length=200, blank=False, null=False, default="Enter a Lead")
-    homepage_about_subtitle = models.CharField(max_length=100, blank=False, null=False, default="Enter a Subtitle")
-    homepage_about_paragraph_one = models.TextField(blank=False, null=False, default="Enter a Paragraph")
-    homepage_about_paragraph_two = models.TextField(blank=False, null=False, default="Enter a Paragraph")
-    homepage_about_image = models.ImageField(upload_to="cms/home/", default="default.png")
+    homepage_about_title = models.CharField(
+        max_length=100, blank=False, null=False, default="Enter a Title")
+    homepage_about_lead = models.CharField(
+        max_length=200, blank=False, null=False, default="Enter a Lead")
+    homepage_about_subtitle = models.CharField(
+        max_length=100, blank=False, null=False, default="Enter a Subtitle")
+    homepage_about_paragraph_one = models.TextField(
+        blank=False, null=False, default="Enter a Paragraph")
+    homepage_about_paragraph_two = models.TextField(
+        blank=False, null=False, default="Enter a Paragraph")
+    homepage_about_image = models.ImageField(
+        upload_to="cms/home/", default="default.png")
 
     def __str__(self):
-        return f"{self.homepage_about_title} - {self.homepage_about_subtitle}"
-        
+        return f"{self.homepage_about_title}"
+
+
+class HomePageTrustedBy(models.Model):
+    trusted_by_title = models.CharField(
+        max_length=100, blank=False, null=False, default="Enter a Title")
+    trusted_by_lead = models.CharField(
+        max_length=200, blank=False, null=False, default="Enter a Lead")
+    img_one = models.ImageField(upload_to="cms/home/", default="default.png")
+    img_two = models.ImageField(upload_to="cms/home/", default="default.png")
+    img_three = models.ImageField(upload_to="cms/home/", default="default.png")
+    img_four = models.ImageField(upload_to="cms/home/", default="default.png")
+    img_five = models.ImageField(upload_to="cms/home/", default="default.png")
+    img_six = models.ImageField(upload_to="cms/home/", default="default.png")
+    img_seven = models.ImageField(upload_to="cms/home/", default="default.png")
+    img_eight = models.ImageField(upload_to="cms/home/", default="default.png")
+
+    def __str__(self):
+        return f"{ self.trusted_by_title }"

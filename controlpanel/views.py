@@ -6,14 +6,14 @@ from django.template.defaultfilters import slugify
 from django.utils import timezone
 from django.urls import reverse
 from blog.models import Article
-from home.models import Message, HomePageHero, HomePageAbout
+from home.models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy
 from portfolio.models import PortfolioImages, SliderImages
 from reviews.models import Review
 from payments.models import Payment
 from .forms import CreateArticleForm, AddSliderImage
 from .forms import AddPortfolioImage, AddReviewForm
 from .forms import NewPaymentForm
-from home.forms import HomeHeroForm, editAboutSectionHomeForm
+from home.forms import HomeHeroForm, editAboutSectionHomeForm, HomePageTrustedByForm
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -630,3 +630,32 @@ def cp_cms_about_home_edit(request):
     }
 
     return render(request, "cms/home/cms-edit-about-home.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_trusted_by_edit(request):
+    """
+    A view to return the CMS homepage about page
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    trusted_by_data = HomePageTrustedBy.objects.get(id=1)
+    form = HomePageTrustedByForm(instance=trusted_by_data)
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "form": form,
+    }
+
+    if request.method == "POST":
+        form = HomePageTrustedByForm(
+            request.POST, request.FILES, instance=trusted_by_data)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Homepage data updated successfully")
+        else:
+            messages.error(
+                request, "There was an error updating the homepage data")
+
+    return render(request, "cms/home/cms-edit-trusted-by.html", context)
