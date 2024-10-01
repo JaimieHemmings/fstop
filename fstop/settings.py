@@ -20,6 +20,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "fstop-photography-6e5dee6954eb.herokuapp.com",
     "fstops.co.uk",
+    "www.fstops.co.uk",
     ".herokuapp.com",
 ]
 
