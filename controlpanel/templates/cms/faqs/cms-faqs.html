@@ -25,7 +25,7 @@
           {% for faq in faqs %}
           <tr>
             <td>{{ faq.faq_question }}</td>
-            <td>{{ faq.faq_answer }}</td>
+            <td>{{ faq.faq_answer|truncatechars:25 }}...</td>
             <td><a href="{% url 'cms_edit_faq' faq.id %}" class="btn btn-secondary">Edit</a></td>
             <td><a href="{% url 'cms_delete_faq_confirm' faq.id %}" class="btn btn-danger">Delete</a></td>
           </tr>

@@ -5,15 +5,28 @@ from django.shortcuts import render, redirect
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 from django.urls import reverse
+
 from blog.models import Article
-from home.models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQs
+from home.models import (
+  Message,
+  HomePageHero,
+  HomePageAbout,
+  HomePageTrustedBy,
+  HomePageFAQs
+)
 from portfolio.models import PortfolioImages, SliderImages
 from reviews.models import Review
 from payments.models import Payment
+
 from .forms import CreateArticleForm, AddSliderImage
 from .forms import AddPortfolioImage, AddReviewForm
 from .forms import NewPaymentForm
-from home.forms import HomeHeroForm, editAboutSectionHomeForm, HomePageTrustedByForm, HomePageFAQsForm
+from home.forms import (
+  HomeHeroForm,
+  editAboutSectionHomeForm,
+  HomePageTrustedByForm,
+  HomePageFAQsForm
+)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -589,7 +602,8 @@ def cms_delete_review_confirm(request, review_id):
     }
     review = Review.objects.get(id=review_id)
     context["review"] = review
-    return render(request, "cms/reviews/cms-delete-review-confirm.html", context)
+    return render(
+        request, "cms/reviews/cms-delete-review-confirm.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -730,9 +744,8 @@ def cms_delete_faq_confirm(request, faq_id):
     """
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
-    
-    faq = HomePageFAQs.objects.get(id=faq_id)
 
+    faq = HomePageFAQs.objects.get(id=faq_id)
 
     context = {
         "unread_messages": unread_messages,
