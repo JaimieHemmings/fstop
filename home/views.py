@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
 from blog.models import Article
-from .models import HomePageSliderImages
 from reviews.models import Review
-from .models import HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQs, HomePageSliderImages
+from .models import HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQ, HomePageSliderImages
 
 
 def index(request):
@@ -15,7 +14,7 @@ def index(request):
     homepage_hero = HomePageHero.objects.get(id=1)
     homepage_about = HomePageAbout.objects.get(id=1)
     homepage_trusted_by = HomePageTrustedBy.objects.get(id=1)
-    homepage_faqs = HomePageFAQs.objects.all()
+    homepage_faqs = HomePageFAQ.objects.all()
     homepage_slider_images = HomePageSliderImages.objects.all()
 
     articles = Article.objects.all().order_by("-date")[:2]

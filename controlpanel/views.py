@@ -12,7 +12,7 @@ from home.models import (
   HomePageHero,
   HomePageAbout,
   HomePageTrustedBy,
-  HomePageFAQs
+  HomePageFAQ
 )
 from portfolio.models import PortfolioImages
 from home.models import HomePageSliderImages
@@ -27,7 +27,7 @@ from home.forms import (
   HomeHeroForm,
   editAboutSectionHomeForm,
   HomePageTrustedByForm,
-  HomePageFAQsForm
+  HomePageFAQForm
 )
 
 
@@ -639,7 +639,7 @@ def cp_cms_faq(request):
     """
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
-    faqs = HomePageFAQs.objects.all()
+    faqs = HomePageFAQ.objects.all()
     context = {
         "unread_messages": unread_messages,
         "total_unread_messages": total_unread_messages,
@@ -659,9 +659,9 @@ def cms_add_faq(request):
         "unread_messages": unread_messages,
         "total_unread_messages": total_unread_messages,
     }
-    form = HomePageFAQsForm()
+    form = HomePageFAQForm()
     if request.method == "POST":
-        form = HomePageFAQsForm(request.POST)
+        form = HomePageFAQForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "FAQ added successfully")
@@ -681,7 +681,7 @@ def cms_edit_faq(request, faq_id):
         "unread_messages": unread_messages,
         "total_unread_messages": total_unread_messages,
     }
-    faq = HomePageFAQs.objects.get(id=faq_id)
+    faq = HomePageFAQ.objects.get(id=faq_id)
     form = HomePageFAQsForm(instance=faq)
     context["faq"] = faq
     if request.method == "POST":
@@ -702,7 +702,7 @@ def cms_delete_faq_confirm(request, faq_id):
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
 
-    faq = HomePageFAQs.objects.get(id=faq_id)
+    faq = HomePageFAQ.objects.get(id=faq_id)
 
     context = {
         "unread_messages": unread_messages,
@@ -717,7 +717,7 @@ def cms_delete_faq(request, faq_id):
     """
     A view to delete a FAQ
     """
-    faq = HomePageFAQs.objects.get(id=faq_id)
+    faq = HomePageFAQ.objects.get(id=faq_id)
     faq.delete()
     messages.success(request, "FAQ deleted successfully")
     return redirect(cp_cms_faq)
@@ -733,7 +733,7 @@ def cp_cms_manage_slider_images(request):
     """
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
-    slider_images = HomePageSliderImages.objects.all()
+    slider_images = HomePageSliderImage.objects.all()
 
     context = {
         "unread_messages": unread_messages,
@@ -771,7 +771,7 @@ def cp_cms_delete_slider_image_confirm(request, image_id):
     A view to confirm the deletion of a slider image
     """
     context = {}
-    image = HomePageSliderImages.objects.get(id=image_id)
+    image = HomePageSliderImage.objects.get(id=image_id)
     context["image"] = image
     return render(
         request, "cms/home/slider-images/cms-slider-images-confirm-delete.html", context)
@@ -782,7 +782,7 @@ def cp_cms_delete_slider_image(request, image_id):
     """
     A view to delete a slider image
     """
-    image = HomePageSliderImages.objects.get(id=image_id)
+    image = HomePageSliderImage.objects.get(id=image_id)
     image.delete()
     messages.success(request, "Carousel image deleted successfully")
     return redirect(cp_cms_manage_slider_images)

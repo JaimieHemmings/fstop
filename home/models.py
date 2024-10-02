@@ -71,7 +71,7 @@ class HomePageTrustedBy(models.Model):
         return f"{ self.trusted_by_title }"
     
 
-class HomePageFAQs(models.Model):
+class HomePageFAQ(models.Model):
     faq_question = models.CharField(max_length=100, blank=False, null=False)
     faq_answer = models.TextField(blank=False, null=False)
 

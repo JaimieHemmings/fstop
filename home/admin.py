@@ -6,7 +6,7 @@ from .models import (
   HomePageHero,
   HomePageAbout,
   HomePageTrustedBy,
-  HomePageFAQs,
+  HomePageFAQ,
   HomePageSliderImages)
 
 from reviews.models import Review
@@ -49,7 +49,7 @@ class HomePageTrustedByAdmin(admin.ModelAdmin):
     pass
 
 
-class HomePageFAQsAdmin(admin.ModelAdmin):
+class HomePageFAQAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Message, MessageAdmin)
@@ -61,4 +61,4 @@ admin.site.register(Payment, PaymentAdmin)
 admin.site.register(HomePageHero, HomePageHeroAdmin)
 admin.site.register(HomePageAbout, HomePageAboutAdmin)
 admin.site.register(HomePageTrustedBy, HomePageTrustedByAdmin)
-admin.site.register(HomePageFAQs, HomePageFAQsAdmin)
+admin.site.register(HomePageFAQ, HomePageFAQAdmin)
