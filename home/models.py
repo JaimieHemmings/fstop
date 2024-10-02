@@ -1,5 +1,5 @@
 from django.db import models
-
+import uuid
 
 class Message(models.Model):
     fname = models.CharField(max_length=100, blank=False, null=False)
@@ -80,8 +80,13 @@ class HomePageFAQs(models.Model):
 
 
 class HomePageSliderImages(models.Model):
+    def get_path(instance, filename):
+        extension = filename.split(".")[-1]
+        uuid = uuid.uuid1().hex
+        return f'slider-images/{filename}-{uuid}.{extension}'
+
     title = models.CharField(max_length=100, blank=False, null=False)
-    image = models.ImageField(upload_to="portfolio/", blank=False, null=False)
+    image = models.ImageField(upload_to=get_path, blank=False, null=False)
     description = models.TextField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
