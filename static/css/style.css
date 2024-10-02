@@ -385,6 +385,21 @@ nav.navbar {
   background-color: var(--col-black);
   padding-top: 5rem;
   padding-bottom: 5rem;
+  position: relative;
+  overflow-x: hidden;
+
+  &:after {
+    content: "F.";
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue";
+    font-weight: 700;
+    font-size: 30rem;
+    color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1;
+    transform: rotate(-15deg);
+  }
 
   h2 {
     font-size: calc(var(--font-size-base) * 2.5);
