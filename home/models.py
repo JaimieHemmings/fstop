@@ -100,3 +100,12 @@ class HomePageSliderImages(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+    
+
+class HomePagePanel(models.Model):
+    title = models.CharField(max_length=100, blank=False, null=False)
+    icon = models.CharField(max_length=1000, blank=False, null=False)
+    paragraph = models.TextField(blank=False, null=False)
+
+    def __str__(self):
+        return f"{self.title}"

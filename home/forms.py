@@ -5,7 +5,8 @@ from .models import (
   HomePageAbout,
   HomePageTrustedBy,
   HomePageFAQ,
-  HomePageSliderImages )
+  HomePageSliderImages,
+  HomePagePanel )
 
 
 class ContactForm(forms.ModelForm):
@@ -227,6 +228,27 @@ class AddSliderImageForm(forms.ModelForm):
         
         # Set autofocus on first field to be filled in
         self.fields["image"].widget.attrs["autofocus"] = True
+        # set classes
+        for field in self.fields:
+            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+
+
+class AddHomePagePanelForm(forms.ModelForm):
+    class Meta:
+        model = HomePagePanel
+        fields = ["title", "icon", "paragraph"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            "title": "Enter a Title",
+            "icon": "Enter Icon Code",
+            "paragraph": "Enter a descriptive paragraph",
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields["title"].widget.attrs["autofocus"] = True
         # set classes
         for field in self.fields:
             self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"

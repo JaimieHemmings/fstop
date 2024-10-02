@@ -1,0 +1,35 @@
+{% extends 'cp-base.html' %}
+{% load static %}
+
+{% block extra_title %}
+| Confirm Deletion
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Delete Panel</h1>
+        <p>Are you sure?</p>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="pt-3">
+          <span style="width: 25px; display:inline-block;">{{ panel.icon|safe }}</span>
+          {{ panel.title }}
+        </h2>
+        <p>{{ panel.paragraph }}</p>        
+      </div>
+      <div class="card-footer p-3">
+        <div class="d-flex flex-row justify-content-end">
+          <p>Are you sure you want to delete this Panel?</p>   
+        </div>
+        <div class="d-flex flex-row justify-content-end"> 
+          <a href="{% url 'cp_cms_delete_about_section' panel.id %}" class="btn btn-danger">Delete</a>
+          <a href="{% url 'cp_cms_manage_about_section' %}" class="btn btn-secondary mx-3">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

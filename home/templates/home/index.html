@@ -22,7 +22,9 @@
   {% if homepage_slider_images %}
     {% include 'partials/home/img-slider.html' %}
   {% endif %}
-  {% include 'home/partials/services-home.html' %}
+  {% if homepage_panels %}
+    {% include 'home/partials/services-home.html' %}
+  {% endif %}
   {% if articles %}
     {% include 'partials/home/blog-feed.html' %}
   {% endif %}

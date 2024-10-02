@@ -12,7 +12,8 @@ from home.models import (
   HomePageHero,
   HomePageAbout,
   HomePageTrustedBy,
-  HomePageFAQ
+  HomePageFAQ,
+  HomePagePanel
 )
 from portfolio.models import PortfolioImages
 from home.models import HomePageSliderImages
@@ -27,7 +28,8 @@ from home.forms import (
   HomeHeroForm,
   editAboutSectionHomeForm,
   HomePageTrustedByForm,
-  HomePageFAQForm
+  HomePageFAQForm,
+  AddHomePagePanelForm
 )
 
 
@@ -723,9 +725,11 @@ def cms_delete_faq(request, faq_id):
     return redirect(cp_cms_faq)
 
 
-##                                   ##
-## Homepage Slider Images Management ##
-##                                   ##
+"""
+Homepage Slider Images Management
+"""
+
+
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_manage_slider_images(request):
     """
@@ -740,7 +744,8 @@ def cp_cms_manage_slider_images(request):
         "total_unread_messages": total_unread_messages,
         "slider_images": slider_images,
     }
-    return render(request, "cms/home/slider-images/cms-slider-images.html", context)
+    return render(
+        request, "cms/home/slider-images/cms-slider-images.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -762,7 +767,8 @@ def cp_cms_add_slider_image(request):
             messages.success(request, "Slider image added successfully")
             return redirect(cp_cms_manage_slider_images)
     context["form"] = form
-    return render(request, "cms/home/slider-images/cms-add-slider-image.html", context)
+    return render(
+        request, "cms/home/slider-images/cms-add-slider-image.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -773,8 +779,10 @@ def cp_cms_delete_slider_image_confirm(request, image_id):
     context = {}
     image = HomePageSliderImages.objects.get(id=image_id)
     context["image"] = image
-    return render(
-        request, "cms/home/slider-images/cms-slider-images-confirm-delete.html", context)
+    return render(request,
+                  "cms/home/slider-images/"
+                  "cms-slider-images-confirm-delete.html",
+                  context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -786,3 +794,98 @@ def cp_cms_delete_slider_image(request, image_id):
     image.delete()
     messages.success(request, "Carousel image deleted successfully")
     return redirect(cp_cms_manage_slider_images)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_manage_about_section(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    panels = HomePagePanel.objects.all()
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "panels": panels,
+    }
+    return render(request, "cms/home/about/cms-about-section.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_add_about_section(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+
+    form = AddHomePagePanelForm()
+
+    if request.method == "POST":
+        form = AddHomePagePanelForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Panel added successfully")
+            return redirect(cp_cms_manage_about_section)
+        else:
+            messages.error(request, "There was an error adding the panel")
+
+    context["form"] = form
+    return render(request,
+                  "cms/home/about/cms-add-about-section.html",
+                  context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_edit_about_section(request, panel_id):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    panel = HomePagePanel.objects.get(id=panel_id)
+    form = AddHomePagePanelForm(instance=panel)
+
+    if request.method == "POST":
+        form = AddHomePagePanelForm(request.POST, request.FILES, instance=panel)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Panel updated successfully")
+            return redirect(cp_cms_manage_about_section)
+        else:
+            messages.error(request, "There was an error updating the panel")
+
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request,
+                  "cms/home/about/cms-edit-about-section.html",
+                  context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_delete_about_section_confirm(request, panel_id):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    panel = HomePagePanel.objects.get(id=panel_id)
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "panel": panel
+    }
+    return render(request,
+                  "cms/home/about/cms-confirm-delete-about-section.html",
+                  context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_delete_about_section(request, panel_id):
+    panel = HomePagePanel.objects.get(id=panel_id)
+    panel.delete()
+    messages.success(request, "Panel deleted successfully")
+
+    return redirect(cp_cms_manage_about_section)

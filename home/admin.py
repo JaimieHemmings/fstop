@@ -7,7 +7,8 @@ from .models import (
   HomePageAbout,
   HomePageTrustedBy,
   HomePageFAQ,
-  HomePageSliderImages)
+  HomePageSliderImages,
+  HomePagePanel)
 
 from reviews.models import Review
 from payments.models import Payment
@@ -52,6 +53,9 @@ class HomePageTrustedByAdmin(admin.ModelAdmin):
 class HomePageFAQAdmin(admin.ModelAdmin):
     pass
 
+class HomePagePanelAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Message, MessageAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(PortfolioImages, PortfolioImagesAdmin)
@@ -62,3 +66,4 @@ admin.site.register(HomePageHero, HomePageHeroAdmin)
 admin.site.register(HomePageAbout, HomePageAboutAdmin)
 admin.site.register(HomePageTrustedBy, HomePageTrustedByAdmin)
 admin.site.register(HomePageFAQ, HomePageFAQAdmin)
+admin.site.register(HomePagePanel, HomePagePanelAdmin)

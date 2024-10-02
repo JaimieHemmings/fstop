@@ -1,0 +1,23 @@
+{% extends 'cp-base.html' %}
+{% load static %}
+
+{% block extra_title %}
+| Edit Panel
+{% endblock %}
+
+{% block content %}
+<div class="row card">
+  <div class="card-header">
+    <h5 class="card-title mb-0">Edit Panel</h5>
+  </div>
+    <div class="col-sm-12 pt-3 pb-3">
+      <form method="POST" action="#" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex flx-row justify-content-end">
+          <button type="submit" class="btn btn-success">Update Panel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

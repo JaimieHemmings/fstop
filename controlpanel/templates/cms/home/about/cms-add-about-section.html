@@ -1,0 +1,25 @@
+{% extends 'cp-base.html' %}
+{% load static %}
+
+{% block extra_title %}
+| Add Panel
+{% endblock %}
+
+{% block content %}
+<div class="row card">
+  <div class="card-header">
+    <h1 class="card-title mb-0">Add Panel</h1>
+  </div>
+  <div class="col-sm-12">
+    <form action="{% url 'cp_cms_add_about_section' %}" method="POST" class="pb-5">
+      <p>Please use an appropriate icon to represent the service. Appropriate icons can be found <a href="https://flowbite.com/icons/" target="_blank" rel="nofollow">here.</a></p>
+      <p>Icons need to be SVG image codes as generated from the above website.</p>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="d-flex flex-row justify-content-end mt-3">
+        <button type="submit" class="btn btn-success">Add Panel</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -3,7 +3,14 @@ from .forms import ContactForm
 from django.contrib import messages
 from blog.models import Article
 from reviews.models import Review
-from .models import HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQ, HomePageSliderImages
+from .models import (
+    HomePageHero,
+    HomePageAbout,
+    HomePageTrustedBy,
+    HomePageFAQ,
+    HomePageSliderImages,
+    HomePagePanel
+  )
 
 
 def index(request):
@@ -16,6 +23,7 @@ def index(request):
     homepage_trusted_by = HomePageTrustedBy.objects.get(id=1)
     homepage_faqs = HomePageFAQ.objects.all()
     homepage_slider_images = HomePageSliderImages.objects.all()
+    homepage_panels = HomePagePanel.objects.all()
 
     articles = Article.objects.all().order_by("-date")[:2]
     reviews = Review.objects.all().order_by("-created_at")[:5]
@@ -28,6 +36,7 @@ def index(request):
         "homepage_trusted_by": homepage_trusted_by,
         "homepage_faqs": homepage_faqs,
         "homepage_slider_images": homepage_slider_images,
+        "homepage_panels": homepage_panels,
     }
     return render(request, "home/index.html", context)
 
