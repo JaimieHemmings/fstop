@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
 from blog.models import Article
-from portfolio.models import SliderImages
+from .models import HomePageSliderImages
 from reviews.models import Review
-from .models import HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQs
+from .models import HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQs, HomePageSliderImages
 
 
 def index(request):
@@ -16,19 +16,19 @@ def index(request):
     homepage_about = HomePageAbout.objects.get(id=1)
     homepage_trusted_by = HomePageTrustedBy.objects.get(id=1)
     homepage_faqs = HomePageFAQs.objects.all()
+    homepage_slider_images = HomePageSliderImages.objects.all()
 
-    slider_images = SliderImages.objects.all()
     articles = Article.objects.all().order_by("-date")[:2]
     reviews = Review.objects.all().order_by("-created_at")[:5]
     # Build context
     context = {
-        "slider_images": slider_images,
         "articles": articles,
         "reviews": reviews,
         "homepage_hero": homepage_hero,
         "homepage_about": homepage_about,
         "homepage_trusted_by": homepage_trusted_by,
         "homepage_faqs": homepage_faqs,
+        "homepage_slider_images": homepage_slider_images,
     }
     return render(request, "home/index.html", context)
 

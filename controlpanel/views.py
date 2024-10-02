@@ -14,11 +14,13 @@ from home.models import (
   HomePageTrustedBy,
   HomePageFAQs
 )
-from portfolio.models import PortfolioImages, SliderImages
+from portfolio.models import PortfolioImages
+from home.models import HomePageSliderImages
 from reviews.models import Review
 from payments.models import Payment
 
-from .forms import CreateArticleForm, AddSliderImage
+from .forms import CreateArticleForm
+from home.forms import AddSliderImageForm
 from .forms import AddPortfolioImage, AddReviewForm
 from .forms import NewPaymentForm
 from home.forms import (
@@ -257,33 +259,11 @@ def cp_portfolio(request):
     A view to return the portfolio page
     """
     context = {}
-    slider_images = SliderImages.objects.all()
+    slider_images = HomePageSliderImages.objects.all()
     context["slider_images"] = slider_images
     portfolio_images = PortfolioImages.objects.all()
     context["portfolio_images"] = portfolio_images
     return render(request, "portfolio/portfolio-management.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def add_slider_image(request):
-    """
-    A view to add a slider image
-    """
-    context = {}
-    form = AddSliderImage()
-    if request.method == "POST":
-        num_of_slider_images = SliderImages.objects.all().count()
-        if num_of_slider_images > 9:
-            messages.error(
-                request, "You can only have a maximum of 9 slider images")
-            return redirect(cp_portfolio)
-        form = AddSliderImage(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Slider image added successfully")
-            return redirect(cp_portfolio)
-    context["form"] = form
-    return render(request, "portfolio/add-slider-image.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -304,18 +284,6 @@ def add_portfolio_image(request):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def delete_slider_image_confirm(request, image_id):
-    """
-    A view to confirm the deletion of a slider image
-    """
-    context = {}
-    image = SliderImages.objects.get(id=image_id)
-    context["image"] = image
-    return render(
-        request, "portfolio/delete-slider-image-confirm.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
 def delete_portfolio_image_confirm(request, image_id):
     """
     A view to confirm the deletion of a portfolio image
@@ -326,17 +294,6 @@ def delete_portfolio_image_confirm(request, image_id):
 
     return render(
         request, "portfolio/delete-portfolio-image-confirm.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def delete_slider_image(request, image_id):
-    """
-    A view to delete a slider image
-    """
-    image = SliderImages.objects.get(id=image_id)
-    image.delete()
-    messages.success(request, "Slider image deleted successfully")
-    return redirect(cp_portfolio)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -764,3 +721,68 @@ def cms_delete_faq(request, faq_id):
     faq.delete()
     messages.success(request, "FAQ deleted successfully")
     return redirect(cp_cms_faq)
+
+
+##                                   ##
+## Homepage Slider Images Management ##
+##                                   ##
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_manage_slider_images(request):
+    """
+    A view to return the CMS homepage slider images page
+    """
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+    slider_images = HomePageSliderImages.objects.all()
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "slider_images": slider_images,
+    }
+    return render(request, "cms/home/slider-images/cms-slider-images.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_add_slider_image(request):
+    """
+    A view to add a slider image
+    """
+    context = {}
+    form = AddSliderImageForm()
+    if request.method == "POST":
+        num_of_slider_images = HomePageSliderImages.objects.all().count()
+        if num_of_slider_images > 9:
+            messages.error(
+                request, "You can only have a maximum of 9 slider images")
+            return redirect(cp_portfolio)
+        form = AddSliderImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Slider image added successfully")
+            return redirect(cp_cms_manage_slider_images)
+    context["form"] = form
+    return render(request, "cms/home/slider-images/cms-add-slider-image.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_delete_slider_image_confirm(request, image_id):
+    """
+    A view to confirm the deletion of a slider image
+    """
+    context = {}
+    image = HomePageSliderImages.objects.get(id=image_id)
+    context["image"] = image
+    return render(
+        request, "cms/home/slider-images/cms-slider-images-confirm-delete.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_delete_slider_image(request, image_id):
+    """
+    A view to delete a slider image
+    """
+    image = HomePageSliderImages.objects.get(id=image_id)
+    image.delete()
+    messages.success(request, "Carousel image deleted successfully")
+    return redirect(cp_cms_manage_slider_images)

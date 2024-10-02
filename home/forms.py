@@ -1,5 +1,11 @@
 from django import forms
-from .models import Message, HomePageHero, HomePageAbout, HomePageTrustedBy, HomePageFAQs
+from .models import (
+  Message,
+  HomePageHero,
+  HomePageAbout,
+  HomePageTrustedBy,
+  HomePageFAQs,
+  HomePageSliderImages )
 
 
 class ContactForm(forms.ModelForm):
@@ -204,3 +210,25 @@ class HomePageFAQsForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
             self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+            
+
+class AddSliderImageForm(forms.ModelForm):
+    class Meta:
+        model = HomePageSliderImages
+        fields = ["image", "title", "description"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            "image": "Image",
+            "title": "Title",
+            "description": "Description",
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields["image"].widget.attrs["autofocus"] = True
+        # set classes
+        for field in self.fields:
+            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+            self.fields[field].label = False

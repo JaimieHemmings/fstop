@@ -2,12 +2,12 @@
 
 <section class="gallery background-primary section-padding">
   <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-    {% for img in slider_images %}
+    {% for img in homepage_slider_images %}
     <img
       class="image"
       src="{{ img.image.url }}"
       draggable="false"
-      alt="{{ img.title }}"
+      alt="{{ img.description }}"
     />
     {% endfor %}
   </div>

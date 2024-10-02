@@ -56,11 +56,11 @@
   {% endif %}
 
   {% block content %}
+
   {% endblock %}
 
   {% include 'partials/footer.html' %}
 
-  {% block postload_js %}
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
       var toastElList = [].slice.call(document.querySelectorAll('.toast'));
@@ -70,6 +70,7 @@
       toastList.forEach(toast => toast.show());
     });
   </script>
+  {% block postload_js %}
   {% endblock %}
 </body>
 </html>

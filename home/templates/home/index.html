@@ -19,7 +19,7 @@
   {% include 'partials/home/home-hero.html' %}
   {% include 'partials/home/learn.html' %}
   {% include 'partials/home/trust.html' %}
-  {% if slider_images %}
+  {% if homepage_slider_images %}
     {% include 'partials/home/img-slider.html' %}
   {% endif %}
   {% include 'home/partials/services-home.html' %}
@@ -29,7 +29,9 @@
   {% if reviews %}
     {% include 'partials/home/feedback.html' %}
   {% endif %}
-  {% include 'home/partials/faq.html' %}
+  {% if reviews %}
+    {% include 'home/partials/faq.html' %}
+  {% endif %}
   {% include 'partials/cta.html' %}
 {% endblock %}
 

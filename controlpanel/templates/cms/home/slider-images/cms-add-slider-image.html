@@ -1,24 +1,22 @@
 {% extends 'cp-base.html' %}
 
 {% block extra_title %}
-| Add Review
+| Add Carousel Image
 {% endblock %}
 
 {% block content %}
   <div class="row card">
     <div class="card-header">
-      <h1 class="card-title mb-0">Add Review</h1>
+      <h1 class="card-title mb-0">Add Carousel Image</h1>
     </div>
     <div class="col-sm-12">
-      <form method="POST" action="{% url 'add_review' %}" class="pb-5" enctype="multipart/form-data">
+      <form action="{% url 'cp_cms_add_slider_image' %}" method="POST" enctype="multipart/form-data" class="pb-5">
         {% csrf_token %}
         {{ form.as_p }}
-        <p>Please ensure user images are 250px by 250px</p>
         <div class="d-flex flex-row justify-content-end mt-3">
-          <button type="submit" class="btn btn-success">Add Review</button>
+          <button type="submit" class="btn btn-success">Add Image</button>
         </div>
       </form>
     </div>
   </div>
-
 {% endblock %}

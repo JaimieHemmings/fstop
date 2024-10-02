@@ -1,6 +1,6 @@
 from django import forms
 from blog.models import Article
-from portfolio.models import SliderImages, PortfolioImages
+from portfolio.models import PortfolioImages
 from reviews.models import Review
 from payments.models import Payment
 
@@ -64,39 +64,6 @@ class CreateArticleForm(forms.ModelForm):
                 and field != "slider_image_four"
             ):
                 # Add placeholders
-                self.fields[field].widget.attrs["placeholder"] = (
-                    placeholders[field]
-                )
-
-
-class AddSliderImage(forms.ModelForm):
-    class Meta:
-        model = SliderImages
-        fields = ["title", "image", "description"]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        placeholders = {
-            "title": "Enter the title of the image",
-            "description": "Enter a description of the image",
-        }
-
-        # Set autofocus on first field to be filled in
-        self.fields["title"].widget.attrs["autofocus"] = True
-        custom_classes = "form form-control mt-1 mb-3"
-        for field in self.fields:
-            # Add classes to each field
-            self.fields[field].widget.attrs["class"] = custom_classes
-
-            # Add placeholders if not the image fields
-            if (
-                field != "thumb"
-                and field != "body_image"
-                and field != "slider_image_one"
-                and field != "slider_image_two"
-                and field != "slider_image_three"
-                and field != "slider_image_four"
-            ):
                 self.fields[field].widget.attrs["placeholder"] = (
                     placeholders[field]
                 )

@@ -1,0 +1,48 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Manage Carousel Images
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">All Images</h1>
+      </div>
+      <table class="table table-hover my-0">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if slider_images %}
+          {% for img in slider_images %}
+          <tr>
+            <td><img src="{{ img.image.url }}" class="img-fluid" alt="{{ img.title }}" style="max-width: 50px; height: auto;"></td>
+            <td>{{ img.title }}</td>
+            <td>{{ img.description|truncatechars:40 }}...</td>
+            <td>
+              <a href="{% url 'cp_cms_delete_slider_image_confirm' img.id %}" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td colspan="5">No Images yet</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+      <div class="col-sm-12 py-3 justify-content-end d-flex flex-row">
+        <a href="{% url 'cp_cms_add_slider_image' %}" class="btn btn-success mx-3">Add New Image</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
