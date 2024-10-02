@@ -80,10 +80,18 @@ class HomePageFAQ(models.Model):
 
 
 class HomePageSliderImages(models.Model):
+    """
+    Generate a unique path for each image uploaded to the slider
+
+    :param instance: The instance of the model
+    :param filename: The name of the file being uploaded
+    :return: The path for the image
+    rtype: str
+    """
     def get_path(instance, filename):
         extension = filename.split(".")[-1]
-        uuid = uuid.uuid1().hex
-        return f'slider-images/{filename}-{uuid}.{extension}'
+        filename = f"{filename}-{uuid.uuid4()}.{extension}"
+        return f"slider-images/{filename}"
 
     title = models.CharField(max_length=100, blank=False, null=False)
     image = models.ImageField(upload_to=get_path, blank=False, null=False)
