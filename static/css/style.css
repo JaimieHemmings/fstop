@@ -360,6 +360,10 @@ nav.navbar {
 }
 
 @media screen and (max-width: 768px) {
+  .home-hero {
+  background-position: 70% 50%;
+  }
+
   .home-hero:after {
     display: none;
   }
