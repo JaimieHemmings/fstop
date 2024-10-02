@@ -682,10 +682,10 @@ def cms_edit_faq(request, faq_id):
         "total_unread_messages": total_unread_messages,
     }
     faq = HomePageFAQ.objects.get(id=faq_id)
-    form = HomePageFAQsForm(instance=faq)
+    form = HomePageFAQForm(instance=faq)
     context["faq"] = faq
     if request.method == "POST":
-        form = HomePageFAQsForm(request.POST, instance=faq)
+        form = HomePageFAQForm(request.POST, instance=faq)
         if form.is_valid():
             form.save()
             messages.success(request, "FAQ updated successfully")
@@ -733,7 +733,7 @@ def cp_cms_manage_slider_images(request):
     """
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
-    slider_images = HomePageSliderImage.objects.all()
+    slider_images = HomePageSliderImages.objects.all()
 
     context = {
         "unread_messages": unread_messages,
@@ -771,7 +771,7 @@ def cp_cms_delete_slider_image_confirm(request, image_id):
     A view to confirm the deletion of a slider image
     """
     context = {}
-    image = HomePageSliderImage.objects.get(id=image_id)
+    image = HomePageSliderImages.objects.get(id=image_id)
     context["image"] = image
     return render(
         request, "cms/home/slider-images/cms-slider-images-confirm-delete.html", context)
@@ -782,7 +782,7 @@ def cp_cms_delete_slider_image(request, image_id):
     """
     A view to delete a slider image
     """
-    image = HomePageSliderImage.objects.get(id=image_id)
+    image = HomePageSliderImages.objects.get(id=image_id)
     image.delete()
     messages.success(request, "Carousel image deleted successfully")
     return redirect(cp_cms_manage_slider_images)
