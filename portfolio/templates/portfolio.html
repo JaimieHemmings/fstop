@@ -5,57 +5,60 @@
 {% endblock %}
 
 {% block content %}
-<section class="container-fluid background-primary section-padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h1 class="color-white-200 fw-600 text-center">Our Portfolio</h2>
-        <p class="color-white-300 mt-3 text-center sub-text">We are proud of our achievements and the recognition we have received from our peers and industry leaders, resulting in some impressive numbers</p>
-      </div>
-    </div>
-  </div>
+
+
+<section class="gallery">
+	<div class="row">
+		<ul>
+      {% if portfolio_images %}
+        {% for img in portfolio_images %}
+        <li>
+          <a href="#item01" class="gallery-item">
+            <img src="{{ img.image.url }}" alt="">
+          </a>
+        </li>
+          
+        {% endfor %}
+      {% endif %}
+		</ul>
+	</div> <!-- / row -->
+
+	<!-- Item 01 -->
+	<div id="port" class="port">
+	
+		<div class="row">
+			<div class="description">
+        <button id="close_port">X</button>
+				<h1>Item 01</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis libero erat. Integer ac purus est. Proin erat mi, pulvinar ut magna eget, consectetur auctor turpis.</p>
+			</div>
+
+				<img id="portImg" src="https://cdn.dribbble.com/users/545884/screenshots/3981307/lorena2.png" alt="">
+			</div>
+		</div> <!-- / row -->
+
+	</div> <!-- / Item 02 -->
+
 </section>
 
-{% if portfolio_images %}
-<section class="container-fluid slide-gallery background-secondary">
-  <div class="container">
-
-    <div id="slide">
-      {% for img in portfolio_images %}
-      <div
-      class="item"
-      style="background-image: url({{ img.image.url }});">
-      </div>
-      {% endfor %}
-    </div>
-    <div class="buttons">
-      <button id="prev">
-        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
-        </svg>
-      </button>
-      <button id="next">
-        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
-        </svg>       
-      </button>
-    </div>
-  </div>
-</section>
-{% else %}
-<section class="container-fluid background-secondary section-padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <p class="color-white-300">No images uploaded yet</p>
-      </div>
-    </div>
-  </div>
-{% endif %}
 {% include 'partials/cta.html' %}
 {% endblock %}
 
 {% block postload_js %}
-{{ block.super }}
- <script src="{% static 'js/gallery.js' %}" defer></script>
+<script>
+portImg = document.getElementById('portImg');
+port = document.getElementById('port');
+galleryItems = document.querySelectorAll('.gallery-item');
+galleryItems.forEach(function(item) {
+  item.addEventListener('click', function() {
+    portImg.src = item.querySelector('img').src;
+    port.classList.add('item_open');
+  });
+});
+
+document.getElementById('close_port').addEventListener('click', function() {
+  port.classList.remove('item_open');
+});
+
+</script>
 {% endblock %}
