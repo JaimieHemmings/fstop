@@ -19,12 +19,11 @@ def index(request):
     """
     # Get objects
     homepage_hero = get_object_or_404(HomePageHero, id=1)
-    homepage_about = HomePageAbout.objects.get(id=1)
-    homepage_trusted_by = HomePageTrustedBy.objects.get(id=1)
+    homepage_about = get_object_or_404(HomePageAbout, id=1)
+    homepage_trusted_by = get_object_or_404(HomePageTrustedBy, id=1)
     homepage_faqs = HomePageFAQ.objects.all()
     homepage_slider_images = HomePageSliderImages.objects.all()
     homepage_panels = HomePagePanel.objects.all()
-
     articles = Article.objects.all().order_by("-date")[:2]
     reviews = Review.objects.all().order_by("-created_at")[:5]
     # Build context
@@ -45,11 +44,6 @@ def about(request):
     """
     A view that displays the about page
     """
-    context = {}
-    # Get the 2 latest Articles
-    articles = Article.objects.all().order_by("-date")[:2]
-    context["articles"] = articles
-
     return render(request, "home/about.html")
 
 
@@ -67,6 +61,8 @@ def contact(request):
             messages.success(request, "Your message has been sent!")
         else:
             # Flash Message error
-            messages.error(request, "Error sending message. Please check the form.")
+            messages.error(
+                request,
+                "Error sending message. Please check the form.")
     context["form"] = form
     return render(request, "home/contact.html", context)
