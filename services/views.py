@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import (
   ServicesHero,
   ServicesBanner,
@@ -11,14 +11,14 @@ def services(request):
     """
     A view to return the services page
     """
-    services_hero = ServicesHero.objects.get(id=1)
-    services_banner = ServicesBanner.objects.get(id=1)
+    services_hero = get_object_or_404(ServicesHero, id=1)
+    services_banner = get_object_or_404(ServicesBanner, id=1)
     services_cards = ServicesCards.objects.all()
     services_context_banner_one = (
-        ServicesContextBannerOne.objects.get(id=1)
+        get_object_or_404(ServicesContextBannerOne, id=1)
     )
     services_context_banner_two = (
-        ServicesContextBannerTwo.objects.get(id=1)
+        get_object_or_404(ServicesContextBannerTwo, id=1)
     )
 
     context = {

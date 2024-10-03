@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from .forms import ContactForm
 from django.contrib import messages
 from blog.models import Article
@@ -18,7 +18,7 @@ def index(request):
     A view that displays the index page
     """
     # Get objects
-    homepage_hero = HomePageHero.objects.get(id=1)
+    homepage_hero = HomePageHero.objects.getOr(id=1)
     homepage_about = HomePageAbout.objects.get(id=1)
     homepage_trusted_by = HomePageTrustedBy.objects.get(id=1)
     homepage_faqs = HomePageFAQ.objects.all()
