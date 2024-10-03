@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 from django.urls import reverse
@@ -321,76 +321,6 @@ def delete_portfolio_image(request, image_id):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def manage_reviews(request):
-    """
-    A view to return the reviews page
-    """
-    reviews = Review.objects.all()
-    context = {
-        "reviews": reviews,
-    }
-    return render(request, "reviews/review-management.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def add_review(request):
-    """
-    A view to add a review
-    """
-    form = AddReviewForm()
-    context = {}
-    if request.method == "POST":
-        form = AddReviewForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Review added successfully")
-            return redirect(manage_reviews)
-    context["form"] = form
-    return render(request, "reviews/add-review.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def delete_review_confirm(request, review_id):
-    """
-    A view to confirm the deletion of a review
-    """
-    context = {}
-    review = Review.objects.get(id=review_id)
-    context["review"] = review
-    return render(request, "reviews/delete-review-confirm.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def delete_review(request, review_id):
-    """
-    A view to delete a review
-    """
-    review = Review.objects.get(id=review_id)
-    review.delete()
-    messages.success(request, "Review deleted successfully")
-    return redirect(manage_reviews)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def edit_review(request, review_id):
-    """
-    A view to edit a review
-    """
-    context = {}
-    review = Review.objects.get(id=review_id)
-    form = AddReviewForm(instance=review)
-    context["review"] = review
-    if request.method == "POST":
-        form = AddReviewForm(request.POST, request.FILES, instance=review)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Review updated successfully")
-            return redirect(manage_reviews)
-    context["form"] = form
-    return render(request, "reviews/edit-review.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
 def cp_payments(request):
     """
     A view to return the payments page
@@ -495,96 +425,6 @@ def cp_cms_hero(request):
     }
 
     return render(request, "cms/home/cms-edit-hero.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def cp_cms_reviews(request):
-    """
-    A view to return the CMS reviews page
-    """
-    reviews = Review.objects.all()
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-
-    context = {
-        "reviews": reviews,
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
-    }
-    return render(request, "cms/reviews/cms-reviews.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def add_cms_review(request):
-    """
-    A view to add a review
-    """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-    form = AddReviewForm()
-    context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
-    }
-    if request.method == "POST":
-        form = AddReviewForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Review added successfully")
-            return redirect(cp_cms_reviews)
-    context["form"] = form
-    return render(request, "cms/reviews/cms-add-review.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def cms_edit_review(request, review_id):
-    """
-    A view to edit a review
-    """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-    context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
-    }
-    review = Review.objects.get(id=review_id)
-    form = AddReviewForm(instance=review)
-    if request.method == "POST":
-        form = AddReviewForm(request.POST, request.FILES, instance=review)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Review updated successfully")
-            return redirect(cp_cms_reviews)
-    context["form"] = form
-    return render(request, "cms/reviews/cms-edit-review.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def cms_delete_review_confirm(request, review_id):
-    """
-    A view to confirm the deletion of a review
-    """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-    context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
-    }
-    review = Review.objects.get(id=review_id)
-    context["review"] = review
-    return render(
-        request, "cms/reviews/cms-delete-review-confirm.html", context)
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def cms_delete_review(request, review_id):
-    """
-    A view to delete a review
-    """
-    review = Review.objects.get(id=review_id)
-    review.delete()
-    messages.success(request, "Review deleted successfully")
-    return redirect(cp_cms_reviews)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -962,3 +802,117 @@ def cp_cms_edit_services_banner(request):
         "total_unread_messages": total_unread_messages,
     }
     return render(request, "cms/services/cms-edit-banner.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_edit_services_cards(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    cards = ServicesCards.objects.all()
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "cards": cards,
+    }
+    return render(request, "cms/services/service-cards.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_manage_reviews(request):
+    """
+    A view to return the reviews page
+    """
+    reviews = Review.objects.all()
+    context = {
+        "reviews": reviews,
+    }
+    return render(request, "cms/reviews/cms-reviews.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_add_review(request):
+    """
+    A view to add a review
+    """
+    form = AddReviewForm()
+    context = {}
+    if request.method == "POST":
+        form = AddReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Review added successfully")
+            return redirect(cms_manage_reviews)
+    context["form"] = form
+    return render(request, "cms/reviews/cms-add-review.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_delete_review_confirm(request, review_id):
+    """
+    A view to confirm the deletion of a review
+    """
+    context = {}
+    review = Review.objects.get(id=review_id)
+    context["review"] = review
+    return render(request, "cms/reviews/cms-delete-review-confirm.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_delete_review(request, review_id):
+    """
+    A view to delete a review
+    """
+    review = Review.objects.get(id=review_id)
+    review.delete()
+    messages.success(request, "Review deleted successfully")
+    return redirect(cms_manage_reviews)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cms_edit_review(request, review_id):
+    """
+    A view to edit a review
+    """
+    context = {}
+    review = get_object_or_404(Review, id=review_id)
+    form = AddReviewForm(instance=review)
+    context["review"] = review
+    if request.method == "POST":
+        form = AddReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Review updated successfully")
+            return redirect(cms_manage_reviews)
+    context["form"] = form
+    return render(request, "cms/reviews/cms-edit-review.html", context)

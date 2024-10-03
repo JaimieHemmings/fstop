@@ -1,0 +1,56 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Edit Services Cards
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title">
+          Edit Services Cards
+        </h1>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover my-0">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Text</th>
+              <th>Actions</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if cards %}
+            {% for card in cards %}
+            <tr>
+              <td>{{ card.icon|safe }} {{ card.title }}</td>
+              <td>{{ card.lead|truncatechars:20 }}</td>
+              <td>
+                <a href="#" class="btn btn-secondary">Edit</a>
+              </td>
+              <td>
+                <a href="#" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="5">No Cards Yet</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+        <div class="col-sm-12 py-3 justify-content-end d-flex flex-row">
+          <a href="{% url 'add_cms_review' %}" class="btn btn-success mx-3">
+            Add Review
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

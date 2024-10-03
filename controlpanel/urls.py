@@ -40,24 +40,6 @@ urlpatterns = [
     path("portfolio/delete-portfolio-image/<int:image_id>/confirmed/",
          views.delete_portfolio_image, name="delete_portfolio_image",),
 
-    # Review Management URL's
-    path("manage-reviews/", views.manage_reviews, name="manage_reviews"),
-    path("manage-reviews/add-review/", views.add_review, name="add_review"),
-    path(
-        "manage-reviews/delete-review/<int:review_id>/",
-        views.delete_review_confirm,
-        name="delete_review_confirm",
-    ),
-    path(
-        "manage-reviews/delete-review/<int:review_id>/confirmed/",
-        views.delete_review,
-        name="delete_review",
-    ),
-    path(
-        "manage-reviews/edit-review/<int:review_id>/",
-        views.edit_review,
-        name="edit_review",
-    ),
     # Payment Management URL's
     path("manage-payments/",
          views.cp_payments, name="cp_payments"),
@@ -91,14 +73,21 @@ urlpatterns = [
          views.cms_delete_faq, name="cms_delete_faq"),
 
     # Reviews Management URLs
-    path("cms-reviews/", views.cp_cms_reviews, name="cp_cms_reviews"),
-    path("cms-add-review/", views.add_cms_review, name="add_cms_review"),
+    path("cms-reviews/",
+         views.cms_manage_reviews,
+         name="cms_manage_reviews"),
+    path("cms-add-review/",
+         views.cms_add_review,
+         name="add_cms_review"),
     path("cms-edit-review/<int:review_id>/",
-         views.cms_edit_review, name="cms_edit_review"),
+         views.cms_edit_review,
+         name="cms_edit_review"),
     path("cms-delete-review-confirm/<int:review_id>/",
-         views.cms_delete_review_confirm, name="cms_delete_review_confirm"),
+         views.cms_delete_review_confirm,
+         name="cms_delete_review_confirm"),
     path("cms-delete-review/<int:review_id>/",
-         views.cms_delete_review, name="cms_delete_review"),
+         views.cms_delete_review,
+         name="cms_delete_review"),
 
     # Homepage Slider Image Management URLs
     path("cms/manage-slider-images/",
@@ -140,4 +129,7 @@ urlpatterns = [
      path("cms/manage-services/edit-banner/",
           views.cp_cms_edit_services_banner,
           name="cp_cms_edit_services_banner"),
+     path("cms/manage-services/edit-cards/",
+          views.cp_cms_edit_services_cards,
+          name="cp_cms_edit_services_cards"),
 ]

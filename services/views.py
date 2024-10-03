@@ -32,6 +32,4 @@ def services(request):
             services_context_banner_two
         )
     }
-
-
     return render(request, "services/services.html", context)
