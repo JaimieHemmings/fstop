@@ -1,0 +1,48 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Manage Services
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex pb-3">
+    <div class="card flex-fill pb-3">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Edit Services Page</h1>
+      </div>
+      <table class="table table-hover my-0">
+        <thead>
+          <tr>
+            <th>Page Feature</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Services Hero</td>
+            <td><a href="{% url 'cp_cms_edit_services_hero' %}" class="btn btn-secondary">Edit</a></td>
+          </tr>
+          <tr>
+            <td>Services Banner</td>
+            <td><a href="{% url 'cp_cms_edit_services_banner' %}" class="btn btn-secondary">Edit</a></td>
+          </tr>
+          <tr>
+            <td>Services Cards</td>
+            <td><a href="#" class="btn btn-secondary">Edit</a></td>
+          </tr>
+          <tr>
+            <td>Context Banner One</td>
+            <td><a href="#" class="btn btn-secondary">Edit</a></td>
+          </tr>
+          <tr>
+            <td>Context Banner Two</td>
+            <td><a href="#" class="btn btn-secondary">Edit</a></td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1073,3 +1073,91 @@ ul.achievements {
   }
 }
 
+/*
+  Services Page Styles
+*/
+
+.services-hero {
+  padding-top: 10rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+}
+
+.services-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.banner-img {
+  padding-bottom: 15px;
+
+  .banner-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 10rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+  }
+
+  h2 {
+    padding-bottom: 15px;
+    z-index: 2;
+  }
+
+  p {
+    padding-bottom: 15px;
+    z-index: 2;
+  }
+}
+
+.service-panels {
+  .card-icon {
+    &:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--col-grey);
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      z-index: 1;
+    }
+
+    svg {
+      margin-top: 23px;
+      margin-left: 23px;
+      max-width: 80px;
+      display: block;
+      border-radius: 25px;
+      color:  var(--col-primary);
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+

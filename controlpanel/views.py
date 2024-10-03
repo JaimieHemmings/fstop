@@ -19,6 +19,13 @@ from portfolio.models import PortfolioImages
 from home.models import HomePageSliderImages
 from reviews.models import Review
 from payments.models import Payment
+from services.models import (
+    ServicesHero,
+    ServicesBanner,
+    ServicesCards,
+    ServicesContextBannerOne,
+    ServicesContextBannerTwo,
+)
 
 from .forms import CreateArticleForm
 from home.forms import AddSliderImageForm
@@ -30,6 +37,10 @@ from home.forms import (
   HomePageTrustedByForm,
   HomePageFAQForm,
   AddHomePagePanelForm
+)
+from services.forms import (
+  ServicesHeroForm,
+  ServicesBannerForm,
 )
 
 
@@ -889,3 +900,65 @@ def cp_cms_delete_about_section(request, panel_id):
     messages.success(request, "Panel deleted successfully")
 
     return redirect(cp_cms_manage_about_section)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_manage_services(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request, "cms/services/services-management.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_edit_services_hero(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    hero_image = ServicesHero.objects.get(id=1)
+    form = ServicesHeroForm(instance=hero_image)
+
+    if request.method == "POST":
+        form = ServicesHeroForm(request.POST, request.FILES, instance=hero_image)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Hero image updated successfully")
+            return redirect(cp_cms_manage_services)
+        else:
+            messages.error(request, "There was an error updating the hero image")
+
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request, "cms/services/cms-edit-hero.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_edit_services_banner(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    banner = ServicesBanner.objects.get(id=1)
+    form = ServicesBannerForm(instance=banner)
+
+    if request.method == "POST":
+        form = ServicesBannerForm(request.POST, request.FILES, instance=banner)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Banner updated successfully")
+            return redirect(cp_cms_manage_services)
+        else:
+            messages.error(request, "There was an error updating the banner")
+
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request, "cms/services/cms-edit-banner.html", context)

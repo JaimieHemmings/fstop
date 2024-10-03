@@ -129,4 +129,15 @@ urlpatterns = [
     path("cms/manage-about-section/delete-panel/<int:panel_id>/",
          views.cp_cms_delete_about_section,
          name="cp_cms_delete_about_section"),
+
+     # Services Management URL's
+     path("cms/manage-services/",
+          views.cp_cms_manage_services,
+          name="cp_cms_manage_services"),
+     path("cms/manage-services/edit-hero/",
+          views.cp_cms_edit_services_hero,
+          name="cp_cms_edit_services_hero"),
+     path("cms/manage-services/edit-banner/",
+          views.cp_cms_edit_services_banner,
+          name="cp_cms_edit_services_banner"),
 ]
