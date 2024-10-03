@@ -19,6 +19,12 @@ html{box-sizing:border-box;font-size:16px}*,:after,:before{box-sizing:inherit}bo
   --color-peter-river: #3498db;
 }
 
+@media screen and (max-width: 768px) {
+  :root {
+    --font-size-base: 1.2rem;
+  }
+}
+
 /*
   Global Styles
 */
@@ -361,7 +367,13 @@ nav.navbar {
 
 @media screen and (max-width: 768px) {
   .home-hero {
-  background-position: 70% 50%;
+    background-position: 70% 50%;
+    
+    .container {
+      h1 {
+        font-size: calc(var(--font-size-base) * 2);
+      }
+    }
   }
 
   .home-hero:after {
@@ -390,19 +402,20 @@ nav.navbar {
   padding-top: 5rem;
   padding-bottom: 5rem;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 
   &:after {
     content: "F.";
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue";
     font-weight: 700;
-    font-size: 30rem;
+    font-size: 50rem;
     color: rgba(255, 255, 255, 0.1);
     position: absolute;
-    bottom: 30px;
-    right: 30px;
+    top: 0;
+    left: 50%;
     z-index: 1;
     transform: rotate(-15deg);
+    line-height: 1;
   }
 
   h2 {
@@ -417,6 +430,25 @@ nav.navbar {
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .learn h2 {
+    max-width: 75%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .learn h2 {
+    max-width: 100%;
+  }
+
+  .learn:after {
+    font-size: 40rem;
+    bottom: 5%;
+    top: initial;
+    left: 0;
   }
 }
 
