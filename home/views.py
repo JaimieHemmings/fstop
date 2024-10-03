@@ -18,7 +18,7 @@ def index(request):
     A view that displays the index page
     """
     # Get objects
-    homepage_hero = HomePageHero.objects.getOr(id=1)
+    homepage_hero = get_object_or_404(HomePageHero, id=1)
     homepage_about = HomePageAbout.objects.get(id=1)
     homepage_trusted_by = HomePageTrustedBy.objects.get(id=1)
     homepage_faqs = HomePageFAQ.objects.all()
