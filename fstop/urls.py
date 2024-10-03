@@ -14,4 +14,5 @@ urlpatterns = [
     path("control-panel/", include("controlpanel.urls")),
     path("payments/", include("payments.urls")),
     path("profile/", include("profiles.urls")),
+    path("services/", include("services.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

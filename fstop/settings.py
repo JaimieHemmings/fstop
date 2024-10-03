@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "payments",
     "reviews",
     "profiles",
+    "services",
 ]
 
 MIDDLEWARE = [
