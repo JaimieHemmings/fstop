@@ -1,0 +1,22 @@
+{% extends 'cp-base.html' %}
+{% block extra_title %}
+| Edit Services Card
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title">Edit Services Card</h1>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{% url 'cp_cms_edit_services_card' card.id %}">
+          {% csrf_token %}
+          {{ form }}
+          <button type="submit" class="btn btn-success">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

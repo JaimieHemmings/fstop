@@ -30,10 +30,10 @@
               <td>{{ card.icon|safe }} {{ card.title }}</td>
               <td>{{ card.lead|truncatechars:20 }}</td>
               <td>
-                <a href="#" class="btn btn-secondary">Edit</a>
+                <a href="{% url 'cp_cms_edit_services_card' card.id %}" class="btn btn-secondary">Edit</a>
               </td>
               <td>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="{% url 'cp_cms_delete_services_card_confirm' card.id %}" class="btn btn-danger">Delete</a>
               </td>
             </tr>
             {% endfor %}
@@ -45,7 +45,7 @@
           </tbody>
         </table>
         <div class="col-sm-12 py-3 justify-content-end d-flex flex-row">
-          <a href="{% url 'add_cms_review' %}" class="btn btn-success mx-3">
+          <a href="{% url 'cp_cms_add_services_card' %}" class="btn btn-success mx-3">
             Add Review
           </a>
         </div>

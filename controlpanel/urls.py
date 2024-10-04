@@ -147,16 +147,36 @@ urlpatterns = [
          name="cp_cms_delete_about_section"),
 
     # Services Management URL's
+    # Path for services Overview
     path("cms/manage-services/",
          views.cp_cms_manage_services,
          name="cp_cms_manage_services"),
+    # Path to edit the hero
     path("cms/manage-services/edit-hero/",
          views.cp_cms_edit_services_hero,
          name="cp_cms_edit_services_hero"),
+    # Path to edit the banner
     path("cms/manage-services/edit-banner/",
          views.cp_cms_edit_services_banner,
          name="cp_cms_edit_services_banner"),
+    # Path to Cards overview
     path("cms/manage-services/edit-cards/",
          views.cp_cms_edit_services_cards,
          name="cp_cms_edit_services_cards"),
+    # Path to edit a single card
+    path("cms/manage-services/edit-cards/edit-card/<int:card_id>/",
+         views.cp_cms_edit_services_card,
+         name="cp_cms_edit_services_card"),
+    # Path to confirm deletion of a card
+     path("cms/manage-services/edit-cards/delete-card-confirm/<int:card_id>/",
+          views.cp_cms_delete_services_card_confirm,
+          name="cp_cms_delete_services_card_confirm"),
+     # Path to delete a card
+     path("cms/manage-services/edit-cards/delete-card/<int:card_id>/",
+          views.cp_cms_delete_services_card,
+          name="cp_cms_delete_services_card"),
+     # Path to add a new card
+     path("cms/manage-services/edit-cards/add-card/",
+          views.cp_cms_add_services_card,
+          name="cp_cms_add_services_card"),
 ]

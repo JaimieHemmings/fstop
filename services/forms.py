@@ -54,3 +54,27 @@ class ServicesBannerForm(forms.ModelForm):
               self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
               # Add placeholders
               self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+
+
+class ServicesCardsForm(forms.ModelForm):
+    class Meta:
+        model = ServicesCards
+        fields = '__all__'
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'title': 'Enter the title of the card',
+            'lead': 'Enter the lead text for the card',
+            'icon': 'Enter the alt text for the card',
+        }
+        
+        # Set autofocus on first field to be filled in
+        self.fields['title'].widget.attrs['autofocus'] = True
+        
+        for field in self.fields:
+            if field != 'image':
+              # Add classes to each field
+              self.fields[field].widget.attrs['class'] = 'form form-control mt-1 mb-3'
+              # Add placeholders
+              self.fields[field].widget.attrs['placeholder'] = placeholders[field]

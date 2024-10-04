@@ -41,6 +41,7 @@ from home.forms import (
 from services.forms import (
   ServicesHeroForm,
   ServicesBannerForm,
+  ServicesCardsForm,
 )
 
 
@@ -698,7 +699,8 @@ def cp_cms_edit_about_section(request, panel_id):
     form = AddHomePagePanelForm(instance=panel)
 
     if request.method == "POST":
-        form = AddHomePagePanelForm(request.POST, request.FILES, instance=panel)
+        form = AddHomePagePanelForm(
+            request.POST, request.FILES, instance=panel)
         if form.is_valid():
             form.save()
             messages.success(request, "Panel updated successfully")
@@ -763,13 +765,15 @@ def cp_cms_edit_services_hero(request):
     form = ServicesHeroForm(instance=hero_image)
 
     if request.method == "POST":
-        form = ServicesHeroForm(request.POST, request.FILES, instance=hero_image)
+        form = ServicesHeroForm(
+            request.POST, request.FILES, instance=hero_image)
         if form.is_valid():
             form.save()
             messages.success(request, "Hero image updated successfully")
             return redirect(cp_cms_manage_services)
         else:
-            messages.error(request, "There was an error updating the hero image")
+            messages.error(
+                request, "There was an error updating the hero image")
 
     context = {
         "form": form,
@@ -819,33 +823,88 @@ def cp_cms_edit_services_cards(request):
     return render(request, "cms/services/service-cards.html", context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_edit_services_card(request, card_id):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    card = get_object_or_404(ServicesCards, id=card_id)
+    form = ServicesCardsForm(instance=card)
+
+    if request.method == "POST":
+        form = ServicesCardsForm(request.POST, request.FILES, instance=card)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Card updated successfully")
+            return redirect(cp_cms_edit_services_cards)
+        else:
+            messages.error(request, "There was an error updating the card")
+
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "card": card,
+    }
+    return render(request, "cms/services/edit-service-card.html", context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_delete_services_card_confirm(request, card_id):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    card = ServicesCards.objects.get(id=card_id)
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "card": card,
+    }
+    return render(request,
+                  "cms/services/cms-delete-service-card-confirm.html",
+                  context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_delete_services_card(request, card_id):
+    card = ServicesCards.objects.get(id=card_id)
+    card.delete()
+    messages.success(request, "Card deleted successfully")
+
+    return redirect(cp_cms_edit_services_cards)
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_add_services_card(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    context = {
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+
+    form = ServicesCardsForm()
+
+    if request.method == "POST":
+        form = ServicesCardsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Card added successfully")
+            return redirect(cp_cms_edit_services_cards)
+        else:
+            messages.error(request, "There was an error adding the card")
+
+    context["form"] = form
+    return render(request,
+                  "cms/services/cms-add-service-card.html",
+                  context)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""
+Views for user Reviews functionality of CMS
+"""
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -885,7 +944,8 @@ def cms_delete_review_confirm(request, review_id):
     context = {}
     review = Review.objects.get(id=review_id)
     context["review"] = review
-    return render(request, "cms/reviews/cms-delete-review-confirm.html", context)
+    return render(
+        request, "cms/reviews/cms-delete-review-confirm.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
