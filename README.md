@@ -2,6 +2,16 @@
 
 [**Link to the live website**](www.fstops.co.uk)
 
+# Project Overview
+
+FStops Photography is a website for a freelance professional photographer. The website allows for superusers to manage and edit the content of the website using the bespoke content management system built to replace the django default admin area.
+
+In addition to the  bespoke content management system, superusers are also able to generate invoices that can be sent to clients and then settled through the clients profile page on the website using Stripe as the payment processor. A special area in content management system allows superusers to now only create invoices, but also view the status of all previously generated invoices.
+
+Finally, the websites contact page also allows users, whether they are signed in or not to submit messages to the site superusers. These messages are then stored in the database and can be viewed and deleted by the superusers.
+
+FStops Photography is my fourth project in the Code Institutes level 5 Diploma in Web Application Development (Full Stack Software Development) accredited by East Kent College.
+
 ## Table of Contents
 
 - [User Experience](#user-experience)
@@ -52,10 +62,66 @@
   - [Acknowledgements](#acknowledgements)
 
 # USER EXPERIENCE
+
 ## Strategy Plane
+
+The goal of this website is to allow FStops Photography to showcase their portfolio and services in an elegant and aesthetically pleasing manner. This is to assist in the primary goal of generating leads through not only the contact form but also direct enquiries by phone or email.
+
+Additionally, FStops Photography would also like a website in which they are able to highlight unique selling points, establish themselves as an authority in the freelance photography market and generate trust with their userbase by displaying their expertise and skills
+
 ### Project Goals
+
+- Generate Leads - The website should encourage customers to contact FStop Photography for bookings, enquiries and consultations
+
+- Showcase Expertise - Provide an opportunity and platform for FStops Photography to display their skills, expertise and versatility
+
+- Increase brand visibility - Ensure the site ranks well in search results for local photography services
+
+- Highlight Unique Selling Points - Allow the owner to highlight and distinctive elements in their customer services approach and technical ability by demonstrating their knowledge and previous work
+
+- Collect Revenue - being able to take payments for specific amounts, whether it be a deposit or final payment. The fees charged by FStops Photography are as custom as their projects and therefore are unable to do things based on a "one size fits all" fee, therefore the amount charged for each project needs to be unique. Allowing the option to request and make payments through the website helps establish a more professional brand.
+
 #### Problems We Are Trying to Solve
+
+- Problem 1: FStops Photography currently has no online brand presence
+  - Solution: Establish an online presence primarily by building a relevant website
+
+- Problem 2: FStops photography currently requires cash or bank transfer for all project payments
+  - Implementing a payment system through the website using Stripe establishes trust and professionalism
+
+- Problem 3: FStops Photography currently relies purely on word of mouth for generating new leads as they has no search engine presence
+  - Use search engine optimization (SEO) techniques to increase search rankings, ensuring the website appears prominently for relevant queries.
+
+- Problem 4: The company currently has no way to communicate the available services
+  -  Provide well-structured content that clearly describes each service, highlights unique offerings, and presents details or packages in an easy-to-read format.
+
+- Problem 5: A lack of website may hint at a lack of permanence of the company and cause hesitations in clients when reaching out or booking projects
+  - Establishing an online presence with real relatable customer feedback will help to build trust and a sense of professionalism
+
+- Problem 6: No differentiation from competitors: The photography market is competitive, and FStop needs a way to stand out among other local photographers.
+  - Highlight unique selling points (e.g., specialized equipment, awards, unique styles) prominently throughout the website to set FStop apart from the competition.
+
+- Problem 7: Lead generation and conversion
+  - Implement features in the website that make having an account beneficial to the end user, such as the payment system. Additionally a contact form on the website will help to encourage users to enquire about further details and availability.
+
+- Problem 8: Users need to see the quality and versatility of FStop’s photography, but without a well-designed platform, they may not fully appreciate the talent or variety offered.
+  - Solution: Create visually appealing galleries organized by category (e.g., weddings, events, portraits), featuring high-quality images to capture users' attention.
+
 #### Internal Stakeholders' Goals
+
+Ultimately the stakeholders goal is generate a return on investment by increasing the amounts of leads and sales they make by the presence of the website enabling additional leads generation and increased visibility via Google. There are a number of other factors that can contribute to this:
+
+- Showcasing quality and style:
+  - By showing examples of previous work and generating that "wow" response from the viewer, they are more likely to desire the services rendered by FStops Photography
+
+- Brand Establishment:
+  - Individuals and business alike are weary of cowboys who take money and disappear. Hacing a professional website show the business owner has made a significant investment into his company and is more likely to see through any projects that have been undertaken.
+
+- SEO:
+  - By establishing an online presence the company becomes more visible. An overwhelming majority of people now instantly turn to Google when they need a product or service so by becoming readily apparent in the search results you increase the likelihood of a sale.
+
+By aligning the website design and content with these stakeholders goals I can create a website that effectively meets the expectations of the client and staisfy expectations.
+
 #### Business Model
 #### Product Goals
 #### User Research
@@ -79,6 +145,21 @@
 ### Wireframes
 ## Surface Plane
 ### Typography
+
+I decided not to implement any additional custom fonts for a number of reasons.
+
+- Reduced number of HTTP requests, thereby reducing load times.
+- Reduced blocking time
+- Improved core web vitals relating to Largest Contentful Paint and Cumulative Layout Shifts etc.
+- Fewer FOUT's (Flash of unstyled text)
+- Consistent rendering - system fonts are already installed on users devices which guarantees consistent rendering
+- Fewer fallback issues in terms of design consistency in case a font fails to load
+- SEO improvements relating to the improved core web vitals
+
+I have instead decided to opt for the default use of "Futura" as this already is aesthetically fitting to the rest of the design and have chosen some other fonts as a safe fallback for edge cases where "Futura" does not load for any reason.
+
+![Futura Font Example](docs/futura.png)
+
 ### Colour Palette
 
 The website mainly uses a dark theme with highlights of red, as much as possible I made sure to accomodate users with vision impairments or accessability needs by referencing various accessibility check tools online such as Lighthouse and a11y.
@@ -90,7 +171,9 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 - Imagery used across the site was sourced either from [Unsplash](https://unsplash.com/) or provided by my brother in law.
 
 # Features
+
 ## Future Development, Iteration and Implementation
+
 ## Technologies Used
 
 ### Languages Used
@@ -152,6 +235,10 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 - [Chrome Dev Tools](https://www.google.com/intl/en_uk/chrome/) - used to aid in debugging and testing compatibility
 
 - [Photoshop](https://www.adobe.com/uk/products/photoshop.html) - Used for the editing of image sizes and formats
+
+- [a11y](https://webaim.org/resources/contrastchecker/) - Used to check for accessibility issues relating to contrast
+
+- [Lighthouse](https://pagespeed.web.dev/) - used to check site performance and compatibility
 
 ### Payment Processing Platform Used
 
