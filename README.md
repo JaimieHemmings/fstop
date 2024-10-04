@@ -48,10 +48,6 @@
   - [Testing](#testing)
   - [Bugs, Issues and Solutions](#bugs-issues-and-solutions)
   - [Deployment and Local Development](#deployment-and-local-development)
-    - [Deployment](#deployment)
-    - [Local Development](#local-development)
-      - [How to Fork](#how-to-fork)
-      - [How to Clone](#how-to-clone)
   - [Credits](#credits)
   - [Acknowledgements](#acknowledgements)
 
@@ -93,16 +89,81 @@
 ### Frameworks Used
 ### Databases Used
 ### Libraries and Packages Used
+
+- [django-allauth](https://django-allauth.readthedocs.io/en/latest/) - Used to rapidly integrate prefunctioning account authentication and registration functionality
+
+- [gunicorn](https://gunicorn.org/) - gunicorn is a WSGI HTTP server built with python.
+
+- [pillow](https://pypi.org/project/pillow/) - Used to enable django forms to handle images
+
+- [psycopg2](https://pypi.org/project/psycopg2/) - A database adapter used in python applications to provide compatibility with PostgreSQL databases
+
+- [boto3](https://pypi.org/project/boto3/) - An Amazon SDK used to provide compatibility with AWS buckets
+
+- [pip](https://pip.pypa.io/en/stable/) - a python package manager allowing the easy use and management of packages within a project
+
+- [django storages](https://django-storages.readthedocs.io/en/latest/) - custom storage backends for django, used to more easily integrate the application with AWS functionality
+
+- [Flowbites Icons](https://flowbite.com/icons/) - use for various icons around the website
+
+- [Bootstrap5](https://getbootstrap.com) - For the basic styling library used as the foundation for the websites styling
+
+- [AdminKit](https://adminkit.io/) - Was used to style the control panel of the website.
+
+- [SwiperJS](https://swiperjs.com/) - Used for the carousel upon which the client reviews are based
+
 ### Programmes and Applications Used
+
+- [Real Favicon Generator](https://realfavicongenerator.net/) - used to create the site's favicon
+- [Git](https://git-scm.com/) - used for version management
+- [GitHub](https://github.com) - use for hosting the projects git repository
+- [Firefox Inspector](https://www.mozilla.org/en-GB/firefox/new/) - used to aid in debugging and testing compatibility
+- [Chrome Dev Tools](https://www.google.com/intl/en_uk/chrome/) - used to aid in debugging and testing compatibility
+- [Photoshop](https://www.adobe.com/uk/products/photoshop.html) - Used for the editing of image sizes and formats
+
 ### Payment Processing Platform Used
+
+- [Stripe](https://stripe.com/gb/payments) - Used for integrating payment functionality to the website
+
 ### Cloud Application Platforms Used
+
+- [Heroku](https://www.heroku.com) - Was used for the hosting and deployment of the production website. Through development and deployment I have ensure the version deployed to Heroku is the same as the development codebase as it deploys directly from this repo on GitHub whenever a change is committed.
+
+- [Cloudflare DNS](https://www.cloudflare.com/) - Was used for Domain Name Server management.
+
 ### Cloud Storage Services Used
+
+- [Amazons AWS S3 Buckets](https://aws.amazon.com/) - were used for the hosting of static and media files
+
 ## Testing
+
+Please reference the [Testing.md](TESTING.md) document for an overview of bugs and solutions
+
 ## Bugs, Issues and Solutions
+
+Please reference the [Testing.md](TESTING.md) document for an overview of bugs and solutions
+
 ## Deployment and Local Development
-### Deployment
-### Local Development
-#### How to Fork
-#### How to Clone
+
+Please refer to the [Deployment.md](DEPLOYMENT.md) document for a detailed overview of the deployment process as well as:
+
+- How to Clone
+- How to Fork
+
 ## Credits
+
+ - [ChatGPT](https://openai.com/chatgpt/) - ChatGPT was used to generator placeholder text during the initial development of the website.
+
+- [ChristopherGS](https://christophergs.com/blog/django-sitemap-tutorial-for-humans) - For a handy tutorial on how to implement sitemaps in the Django Framework
+
+ - [CloudConvert](https://cloudconvert.com/) - Used to convert images to various formats as necassary
+
+ - [TinyPNG](https://tinypng.com/) - Used to compress png images
+
 ## Acknowledgements
+
+A big thank you to my mentor, Brian Macharia, for his guidance and support for the duration of this project and a special mention to the team at Code Institute for there amazing, insightful and engaging learning platform and additional support and guidance obtained through the tutoring team. And finally, to the team at East Kent College, especially Rachel Furlong for the guidance and support I received from them all.
+
+# Copyright
+
+&copy; F. Photography by Jaimie Hemmings
