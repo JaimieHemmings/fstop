@@ -179,4 +179,14 @@ urlpatterns = [
      path("cms/manage-services/edit-cards/add-card/",
           views.cp_cms_add_services_card,
           name="cp_cms_add_services_card"),
+
+
+     # Path to manage the Context Banners
+     path("cms/edit-context-banner-one/",
+          views.cp_cms_edit_context_banner_one,
+          name="cp_cms_edit_context_banner_one"),
+     path("cms/edit-context-banner-two/",
+          views.cp_cms_edit_context_banner_two,
+          name="cp_cms_edit_context_banner_two"),
+
 ]

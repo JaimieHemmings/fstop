@@ -976,3 +976,60 @@ def cms_edit_review(request, review_id):
             return redirect(cms_manage_reviews)
     context["form"] = form
     return render(request, "cms/reviews/cms-edit-review.html", context)
+
+
+"""
+Paths to edit the context banners for the services page
+"""
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_edit_context_banner_one(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    banner = ServicesContextBannerOne.objects.get(id=1)
+    form = ServicesBannerForm(instance=banner)
+
+    if request.method == "POST":
+        form = ServicesBannerForm(request.POST, request.FILES, instance=banner)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Banner updated successfully")
+            return redirect(cp_cms_manage_services)
+        else:
+            messages.error(request, "There was an error updating the banner")
+
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request, "cms/services/cms-edit-context-banner-one.html",
+                  context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_edit_context_banner_two(request):
+    unread_messages = Message.objects.filter(read=False)[:5]
+    total_unread_messages = Message.objects.filter(read=False).count()
+
+    banner = ServicesContextBannerTwo.objects.get(id=1)
+    form = ServicesBannerForm(instance=banner)
+
+    if request.method == "POST":
+        form = ServicesBannerForm(request.POST, request.FILES, instance=banner)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Banner updated successfully")
+            return redirect(cp_cms_manage_services)
+        else:
+            messages.error(request, "There was an error updating the banner")
+
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+    }
+    return render(request, "cms/services/cms-edit-context-banner-two.html",
+                  context)
