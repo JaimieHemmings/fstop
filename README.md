@@ -1,5 +1,7 @@
 # FStops Professional Photography Services
 
+![Image of website on multiple devices](docs/banner.png)
+
 [**Link to the live website**](www.fstops.co.uk)
 
 # Project Overview
