@@ -51,7 +51,6 @@
   - [Credits](#credits)
   - [Acknowledgements](#acknowledgements)
 
-    
 # USER EXPERIENCE
 ## Strategy Plane
 ### Project Goals
@@ -81,13 +80,41 @@
 ## Surface Plane
 ### Typography
 ### Colour Palette
+
+The website mainly uses a dark theme with highlights of red, as much as possible I made sure to accomodate users with vision impairments or accessability needs by referencing various accessibility check tools online such as Lighthouse and a11y.
+
+![Colour Palette](docs/colour-palette.png)
+
 ### Imagery
+
+- Imagery used across the site was sourced either from [Unsplash](https://unsplash.com/) or provided by my brother in law.
+
 # Features
 ## Future Development, Iteration and Implementation
 ## Technologies Used
+
 ### Languages Used
+
+- HTML - For the front end document structure
+
+- CSS - for the front end styling of the website
+
+- JavaScript - for manipulating dom elements
+
+- Python - for the back end programming of the web site
+
 ### Frameworks Used
+
+[django](https://www.djangoproject.com/) - An opensource framework built with Python, based on an MVT (Model, View, Template) model
+
+[Bootstrap5](https://getbootstrap.com/) - Used as a foundation for the visual styling of the website
+
 ### Databases Used
+
+- [SQLITE3](https://docs.djangoproject.com/en/5.1/ref/databases/#sqlite-notes) - Used as the database in development
+
+- [Heroku PostgreSQL](https://devcenter.heroku.com/articles/python-concurrency-and-database-connections) - Used as the production server for the live environment
+
 ### Libraries and Packages Used
 
 - [django-allauth](https://django-allauth.readthedocs.io/en/latest/) - Used to rapidly integrate prefunctioning account authentication and registration functionality
@@ -115,10 +142,15 @@
 ### Programmes and Applications Used
 
 - [Real Favicon Generator](https://realfavicongenerator.net/) - used to create the site's favicon
+
 - [Git](https://git-scm.com/) - used for version management
+
 - [GitHub](https://github.com) - use for hosting the projects git repository
+
 - [Firefox Inspector](https://www.mozilla.org/en-GB/firefox/new/) - used to aid in debugging and testing compatibility
+
 - [Chrome Dev Tools](https://www.google.com/intl/en_uk/chrome/) - used to aid in debugging and testing compatibility
+
 - [Photoshop](https://www.adobe.com/uk/products/photoshop.html) - Used for the editing of image sizes and formats
 
 ### Payment Processing Platform Used
