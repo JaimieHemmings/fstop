@@ -274,9 +274,12 @@ def cp_portfolio(request):
     """
     context = {}
     slider_images = HomePageSliderImages.objects.all()
-    context["slider_images"] = slider_images
     portfolio_images = PortfolioImages.objects.all()
-    context["portfolio_images"] = portfolio_images
+    
+    context = {
+        "slider_images": slider_images,
+        "portfolio_images": portfolio_images,
+    }
     return render(request, "portfolio/portfolio-management.html", context)
 
 

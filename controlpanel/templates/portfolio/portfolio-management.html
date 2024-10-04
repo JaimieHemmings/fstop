@@ -5,71 +5,50 @@
 {% endblock %}
 
 {% block content %}
-<div class="container pt-5 mb-5">
-  <div class="row mb-5">
-    <div class="col-sm-12 text-center">
-      <h1>Portfolio Management</h1>
-      <p class="mb-3">Manage your image content</p>
-    </div>
-  </div>
-  <div class="row background-white p-5">
-    <div class="col-sm-12 pb-5">
-      <h2>Portfolio Images</h2>
-      <p>These are the images that show up on the portfolio page</p>
-    </div>
-    {% if portfolio_images %}
-    {% for image in portfolio_images %}
-    <div class="col-sm-4">
-      <div class="col-sm-4 mb-3">
-        <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid mt-3">
+<div class="row">
+  <div class="col-sm-12 d-flex pb-3">
+    <div class="card flex-fill pb-3">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Portfolio Items</h1>
       </div>
-      <div class="col-sm-8">
-        <h3>{{ image.title }}</h3>
-        <p>{{ image.description }}</p>
-        <p class="pb-3">{{ image.created_at }}</p>
-        <a href="{% url 'delete_portfolio_image_confirm' image.id %}" class="btn btn-danger">Delete</a>
+      <table class="table table-hover my-0">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Alt Text</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if portfolio_images %}
+          {% for image in portfolio_images %}
+          <tr>
+            <td>
+              <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid mt-3" style="max-width: 50px; height: auto;">
+            </td>
+            <td>
+              {{ image.title }}
+            </td>
+            <td>
+              {{ image.description|truncatechars:20 }}
+            </td>
+            <td><a href="{% url 'delete_portfolio_image_confirm' image.id %}" class="btn btn-danger">Delete</a></td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td colspan="4" class="text-center">You havn't uploaded any images yet</td>
+          {% endif %}
+        </tbody>
+      </table>
+      <div class="card-footer d-flex flex-row justify-content-end mt-3">
+        <a
+          href="{% url 'add_portfolio_image' %}"
+          class="btn btn-success">
+          Add Image
+        </a>
       </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    <div class="col-sm-12 text-center pt-5 pb-5">
-      <p>You havn't uploaded any images yet</p>
-    </div>
-    {% endif %}
-    <div class="col-sm-12 justify-content-end d-flex">
-      <a href="{% url 'add_portfolio_image' %}" class="btn btn-primary">Add Image</a>
-    </div>
-  </div>
-  <hr>
-  <div class="row background-white p-5">
-    <div class="col-sm-12 pb-5">
-      <h2>Slider Images</h2>
-      <p>These are the images shown in the parallax slider</p>
-    </div>
-    {% if slider_images %}
-    {% for image in slider_images %}
-    <div class="col-sm-6">
-      <div class="row">
-
-        <div class="col-lg-6 mb-3">
-          <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid mt-3">
-        </div>
-        <div class="col-lg-6">
-          <h3>{{ image.title }}</h3>
-          <p>{{ image.description }}</p>
-          <p class="pb-3">{{ image.created_at }}</p>
-          <a href="{% url 'delete_slider_image_confirm' image.id %}" class="btn btn-danger">Delete</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    <div class="col-sm-12 text-center pt-5 pb-5">
-      <p>You havn't uploaded any images yet</p>
-    </div>
-    {% endif %}
-    <div class="col-sm-12 justify-content-end d-flex">
-      <a href="{% url 'add_slider_image' %}" class="btn btn-primary">Add Image</a>
     </div>
   </div>
 </div>

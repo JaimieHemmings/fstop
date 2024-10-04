@@ -5,21 +5,22 @@
 {% endblock %}
 
 {% block content %}
-<div class="container pt-5 mb-5">
-  <div class="row mb-5">
-    <div class="col-sm-12 text-center">
-      <h1>Add Portfolio Image</h1>
-      <p class="mb-3">Add a new image</p>
-    </div>
-  </div>
-  <div class="row p-5 background-white">
-    <form action="{% url 'add_portfolio_image' %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form }}
-      <div class="d-flex flex-row justify-content-end mt-5">
-        <button type="submit" class="btn btn-primary">Add Image</button>
+<div class="row">
+  <div class="col-sm-12 d-flex pb-3">
+    <div class="card flex-fill pb-3">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Add New Image</h1>
       </div>
-    </form>
+      <div class="card-body">
+        <form action="{% url 'add_portfolio_image' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form }}
+          <div class="d-flex flex-row justify-content-end mt-5">
+            <button type="submit" class="btn btn-success">Add Image</button>
+          </div>
+        </form>        
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
