@@ -1,5 +1,7 @@
 from django.db import models
+from django.urls import reverse
 import uuid
+from django.utils.text import slugify
 
 
 class Article(models.Model):
@@ -32,6 +34,14 @@ class Article(models.Model):
         upload_to=get_path, default="default.png")
     last_modified = models.DateTimeField(auto_now=True)
     views = models.IntegerField(default=0)
+
+    def get_absolute_url(self):
+        return reverse(
+            'article',
+            kwargs={
+                'slug': self.slug,
+                }
+            )
 
     def __str__(self):
         return self.title

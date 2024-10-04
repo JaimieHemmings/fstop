@@ -15,6 +15,8 @@ if "USE_AWS" in os.environ:
 else:
     DEBUG = True
 
+DOMAIN = "www.fstops.co.uk"
+SITE_NAME = "FStops Photography"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
@@ -34,6 +36,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    # Add sitemap
+    'django.contrib.sitemaps',
     # Third Party Apps
     "django_extensions",
     "django_countries",
