@@ -202,7 +202,9 @@ def add_article(request):
             messages.success(request, "Article created successfully")
             return cp_articles(request)
     context["form"] = form
-    return render(request, "articles/create-article.html", context)
+    context["page_title"] = "Add Article"
+    context["end_point"] = "add_article"
+    return render(request, "generic/add-item.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -288,7 +290,6 @@ def add_portfolio_image(request):
     """
     A view to add a slider image
     """
-    context = {}
     form = AddPortfolioImage()
     if request.method == "POST":
         form = AddPortfolioImage(request.POST, request.FILES)
@@ -296,8 +297,13 @@ def add_portfolio_image(request):
             form.save()
             messages.success(request, "Portfolio image added successfully")
             return redirect(cp_portfolio)
-    context["form"] = form
-    return render(request, "portfolio/add-portfolio-image.html", context)
+    
+    context = {
+        "form": form,
+        "page_title": "Add Portfolio Image",
+        "end_point": "add_portfolio_image",
+    }
+    return render(request, "generic/add-item.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -363,8 +369,10 @@ def new_payment(request):
             return redirect(cp_payments)
     context = {
         "form": form,
+        "page_title": "Add Payment Request",
+        "end_point": "new_payment",
     }
-    return render(request, "payments/new-payment.html", context)
+    return render(request, "generic/add-item.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -512,19 +520,24 @@ def cms_add_faq(request):
     """
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
-    context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
-    }
+
     form = HomePageFAQForm()
+
     if request.method == "POST":
         form = HomePageFAQForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "FAQ added successfully")
             return redirect(cp_cms_faq)
-    context["form"] = form
-    return render(request, "cms/faqs/cms-add-faq.html", context)
+        
+    context = {
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "page_title": "Add FAQ",
+        "end_point": "cms_add_faq",
+    }
+    return render(request, "generic/add-item.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -608,7 +621,6 @@ def cp_cms_add_slider_image(request):
     """
     A view to add a slider image
     """
-    context = {}
     form = AddSliderImageForm()
     if request.method == "POST":
         num_of_slider_images = HomePageSliderImages.objects.all().count()
@@ -621,9 +633,15 @@ def cp_cms_add_slider_image(request):
             form.save()
             messages.success(request, "Slider image added successfully")
             return redirect(cp_cms_manage_slider_images)
-    context["form"] = form
+    
+    context = {
+        "form": form,
+        "page_title": "Add Slider Image",
+        "end_point": "cp_cms_add_slider_image",
+    }
+
     return render(
-        request, "cms/home/slider-images/cms-add-slider-image.html", context)
+        request, "generic/add-item.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
