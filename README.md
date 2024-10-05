@@ -333,13 +333,15 @@ Please refer to the [Deployment.md](DEPLOYMENT.md) document for a detailed overv
 
 ## Credits
 
- - [ChatGPT](https://openai.com/chatgpt/) - ChatGPT was used to generator placeholder text during the initial development of the website.
+- [ChatGPT](https://openai.com/chatgpt/) - ChatGPT was used to generator placeholder text during the initial development of the website.
 
 - [ChristopherGS](https://christophergs.com/blog/django-sitemap-tutorial-for-humans) - For a handy tutorial on how to implement sitemaps in the Django Framework
 
- - [CloudConvert](https://cloudconvert.com/) - Used to convert images to various formats as necassary
+- [StackOverflow](https://stackoverflow.com/questions/31816624/naming-convention-for-django-url-templates-models-and-views) - For help in clarifying best practicing for defining views and naming them
 
- - [TinyPNG](https://tinypng.com/) - Used to compress png images
+- [CloudConvert](https://cloudconvert.com/) - Used to convert images to various formats as necassary
+
+- [TinyPNG](https://tinypng.com/) - Used to compress png images
 
 ## Acknowledgements
 
