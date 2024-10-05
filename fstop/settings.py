@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "reviews",
     "profiles",
     "services",
+    'django_cypress',
 ]
 
 MIDDLEWARE = [
