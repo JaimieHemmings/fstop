@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 
 
 from payments.models import Payment
@@ -45,7 +45,7 @@ def new_payment(request):
             form.instance.name = name
             form.save()
             messages.success(request, "Payment request added successfully")
-            return redirect(cp_payments)
+            return redirect(reverse("cp_payments"))
     context = {
         "form": form,
         "page_title": "Add Payment Request",
@@ -59,7 +59,7 @@ def view_payment(request, payment_id):
     """
     A view to view the details of a payment
     """
-    payment = Payment.objects.get(id=payment_id)
+    payment = get_object_or_404(Payment, id=payment_id)
     context = {
         "payment": payment,
     }

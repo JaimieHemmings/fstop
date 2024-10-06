@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 
 from portfolio.models import PortfolioImages
 
@@ -32,7 +32,7 @@ def add_portfolio_image(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Portfolio image added successfully")
-            return redirect(cp_portfolio)
+            return redirect(reverse("cp_portfolio"))
     
     context = {
         "form": form,
@@ -48,7 +48,7 @@ def delete_portfolio_image_confirm(request, image_id):
     A view to confirm the deletion of a portfolio image
     """
     context = {}
-    image = PortfolioImages.objects.get(id=image_id)
+    image = get_object_or_404(PortfolioImages, id=image_id)
     context["image"] = image
 
     return render(
@@ -60,7 +60,7 @@ def delete_portfolio_image(request, image_id):
     """
     A view to delete a portfolio image
     """
-    image = PortfolioImages.objects.get(id=image_id)
+    image = get_object_or_404(PortfolioImages, id=image_id)
     image.delete()
     messages.success(request, "Portfolio image deleted successfully")
-    return redirect(cp_portfolio)
+    return redirect(reverse("cp_portfolio"))
