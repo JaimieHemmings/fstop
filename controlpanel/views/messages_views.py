@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from home.models import Message
@@ -30,7 +30,7 @@ def view_message(request, message_id):
     """
     A view to view a message
     """
-    message = Message.objects.get(id=message_id)
+    message = get_object_or_404(Message, id=message_id)
     message.read = True
     message.save()
     total_unread_messages = Message.objects.filter(read=False).count()
@@ -50,7 +50,7 @@ def toggle_read(request, message_id):
     A view to toggle the read status of a message
     """
     try:
-        message = Message.objects.get(id=message_id)
+        message = get_object_or_404(Message, id=message_id)
         message.read = not message.read
         message.save()
         messages.success(request, "Message status updated successfully")
@@ -66,7 +66,7 @@ def delete_message_confirm(request, message_id):
     """
     latest_messages = Message.objects.all().order_by("-created_at")[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
-    message = Message.objects.get(id=message_id)
+    message = get_object_or_404(Message, id=message_id)
     unread_messages = Message.objects.filter(read=False)[:5]
 
     context = {
@@ -83,7 +83,7 @@ def delete_message(request, message_id):
     """
     A view to delete a message
     """
-    message = Message.objects.get(id=message_id)
+    message = get_object_or_404(Message, id=message_id)
     message.delete()
     messages.success(request, "Message deleted successfully")
-    return cp_messages(request)
+    return redirect(reverse(cp_messages))

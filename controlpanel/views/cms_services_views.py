@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 
 from home.models import Message
 from services.models import (
@@ -44,7 +44,7 @@ def cp_cms_edit_services_hero(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Hero image updated successfully")
-            return redirect(cp_cms_manage_services)
+            return redirect(reverse("cp_cms_manage_services"))
         else:
             messages.error(
                 request, "There was an error updating the hero image")
@@ -70,7 +70,7 @@ def cp_cms_edit_services_banner(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Banner updated successfully")
-            return redirect(cp_cms_manage_services)
+            return redirect(reverse("cp_cms_manage_services"))
         else:
             messages.error(request, "There was an error updating the banner")
 
@@ -110,7 +110,7 @@ def cp_cms_edit_services_card(request, card_id):
         if form.is_valid():
             form.save()
             messages.success(request, "Card updated successfully")
-            return redirect(cp_cms_edit_services_cards)
+            return redirect(reverse("cp_cms_edit_services_cards"))
         else:
             messages.error(request, "There was an error updating the card")
 
@@ -128,7 +128,7 @@ def cp_cms_delete_services_card_confirm(request, card_id):
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
 
-    card = ServicesCards.objects.get(id=card_id)
+    card = get_object_or_404(ServicesCards, id=card_id)
 
     context = {
         "unread_messages": unread_messages,
@@ -142,11 +142,11 @@ def cp_cms_delete_services_card_confirm(request, card_id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_delete_services_card(request, card_id):
-    card = ServicesCards.objects.get(id=card_id)
+    card = get_object_or_404(ServicesCards, id=card_id)
     card.delete()
     messages.success(request, "Card deleted successfully")
 
-    return redirect(cp_cms_edit_services_cards)
+    return redirect(reverse("cp_cms_edit_services_cards"))
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -166,7 +166,7 @@ def cp_cms_add_services_card(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Card added successfully")
-            return redirect(cp_cms_edit_services_cards)
+            return redirect(reverse("cp_cms_edit_services_cards"))
         else:
             messages.error(request, "There was an error adding the card")
 
@@ -185,7 +185,7 @@ def cp_cms_edit_context_banner_one(request):
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
 
-    banner = ServicesContextBannerOne.objects.get(id=1)
+    banner = get_object_or_404(ServicesContextBannerOne, id=1)
     form = ServicesBannerForm(instance=banner)
 
     if request.method == "POST":
@@ -211,7 +211,7 @@ def cp_cms_edit_context_banner_two(request):
     unread_messages = Message.objects.filter(read=False)[:5]
     total_unread_messages = Message.objects.filter(read=False).count()
 
-    banner = ServicesContextBannerTwo.objects.get(id=1)
+    banner = get_object_or_404(ServicesContextBannerTwo, id=1)
     form = ServicesBannerForm(instance=banner)
 
     if request.method == "POST":
@@ -219,7 +219,7 @@ def cp_cms_edit_context_banner_two(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Banner updated successfully")
-            return redirect(cp_cms_manage_services)
+            return redirect(reverse("cp_cms_manage_services"))
         else:
             messages.error(request, "There was an error updating the banner")
 

@@ -155,7 +155,7 @@ urlpatterns = [
         name="cp_cms_delete_services_card",
     ),
     path(
-        "services-page/cards/add/",
+        "services-page/cards/new/",
         views.cp_cms_add_services_card,
         name="cp_cms_add_services_card",
     ),

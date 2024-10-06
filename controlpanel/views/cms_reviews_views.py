@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 
 from reviews.models import Review
 
@@ -43,7 +43,7 @@ def cms_delete_review_confirm(request, review_id):
     A view to confirm the deletion of a review
     """
     context = {}
-    review = Review.objects.get(id=review_id)
+    review = get_object_or_404(Review, id=review_id)
     context["review"] = review
     return render(
         request, "cms/reviews/cms-delete-review-confirm.html", context)
@@ -54,10 +54,10 @@ def cms_delete_review(request, review_id):
     """
     A view to delete a review
     """
-    review = Review.objects.get(id=review_id)
+    review = get_object_or_404(Review, id=review_id)
     review.delete()
     messages.success(request, "Review deleted successfully")
-    return redirect(cms_manage_reviews)
+    return redirect(reverse("cms_manage_reviews"))
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -74,6 +74,6 @@ def cms_edit_review(request, review_id):
         if form.is_valid():
             form.save()
             messages.success(request, "Review updated successfully")
-            return redirect(cms_manage_reviews)
+            return redirect(reverse("cms_manage_reviews"))
     context["form"] = form
     return render(request, "cms/reviews/cms-edit-review.html", context)
