@@ -25,7 +25,7 @@ def cp_articles(request):
         "total_unread_messages": total_unread_messages,
         "unread_messages": unread_messages,
     }
-    return render(request, "articles/article-management.html", context)
+    return render(request, "article-management.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -81,13 +81,17 @@ def edit_article(request, article_id):
             messages.success(request, "Article updated successfully")
             return cp_articles(request)
 
-    context["article"] = article
-    context["latest_messages"] = latest_messages
-    context["total_unread_messages"] = total_unread_messages
-    context["unread_messages"] = unread_messages
-    context["form"] = form
+    context = {
+        "end_point": "edit_article",
+        "item": article,
+        "article": article,
+        "form": form,
+        "unread_messages": unread_messages,
+        "total_unread_messages": total_unread_messages,
+        "latest_messages": latest_messages,
+    }
 
-    return render(request, "articles/edit-article.html", context)
+    return render(request, "generic/edit-item.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -100,13 +104,15 @@ def delete_article_confirm(request, article_id):
     unread_messages = Message.objects.filter(read=False)[:5]
 
     context = {
-        latest_messages: latest_messages,
-        total_unread_messages: total_unread_messages,
-        unread_messages: unread_messages
+        "latest_messages": latest_messages,
+        "total_unread_messages": total_unread_messages,
+        "unread_messages": unread_messages,
+        "return_path": "cp_articles",
+        "delete_path": "delete_article"
     }
     article = Article.objects.get(id=article_id)
-    context["article"] = article
-    return render(request, "articles/confirm-delete-article.html", context)
+    context["item"] = article
+    return render(request, "generic/delete-confirmation.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)

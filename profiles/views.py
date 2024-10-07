@@ -6,6 +6,7 @@ from django.views.decorators.http import require_POST
 
 from payments.models import Payment
 from .forms import UserProfileForm
+from .forms import PaymentForm
 from .models import UserProfile
 from payments.models import Payment
 # from payments.forms import PaymentForm

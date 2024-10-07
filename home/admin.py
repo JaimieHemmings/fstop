@@ -11,7 +11,6 @@ from .models import (
   HomePagePanel)
 
 from reviews.models import Review
-from payments.models import Payment
 
 
 class MessageAdmin(admin.ModelAdmin):
@@ -31,10 +30,6 @@ class HomePageSliderImagesAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    pass
-
-
-class PaymentAdmin(admin.ModelAdmin):
     pass
 
 
@@ -61,7 +56,6 @@ admin.site.register(Article, ArticleAdmin)
 admin.site.register(PortfolioImages, PortfolioImagesAdmin)
 admin.site.register(HomePageSliderImages, HomePageSliderImagesAdmin)
 admin.site.register(Review, ReviewAdmin)
-admin.site.register(Payment, PaymentAdmin)
 admin.site.register(HomePageHero, HomePageHeroAdmin)
 admin.site.register(HomePageAbout, HomePageAboutAdmin)
 admin.site.register(HomePageTrustedBy, HomePageTrustedByAdmin)
