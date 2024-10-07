@@ -287,18 +287,31 @@ nav.navbar {
   Home Hero Styles
 */
 
+
+.hero-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+}
+
 .home-hero {
-  min-height: 50vh;
-  padding: 6.25rem 0;
+  
+  min-height: 500px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
+  padding: 0;
+  max-height: 100vh;
+  overflow: hidden;
+  background-position: center 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   .container {
-    padding: 3.3125rem 0;
-    position: relative;
+    padding: 6.25rem 0;
     z-index: 2;
 
     h1 {
@@ -306,6 +319,7 @@ nav.navbar {
       font-size: calc(var(--font-size-base) * 4.25);
       font-weight: 700;
       margin-bottom: 1.25rem;
+      line-height: 1;
     }
 
     p {
@@ -315,6 +329,12 @@ nav.navbar {
       margin-bottom: 1rem;
       max-width: 60%;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .desktop-hero {
+    display: none;
   }
 }
 

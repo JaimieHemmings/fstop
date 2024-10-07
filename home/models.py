@@ -17,9 +17,17 @@ class Message(models.Model):
 
 
 class HomePageHero(models.Model):
+
+    def get_path(instance, filename):
+        extension = filename.split(".")[-1]
+        filename = f"{filename}-{uuid.uuid4()}.{extension}"
+        return f"cms/home/{filename}"
+    
     hero_title = models.CharField(max_length=50, blank=False, null=False)
     hero_subtitle = models.TextField(max_length=200, blank=False, null=False)
-    hero_image = models.ImageField(upload_to="cms/home/")
+    hero_image = models.ImageField(upload_to=get_path)
+    hero_image_alt = models.CharField(max_length=100, blank=False, null=False, default="Enter an alt text")
+    hero_image_mobile = models.ImageField(upload_to=get_path, default="default.png")
     hero_list_one = models.CharField(max_length=100, blank=False, null=False)
     hero_list_two = models.CharField(max_length=100, blank=False, null=False)
     hero_list_three = models.CharField(max_length=100, blank=False, null=False)
