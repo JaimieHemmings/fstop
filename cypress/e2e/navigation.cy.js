@@ -12,6 +12,18 @@ describe('Test Navigation', () => {
     cy.visit('/contact')
     cy.url().should('include', '/contact')
 
+    // Test login link
+    cy.getDataCy('main-nav').within(() => {
+      cy.getDataCy('dropdown-menu').click()
+      cy.getDataCy('login-link').click()
+    })
+
+    // Test Register link
+    cy.getDataCy('main-nav').within(() => {
+      cy.getDataCy('dropdown-menu').click()
+      cy.getDataCy('register-link').click()
+    })
+
     // Test 404 works
     cy.request({url: '/404', failOnStatusCode: false}).its('status').should('eq', 404)
   })
