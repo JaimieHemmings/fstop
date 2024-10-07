@@ -46,6 +46,8 @@ class HomeHeroForm(forms.ModelForm):
             "hero_title",
             "hero_subtitle",
             "hero_image",
+            "hero_image_mobile",
+            "hero_image_alt",
             "hero_list_one",
             "hero_list_two",
             "hero_list_three",
@@ -74,6 +76,8 @@ class HomeHeroForm(forms.ModelForm):
             "data_three_value": "Data Three Value",
             "data_three_title": "Data Three Title",
             "cover_image": "",
+            "hero_image_mobile": "",
+            "hero_image_alt": "Enter an alt text",
         }
 
         helper_text = {
@@ -90,6 +94,8 @@ class HomeHeroForm(forms.ModelForm):
             "data_three_value": "The value for the third data point",
             "data_three_title": "The title for the third data point",
             "hero_image": "The background image for the hero section",
+            "hero_image_mobile": "Enter an image to be displayed on small screens",
+            "hero_image_alt": "Enter an alt text to be associated with the image for accessibility issues (screen readers)",
         }
 
         field_labels = {
@@ -106,6 +112,8 @@ class HomeHeroForm(forms.ModelForm):
             "data_three_value": "Data Three Value",
             "data_three_title": "Data Three Title",
             "hero_image": "Hero Image",
+            "hero_image_mobile": "Hero Image for Mobile",
+            "hero_image_alt": "Enter an alt text",
         }
 
         for field in self.fields:
