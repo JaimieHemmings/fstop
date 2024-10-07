@@ -1,3 +1,3 @@
-Cypress.Commands.add('getDataCy', (selector) => {
-  return cy.get(`[data-cy=${selector}]`);
+Cypress.Commands.add('getDataCy', (dataTestSelector) => {
+  return cy.get(`[data-cy="${dataTestSelector}"]`);
 });

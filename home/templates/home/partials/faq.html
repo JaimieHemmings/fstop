@@ -10,13 +10,13 @@
     </div>
     <div class="row mt-5">
       <div class="col-md-6 pb-3">
-        <div class="accordion accordion-flush" id="accordion" data-cy="accordion">
+        <div class="accordion accordion-flush" id="accordion">
 
 
           {% if homepage_faqs %}
           {% for faq in homepage_faqs %}
-          <div class="accordion-item" data-cy="faq-item-{{faq.id}}">
-            <h2 class="accordion-header" id="heading{{ faq.id }}" data-cy="faq-item-{{faq.id}}-heading">
+          <div class="accordion-item" data-cy="accordion">
+            <h2 class="accordion-header" id="heading{{ faq.id }}" data-cy="faq-item-{{ faq.id }}-heading">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ faq.id }}" aria-expanded="true" aria-controls="collapse{{ faq.id }}">
                 {{ faq.faq_question }}
               </button>

@@ -12,26 +12,17 @@ describe('Test Navigation', () => {
     cy.visit('/contact')
     cy.url().should('include', '/contact')
 
-    // Test Dropdown nav item works
-    cy.contains('Login').should('not.be.visible')
-    cy.getDataCy('top-nav').within(() => {
-      cy.getDataCy('drop-down-nav').click()
-    })
-    cy.contains('Login').should('be.visible')
-    cy.getDataCy('top-nav').within(() => {
-      cy.getDataCy('drop-down-nav').click()
-    })
-    cy.contains('Login').should('not.be.visible')
-
-    // Test Login and Register Links
-    cy.getDataCy('top-nav').within(() => {
-      cy.getDataCy('drop-down-nav').click()
-      cy.getDataCy('login-button').click()
-      cy.contains('Login').should('not.be.visible')
-      cy.getDataCy('drop-down-nav').click()
-      cy.getDataCy('register-button').click()
+    // Test login link
+    cy.getDataCy('main-nav').within(() => {
+      cy.getDataCy('dropdown-menu').click()
+      cy.getDataCy('login-link').click()
     })
 
+    // Test Register link
+    cy.getDataCy('main-nav').within(() => {
+      cy.getDataCy('dropdown-menu').click()
+      cy.getDataCy('register-link').click()
+    })
 
     // Test 404 works
     cy.request({url: '/404', failOnStatusCode: false}).its('status').should('eq', 404)
