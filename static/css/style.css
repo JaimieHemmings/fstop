@@ -135,6 +135,10 @@ body > * {
   color: var(--col-white-300);
 }
 
+.border-b-primary {
+  border-bottom: 1px solid var(--col-primary);
+}
+
 .border-b-secondary {
   border-bottom: 1px solid rgba(193,	193,	195, 0.5);
 }
