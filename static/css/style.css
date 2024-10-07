@@ -286,7 +286,7 @@ nav.navbar {
 .home-hero {
   padding: 6.25rem 0;
   background-size: cover;
-  background-position: top right;
+  background-position: center;
   background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
@@ -295,6 +295,18 @@ nav.navbar {
     padding: 3.3125rem 0;
     position: relative;
     z-index: 2;
+
+    &:after {
+      content: "F.";
+      font-size: 30rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: #fff;
+      opacity: 0.2;
+      font-weight: 700;
+      line-height: 1;
+    }
 
     h1 {
       color: var(--col-white-200);
@@ -336,18 +348,27 @@ nav.navbar {
   .hero-list {
     margin: 0;
     padding: 0;
+    padding-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
 
     li {
+      flex-basis: 50%;
       display: flex;
       flex-direction: row;
       align-items: center;     
       color: var(--col-white-200);
-      margin-top: 15px;
       font-weight: 400;
+      padding-left: 50px;
+      position: relative;
+      padding-bottom: 15px;
+      align-items: start;
 
       img {
         display: inline-block;
-        margin-right: 15px;
+        position: absolute;
+        top: 0;
+        left: 15px;
       }
     }
   }
@@ -377,6 +398,16 @@ nav.navbar {
       h1 {
         font-size: calc(var(--font-size-base) * 2);
       }
+
+      &:after {
+        display: none;
+      }
+
+      .hero-list {
+        li {
+          flex-basis: 100%;
+        }
+      }
     }
   }
 
@@ -388,12 +419,6 @@ nav.navbar {
     left: -150%;
     top: 100%;
     width: 500%;
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .home-hero .hero-list {
-    columns: 2;
   }
 }
 
@@ -638,6 +663,19 @@ nav.navbar {
   background-position: center bottom;
   background-repeat: no-repeat;
   padding: 50px 15px;
+  position: relative;
+
+  &:after {
+    content: "F.";
+    font-size: 20rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    opacity: 0.2;
+    font-weight: 700;
+    line-height: 1;
+  }
 
   p {
     max-width: 50%;
@@ -966,7 +1004,7 @@ ul.achievements {
   margin: 0;
   padding: 0;
   line-height: 0;
-  height: 100px;
+  height: 300px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1137,6 +1175,10 @@ ul.achievements {
 }
 
 .service-panels {
+  .card {
+    background-color: var(--col-white-200);
+  }
+
   .card-icon {
     &:after {
       content: "";
