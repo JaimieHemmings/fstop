@@ -70,12 +70,14 @@ def delete_message_confirm(request, message_id):
     unread_messages = Message.objects.filter(read=False)[:5]
 
     context = {
-        "message": message,
+        "item": message,
         "latest_messages": latest_messages,
         "total_unread_messages": total_unread_messages,
         "unread_messages": unread_messages,
+        "delete_path": "delete_message",
+        "return_path": "cp_messages",
     }
-    return render(request, "messages/delete-message-confirm.html", context)
+    return render(request, "generic/delete-confirmation.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)

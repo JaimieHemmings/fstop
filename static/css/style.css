@@ -232,6 +232,11 @@ body > * {
   }
 }
 
+ul.errorlist li {
+  color: var(--col-primary);
+  font-weight: 700;
+}
+
 /*
   Navigation Styles
 */
