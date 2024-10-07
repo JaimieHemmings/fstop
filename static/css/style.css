@@ -296,7 +296,6 @@ nav.navbar {
 }
 
 .home-hero {
-  
   min-height: 500px;
   background-size: cover;
   background-position: center center;
@@ -335,6 +334,11 @@ nav.navbar {
 @media screen and (max-width: 768px) {
   .desktop-hero {
     display: none;
+  }
+
+  .home-hero {
+    min-height: 100vh;
+    position: relative;
   }
 }
 
