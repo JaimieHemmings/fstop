@@ -408,16 +408,6 @@ nav.navbar {
       }
     }
   }
-
-  .home-hero:after {
-    display: none;
-  }
-
-  .home-hero:before {
-    left: -150%;
-    top: 100%;
-    width: 500%;
-  }
 }
 
 /*
