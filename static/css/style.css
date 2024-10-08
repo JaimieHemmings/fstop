@@ -319,12 +319,12 @@ nav.navbar {
     z-index: 2;
 
     h1 {
-      color: var(--col-black);
+      color: var(--col-white-200);
       font-size: calc(var(--font-size-base) * 4.25);
       font-weight: 700;
       margin-bottom: 1.25rem;
       line-height: 1;
-      
+
       span {
         display: block;
         font-size: calc(var(--font-size-base) * 10);
