@@ -1153,6 +1153,15 @@ ul.achievements {
   background-repeat: no-repeat;
   position: relative;
 
+  h1 {
+    span {
+      display: block;
+      font-size: calc(var(--font-size-base) * 10);
+      margin-left: 0px;
+      font-weight: 700;
+    }
+  }
+
   &:after {
     content: "";
     position: absolute;
