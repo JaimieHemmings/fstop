@@ -44,7 +44,7 @@ class ServicesBannerForm(forms.ModelForm):
         }
         
         # Set autofocus on first field to be filled in
-        self.fields['title'].widget.attrs['autofocus'] = True
+        self.fields['image'].widget.attrs['autofocus'] = True
         
         for field in self.fields:
             if field != 'image':
