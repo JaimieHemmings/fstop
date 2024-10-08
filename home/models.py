@@ -112,7 +112,7 @@ class HomePageSliderImages(models.Model):
 
 class HomePagePanel(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
-    icon = models.CharField(max_length=1000, blank=False, null=False)
+    icon = models.TextField()
     paragraph = models.TextField(blank=False, null=False)
 
     def __str__(self):
