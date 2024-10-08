@@ -1,15 +1,30 @@
 {% load static %}
 
-<section
-  class="container-fluid home-hero"
-  style="background-image: url({{ homepage_hero.hero_image.url }})">
-  <div class="container p-5">
+<section class="container-fluid home-hero background-primary" style="background-image:url('{{ homepage_hero.hero_image_mobile.url }}')">
+  <div class="row">
+    <img src="{{ homepage_hero.hero_image.url }}" alt="{{ homepage_hero.hero_image_alt }}" class="img-fluid desktop-hero">
+  </div>
+  <div class="hero-overlay p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h1 class="homepage-title"><span>F.</span>{{ homepage_hero.hero_title }}</h1>
+          <p class="pb-1">{{ homepage_hero.hero_subtitle }}</p>
+          <div>
+            <a href="{% url 'portfolio' %}" class="btn btn-custom-red">Portfolio</a>
+            <a href="{% url 'contact' %}" class="btn btn-custom-black ml-3">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sub-hero background-primary">
+  <div class="container">
     <div class="row">
-      <div class="col-sm-8">
-        <h1>{{ homepage_hero.hero_title }}</h1>
-        <p class="pb-1">{{ homepage_hero.hero_subtitle }}</p>
-        <a href="{% url 'portfolio' %}" class="btn btn-custom-red">Portfolio</a>
-        <a href="{% url 'contact' %}" class="btn btn-custom-black ml-3">Contact Us</a>
+
+      <div class="col-md-8">
+        
         <ul class="hero-list mt-3">
           <li>
             <img src="{% static 'img/tick-icon.svg' %}" alt="signature">
@@ -28,16 +43,19 @@
             {{ homepage_hero.hero_list_four }}
           </li>
         </ul>
-        <div class="row mt-5 credentials">
-          <div class="col-sm-4">
+      </div>
+      <div class="col-md-4 credentials pt-3">
+        <div class="row">
+
+          <div class="col-md-4 p-3">
             <span>{{ homepage_hero.data_one_value }}%</span>
             <h2>{{ homepage_hero.data_one_title }}</h2>
           </div>
-          <div class="col-sm-4">
+          <div class="col-md-4 p-3">
             <span>{{ homepage_hero.data_two_value }}+</span>
             <h2>{{ homepage_hero.data_two_title }}</h2>
           </div>
-          <div class="col-sm-4">
+          <div class="col-md-4 p-3">
             <span>{{ homepage_hero.data_three_value }}+</span>
             <h2>{{ homepage_hero.data_three_title }}</h2>
           </div>

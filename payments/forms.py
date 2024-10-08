@@ -5,7 +5,7 @@ class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = ('full_name', 'email', 'phone_number', 'street_address1',
-                  'street_address2', 'town_or_city', 'county', 'country', 'postcode', 'amount', 'description')
+                  'street_address2', 'town_or_city', 'county', 'country', 'postcode')
         widgets = {
             'full_name': forms.TextInput(attrs={'placeholder': 'Full Name'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
@@ -16,8 +16,6 @@ class PaymentForm(forms.ModelForm):
             'county': forms.TextInput(attrs={'placeholder': 'County'}),
             'country': forms.TextInput(attrs={'placeholder': 'Country'}),
             'postcode': forms.TextInput(attrs={'placeholder': 'Postcode'}),
-            'amount': forms.NumberInput(attrs={'placeholder': 'Amount'}),
-            'description': forms.TextInput(attrs={'placeholder': 'Description'}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -32,8 +30,6 @@ class PaymentForm(forms.ModelForm):
             'county': 'County',
             'country': 'Country',
             'postcode': 'Postcode',
-            'amount': 'Amount',
-            'description': 'Description',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True

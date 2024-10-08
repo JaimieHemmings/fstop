@@ -9,19 +9,56 @@
 
 <section class="container-fluid background-primary section-padding">
   <div class="container">
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-sm-12">
         <h1 class="color-white-200 fw-600 text-center">Make Payment</h2>
         <p class="color-white-300 mt-3 text-center sub-text">Please enter your card details to make a payment</p>
       </div>
     </div>
-    <div class="row section-padding background-secondary mt-5">
-      <div class="col-sm-12 color-white-300">
-        <p>{{ user_profile.fname }} {{ user_profile.lname }}</p>
-        <p>{{ order.id }}</p>
-        <p>{{ order.date }}</p>
-        <p>{{ order.description }}</p>
-        <p>£{{ order.amount }}</p>
+    <div class="row">
+      <div class="col-sm-12 pt-3 pb-3">
+        <p class="color-white-200 pb-3">Payment ID: {{ payment_data.id }}</p>
+        <p class="color-white-200 pb-3">{{ payment_data.description }}</p>
+        <p class="color-white-200">£{{ payment_data.amount }}</p>
+      </div>
+    </div>
+    <div class="row background-secondary">
+      <div class="col-sm-12 color-white-300 p-3">
+        <form method="POST" action="{% url 'make_payment' payment_data.id %}" id="payment-form">
+          {% csrf_token %}
+          <fieldset class="px-3 mb-3">
+            <legend class="fieldset-label small color-white-200">Details</legend>
+            <div class="row">
+              <div class="col-sm-6">
+                {{ form.full_name }}
+                {{ form.email }}
+              </div>
+              <div class="col-sm-6">
+                {{ form.phone_number }}
+              </div>
+            </div>
+          </fieldset>
+          
+          <fieldset class="px-3 mb-5">
+            <legend class="fieldset-label small color-white-200">Address</legend>
+            {{ form.street_address1 }}
+            {{ form.street_address2 }}
+            {{ form.town_or_city }}
+            {{ form.county }}
+            {{ form.postcode }}
+            {{ form.country }}
+          </fieldset>
+          
+          <fieldset class="px-3 mb-5">
+            <legend class="fieldset-label small color-white-200">Card Details</legend>
+            <!-- Stripe Element Placeholders -->
+            <div id="card-element" class="mb-3 form-control"></div>
+            <div id="card-errors" role="alert"></div>
+          </fieldset>
+          <div class="d-flex flex-row justify-content-end mt-5">
+            <button type="submit" class="btn btn-custom-red">Pay Now</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
