@@ -63,6 +63,8 @@ FStops Photography is my fourth project in the Code Institutes level 5 Diploma i
   - [Credits](#credits)
   - [Acknowledgements](#acknowledgements)
 
+  ![Lander Image](docs/lander.jpg)
+
 # User Experience
 
 ## Strategy Plane
