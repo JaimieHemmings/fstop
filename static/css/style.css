@@ -319,7 +319,7 @@ nav.navbar {
     z-index: 2;
 
     h1 {
-      color: var(--col-black);
+      color: var(--col-white-200);
       font-size: calc(var(--font-size-base) * 4.25);
       font-weight: 700;
       margin-bottom: 1.25rem;
@@ -332,7 +332,7 @@ nav.navbar {
     }
 
     p {
-      color: var(--col-black);
+      color: var(--col-white-200);
       font-size: var(--font-size-base);
       font-weight: 600;
       margin-bottom: 1rem;
