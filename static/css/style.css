@@ -324,6 +324,7 @@ nav.navbar {
       font-weight: 700;
       margin-bottom: 1.25rem;
       line-height: 1;
+      
       span {
         display: block;
         font-size: calc(var(--font-size-base) * 10);
@@ -331,7 +332,7 @@ nav.navbar {
     }
 
     p {
-      color: var(--col-black);
+      color: var(--col-white-200);
       font-size: var(--font-size-base);
       font-weight: 600;
       margin-bottom: 1rem;
