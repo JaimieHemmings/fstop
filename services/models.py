@@ -28,8 +28,6 @@ class ServicesBanner(models.Model):
         filename = f"{filename}-{uuid.uuid4()}.{extension}"
         return f"services/banner/{filename}"
     
-    title = models.CharField(max_length=100)
-    lead = models.CharField(max_length=500)
     image = models.ImageField(upload_to=get_path)
     alt_text = models.CharField(max_length=100)
 

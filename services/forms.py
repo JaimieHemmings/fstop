@@ -40,8 +40,6 @@ class ServicesBannerForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
-            'title': 'Enter the title of the banner image',
-            'lead': 'Enter the lead text for the banner image',
             'alt_text': 'Enter the alt text for the banner image',
         }
         
