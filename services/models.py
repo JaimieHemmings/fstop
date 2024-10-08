@@ -62,10 +62,6 @@ class ServicesContextBannerOne(models.Model):
     lead = models.CharField(max_length=500)
     image = models.ImageField(upload_to=get_path)
     alt_text = models.CharField(max_length=100)
-    stat_one = models.CharField(max_length=100)
-    stat_one_description = models.CharField(max_length=500)
-    stat_two = models.CharField(max_length=100)
-    stat_two_description = models.CharField(max_length=500)
 
     def __str__(self):
         return self.title
@@ -84,10 +80,6 @@ class ServicesContextBannerTwo(models.Model):
   lead = models.CharField(max_length=500)
   image = models.ImageField(upload_to=get_path)
   alt_text = models.CharField(max_length=100)
-  stat_one = models.CharField(max_length=100)
-  stat_one_description = models.CharField(max_length=500)
-  stat_two = models.CharField(max_length=100)
-  stat_two_description = models.CharField(max_length=500)
 
   def __str__(self):
       return self.title
