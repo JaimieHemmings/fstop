@@ -56,16 +56,14 @@ def make_payment(request, id):
     """
     View to make a payment
     """
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    payment_data = get_object_or_404(Payment, id=id)
+    form = PaymentForm(instance=payment_data)
+    if settings.DEBUG:
+        STRIPE_PUBLIC_KEY = "abcdef"
+    else:
+        STRIPE_PUBLIC_KEY = settings.STRIPE_PUBLIC_KEY
 
     if request.method == "POST":
-
-        form_data = {
-            
-        }
-
-        form = PaymentForm(form_data)
         if form.is_valid():
             form.save()
             stripe_payment_id = 0
@@ -75,34 +73,11 @@ def make_payment(request, id):
             messages.error(
                 request, "Failed to make payment."
                 "Please ensure the form is valid.")
-
-    order = get_object_or_404(Payment, pk=id)
-    user_profile = UserProfile.objects.get(user=request.user)
-    context = {"order": order, "user_profile": user_profile}
-
-    full_name = user_profile.fname + " " + user_profile.lname
-
-    total = order.amount
-    stripe_total = round(total * 100)
-
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        customer = full_name,
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-    )
-
-    if not stripe_public_key:
-        messages.warning(
-            request,
-            "Stripe public key is missing."
-            "Did you forget to set it in your environment?",
-        )
-
     context = {
-        # add form
-        "stripe_public_key": stripe_public_key,
-        "client_secret": intent.client_secret,
+        "form": form,
+        "payment_data": payment_data,
+        "stripe_public_key": STRIPE_PUBLIC_KEY,
+        "client_secret": "aaa",
     }
 
     return render(request, "make-payment.html", context)
