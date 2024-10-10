@@ -36,7 +36,7 @@ urlpatterns = [
     path("control-panel/", include("controlpanel.urls")),
     path("payments/", include("payments.urls")),
     path("profile/", include("profiles.urls")),
-    path("services/", include("services.urls")),
+    path("services/", include("service.urls")),
     path(
         "sitemap.xml",
         sitemap,

@@ -8,15 +8,35 @@
   </a>
 </li>
 
-<li class="nav-item">
-  <a 
-    {% if '/services/' in request.path %} aria-current="page" {% endif %}
-    href="#"
-    class='nav-link px-2{% if "/services/" in request.path %} active{% endif %}'
-  >
-    Services
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle {% if "/services/" in request.path %} active{% endif %}" href="#" role="button"
+  {% if '/services/' in request.path %} aria-current="page" {% endif %} data-bs-toggle="dropdown" aria-expanded="false" data-cy="dropdown-menu">
+    Services <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
+    </svg>    
   </a>
-</li>
+<ul class="dropdown-menu">
+  <li>
+    <a class="dropdown-item" href="{% url 'lifestyle_services' %}">Lifestyle</a>
+  </li>
+  <li>
+    <a class="dropdown-item" href="{% url 'event_services' %}">Event</a>
+  </li>
+  <li>
+    <a class="dropdown-item" href="{% url 'property_services' %}">Property</a>
+  </li>
+  <li>
+    <a class="dropdown-item" href="{% url 'aerial_services' %}">Aerial</a>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
 
 <li class="nav-item">
   <a
