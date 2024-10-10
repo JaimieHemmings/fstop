@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/hero-style.css' %}">
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -13,20 +14,20 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'partials/home/home-hero.html' %}
-  {% include 'partials/home/learn.html' %}
-  {% include 'partials/home/trust.html' %}
+  {% include 'home/partials/home-hero.html' %}
+  {% include 'home/partials/learn.html' %}
+  {% include 'home/partials/trust.html' %}
   {% if homepage_slider_images %}
-    {% include 'partials/home/img-slider.html' %}
+    {% include 'home/partials/img-slider.html' %}
   {% endif %}
   {% if homepage_panels %}
     {% include 'home/partials/services-home.html' %}
   {% endif %}
   {% if articles %}
-    {% include 'partials/home/blog-feed.html' %}
+    {% include 'home/partials/blog-feed.html' %}
   {% endif %}
   {% if reviews %}
-    {% include 'partials/home/feedback.html' %}
+    {% include 'home/partials/feedback.html' %}
   {% endif %}
   {% if reviews %}
     {% include 'home/partials/faq.html' %}

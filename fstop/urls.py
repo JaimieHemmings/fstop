@@ -6,10 +6,16 @@ from django.contrib import sitemaps
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from blog.models import Article
+from portfolio.models import PortfolioImages
 
-info_dict = {
+info_dict_blog = {
     "queryset": Article.objects.all(),
     "date_field": "date",
+}
+
+info_dict_portfolio = {
+    "queryset": PortfolioImages.objects.all(),
+    "date_field": "created_at",
 }
 
 class StaticViewSitemap(sitemaps.Sitemap):
@@ -17,14 +23,19 @@ class StaticViewSitemap(sitemaps.Sitemap):
     changefreq = "weekly"
 
     def items(self):
-        return ["home", "about", "services", "contact"]
+        return [
+            "home",
+            "about",
+            "services",
+            "contact"]
 
     def location(self, item):
         return reverse(item)
 
 sitemaps = {
     "static": StaticViewSitemap,
-    "blog": GenericSitemap(info_dict, priority=0.6),
+    "blog": GenericSitemap(info_dict_blog, priority=0.6),
+    "portfolio": GenericSitemap(info_dict_portfolio, priority=0.6),
 }
 
 urlpatterns = [

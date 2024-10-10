@@ -8,5 +8,13 @@ class PortfolioImages(models.Model):
     description = models.TextField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    # def get_absolute_url(self):
+    #    return reverse(
+    #        'article',
+    #        kwargs={
+    #            'slug': self.slug,
+    #            }
+    #        )
+
     def __str__(self):
         return f"{self.title} - {self.created_at.strftime('%d/%m/%Y %H:%M')}"

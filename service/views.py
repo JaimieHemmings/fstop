@@ -3,6 +3,11 @@ from home.models import HomePageTrustedBy
 from .models import ServicesPage
 
 
+def services(request):
+    # Redirect to the 404 page
+    return render(request, "404.html")
+
+
 def lifestyle_services(request):
     homepage_trusted_by = get_object_or_404(HomePageTrustedBy, id=1)
     page_info = get_object_or_404(ServicesPage, title="Lifestyle")

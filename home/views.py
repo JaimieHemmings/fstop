@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 from .forms import ContactForm
 from django.contrib import messages
 from blog.models import Article
@@ -12,6 +13,15 @@ from .models import (
     HomePagePanel
   )
 
+def get_all_or_404(model):
+    """
+    Get all objects of a model or return 404
+    """
+    objects = model.objects.all()
+    if not objects.exists():
+        raise Http404(f"No {model._meta.verbose_name_plural} found")
+    return objects
+
 
 def index(request):
     """
@@ -21,11 +31,13 @@ def index(request):
     homepage_hero = get_object_or_404(HomePageHero, id=1)
     homepage_about = get_object_or_404(HomePageAbout, id=1)
     homepage_trusted_by = get_object_or_404(HomePageTrustedBy, id=1)
-    homepage_faqs = HomePageFAQ.objects.all()
-    homepage_slider_images = HomePageSliderImages.objects.all()
-    homepage_panels = HomePagePanel.objects.all()
-    articles = Article.objects.all().order_by("-date")[:2]
-    reviews = Review.objects.all().order_by("-created_at")[:5]
+    homepage_faqs = get_all_or_404(HomePageFAQ)
+    homepage_slider_images = get_all_or_404(HomePageSliderImages)
+    homepage_panels = get_all_or_404(HomePagePanel)
+    articles = get_all_or_404(Article)
+    articles = articles.order_by("-date")[:2]
+    reviews = get_all_or_404(Review)
+    reviews = reviews.order_by("-created_at")[:5]
     # Build context
     context = {
         "articles": articles,

@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_title %}| {{ page_info.title }} Photography{% endblock %}
+{% block extra_title %}
+| {{ page_info.title }} Photography
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'services/css/services.css' %}">
@@ -12,7 +14,6 @@
 <main>
   {% include 'services/partials/service-info-one.html' %}
   {% include 'services/partials/highlight-one.html' %}
-  {% include 'partials/home/trust.html' %}
   {% include 'services/partials/service-info-two.html' %}
   {% include 'services/partials/highlight-two.html' %}
   {% include 'partials/cta.html' %}
