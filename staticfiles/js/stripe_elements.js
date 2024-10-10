@@ -7,7 +7,7 @@ var clientSecret = document.getElementById('client_secret').innerText.slice(1, -
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 
-var svgError = `<span class="icon" role="alert">
+var svgError = `<span class="icon" role="alert" style="color:var(--color-primary);">
 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
 </svg>
@@ -20,7 +20,7 @@ var style = {
     fontSmoothing: 'antialiased',
     fontSize: '16px',
     '::placeholder': {
-      color: '#aab7c4'
+      color: '#212529'
     }
   },
   invalid: {
@@ -36,11 +36,8 @@ card.mount('#card-element');
 card.addEventListener('change', function(event) {
   var errorDiv = document.getElementById('card-errors');
   if (event.error) {
-    var html = `
-      ${svgError}
-      <span>${event.error.message}</span>
-    `;
-    $(errorDiv).html(html);
+    var html = `${svgError}<span>${event.error.message}</span>`;
+    errorDiv.innerHTML = html;
   } else {
     errorDiv.textContent = '';
   }
