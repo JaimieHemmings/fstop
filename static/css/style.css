@@ -574,6 +574,9 @@ nav.navbar {
   img {
     display: block;
     margin: 0 auto;
+    max-height: 50px;
+    width: auto;
+    padding: 10px 0;
   }
 }
 
