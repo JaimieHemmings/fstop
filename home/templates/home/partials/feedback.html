@@ -1,10 +1,12 @@
 {% load static %}
 
-<section class="section-padding container-fluid feedback background-secondary">
+<section class="section-padding container-fluid feedback background-secondary testimonials">
   <div class="container">
     <div class="row mb-5">
       <div class="col-sm-12 text-center">
-        <h2 class="color-white-200 fw-600 mb-3">Client feedback and success stories</h2>
+        <h2 class="color-white-200 fw-600 mb-3 pb-3 border-b-primary">
+          Client feedback and success stories
+        </h2>
       </div>
     </div>
     <div class="row">
@@ -19,9 +21,17 @@
                   <img src="{{ review.user_img.url }}" alt="Feedback 1" class="img-fluid">
                 </div>
                 <div class="swiper-half pt-3">
-                  <h3 class="color-white-200 fw-600 mb-3 pl-3">{{ review.name }}</h3>
-                  <span class="color-white-300 pl-3">{{ review.company }}</span>
-                  <p class="color-white-300 pl-3 pt-3 quote">"{{ review.content }}"</p>
+                  <div class="px-3">
+                    <h3 class="color-white-200 fw-600 mb-3 border-b-primary pb-3">
+                      {{ review.name }}
+                    </h3>
+                    <span class="color-white-300">
+                      {{ review.company }}
+                    </span>
+                    <p class="color-white-300 pt-3 quote">
+                      "{{ review.content }}"
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
