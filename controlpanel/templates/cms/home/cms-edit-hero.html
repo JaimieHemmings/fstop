@@ -17,17 +17,17 @@
           <div class="row">
             {% csrf_token %}
             {% for field in form %}
-            {% if forloop.counter == 6 %}
+            {% if forloop.counter == 5 %}
             <div class="col-sm-12">
               <h2 class="pt-3">List Items</h2>
             </div>
             {% endif %}
-            {% if forloop.counter == 10 %}
+            {% if forloop.counter == 9 %}
             <div class="col-sm-12">
               <h2 class="pt-3">Stats Items</h2>
             </div>
             {% endif %}
-            {% if forloop.counter > 5 %}
+            {% if forloop.counter > 4 %}
               <div class="col-sm-6">
             {% else %}
               <div class="col-sm-12">

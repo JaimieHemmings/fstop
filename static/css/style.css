@@ -346,6 +346,73 @@ Utility Classes
   max-width: 50%;
   margin: 0 auto;
 }
+/*
+  Navigation Styles
+*/
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: initial;
+  right: 0;
+}
+
+.dropdown-divider {
+  border-top: 1px solid var(--col-primary);
+}
+
+nav.navbar {
+  padding: 1.0625rem 1.5rem;
+
+  .navbar-toggler {
+    background: var(--col-white-300);
+  }
+
+  .navbar-brand {
+    color: var(--col-white-200);
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: Futura, system-ui, "Helvetica Neue";
+  }
+  
+  .nav-link {
+    color: var(--col-white-300);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+    font-family: Futura, system-ui, "Helvetica Neue";
+
+    &:hover {
+      color: var(--col-primary);
+    }
+  }
+
+  .nav-link.show {
+    color: var(--col-primary);
+  }
+  
+
+  .nav-link.active {
+    color: var(--col-primary);
+  }
+
+  .dropdown-menu {
+    background-color: var(--col-black);
+    border-radius: 0;
+
+    li a {
+      color: var(--col-white-200);
+
+      &:hover {
+        background-color: initial;
+        color: var(--col-primary);
+      }
+    }
+  }
+}
+
 
 
 
@@ -418,69 +485,6 @@ Utility Classes
 ul.errorlist li {
   color: var(--col-primary);
   font-weight: 700;
-}
-
-/*
-  Navigation Styles
-*/
-
-.dropdown-toggle::after {
-  display: none;
-}
-
-.dropdown-menu[data-bs-popper] {
-  left: initial;
-  right: 0;
-}
-
-nav.navbar {
-  padding: 1.0625rem 1.5rem;
-
-  .navbar-toggler {
-    background: var(--col-white-300);
-  }
-
-  .navbar-brand {
-    color: var(--col-white-200);
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: Futura, system-ui, "Helvetica Neue";
-  }
-  
-  .nav-link {
-    color: var(--col-white-300);
-    font-size: var(--font-size-base);
-    font-weight: 500;
-    transition: color 0.3s ease-in-out;
-    font-family: Futura, system-ui, "Helvetica Neue";
-
-    &:hover {
-      color: var(--col-primary);
-    }
-  }
-
-  .nav-link.show {
-    color: var(--col-primary);
-  }
-  
-
-  .nav-link.active {
-    color: var(--col-primary);
-  }
-
-  .dropdown-menu {
-    background-color: var(--col-black);
-    border-radius: 0;
-
-    li a {
-      color: var(--col-white-200);
-
-      &:hover {
-        background-color: initial;
-        color: var(--col-primary);
-      }
-    }
-  }
 }
 
 /*

@@ -46,7 +46,6 @@ class HomeHeroForm(forms.ModelForm):
             "hero_title",
             "hero_subtitle",
             "hero_image",
-            "hero_image_mobile",
             "hero_image_alt",
             "hero_list_one",
             "hero_list_two",
@@ -76,7 +75,6 @@ class HomeHeroForm(forms.ModelForm):
             "data_three_value": "Data Three Value",
             "data_three_title": "Data Three Title",
             "cover_image": "",
-            "hero_image_mobile": "",
             "hero_image_alt": "Enter an alt text",
         }
 
