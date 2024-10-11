@@ -245,7 +245,7 @@ class AddSliderImageForm(forms.ModelForm):
 class AddHomePagePanelForm(forms.ModelForm):
     class Meta:
         model = HomePagePanel
-        fields = ["title", "image", "image_alt", "paragraph"]
+        fields = ["title", "image", "image_alt", "paragraph", "link_to"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -254,6 +254,7 @@ class AddHomePagePanelForm(forms.ModelForm):
             "image": "Select an Image",
             "image_alt": "Enter an alt text",
             "paragraph": "Enter a descriptive paragraph",
+            "link_to": "Enter a link",
         }
 
         # Set autofocus on first field to be filled in

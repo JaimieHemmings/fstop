@@ -120,6 +120,7 @@ class HomePagePanel(models.Model):
     image = models.ImageField(upload_to=get_path, blank=False, null=False, default="default.png")
     image_alt = models.CharField(max_length=100, blank=False, null=False, default="Enter an alt text")
     paragraph = models.TextField(blank=False, null=False)
+    link_to = models.CharField(max_length=100, blank=False, null=False, default="#")
 
     def __str__(self):
         return f"{self.title}"

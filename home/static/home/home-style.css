@@ -258,6 +258,11 @@ z-index: 3;
     .service-card {
       padding: 15px;
 
+      img {
+        margin: 0 auto;
+        display: block;
+      }
+
       .service-card-content {
         margin: 0 auto;
         margin-top: -50px;
