@@ -23,11 +23,6 @@
   margin-bottom: 1.25rem;
   line-height: 1;
 
-  span {
-    display: block;
-    font-size: calc(var(--font-size-base) * 10);
-  }
-
   p {
     color: var(--col-white-200);
   }
