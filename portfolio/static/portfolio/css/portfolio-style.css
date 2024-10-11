@@ -170,12 +170,16 @@
   .port img {
     width: 100%;
     height: auto;
+    margin-top: 70px;
   }
   .port {
     position: fixed;
     width: 100%;
     height: initial;
-    min-height: 50vh;
     max-height: 100vh;
+
+    .content {
+      position: relative;
+    }
   }
 }
