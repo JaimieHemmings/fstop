@@ -111,8 +111,14 @@ class HomePageSliderImages(models.Model):
     
 
 class HomePagePanel(models.Model):
+    def get_path(instance, filename):
+        extension = filename.split(".")[-1]
+        filename = f"{filename}-{uuid.uuid4()}.{extension}"
+        return f"cms/home/{filename}"
+
     title = models.CharField(max_length=100, blank=False, null=False)
-    icon = models.TextField()
+    image = models.ImageField(upload_to=get_path, blank=False, null=False, default="default.png")
+    image_alt = models.CharField(max_length=100, blank=False, null=False, default="Enter an alt text")
     paragraph = models.TextField(blank=False, null=False)
 
     def __str__(self):

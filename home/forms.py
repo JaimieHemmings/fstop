@@ -245,13 +245,14 @@ class AddSliderImageForm(forms.ModelForm):
 class AddHomePagePanelForm(forms.ModelForm):
     class Meta:
         model = HomePagePanel
-        fields = ["title", "icon", "paragraph"]
+        fields = ["title", "image", "image_alt", "paragraph"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
             "title": "Enter a Title",
-            "icon": "Enter Icon Code",
+            "image": "Select an Image",
+            "image_alt": "Enter an alt text",
             "paragraph": "Enter a descriptive paragraph",
         }
 

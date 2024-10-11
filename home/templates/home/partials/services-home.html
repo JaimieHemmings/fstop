@@ -4,17 +4,17 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <h2 class="color-white-200 pb-3 fw-600">Our wide range of useful services</h2>
+        <h2 class="color-white-200 pb-3 fw-600 border-b-primary mb-3">Our wide range of useful services</h2>
         <p class="color-white-300 fw-400">Capture life's most precious moments with a professional touch. I bring a personalised touch to every session.</p>
       </div>
     </div>
     <div class="row services-panel mt-5">
       {% for panel in homepage_panels %}
-      <div class="service-card col-lg-4 background-secondary">
+      <div class="service-card col-lg-4">
         <div class="service-card-icon pb-3">
-          {{ panel.icon|safe }}
+          <img src="{{ panel.image.url }}" alt="{{ panel.image_alt }}" class="img-fluid img">
         </div>
-        <div class="service-card-content text-center">
+        <div class="service-card-content text-center background-secondary">
           <h3 class="color-white-200 mb-3 fw-600 pb-3 border-b-primary">{{ panel.title }}</h3>
           <p class="color-white-300">{{ panel.paragraph }}</p>
         </div>

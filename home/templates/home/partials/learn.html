@@ -1,23 +1,20 @@
 {% load static %}
-<section class="container-fluid learn">
+<section class="container-fluid learn section-padding">
   <div class="container">
-    <div class="row mb-3">
-      <div class="col-sm-12 text-center">
-        <h2 class="mb-3 mx-auto color-white-200">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6 mb-3">
+        <img src="{{ homepage_about.homepage_about_image.url }}" class="img-fluid img fit">
+      </div>
+      <div class="col-sm-12 col-lg-6 p-5">
+        <h2 class="mb-3 mx-auto color-white-200 border-b-primary">
           {{ homepage_about.homepage_about_title }}
         </h2>
         <p class="mb-3 mx-auto color-white-300">
           {{ homepage_about.homepage_about_lead }}
         </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-6 stretch-img mb-3" style="background-image: url({{ homepage_about.homepage_about_image.url }})">
-      </div>
-      <div class="col-sm-12 col-md-6 pl-3">
-        <p class="mb-2 heavy color-white-200">
+        <h3 class="mb-2 heavy color-white-200">
           {{ homepage_about.homepage_about_subtitle }}
-        </p>
+        </h3>
         <p class="pb-2 mb-2 color-white-300 border-b-secondary">
           {{ homepage_about.homepage_about_paragraph_one|safe|linebreaksbr }}
         </p>
