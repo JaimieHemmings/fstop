@@ -21,7 +21,7 @@ def lifestyle_services(request):
 
 def event_services(request):
     homepage_trusted_by = get_object_or_404(HomePageTrustedBy, id=1)
-    page_info = get_object_or_404(ServicesPage, title="Events")
+    page_info = get_object_or_404(ServicesPage, title="Event")
 
     context = {
         "page_info": page_info,

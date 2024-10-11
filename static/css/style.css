@@ -543,8 +543,15 @@ ul.errorlist li {
   }
 
   p {
-    max-width: 50%;
     margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cta-bg {
+    p {
+      max-width: 50%;
+    }
   }
 }
 
