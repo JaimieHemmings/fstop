@@ -309,12 +309,6 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 - [SwiperJS](https://swiperjs.com/) - Used for the carousel upon which the client reviews are based
 
-- [PyTest](https://pypi.org/project/pytest/) - Used for testing models
-
-- [PyTest Cov](https://pypi.org/project/pytest-cov/) - Ensure that the testing suite covers all necassary code coverage
-
-- [Factory Boy](https://pypi.org/project/factory-boy/) - Creates dummy data for tests
-
 ### Programmes and Applications Used
 
 - [Real Favicon Generator](https://realfavicongenerator.net/) - used to create the site's favicon
