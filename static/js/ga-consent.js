@@ -7,12 +7,34 @@ function allConsentGranted() {
   });
 }
 
-let dc = document.cookie;
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-
   // Check if the user has already consented
-  if (dc.indexOf("cookie_consent=accepted") > -1) {
+  let gaCookie = getCookie("cookie-consent");
+  console.log(`Cookie = ${gaCookie}`);
+  if (gaCookie != "") {
     allConsentGranted();
     return;
   } else {
@@ -21,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("accept-cookies").addEventListener("click", function() {
       document.getElementById("cookie-consent").classList.remove("show");
       // then add a cookie to the user session to remember that the user has consented
-      dc = "cookie_consent=accepted; expires=Fri, 31 Dec 9999 23:59:59 GMT, SameSite=Lax";
+      setCookie("cookie-consent", "true", 365);
       allConsentGranted();
     });
     return;
