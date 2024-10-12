@@ -13,7 +13,7 @@ def cp_portfolio(request):
     A view to return the portfolio page
     """
     portfolio_images = PortfolioImages.objects.all()
-    
+
     context = {
         "portfolio_images": portfolio_images,
     }
@@ -33,7 +33,7 @@ def add_portfolio_image(request):
             form.save()
             messages.success(request, "Portfolio image added successfully")
             return redirect(reverse("cp_portfolio"))
-    
+
     context = {
         "form": form,
         "page_title": "Add Portfolio Image",
@@ -51,7 +51,7 @@ def delete_portfolio_image_confirm(request, image_id):
 
     context = {
         "image": image,
-    }    
+    }
 
     return render(
         request, "portfolio/delete-portfolio-image-confirm.html", context)

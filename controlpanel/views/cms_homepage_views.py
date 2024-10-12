@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-
 from home.models import (
   HomePageHero,
   HomePageAbout,
@@ -11,7 +10,6 @@ from home.models import (
   HomePagePanel
 )
 from home.models import HomePageSliderImages
-
 from home.forms import AddSliderImageForm
 from home.forms import (
   HomeHeroForm,
@@ -20,6 +18,7 @@ from home.forms import (
   HomePageFAQForm,
   AddHomePagePanelForm
 )
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_home(request):
@@ -129,7 +128,7 @@ def cms_add_faq(request):
             form.save()
             messages.success(request, "FAQ added successfully")
             return redirect(reverse("cp_cms_faq"))
-        
+
     context = {
         "form": form,
         "page_title": "Add FAQ",
@@ -219,7 +218,7 @@ def cp_cms_add_slider_image(request):
             form.save()
             messages.success(request, "Slider image added successfully")
             return redirect(cp_cms_manage_slider_images)
-    
+
     context = {
         "form": form,
         "page_title": "Add Slider Image",

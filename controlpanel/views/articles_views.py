@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
 from django.template.defaultfilters import slugify
 from django.utils import timezone
-
 from blog.models import Article
 from home.models import Message
 from controlpanel.forms import CreateArticleForm
@@ -104,4 +103,3 @@ def delete_article(request, article_id):
     article.delete()
     messages.success(request, "Article deleted successfully")
     return cp_articles(request)
-

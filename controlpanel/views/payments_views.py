@@ -64,4 +64,3 @@ def view_payment(request, payment_id):
         "payment": payment,
     }
     return render(request, "payments/view-payment.html", context)
-

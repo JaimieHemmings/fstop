@@ -7,7 +7,6 @@ from reviews.models import Review
 from controlpanel.forms import AddReviewForm
 
 
-
 @user_passes_test(lambda u: u.is_superuser)
 def cms_manage_reviews(request):
     """
@@ -34,7 +33,7 @@ def cms_add_review(request):
             form.save()
             messages.success(request, "Review added successfully")
             return redirect(cms_manage_reviews)
-        
+
     context = {
         "form": form,
     }
@@ -76,17 +75,16 @@ def cms_edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     form = AddReviewForm(instance=review)
 
-    
     if request.method == "POST":
         form = AddReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
             form.save()
             messages.success(request, "Review updated successfully")
             return redirect(reverse("cms_manage_reviews"))
-    
+
     context = {
         "form": form,
         "review": review,
     }
-    
+
     return render(request, "cms/reviews/cms-edit-review.html", context)
