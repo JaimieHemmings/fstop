@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from home.models import (
-  Message,
   HomePageHero,
   HomePageAbout,
   HomePageTrustedBy,
@@ -27,14 +26,7 @@ def cp_cms_home(request):
     """
     A view to return the CMS homepage
     """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-
-    context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
-    }
-    return render(request, "cms/cms-homepage.html", context)
+    return render(request, "cms/cms-homepage.html")
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -44,8 +36,6 @@ def cp_cms_hero(request):
     """
     home_hero_data = get_object_or_404(HomePageHero, id=1)
     form = HomeHeroForm(instance=home_hero_data)
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
 
     if request.method == "POST":
         form = HomeHeroForm(
@@ -59,8 +49,6 @@ def cp_cms_hero(request):
 
     context = {
         "form": form,
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
     }
 
     return render(request, "cms/home/cms-edit-hero.html", context)
@@ -73,8 +61,6 @@ def cp_cms_about_home_edit(request):
     """
     about_data = get_object_or_404(HomePageAbout, id=1)
     form = editAboutSectionHomeForm(instance=about_data)
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
 
     if request.method == "POST":
         form = editAboutSectionHomeForm(
@@ -88,8 +74,6 @@ def cp_cms_about_home_edit(request):
 
     context = {
         "form": form,
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
     }
 
     return render(request, "cms/home/cms-edit-about-home.html", context)
@@ -100,14 +84,10 @@ def cp_cms_trusted_by_edit(request):
     """
     A view to return the CMS homepage about page
     """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
     trusted_by_data = get_object_or_404(HomePageTrustedBy, id=1)
     form = HomePageTrustedByForm(instance=trusted_by_data)
 
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
         "form": form,
     }
 
@@ -129,12 +109,8 @@ def cp_cms_faq(request):
     """
     A view to return the CMS homepage about page
     """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
     faqs = HomePageFAQ.objects.all()
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
         "faqs": faqs,
     }
     return render(request, "cms/faqs/cms-faqs.html", context)
@@ -145,9 +121,6 @@ def cms_add_faq(request):
     """
     A view to add a FAQ
     """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-
     form = HomePageFAQForm()
 
     if request.method == "POST":
@@ -159,8 +132,6 @@ def cms_add_faq(request):
         
     context = {
         "form": form,
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
         "page_title": "Add FAQ",
         "end_point": "cms_add_faq",
     }
@@ -172,11 +143,7 @@ def cms_edit_faq(request, faq_id):
     """
     A view to edit a FAQ
     """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
     }
     faq = get_object_or_404(HomePageFAQ, id=faq_id)
     form = HomePageFAQForm(instance=faq)
@@ -196,14 +163,10 @@ def cms_delete_faq_confirm(request, faq_id):
     """
     A view to confirm the deletion of a FAQ
     """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
 
     faq = get_object_or_404(HomePageFAQ, id=faq_id)
 
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
         "faq": faq,
     }
     return render(request, "cms/faqs/cms-faq-confirm-delete.html", context)
@@ -230,13 +193,9 @@ def cp_cms_manage_slider_images(request):
     """
     A view to return the CMS homepage slider images page
     """
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
     slider_images = HomePageSliderImages.objects.all()
 
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
         "slider_images": slider_images,
     }
     return render(
@@ -298,14 +257,10 @@ def cp_cms_delete_slider_image(request, image_id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_manage_about_section(request):
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
 
     panels = HomePagePanel.objects.all()
 
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
         "panels": panels,
     }
     return render(request, "cms/home/about/cms-about-section.html", context)
@@ -313,12 +268,8 @@ def cp_cms_manage_about_section(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_add_about_section(request):
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
 
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
     }
 
     form = AddHomePagePanelForm()
@@ -340,8 +291,6 @@ def cp_cms_add_about_section(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_edit_about_section(request, panel_id):
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
 
     panel = get_object_or_404(HomePagePanel, id=panel_id)
     form = AddHomePagePanelForm(instance=panel)
@@ -358,8 +307,6 @@ def cp_cms_edit_about_section(request, panel_id):
 
     context = {
         "form": form,
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
     }
     return render(request,
                   "cms/home/about/cms-edit-about-section.html",
@@ -368,14 +315,10 @@ def cp_cms_edit_about_section(request, panel_id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_delete_about_section_confirm(request, panel_id):
-    unread_messages = Message.objects.filter(read=False)[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
 
     panel = get_object_or_404(HomePagePanel, id=panel_id)
 
     context = {
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
         "panel": panel
     }
     return render(request,

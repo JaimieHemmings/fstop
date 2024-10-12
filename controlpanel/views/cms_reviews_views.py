@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 
 from reviews.models import Review
-from home.models import Message
 
 from controlpanel.forms import AddReviewForm
 
@@ -14,14 +13,10 @@ def cms_manage_reviews(request):
     """
     A view to return the reviews page
     """
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
     reviews = Review.objects.all()
 
     context = {
         "reviews": reviews,
-        "total_unread_messages": total_unread_messages,
-        "unread_messages": unread_messages,
     }
     return render(request, "cms/reviews/cms-reviews.html", context)
 
@@ -31,8 +26,6 @@ def cms_add_review(request):
     """
     A view to add a review
     """
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
     form = AddReviewForm()
 
     if request.method == "POST":
@@ -44,8 +37,6 @@ def cms_add_review(request):
         
     context = {
         "form": form,
-        "total_unread_messages": total_unread_messages,
-        "unread_messages": unread_messages
     }
 
     return render(request, "cms/reviews/cms-add-review.html", context)
@@ -56,14 +47,10 @@ def cms_delete_review_confirm(request, review_id):
     """
     A view to confirm the deletion of a review
     """
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
     review = get_object_or_404(Review, id=review_id)
 
     context = {
         "review": review,
-        "total_unread_messages": total_unread_messages,
-        "unread_messages": unread_messages
     }
 
     return render(
@@ -86,8 +73,6 @@ def cms_edit_review(request, review_id):
     """
     A view to edit a review
     """
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
     review = get_object_or_404(Review, id=review_id)
     form = AddReviewForm(instance=review)
 
@@ -102,8 +87,6 @@ def cms_edit_review(request, review_id):
     context = {
         "form": form,
         "review": review,
-        "total_unread_messages": total_unread_messages,
-        "unread_messages": unread_messages
     }
     
     return render(request, "cms/reviews/cms-edit-review.html", context)

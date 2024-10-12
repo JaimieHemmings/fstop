@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404, reverse
-from home.models import Message
 
 from payments.models import Payment
 
@@ -14,14 +13,9 @@ def cp_payments(request):
     """
     A view to return the payments page
     """
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
     payments = Payment.objects.all()
-
     context = {
         "payments": payments,
-        "total_unread_messages": total_unread_messages,
-        "unread_messages": unread_messages,
     }
     return render(request, "payments/payment-management.html", context)
 
@@ -31,8 +25,6 @@ def new_payment(request):
     """
     A view to add a payment
     """
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
     form = NewPaymentForm()
 
     if request.method == "POST":
@@ -58,8 +50,6 @@ def new_payment(request):
         "form": form,
         "page_title": "Add Payment Request",
         "end_point": "new_payment",
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
     }
     return render(request, "generic/add-item.html", context)
 
@@ -69,13 +59,9 @@ def view_payment(request, payment_id):
     """
     A view to view the details of a payment
     """
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
     payment = get_object_or_404(Payment, id=payment_id)
     context = {
         "payment": payment,
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
     }
     return render(request, "payments/view-payment.html", context)
 

@@ -15,15 +15,11 @@ def cp_articles(request):
     A view to return the articles page
     """
     latest_messages = Message.objects.all().order_by("-created_at")[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
     articles = Article.objects.all()
-    unread_messages = Message.objects.filter(read=False)[:5]
 
     context = {
         "articles": articles,
         "latest_messages": latest_messages,
-        "total_unread_messages": total_unread_messages,
-        "unread_messages": unread_messages,
     }
     return render(request, "article-management.html", context)
 
@@ -33,13 +29,9 @@ def add_article(request):
     """
     A view to add an article
     """
-    latest_messages = Message.objects.all().order_by("-created_at")[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
     unread_messages = Message.objects.filter(read=False)[:5]
 
     context = {
-        latest_messages: latest_messages,
-        total_unread_messages: total_unread_messages,
         unread_messages: unread_messages
     }
     form = CreateArticleForm()
@@ -63,9 +55,6 @@ def edit_article(request, article_id):
     """
     A view to edit an article
     """
-    latest_messages = Message.objects.all().order_by("-created_at")[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
 
     context = {}
 
@@ -86,9 +75,6 @@ def edit_article(request, article_id):
         "item": article,
         "article": article,
         "form": form,
-        "unread_messages": unread_messages,
-        "total_unread_messages": total_unread_messages,
-        "latest_messages": latest_messages,
     }
 
     return render(request, "generic/edit-item.html", context)
@@ -99,14 +85,8 @@ def delete_article_confirm(request, article_id):
     """
     A view to confirm the deletion of an article
     """
-    latest_messages = Message.objects.all().order_by("-created_at")[:5]
-    total_unread_messages = Message.objects.filter(read=False).count()
-    unread_messages = Message.objects.filter(read=False)[:5]
 
     context = {
-        "latest_messages": latest_messages,
-        "total_unread_messages": total_unread_messages,
-        "unread_messages": unread_messages,
         "return_path": "cp_articles",
         "delete_path": "delete_article"
     }
