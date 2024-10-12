@@ -21,7 +21,9 @@
         <div class="pb-2 mb-3 color-white-300">
           <p>{{ homepage_about.homepage_about_paragraph_two|safe|linebreaksbr }}</p>
         </div>
-        <a href="{% url 'portfolio' %}" class="btn btn-custom-red">Portfolio</a>
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'portfolio' %}" class="btn btn-custom-red">Portfolio</a>
+        </div>
       </div>
     </div>
   </div>
