@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block extra_title %}
 | Contact
@@ -6,13 +7,23 @@
 
 {% block content%}
 <section class="section-padding contact background-primary">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <h1 class="color-white-200 fw-600 pt-5">Contact Us</h1>
-        <p class="color-white-300 mt-3 pb-3 sub-text">We would love to hear from you! Please feel free to reach out to us with any questions or comments you may have. We are here to help!</p>
+  <section
+    class="internal-hero container-fluid section-padding bg-image"
+    style="background-image:url({% static 'img/learn-img.webp' %})">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
+            Contact Us
+          </h1>
+          <p class="color-white-200 mt-3 pb-3">
+            We would love to hear from you! Please feel free to reach out to us with any questions or comments you may have. We are here to help!
+          </p>
+        </div>
       </div>
     </div>
+  </section>
+  <div class="container">
     <div class="row mt-5">
       <form data-cy="contact-form" class="background-secondary p-5" method="POST" action="{% url 'contact' %}">
         {% csrf_token %}

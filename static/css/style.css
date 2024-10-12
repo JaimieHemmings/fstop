@@ -256,6 +256,12 @@ Toast Notifications
   top: 75px;
   right: 15px;
 
+  .toast-body {
+    background-color: var(--col-white-200);
+    color: var(--col-black);
+    font-weight: 400;
+  }
+
   .border-b-success {
     border-bottom: 2px solid var(--color-emerald);
   }

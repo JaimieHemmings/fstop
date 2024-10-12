@@ -75,6 +75,17 @@
         </a>
       </li>
 
+      {% if '/about/' in request.path %}
+      <li class="sidebar-item active">
+      {% else %}
+      <li class="sidebar-item">
+      {% endif %}
+        <a class="sidebar-link" href="{% url 'cp_cms_about_edit' %}">
+          <i class="align-middle" data-feather="info"></i>
+          <span class="align-middle">About Page</span>
+        </a>
+      </li>
+
       {% if '/services/' in request.path %}
       <li class="sidebar-item active">
       {% else %}

@@ -120,6 +120,12 @@ urlpatterns = [
         views.cp_cms_delete_slider_image,
         name="cp_cms_delete_slider_image",
     ),
+
+    # CMS paths for the about page
+    path("about/edit",
+         views.cp_cms_about_edit,
+         name="cp_cms_about_edit"),   
+
     # CMS Paths for services page
     path("services-pages/",
         views.cp_cms_manage_services,
@@ -140,8 +146,6 @@ urlpatterns = [
     path("services-pages/edit/aerial-product/",
         views.cp_cms_edit_aerial,
         name="cp_cms_edit_aerial"),
-
-
 
     # Portfolio page URL's
     path("portfolio/", views.cp_portfolio, name="cp_portfolio"),

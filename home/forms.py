@@ -1,12 +1,13 @@
 from django import forms
 from .models import (
-  Message,
-  HomePageHero,
-  HomePageAbout,
-  HomePageTrustedBy,
-  HomePageFAQ,
-  HomePageSliderImages,
-  HomePagePanel )
+    Message,
+    HomePageHero,
+    HomePageAbout,
+    HomePageTrustedBy,
+    HomePageFAQ,
+    HomePageSliderImages,
+    HomePagePanel,
+    AboutPage )
 
 
 class ContactForm(forms.ModelForm):
@@ -261,3 +262,50 @@ class AddHomePagePanelForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
             self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+
+
+class AboutPageForm(forms.ModelForm):
+    class Meta:
+        model = AboutPage
+        fields = [
+            "hero_title",
+            "hero_subtitle",
+            "hero_image",
+            "body_title",
+            "body_subtitle",
+            "body_text",
+            "body_image",
+            "body_image_alt",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            "hero_title": "Enter a Hero Title",
+            "hero_subtitle": "Enter a Hero Subtitle",
+            "hero_image": "Select a Hero Image",
+            "body_title": "Enter a Body Title",
+            "body_subtitle": "Enter a Body Subtitle",
+            "body_text": "Enter a Body Text",
+            "body_image": "Select a Body Image",
+            "body_image_alt": "Enter an alt text",
+        }
+
+        helper_text = {
+            "hero_title": "The title for the hero section",
+            "hero_subtitle": "The subtitle for the hero section",
+            "hero_image": "The background image for the hero section",
+            "body_title": "The title for the body section",
+            "body_subtitle": "The subtitle for the body section",
+            "body_text": "The body text for the body section",
+            "body_image": "Max size: 350px by 450px",
+            "body_image_alt": "Enter an alt text to be associated with the image for accessibility issues (screen readers)",
+        }
+
+        # Set autofocus on first field to be filled in
+        self.fields["hero_title"].widget.attrs["autofocus"] = True
+        # set classes
+        for field in self.fields:
+            self.fields[field].widget.attrs["class"] = "form form-control mt-3 mb-1"
+            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+            self.fields[field].help_text = helper_text[field]

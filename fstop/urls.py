@@ -43,7 +43,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("", include("home.urls")),
     path("portfolio/", include("portfolio.urls")),
-    path("blog/", include("blog.urls")),
+    path("news/", include("blog.urls")),
     path("control-panel/", include("controlpanel.urls")),
     path("payments/", include("payments.urls")),
     path("profile/", include("profiles.urls")),

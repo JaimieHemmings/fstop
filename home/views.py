@@ -10,7 +10,8 @@ from .models import (
     HomePageTrustedBy,
     HomePageFAQ,
     HomePageSliderImages,
-    HomePagePanel
+    HomePagePanel,
+    AboutPage,
   )
 
 def get_all_or_404(model):
@@ -56,7 +57,9 @@ def about(request):
     """
     A view that displays the about page
     """
-    return render(request, "home/about.html")
+    page_info = get_object_or_404(AboutPage, title="About")
+    context = {"page_info": page_info}
+    return render(request, "home/about.html", context)
 
 
 def contact(request):

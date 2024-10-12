@@ -7,13 +7,23 @@
 
 {% block content %}
 <section class="section-padding background-primary blog">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <h1 class="color-white-200">News &amp; Updates</h1>
-        <p class="color-white-300 sub-text mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi alias animi illum! Fuga, voluptate quas molestiae ipsa distinctio nulla laborum, eveniet mollitia esse tenetur dolorum sint, aperiam aliquid quaerat ab.</p>
+  <section
+    class="internal-hero container-fluid section-padding bg-image"
+    style="background-image:url({% static 'img/learn-img.webp' %})">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
+            New &amp; Updates
+          </h1>
+          <p class="color-white-200 mt-3 pb-3">
+            Stay up to date with our latest articles
+          </p>
+        </div>
       </div>
     </div>
+  </section>
+  <div class="container">
     <div class="row mt-3 blog-feed">
 
       {% if articles %}

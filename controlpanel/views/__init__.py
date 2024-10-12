@@ -6,6 +6,7 @@ from .cms_homepage_views import *
 from .cms_services_views import *
 from .cms_portfolio_views import *
 from .cms_reviews_views import *
+from .cms_about_views import *
 from django.contrib.auth.decorators import user_passes_test
 
 
