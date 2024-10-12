@@ -1,62 +1,88 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, reverse
+from service.models import ServicesPage
+from service.forms import EditServicesPageForm
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_manage_services(request):
     return render(request, "cms/services/services-management.html")
 
-
 @user_passes_test(lambda u: u.is_superuser)
-def cp_cms_edit_services_hero(request):
-    return render(request, "cms/services/cms-edit-hero.html")
+def cp_cms_edit_lifestyle(request):
+    page_info = ServicesPage.objects.get(title="Lifestyle")
+    form = EditServicesPageForm(instance=page_info)
 
-
-@user_passes_test(lambda u: u.is_superuser)
-def cp_cms_edit_services_banner(request):
-    return render(request, "cms/services/cms-edit-banner.html")
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def cp_cms_edit_services_cards(request):
-    return render(request, "cms/services/service-cards.html")
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def cp_cms_edit_services_card(request, card_id):
-    return render(request, "cms/services/edit-service-card.html")
-
-
-@user_passes_test(lambda u: u.is_superuser)
-def cp_cms_delete_services_card_confirm(request, card_id):
-    return render(request,
-                  "cms/services/cms-delete-service-card-confirm.html",)
+    if request.method == "POST":
+        form = EditServicesPageForm(request.POST, request.FILES, instance=page_info)
+        if form.is_valid():
+            form.save()
+            return render(request, "cms/services/edit-page.html", context)
+        
+    context = {
+        "form": form,
+        "page_info": page_info,
+        "end_point": "cp_cms_edit_lifestyle",
+    }
+    
+    return render(request, "cms/services/edit-page.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def cp_cms_delete_services_card(request, card_id):
-    messages.success(request, "Card deleted successfully")
-    return redirect(reverse("cp_cms_edit_services_cards"))
+def cp_cms_edit_event(request):
+    page_info = ServicesPage.objects.get(title="Event")
+    form = EditServicesPageForm(instance=page_info)
+
+    if request.method == "POST":
+        form = EditServicesPageForm(request.POST, request.FILES, instance=page_info)
+        if form.is_valid():
+            form.save()
+            return render(request, "cms/services/edit-page.html", context)
+        
+    context = {
+        "form": form,
+        "page_info": page_info,
+        "end_point": "cp_cms_edit_event",
+    }
+    
+    return render(request, "cms/services/edit-page.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def cp_cms_add_services_card(request):
-    return render(request,
-                  "cms/services/cms-add-service-card.html")
+def cp_cms_edit_property(request):
+    page_info = ServicesPage.objects.get(title="Property")
+    form = EditServicesPageForm(instance=page_info)
 
-"""
-Paths to edit the context banners for the services page
-"""
+    if request.method == "POST":
+        form = EditServicesPageForm(request.POST, request.FILES, instance=page_info)
+        if form.is_valid():
+            form.save()
+            return render(request, "cms/services/edit-page.html", context)
+        
+    context = {
+        "form": form,
+        "page_info": page_info,
+        "end_point": "cp_cms_edit_property",
+    }
+    
+    return render(request, "cms/services/edit-page.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def cp_cms_edit_context_banner_one(request):
-    return render(request,
-                  "cms/services/cms-edit-context-banner-one.html")
+def cp_cms_edit_aerial(request):
+    page_info = ServicesPage.objects.get(title="Aerial")
+    form = EditServicesPageForm(instance=page_info)
 
-
-@user_passes_test(lambda u: u.is_superuser)
-def cp_cms_edit_context_banner_two(request):
-    return render(request,
-                  "cms/services/cms-edit-context-banner-two.html")
+    if request.method == "POST":
+        form = EditServicesPageForm(request.POST, request.FILES, instance=page_info)
+        if form.is_valid():
+            form.save()
+            return render(request, "cms/services/edit-page.html", context)
+        
+    context = {
+        "form": form,
+        "page_info": page_info,
+        "end_point": "cp_cms_edit_aerial",
+    }
+    
+    return render(request, "cms/services/edit-page.html", context)

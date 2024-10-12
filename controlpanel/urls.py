@@ -121,54 +121,28 @@ urlpatterns = [
         name="cp_cms_delete_slider_image",
     ),
     # CMS Paths for services page
-    path(
-        "services-page/",
-        views.cp_cms_manage_services, name="cp_cms_manage_services"),
-    path(
-        "services-page/hero/edit/",
-        views.cp_cms_edit_services_hero,
-        name="cp_cms_edit_services_hero",
-    ),
-    path(
-        "services-page/banner/edit/",
-        views.cp_cms_edit_services_banner,
-        name="cp_cms_edit_services_banner",
-    ),
-    path(
-        "services-page/cards/",
-        views.cp_cms_edit_services_cards,
-        name="cp_cms_edit_services_cards",
-    ),
-    path(
-        "services-page/cards/<int:card_id>/edit/",
-        views.cp_cms_edit_services_card,
-        name="cp_cms_edit_services_card",
-    ),
-    path(
-        "services-page/cards/<int:card_id>/delete",
-        views.cp_cms_delete_services_card_confirm,
-        name="cp_cms_delete_services_card_confirm",
-    ),
-    path(
-        "services-page/cards/<int:card_id>/delete/confirmed",
-        views.cp_cms_delete_services_card,
-        name="cp_cms_delete_services_card",
-    ),
-    path(
-        "services-page/cards/new/",
-        views.cp_cms_add_services_card,
-        name="cp_cms_add_services_card",
-    ),
-    path(
-        "services-page/context-banner-one/edit",
-        views.cp_cms_edit_context_banner_one,
-        name="cp_cms_edit_context_banner_one",
-    ),
-    path(
-        "services-page/context-banner-two/edit",
-        views.cp_cms_edit_context_banner_two,
-        name="cp_cms_edit_context_banner_two",
-    ),
+    path("services-pages/",
+        views.cp_cms_manage_services,
+        name="cp_cms_manage_services"),
+
+    path("services-pages/edit/lifestyle/",
+        views.cp_cms_edit_lifestyle,
+        name="cp_cms_edit_lifestyle"),
+
+    path("services-pages/edit/event-product/",
+        views.cp_cms_edit_event,
+        name="cp_cms_edit_event"),
+
+    path("services-pages/edit/property-product/",
+        views.cp_cms_edit_property,
+        name="cp_cms_edit_property"),
+
+    path("services-pages/edit/aerial-product/",
+        views.cp_cms_edit_aerial,
+        name="cp_cms_edit_aerial"),
+
+
+
     # Portfolio page URL's
     path("portfolio/", views.cp_portfolio, name="cp_portfolio"),
     path(
