@@ -29,9 +29,6 @@ FStops Photography is my fourth project in the Code Institutes level 5 Diploma i
           - [Product Launch - Beta Testing](#product-launch---beta-testing)
   - [Scope Plane](#scope-plane)
     - [Feature Planning](#feature-planning)
-    - [Content Requirement Planning](#content-requirement-planning)
-      - [Content Type: Text](#content-type-text)
-      - [Content Type: Images](#content-type-images)
       - [Integrating Content Strategy and SEO](#integrating-content-strategy-and-seo)
     - [User Stories](#user-stories)
   - [Structure Plane](#structure-plane)
@@ -176,13 +173,39 @@ In my case I will make the website available to other students in my cohort on t
 
 ### Feature Planning
 
-### Content Requirement Planning
+In order to fully document and plan the features required by FStops Photography I have created an analysis table of possible features to include in the project. By use this analysis table I can better understand the importance and scope of the project allowing me to proritise the features of higher importance.
 
-#### Content Type: Text
-
-#### Content Type: Images
+| #  | Feature                      | Target user | Desirability | Importance | Viability | Achieved |
+|----|------------------------------|-------------|--------------|------------|-----------|----------|
+| 1  | Account Registration         | All         | 5            | 4          | 5         | Yes      |
+| 2  | Log in/out                   | All         | 5            | 4          | 5         | Yes      |
+| 3  | Email confirmation           | All         | 5            | 3          | 5         | Yes      |
+| 4  | Password Reset               | All         | 5            | 5          | 5         | Yes      |
+| 5  | Profile Page                 | All         | 5            | 3          | 3         | Yes      |
+| 6  | Top Navigation Functionality | All         | 5            | 5          | 5         | Yes      |
+| 7  | Google Analytics Integration | Superuser   | 5            | 3          | 4         | Yes      |
+| 8  | Bespoke CMS                  | Superuser   | 5            | 5          | 3         | Yes      |
+| 9  | Contact Form                 | All         | 5            | 3          | 4         | Yes      |
+| 10 | Invoice Generation           | Superuser   | 5            | 4          | 4         | Yes      |
+| 11 | Client Invoice payment       | All         | 5            | 4          | 4         | Yes      |
+| 12 | Portfolio Management         | Superuser   | 5            | 5          | 4         | Yes      |
+| 13 | Blog                         | Superuser   | 5            | 5          | 4         | Yes      |
+| 14 | SEO friendly Design          | All         | 5            | 3          | 4         | Yes      |
+| 15 | Accessibility Compliance     | All         | 5            | 4          | 5         | Yes      |
 
 #### Integrating Content Strategy and SEO
+
+For this project, the content strategy was designed with the photographer’s portfolio and blog at its core, ensuring that both visually engaging and SEO-optimized content would help attract a wider audience. The website is structured to highlight the photographer’s work while maintaining a clear focus on search engine optimization (SEO) principles. Key components of this integration include:
+
+Keyword Research and Implementation: I identified key search terms related to photography services, specific techniques, and location-based searches. These were strategically implemented in the portfolio descriptions, blog posts, and metadata (such as image alt tags) to enhance discoverability.
+
+SEO-Optimized Blogging: The blog is designed to increase engagement and improve organic search rankings by including photography tutorials, client stories, and project breakdowns. Each post is optimized with targeted keywords, internal linking to portfolio pages, and structured headings (H1-H6) for SEO.
+
+Performance Optimization: Fast load times and responsive design are essential to both user experience and SEO. The website is fully optimized for performance, including image compression and lazy loading for the photographer's high-resolution images.
+
+Metadata and Structured Data: I implemented structured data (Schema.org) to improve search engine visibility for the photographer's portfolio and blog. This helps Google and other search engines better understand the content, improving chances of appearing in rich results like image carousels.
+
+By focusing on a strong content strategy paired with SEO best practices, this website is designed to not only display the photographer's work effectively but also to attract and engage new clients through search engine visibility.
 
 ### User Stories
 
