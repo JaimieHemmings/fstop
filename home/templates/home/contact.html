@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content%}
-<section class="section-padding contact background-primary">
+<section class="section-padding contact background-secondary pt-0">
   <section
     class="internal-hero container-fluid section-padding bg-image"
     style="background-image:url({% static 'img/learn-img.webp' %})">
@@ -23,15 +23,23 @@
       </div>
     </div>
   </section>
-  <div class="container">
-    <div class="row mt-5">
-      <form data-cy="contact-form" class="background-secondary p-5" method="POST" action="{% url 'contact' %}">
-        {% csrf_token %}
-        {{ form }}
-        <button class="btn btn-custom-red mt-3" type="submit">Submit</button>
-      </form>
+  <section class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
+            Get in touch!
+          </h2>
+          <p>Use the form below to send us a message and we'll get back to you as soon as possible, alternatively for a more immediate response use the contact information provided at the bottom of the page.</p>
+        </div>
+        <form data-cy="contact-form" class="background-secondary p-5" method="POST" action="{% url 'contact' %}">
+          {% csrf_token %}
+          {{ form }}
+          <button class="btn btn-custom-red mt-3" type="submit">Submit</button>
+        </form>
+      </div>
     </div>
-  </div>
+  </section>
 </section>
 {% include 'partials/contact/contact-flair.html' %}
 {% endblock %}

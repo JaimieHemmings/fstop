@@ -131,7 +131,7 @@ class AboutPage(models.Model):
         filename = f"{filename}-{uuid.uuid4()}.{extension}"
         return f"cms/about/{filename}"
     
-    title = models.CharField(max_length=100, blank=False, null=False, editable=False)
+    title = models.CharField(max_length=100, blank=False, null=False, editable=True)
 
     hero_title = models.CharField(max_length=100, blank=False, null=False)
     hero_subtitle = models.TextField(max_length=200, blank=False, null=False)
@@ -145,4 +145,4 @@ class AboutPage(models.Model):
     body_image_alt = models.CharField(max_length=100, blank=False, null=False, default="Enter an alt text")
 
     def __str__(self):
-        return self.title
+        return self.hero_title
