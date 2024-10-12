@@ -11,7 +11,9 @@ def latest_unread_messages(request):
           "latest_unread_messages": latest_unread_messages,
       }
     else:
-      return
+      return {
+            "latest_unread_messages": "",
+      }
 
 
 def message_notification_num(request):
@@ -24,4 +26,6 @@ def message_notification_num(request):
             "total_unread_messages_num": total_unread_messages_num,
         }
     else:
-        return
+        return {
+            "total_unread_messages_num": "",
+        }
