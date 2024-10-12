@@ -43,18 +43,17 @@ FStops Photography is my fourth project in the Code Institutes level 5 Diploma i
       - [Typography](#typography)
       - [Colour Palette](#colour-palette)
       - [Imagery](#imagery)
-- [Features](#features)
-  - [Future Development, Iteration and Implementation](#future-development-iteration-and-implementation)
-  - [Technologies Used](#technologies-used)
-    - [Languages Used](#languages-used)
-    - [Frameworks Used](#frameworks-used)
-    - [Databases Used](#databases-used)
-    - [Libraries and Packages Used](#libraries-and-packages-used)
-    - [Programmes and Applications Used](#programmes-and-applications-used)
-    - [Payment Processing Platform Used](#payment-processing-platform-used)
-    - [Cloud Application Platforms Used](#cloud-application-platforms-used)
-    - [Cloud Storage Services Used](#cloud-storage-services-used)
-  - [Testing](#testing)
+- [Future Development, Iteration and Implementation](#future-development-iteration-and-implementation)
+- [Technologies Used](#technologies-used)
+  - [Languages Used](#languages-used)
+  - [Frameworks Used](#frameworks-used)
+  - [Databases Used](#databases-used)
+  - [Libraries and Packages Used](#libraries-and-packages-used)
+  - [Programmes and Applications Used](#programmes-and-applications-used)
+  - [Payment Processing Platform Used](#payment-processing-platform-used)
+  - [Cloud Application Platforms Used](#cloud-application-platforms-used)
+  - [Cloud Storage Services Used](#cloud-storage-services-used)
+- [Testing](#testing)
   - [Bugs, Issues and Solutions](#bugs-issues-and-solutions)
   - [Deployment and Local Development](#deployment-and-local-development)
   - [Credits](#credits)
@@ -257,13 +256,22 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 - Imagery used across the site was sourced either from [Unsplash](https://unsplash.com/) or provided by my brother in law.
 
-# Features
 
 ## Future Development, Iteration and Implementation
 
-## Technologies Used
+Proposals for further development:
 
-### Languages Used
+- Integrate Google Analytics into the bespoke CMS using the available Application
+
+- Add functionality to allow for registering via social media accounts
+
+- Add a mailing list and functionality for visitors to sign up to it
+
+- Add functionality to allow superusers to directly respond to messages sent via the contact form by logged in users
+
+# Technologies Used
+
+## Languages Used
 
 - HTML - For the front end document structure
 
@@ -273,19 +281,19 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 - Python - for the back end programming of the web site
 
-### Frameworks Used
+## Frameworks Used
 
 [django](https://www.djangoproject.com/) - An opensource framework built with Python, based on an MVT (Model, View, Template) model
 
 [Bootstrap5](https://getbootstrap.com/) - Used as a foundation for the visual styling of the website
 
-### Databases Used
+## Databases Used
 
 - [SQLITE3](https://docs.djangoproject.com/en/5.1/ref/databases/#sqlite-notes) - Used as the database in development
 
 - [Heroku PostgreSQL](https://devcenter.heroku.com/articles/python-concurrency-and-database-connections) - Used as the production server for the live environment
 
-### Libraries and Packages Used
+## Libraries and Packages Used
 
 - [django-allauth](https://django-allauth.readthedocs.io/en/latest/) - Used to rapidly integrate prefunctioning account authentication and registration functionality
 
@@ -309,7 +317,7 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 - [SwiperJS](https://swiperjs.com/) - Used for the carousel upon which the client reviews are based
 
-### Programmes and Applications Used
+## Programmes and Applications Used
 
 - [Real Favicon Generator](https://realfavicongenerator.net/) - used to create the site's favicon
 
@@ -327,21 +335,21 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 - [Lighthouse](https://pagespeed.web.dev/) - used to check site performance and compatibility
 
-### Payment Processing Platform Used
+## Payment Processing Platform Used
 
 - [Stripe](https://stripe.com/gb/payments) - Used for integrating payment functionality to the website
 
-### Cloud Application Platforms Used
+## Cloud Application Platforms Used
 
 - [Heroku](https://www.heroku.com) - Was used for the hosting and deployment of the production website. Through development and deployment I have ensure the version deployed to Heroku is the same as the development codebase as it deploys directly from this repo on GitHub whenever a change is committed.
 
 - [Cloudflare DNS](https://www.cloudflare.com/) - Was used for Domain Name Server management.
 
-### Cloud Storage Services Used
+## Cloud Storage Services Used
 
 - [Amazons AWS S3 Buckets](https://aws.amazon.com/) - were used for the hosting of static and media files
 
-## Testing
+# Testing
 
 Please reference the [Testing.md](TESTING.md) document for an overview of bugs and solutions
 
@@ -356,7 +364,7 @@ Please refer to the [Deployment.md](DEPLOYMENT.md) document for a detailed overv
 - How to Clone
 - How to Fork
 
-## Credits
+# Credits
 
 - [ChatGPT](https://openai.com/chatgpt/) - ChatGPT was used to generator placeholder text during the initial development of the website.
 
