@@ -249,6 +249,33 @@ select {
 }
 
 /*
+Cookies Consent Banner
+*/
+
+.ga-consent-banner {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--col-black);
+  z-index: 99999;
+  border-top: 1px solid var(--col-primary);
+  padding-top: 15px;
+  transition:cubic-bezier(1, 0, 0, 1) 0.5s;
+
+  h2 {
+    margin: 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--col-primary);
+    margin-bottom: 5px;
+  }
+}
+
+.ga-consent-banner.show {
+  bottom: 0;
+} 
+
+/*
 Toast Notifications
 */
 
