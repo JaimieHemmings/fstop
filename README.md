@@ -29,7 +29,7 @@ FStops Photography is my fourth project in the Code Institutes level 5 Diploma i
           - [Product Launch - Beta Testing](#product-launch---beta-testing)
   - [Scope Plane](#scope-plane)
     - [Feature Planning](#feature-planning)
-      - [Integrating Content Strategy and SEO](#integrating-content-strategy-and-seo)
+    - [Integrating Content Strategy and SEO](#integrating-content-strategy-and-seo)
     - [User Stories](#user-stories)
   - [Structure Plane](#structure-plane)
     - [Interaction Design](#interaction-design)
@@ -193,7 +193,7 @@ In order to fully document and plan the features required by FStops Photography 
 | 14 | SEO friendly Design          | All         | 5            | 3          | 4         | Yes      |
 | 15 | Accessibility Compliance     | All         | 5            | 4          | 5         | Yes      |
 
-#### Integrating Content Strategy and SEO
+### Integrating Content Strategy and SEO
 
 For this project, the content strategy was designed with the photographer’s portfolio and blog at its core, ensuring that both visually engaging and SEO-optimized content would help attract a wider audience. The website is structured to highlight the photographer’s work while maintaining a clear focus on search engine optimization (SEO) principles. Key components of this integration include:
 
