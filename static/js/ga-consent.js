@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("accept-cookies").addEventListener("click", function() {
       document.getElementById("cookie-consent").classList.remove("show");
       // then add a cookie to the user session to remember that the user has consented
-      dc = "cookie_consent=accepted; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+      dc = "cookie_consent=accepted; expires=Fri, 31 Dec 9999 23:59:59 GMT, SameSite=Lax";
       allConsentGranted();
     });
     return;
