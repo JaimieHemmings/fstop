@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -7,14 +8,6 @@ class PortfolioImages(models.Model):
     image = models.ImageField(upload_to="portfolio/", blank=False, null=False)
     description = models.TextField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
-
-    # def get_absolute_url(self):
-    #    return reverse(
-    #        'article',
-    #        kwargs={
-    #            'slug': self.slug,
-    #            }
-    #        )
 
     def __str__(self):
         return f"{self.title} - {self.created_at.strftime('%d/%m/%Y %H:%M')}"

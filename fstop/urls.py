@@ -27,6 +27,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
             "home",
             "about",
             "services",
+            "portfolio",
             "contact"]
 
     def location(self, item):
@@ -35,7 +36,6 @@ class StaticViewSitemap(sitemaps.Sitemap):
 sitemaps = {
     "static": StaticViewSitemap,
     "blog": GenericSitemap(info_dict_blog, priority=0.6),
-    "portfolio": GenericSitemap(info_dict_portfolio, priority=0.6),
 }
 
 urlpatterns = [
