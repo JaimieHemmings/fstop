@@ -5,6 +5,13 @@
 | {{ article.title }}
 {% endblock %}
 
+{% block meta_description %}
+{{ article.exerpt|truncatechars:160 }}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
 {% block content %}
 <section class="container-fluid slide-gallery background-secondary">
   <div class="container">

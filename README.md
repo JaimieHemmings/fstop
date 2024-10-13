@@ -269,6 +269,8 @@ Proposals for further development:
 
 - Add functionality to allow superusers to directly respond to messages sent via the contact form by logged in users
 
+- Make the SEO meta data like the ```title``` and ```description``` editable in the CMS
+
 # Technologies Used
 
 ## Languages Used

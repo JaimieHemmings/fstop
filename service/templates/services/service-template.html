@@ -5,6 +5,10 @@
 | {{ page_info.title }} Photography
 {% endblock %}
 
+{% block meta_description %}
+{{ page_info.service_info_one_lead|truncatechars:150 }}
+{% endblock %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'services/css/services.css' %}">
 {% endblock %}
