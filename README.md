@@ -284,6 +284,10 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Database_design)
 
 #### Database ERD
 
+![Image of ERD](docs/erd.jpg)
+
+Created Using [SmartDraw](https://app.smartdraw.com/)
+
 #### Data Modelling
 
 For this project I used the relational model. Below is an overview of the major models used within the project and their purpose.
