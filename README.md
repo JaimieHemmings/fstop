@@ -250,6 +250,18 @@ As a Superuser of the site I want to:
 
 ![Anonymous User flow Diagram](docs/anonymous-userflow-diagram.png)
 
+- Logged In User Flow Digram
+
+![Logged in user flow diagram](docs/logged-in-userflow-diagram.png)
+
+- Superuser User Flow Diagram
+
+![Superuser User Flow Diagram](docs/superuser-userflow-diagram.png)
+
+- Control Panel User Flow Diagram
+
+![Control Panel User Flow Diagram](docs/controlpanel-userflow-diagram.png)
+
 ### Information Architecture
 
 #### Site Map
