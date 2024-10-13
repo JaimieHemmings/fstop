@@ -187,6 +187,10 @@ position: relative;
 overflow: hidden;
 z-index: 3;
 
+.container {
+  z-index: 2;
+}
+
   &:after {
     content: "F.";
     font-weight: 700;
