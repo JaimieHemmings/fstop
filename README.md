@@ -309,36 +309,48 @@ For this project I used the relational model. Below is an overview of the major 
 - This model allows the superusers of the website to add, edit and delete questions and answers displayed within the FAQ section of the website on the frontend.
 
 *HomePageSliderImages*
+- This model was used to allow superusers to manage the images that are displayed in the carousel on the homepage of the website.
+
 *HomePagePanel*
+- Another model related to the control panel allowing superusers to edit information displayed on the front page of the website.
+
 *AboutPage*
+- This model was created to allow superusers to edit the about page without having to edit code.
 
 ##### Portfolio App
 
 *PortfolioImages*
+- This model was used to allow superusers to manage the images that are displayed on the portfolio page of the website. It includes a number of fields named 'title', 'image', 'description' and 'created_at'
 
 ##### Profiles App
 
 *UserProfile*
+- Used to store user information for billing purposes related to the payments app
 
 ##### Reviews App
 
 *Review*
+- Allows superusers to update the reviews displayed on the homepage
 
 ##### Service App
 
 *ServicesPage*
+- Allows superusers to edit the various services page without editing code by using the control panel
 
 ##### Payments App
 
 *Payment*
+- Stores information about the payments requested, including whether or not they have been paid.
 
 ##### Blog App
 
 *Article*
+- Allows superuser to add, edit and delete blog/news posts to be displayed on the front end of the website.
 
 ##### Utils
 
 *Context Processor*
+- The context processor was used to make certain database information to every page within the control panel area, name the latest 5 messages recieved and the number of unread messages.
 
 ## Skeleton Plane
 
