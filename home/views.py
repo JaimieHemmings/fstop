@@ -35,6 +35,7 @@ def index(request):
     homepage_faqs = get_all_or_404(HomePageFAQ)
     homepage_slider_images = get_all_or_404(HomePageSliderImages)
     homepage_panels = get_all_or_404(HomePagePanel)
+    homepage_panels = homepage_panels.order_by("id")
     articles = get_all_or_404(Article)
     articles = articles.order_by("-date")[:2]
     reviews = get_all_or_404(Review)

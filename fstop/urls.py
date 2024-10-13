@@ -6,16 +6,10 @@ from django.contrib import sitemaps
 from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from blog.models import Article
-from portfolio.models import PortfolioImages
 
 info_dict_blog = {
     "queryset": Article.objects.all(),
     "date_field": "date",
-}
-
-info_dict_portfolio = {
-    "queryset": PortfolioImages.objects.all(),
-    "date_field": "created_at",
 }
 
 class StaticViewSitemap(sitemaps.Sitemap):
@@ -26,7 +20,11 @@ class StaticViewSitemap(sitemaps.Sitemap):
         return [
             "home",
             "about",
-            "services",
+            "lifestyle_services",
+            "event_services",
+            "property_services",
+            "aerial_services",
+            "blog",
             "portfolio",
             "contact"]
 
