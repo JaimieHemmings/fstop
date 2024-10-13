@@ -10,54 +10,83 @@
 {% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="{% static 'portfolio/css/portfolio-style.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="container-fluid slide-gallery background-secondary">
+<section
+  class="internal-hero container-fluid section-padding bg-image"
+  style="background-image:url({{ article.slider_image_one.url }})">
   <div class="container">
-    <div id="slide">
-      <div
-      class="item"
-      style="background-image: url({{ article.slider_image_one.url }});">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
+          {{ article.title }}
+        </h1>
+        <p class="color-white-200 mt-3 pb-3">
+          <span class="d-block"><em>{{ article.date|date:"d/m/y" }}</em></span>
+          {{ article.exerpt}}
+        </p>
       </div>
-      <div
-      class="item"
-      style="background-image: url({{ article.slider_image_two.url }});">
-      </div>
-      <div
-      class="item"
-      style="background-image: url({{ article.slider_image_three.url }});">
-      </div>
-      <div
-      class="item"
-      style="background-image: url({{ article.slider_image_four.url }});">
-      </div>
-    </div>
-    <div class="buttons">
-      <button id="prev">
-        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
-        </svg>
-      </button>
-      <button id="next">
-        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
-        </svg>       
-      </button>
     </div>
   </div>
+</section>
+<section class="portfolio-gallery background-primary pb-3">
+  <div class="container">
+    <div class="row">
+      <ul>
+        <li>
+          <a
+            href="#item01"
+            class="gallery-item"
+            style="background-image:url({{ article.slider_image_one.url }});"
+          >
+          </a>
+        </li>
+        <li>
+          <a
+            href="#item01"
+            class="gallery-item"
+            style="background-image:url({{ article.slider_image_two.url }});"
+          >
+          </a>
+        </li>
+        <li>
+          <a
+            href="#item01"
+            class="gallery-item"
+            style="background-image:url({{ article.slider_image_three.url }});"
+          >
+          </a>
+        </li>
+        <li>
+          <a
+            href="#item01"
+            class="gallery-item"
+            style="background-image:url({{ article.slider_image_four.url }});"
+          >
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="port" class="port background-secondary">
+  <button id="close_port">
+    <p class="btn btn-custom-red">
+      <span>Close</span><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
+      </svg>
+    </p>
+  </button>
+  <img id="portImg" src="" alt="Image relating to the article">
+</div>
+
 </section>
 <section class="background-secondary section-padding pb-1">
   <div class="container pb-5">
     <div class="row">
-      <div class="col-sm-12 text-center">
-        <h1 class="color-white-200 mb-3">{{ article.title }}</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <p class="color-white-300 mb-3">{{ article.date|date:"d/m/y" }}</p>
-      </div>
       <div class="col-sm-12 article-body">
         {{ article.body|safe|linebreaks }}
       </div>
@@ -79,5 +108,30 @@
 
 {% block postload_js %}
 {{ block.super }}
- <script src="{% static 'js/gallery.js' %}" defer></script>
+<script>
+// Get Variables
+portImg = document.getElementById('portImg');
+port = document.getElementById('port');
+
+// Get all instances of gallery items
+galleryItems = document.querySelectorAll('.gallery-item');
+galleryItems.forEach(function(item) {
+  // Add a click event to each item
+  item.addEventListener('click', function() {
+    // get and set the appropriate data
+    portImg.src = item.style.backgroundImage.slice(5, -2);    
+    // get the data-title attribute of the clicked item
+    portImg.alt = item.getAttribute('data-title');
+    
+    // Open the window port
+    port.classList.add('item_open');
+  });
+});
+
+// Event listener for closing the window port
+document.getElementById('close_port').addEventListener('click', function() {
+  port.classList.remove('item_open');
+});
+
+</script>
 {% endblock %}

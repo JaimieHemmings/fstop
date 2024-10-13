@@ -33,7 +33,6 @@ function getCookie(cname) {
 document.addEventListener("DOMContentLoaded", function() {
   // Check if the user has already consented
   let gaCookie = getCookie("cookie-consent");
-  console.log(`Cookie = ${gaCookie}`);
   if (gaCookie != "") {
     allConsentGranted();
     return;
