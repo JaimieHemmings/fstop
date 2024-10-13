@@ -246,6 +246,10 @@ As a Superuser of the site I want to:
 
 #### User Flow Diagram
 
+- Anonymous User flow Diagram
+
+![Anonymous User flow Diagram](docs/anonymous-userflow-diagram.png)
+
 ### Information Architecture
 
 #### Site Map
