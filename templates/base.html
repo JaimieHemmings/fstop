@@ -58,9 +58,9 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous">  
   </script>
-  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://js.stripe.com/v3/" defer></script>
   <!-- Custom JS -->
-  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/main.js' %}" defer></script>
   {% endblock %}
 
   <title>FStops {% block extra_title %}{% endblock %}</title>
@@ -84,7 +84,7 @@
   {% include 'partials/footer.html' %}
   {% include 'partials/ga-consent-banner.html' %}
 
-  <script type="text/javascript">
+  <script type="text/javascript" defer>
     document.addEventListener('DOMContentLoaded', function() {
       var toastElList = [].slice.call(document.querySelectorAll('.toast'));
       var toastList = toastElList.map(function(toastEl) {
@@ -95,6 +95,6 @@
   </script>
   {% block postload_js %}
   {% endblock %}
-  <script src="{% static 'js/ga-consent.js' %}"></script>
+  <script src="{% static 'js/ga-consent.js' %}" defer></script>
 </body>
 </html>

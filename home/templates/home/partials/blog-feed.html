@@ -11,7 +11,7 @@
     <div class="row mt-5">
       {% for article in articles %}
         <a href="{% url 'article' article.slug %}" class="news-wrapper col-sm-6">
-          <img src="{{ article.thumb.url }}" class="img-fluid" alt="{{ article.title }}">
+          <img loading="lazy" src="{{ article.thumb.url }}" class="img-fluid" alt="{{ article.title }}">
           <div class="news-body">
             <h3 class="color-white-200 mb-2 pb-3 border-b-primary">{{ article.title }}</h3>
             <span class="date color-white-300 mb-2">{{ article.date|date:"d/m/y" }}</span>
