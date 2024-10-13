@@ -360,6 +360,10 @@ For this project I used the relational model. Below is an overview of the major 
 
 ### Wireframes
 
+- Mobile design Wireframes
+
+![Mobile wireframes](docs/wireframes/mobile-wireframes.png)
+
 ## Surface Plane
 
 ### Typography
