@@ -2,7 +2,7 @@
 
 ![Image of website on multiple devices](docs/banner.png)
 
-[**Link to the live website**](www.fstops.co.uk)
+[**Link to the live website**](https://www.fstops.co.uk)
 
 # Project Overview
 
@@ -147,11 +147,11 @@ The one thing all visitors have in common will be that they are looking for a fr
 
 Alpha Testing is the earliest stage of software testing carried out to identify and fixing crucial bugs in code and ensure optimal functionality of the core components of an application before it is roled out to a wider audience.
 
-###### Purpose
+##### Purpose
 
 The purpose is generally to identify any major bugs such as broken links, misaligned elements or performance issues. Additionally all core features of the software should be thoroughly tested to ensure any invalid inputs are handled correctly or to prevent the ability to input incorrect data in the first place. Finally, one would assess the basic user journey to ensure that the software application can be navigated and used by end users without any major issues and complete key tasks successfully.
 
-###### Methods
+##### Methods
 
 Alpha testing is usually conducted by internal stakeholders of the project, typically the development team or in some cases with larger companies a dedicated software testing team using a test version of the software rather than the production code itself. Testing can be done either manually or by implementing automatic methods, both have their pros and cons.
 
@@ -288,10 +288,57 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Database_design)
 
 For this project I used the relational model. Below is an overview of the major models used within the project and their purpose.
 
+##### Home App
+
 *User Model*
 - The user model was implemented using the built in functionality of django
 
-MORE STUFF HERE ===============================
+*Message Model*
+- The message model contains several fields including 'fname', 'lname', 'email', 'read' and 'created_at'
+
+*HomePageHero Model*
+- This model is used to contain information pertaining to the Hero displayed on the homepage allowing it to be editable in the control panel. It also has a custom function within it to ensure uploaded images have a unique filename.
+
+*HomePageAbout Model*
+- This model is again related to the editing functionality within the control panel allowing super users to edit information on the site without having to edit code or redeploy the website.
+
+*HomePageTrustedBy*
+- Once again, a model designed to be used within the control panel to allow superusers to edit the information here without using code or redeploying the site.
+
+*HomePageFAQ*
+- This model allows the superusers of the website to add, edit and delete questions and answers displayed within the FAQ section of the website on the frontend.
+
+*HomePageSliderImages*
+*HomePagePanel*
+*AboutPage*
+
+##### Portfolio App
+
+*PortfolioImages*
+
+##### Profiles App
+
+*UserProfile*
+
+##### Reviews App
+
+*Review*
+
+##### Service App
+
+*ServicesPage*
+
+##### Payments App
+
+*Payment*
+
+##### Blog App
+
+*Article*
+
+##### Utils
+
+*Context Processor*
 
 ## Skeleton Plane
 
