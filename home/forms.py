@@ -7,7 +7,7 @@ from .models import (
     HomePageFAQ,
     HomePageSliderImages,
     HomePagePanel,
-    AboutPage )
+    AboutPage,)
 
 
 class ContactForm(forms.ModelForm):
@@ -24,6 +24,13 @@ class ContactForm(forms.ModelForm):
             "message": "Message",
         }
 
+        labels = {
+            "fname": "Enter your First Name",
+            "lname": "Enter your Last Name",
+            "email": "Enter a valid email address",
+            "message": "Enter your message",
+        }
+
         # Set minimum length values
         self.fields["fname"].widget.attrs["minlength"] = 2
         self.fields["lname"].widget.attrs["minlength"] = 3
@@ -36,8 +43,10 @@ class ContactForm(forms.ModelForm):
             else:
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs["placeholder"] = placeholder
-            self.fields[field].widget.attrs["class"] = "form form-control mt-3"
-            self.fields[field].label = False
+            self.fields[field].widget.attrs["class"] = (
+                "form form-control mt-1 mb-3"
+            )
+            self.fields[field].label = labels[field]
 
 
 class HomeHeroForm(forms.ModelForm):
@@ -93,8 +102,11 @@ class HomeHeroForm(forms.ModelForm):
             "data_three_value": "The value for the third data point",
             "data_three_title": "The title for the third data point",
             "hero_image": "The background image for the hero section",
-            "hero_image_mobile": "Enter an image to be displayed on small screens",
-            "hero_image_alt": "Enter an alt text to be associated with the image for accessibility issues (screen readers)",
+            "hero_image_mobile": "Enter an image to be"
+            " displayed on small screens",
+            "hero_image_alt": "Enter an alt text to be "
+            "associated with the image for accessibility "
+            "issues (screen readers)",
         }
 
         field_labels = {
@@ -150,9 +162,12 @@ class editAboutSectionHomeForm(forms.ModelForm):
         placeholders = {
             "homepage_about_title": "Enter the title of the about section",
             "homepage_about_lead": "Enter the lead of the about section",
-            "homepage_about_subtitle": "Enter the subtitle of the about section",
-            "homepage_about_paragraph_one": "Enter the first paragraph of the about section",
-            "homepage_about_paragraph_two": "Enter the second paragraph of the about section",
+            "homepage_about_subtitle": "Enter the subtitle of the about secti"
+            "on",
+            "homepage_about_paragraph_one": "Enter the first paragraph of th"
+            "e about section",
+            "homepage_about_paragraph_two": "Enter the second paragraph of"
+            " the about section",
         }
 
         # Set autofocus on first field to be filled in
@@ -161,7 +176,8 @@ class editAboutSectionHomeForm(forms.ModelForm):
         for field in self.fields:
             if field != "homepage_about_image":
                 # Add classes to each field
-                self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+                self.fields[field].widget.attrs["class"] = (
+                    "form form-control mt-1 mb-3")
                 # Add placeholders
                 self.fields[field].widget.attrs["placeholder"] = (
                     placeholders[field]
@@ -186,16 +202,12 @@ class HomePageTrustedByForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        placeholders = {
-            "trusted_by_title": "Enter the title of the trusted by section",
-            "trusted_by_lead": "Enter the lead of the trusted by section",
-        }
-
         # Set autofocus on first field to be filled in
         self.fields["trusted_by_title"].widget.attrs["autofocus"] = True
         # set classes
         for field in self.fields:
-            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+            self.fields[field].widget.attrs["class"] = (
+                "form form-control mt-1 mb-3")
 
 
 class HomePageFAQForm(forms.ModelForm):
@@ -210,15 +222,15 @@ class HomePageFAQForm(forms.ModelForm):
             "faq_answer": "Enter an answer for the FAQ section",
         }
 
-
-
         # Set autofocus on first field to be filled in
         self.fields["faq_question"].widget.attrs["autofocus"] = True
         # set classes
         for field in self.fields:
-            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
-            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
-            
+            self.fields[field].widget.attrs["class"] = (
+                "form form-control mt-1 mb-3")
+            self.fields[field].widget.attrs["placeholder"] = (
+                placeholders[field])
+
 
 class AddSliderImageForm(forms.ModelForm):
     class Meta:
@@ -232,13 +244,15 @@ class AddSliderImageForm(forms.ModelForm):
             "title": "Title",
             "description": "Description",
         }
-        
+
         # Set autofocus on first field to be filled in
         self.fields["image"].widget.attrs["autofocus"] = True
         # set classes
         for field in self.fields:
-            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
-            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+            self.fields[field].widget.attrs["class"] = (
+                "form form-control mt-1 mb-3")
+            self.fields[field].widget.attrs["placeholder"] = (
+                placeholders[field])
 
 
 class AddHomePagePanelForm(forms.ModelForm):
@@ -260,8 +274,10 @@ class AddHomePagePanelForm(forms.ModelForm):
         self.fields["title"].widget.attrs["autofocus"] = True
         # set classes
         for field in self.fields:
-            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
-            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+            self.fields[field].widget.attrs["class"] = (
+                "form form-control mt-1 mb-3")
+            self.fields[field].widget.attrs["placeholder"] = (
+                placeholders[field])
 
 
 class AboutPageForm(forms.ModelForm):
@@ -299,13 +315,16 @@ class AboutPageForm(forms.ModelForm):
             "body_subtitle": "The subtitle for the body section",
             "body_text": "The body text for the body section",
             "body_image": "Max size: 350px by 450px",
-            "body_image_alt": "Enter an alt text to be associated with the image for accessibility issues (screen readers)",
+            "body_image_alt": "Enter an alt text to be associated"
+            " with the image for accessibility issues (screen readers)",
         }
 
         # Set autofocus on first field to be filled in
         self.fields["hero_title"].widget.attrs["autofocus"] = True
         # set classes
         for field in self.fields:
-            self.fields[field].widget.attrs["class"] = "form form-control mt-3 mb-1"
-            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+            self.fields[field].widget.attrs["class"] = (
+                "form form-control mt-3 mb-1")
+            self.fields[field].widget.attrs["placeholder"] = (
+                placeholders[field])
             self.fields[field].help_text = helper_text[field]
