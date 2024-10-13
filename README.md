@@ -208,6 +208,41 @@ By focusing on a strong content strategy paired with SEO best practices, this we
 
 ### User Stories
 
+As a First Time Visitor I want to:
+
+- Navigate around the site easily and intuitively
+- View previous work
+- Easily understand what FStop Photography offers, so that I can decide if the services meet my needs
+- Easily find contact information or a contact form, so that I can inquire about booking or ask questions.
+- Find engaging and/or informative content
+- Read testimonials from previous clients, so that I can feel confident in the photographer's abilities
+- Learn about the photographer’s background and experience, so that I can feel more personally connected and trust their expertise
+- Access the website on my mobile device with no issues, so that I can have a smooth experience regardless of the device I’m using
+- View and read the photographer’s blog posts, so that I can learn more about their creative process and photography tips
+- I want the website to load quickly and function properly, so that I can have a positive browsing experience without frustration
+- Register an account
+
+As a returning visitor I want to:
+
+- Easily navigate to new portfolio updates, so that I can quickly view any recent work or projects
+- Quickly find any new blog posts, so that I can stay informed about the photographer’s latest tips, experiences, or insights
+- Log in so that I can view past projects, proofs, or completed work
+- Easily find the photographer’s contact information again, so that I can reach out quickly for any new inquiries or bookings
+- See a quick overview of any changes or updates since my last visit, so that I don’t miss anything important
+- View any new testimonials or client reviews, so that I can continue to gauge the photographer’s reputation and work quality
+- Pay any payment requests sent to me by FStops Photography
+
+As a Superuser of the site I want to:
+
+- Easily update my portfolio with new images, so that I can showcase my latest work to potential clients
+- Post new blog content, so that I can share my photography tips, creative process, or behind-the-scenes insights with my audience
+- Track website traffic and visitor behavior through analytics, so that I can understand how users engage with my site and optimize their experience
+- Be notified when a visitor submits a contact form inquiry, so that I can respond to potential clients in a timely manner
+- Manage testimonials and reviews on my site, so that I can showcase positive feedback and build trust with new visitors
+- Ensure that the website performs well on both desktop and mobile devices, so that all users have a smooth experience regardless of the device they’re using
+- Ensure the website is secure, so that my clients' data is protected
+- Be able to generate invoices and have them be paid by the client through the clients profile area of the website
+
 ## Structure Plane
 
 ### Interaction Design
