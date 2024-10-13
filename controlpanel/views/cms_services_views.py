@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404
 from service.models import ServicesPage
 from service.forms import EditServicesPageForm
+from django.contrib import messages
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -19,7 +20,8 @@ def cp_cms_edit_lifestyle(request):
             request.POST, request.FILES, instance=page_info)
         if form.is_valid():
             form.save()
-            return render(request, "cms/services/edit-page.html", context)
+            messages.success(request, "Page data updated successfully")
+            
 
     context = {
         "form": form,
@@ -40,7 +42,7 @@ def cp_cms_edit_event(request):
             request.POST, request.FILES, instance=page_info)
         if form.is_valid():
             form.save()
-            return render(request, "cms/services/edit-page.html", context)
+            messages.success(request, "Page data updated successfully")
 
     context = {
         "form": form,
@@ -61,7 +63,7 @@ def cp_cms_edit_property(request):
             request.POST, request.FILES, instance=page_info)
         if form.is_valid():
             form.save()
-            return render(request, "cms/services/edit-page.html", context)
+            messages.success(request, "Page data updated successfully")
 
     context = {
         "form": form,
@@ -82,7 +84,7 @@ def cp_cms_edit_aerial(request):
             request.POST, request.FILES, instance=page_info)
         if form.is_valid():
             form.save()
-            return render(request, "cms/services/edit-page.html", context)
+            messages.success(request, "Page data updated successfully")
 
     context = {
         "form": form,

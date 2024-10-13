@@ -15,6 +15,11 @@ class ServicesPage(models.Model):
     hero_title = models.CharField(max_length=100)
     hero_image = models.ImageField(upload_to=get_path, null=False, blank=False, default="default.png")
 
+    list_item_one = models.CharField(max_length=200, default="default")
+    list_item_two = models.CharField(max_length=200, default="default")
+    list_item_three = models.CharField(max_length=200, default="default")
+    list_item_four = models.CharField(max_length=200, default="default")
+
     banner_image = models.ImageField(upload_to=get_path, null=False, blank=False, default="default.png")
     banner_alt_text = models.CharField(max_length=100)
 
