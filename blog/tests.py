@@ -11,23 +11,12 @@ class UrlsTest(TestCase):
     def test_blog_url(self):
         path = reverse('blog')
         print(f"Resolved Path: {path}")
+        response = requests.get(f"{BASE_URL}{path}")
+        self.assertEqual(response.status_code, 200)
 
     def test_article_url(self):
         for article in articles:
             with self.subTest(article=article):
-              path = reverse('article', args=[article.slug])
-              print(f"Resolved Path: {path}")
-
-
-class HttpResponseTest(TestCase):
-    def test_blog_response(self):
-        path = reverse('blog')
-        response = requests.get(f"{BASE_URL}{path}")
-        self.assertEqual(response.status_code, 200)
-
-    def test_article_response(self):
-        for article in articles:
-            with self.subTest(article=article):
-              path = reverse('article', args=[article.slug])
-              response = requests.get(f"{BASE_URL}{path}")
-              self.assertEqual(response.status_code, 200)
+                path = reverse('article', args=[article.slug])
+                response = requests.get(f"{BASE_URL}{path}")
+                self.assertEqual(response.status_code, 200)

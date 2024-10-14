@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
+    """
+    A user profile model for maintaining default
+    delivery information and order history
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     fname = models.CharField(max_length=50, blank=True, null=True)
     lname = models.CharField(max_length=50, blank=True, null=True)

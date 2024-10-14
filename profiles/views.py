@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.http import require_POST
+from django.shortcuts import redirect
 
 from payments.models import Payment
 from payments.forms import PaymentForm
@@ -15,40 +16,33 @@ import stripe
 
 
 @login_required
-def profile(request):
+def profile_page(request):
     """
-    View to display the user's profile
-    """
-    user = request.user
-    user_profile = UserProfile.objects.get(user=user)
-    payments = Payment.objects.filter(email=user.email)
-    context = {
-        "user": user,
-        "payments": payments,
-        "user_profile": user_profile
-        }
-    return render(request, "profile.html", context)
-
-
-@login_required
-def edit_profile(request):
-    """
-    View to edit the user's profile
+    View to display the user's profile and allow editing
     """
     profile = get_object_or_404(UserProfile, user=request.user)
+    payments = Payment.objects.filter(email=request.user.email)
     form = UserProfileForm(instance=profile)
+
     if request.method == "POST":
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return render(
-                request, "profile.html", {"user": request.user})
+            messages.success(request, "Profile updated successfully")
+            return redirect(profile_page)
         else:
             form = UserProfileForm(instance=profile)
+            messages.error(
+                request, "Failed to update profile."
+                "Please ensure the form is valid.")
+
     context = {
+        "profile": profile,
+        "payments": payments,
         "form": form,
-    }
-    return render(request, "edit-profile.html", context)
+        }
+    
+    return render(request, "profile.html", context)
 
 
 @login_required
@@ -56,8 +50,12 @@ def make_payment(request, id):
     """
     View to make a payment
     """
+    profile = get_object_or_404(UserProfile, user=request.user)
     payment_data = get_object_or_404(Payment, id=id)
     form = PaymentForm(instance=payment_data)
+
+    # prefill form street address 1 with data from profile
+    form.data["street_address1"] = profile.street_address1
     if settings.DEBUG:
         STRIPE_PUBLIC_KEY = "abcdef"
     else:

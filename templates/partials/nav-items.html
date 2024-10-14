@@ -72,7 +72,7 @@
     <li><a class="dropdown-item" href="{% url 'control_panel' %}">Admin</a></li>
     <li><hr class="dropdown-divider"></li>
       {% endif %}
-    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+    <li><a class="dropdown-item" href="{% url 'profile_page' %}">Profile</a></li>
     <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
     {% else %}
     <li><a data-cy="login-link" class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>

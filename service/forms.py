@@ -11,6 +11,7 @@ class EditServicesPageForm(forms.ModelForm):
         placeholders = {
             "title": "Enter the title of the page",
             "hero_title": "Enter the title of the hero section",
+            "hero_subtitle": "Enter the subtitle of the hero section",
             "hero_image": "Upload the hero image",
             "list_item_one": "Enter the first list item",
             "list_item_two": "Enter the second list item",
@@ -43,6 +44,7 @@ class EditServicesPageForm(forms.ModelForm):
         help_text = {
             "title": "Enter the title of the page",
             "hero_title": "Enter the title of the hero section",
+            "hero_subtitle": "Enter the subtitle of the hero section",
             "hero_image": "Upload the hero image",
             "list_item_one": "Enter the first list item",
             "list_item_two": "Enter the second list item",

@@ -139,6 +139,7 @@ em, i {
 
 p {
   margin: 0 0 2em 0;
+  font-weight: 600;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -161,15 +162,15 @@ h2 {
 }
 
 h3 {
-  font-size: calc(var(--font-size-base) * 1.75);
+  font-size: calc(var(--font-size-base) * 1.25);
 }
 
 h4 {
-  font-size: calc(var(--font-size-base) * 1.5);
+  font-size: calc(var(--font-size-base) * 1);
 }
 
 h5 {
-  font-size: calc(var(--font-size-base) * 1.25);
+  font-size: calc(var(--font-size-base) * 1);
 }
 
 h6 {

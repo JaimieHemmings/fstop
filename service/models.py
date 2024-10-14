@@ -13,6 +13,7 @@ class ServicesPage(models.Model):
     title = models.CharField(max_length=100)
 
     hero_title = models.CharField(max_length=100)
+    hero_subtitle = models.CharField(max_length=200)
     hero_image = models.ImageField(upload_to=get_path, null=False, blank=False, default="default.png")
 
     list_item_one = models.CharField(max_length=200, default="default")

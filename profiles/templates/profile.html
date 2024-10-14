@@ -1,86 +1,35 @@
 {% extends 'base.html' %}
 {% block extra_title %}| Profile{% endblock %}
 {% block content %}
-<div class="container-fluid section-padding background-secondary">
+<div class="container-fluid section-padding background-primary mb-3 mt-5">
   <div class="container">
-    <div class="row p-5 background-primary">
+    <div class="row">
       <div class="col-md-12">
-        <h1 class="color-white-200">Profile</h1>
+        <h1 class="color-white-200 mb-3">Profile</h1>
         <hr class="color-white-200">
       </div>
-      <div class="col-sm-6 color-white-300">
-        <p class="pb-3">Username: <span>{{ user.username }}</span></p>
-        <p class="pb-3">Name: <span>{{ userProfile.fname }} {{ userProfile.lname }}</span></p>
-        <p class="pb-3">Email: <span>{{ user.email }}</span></p>
-        <p class="pb-3">Joined: <span>{{ user.date_joined }}</span></p>
-      </div>
-      <div class="col-sm-6 color-white-300">
-        <p class="pb-1">Address: </p>
-        <p class="pb-3"><address>
-          {% if user_profile %}
-          {{ user_profile.street_address1 }}
-          {% else %}
-          No Street Address Information
-          {% endif %}
-
-          <br>
-          
-          {% if user_profile.street_address2 %}
-          {{ user_profile.street_address2 }}
-
-          <br>
-          {% endif %}
-          
-          {% if user_profile.town_or_city %}
-          {{ user_profile.town_or_city }}
-          {% else %}
-          No town or city Information
-          {% endif %}
-
-          <br>
-          
-          {% if user_profile.county %}
-          {{ user_profile.county }}
-          {% else %}
-          No county Information
-          {% endif %}
-
-          <br>
-          
-          {% if user_profile.country %}
-          {{ user_profile.country }}
-          {% else %}
-          No country Information
-          {% endif %}
-
-          <br>
-
-          
-          
-          {% if user_profile.postcode %}
-          {{ user_profile.postcode }}
-          {% else %}
-          No postcode Information
-          {% endif %}
-        </address></p>
-      </div>
-      <div class="col-sm-12 d-flex flex-row justify-content-end mb-3">
-        <a href="{% url 'edit_profile' %}" class="btn btn-custom-red">Edit Profile</a>
-      </div>
-      {% if payments %}
-      <div class="col-sm-12">
-        <h2 class="color-white-200">Payments</h2>
+      <div class="col-md-6 color-white-200">   
+        <h2 class="color-white-200 mb-3">Details</h2>
         <hr class="color-white-200">
+        <p>Update your profile details:</p>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form }}
+          <div class="pt-3 d-flex flex-row col-sm-12 justify-content-end">
+            <button type="submit" class="btn btn-custom-red">Update</button>
+          </div>
+        </form>
       </div>
-      <div class="col-sm-12">
-
+      <div class="col-md-6">
+        <h2 class="color-white-200 mb-3">Payments</h2>
+        <hr class="color-white-200">
+        <p>View outstanding or completed payment requests:</p>        
+        {% if payments %}
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">ID</th>
               <th scope="col">Date</th>
               <th scope="col">Amount</th>
-              <th scope="col">Stripe Payment ID</th>
               <th scope="col">Status</th>
               <th scope="col">Actions</th>
             </tr>
@@ -88,26 +37,20 @@
           <tbody>
             {% for payment in payments %}
             <tr>
-              <td>{{ payment.id }}</td>
-              <td>{{ payment.date }}</td>
+              <td>{{ payment.date|date:"d/m/y" }}</td>
               <td>£{{ payment.amount }}</td>
-              <td>
-                {% if payment.stripe_payment_id %}
-                  {{ payment.stripe_payment_id }}
-                {% else %}
-                  Not Paid
-                {% endif %}
-              </td>
               <td>{% if payment.paid == True %}Paid{% else %}Due{% endif %}</td>
               <td>
-                <a href="{% url 'make_payment' payment.id %}" class="btn btn-secondary">View</a>
+                <a href="{% url 'make_payment' payment.id %}" class="btn btn-custom-red">View</a>
               </td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
+        {% else %}
+        <p>No payments information found.</p>
+        {% endif %}        
       </div>
-      {% endif %}
     </div>
   </div>
 </div>
