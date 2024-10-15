@@ -12,7 +12,6 @@ def cp_cms_about_edit(request):
         form = AboutPageForm(request.POST, request.FILES, instance=page_info)
         if form.is_valid():
             form.save()
-            return render(request, "cms/about/edit-about.html", context)
 
     context = {
         "form": form,
