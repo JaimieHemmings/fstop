@@ -60,7 +60,14 @@ INSTALLED_APPS = [
     "reviews",
     "profiles",
     "service",
+    "ckeditor",
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%',
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

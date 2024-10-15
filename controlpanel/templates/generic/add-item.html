@@ -12,6 +12,7 @@
     <div class="col-sm-12">
       <form method="POST" action="{% url end_point %}" class="pb-5" enctype="multipart/form-data">
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <div class="d-flex flex-row justify-content-end mt-3">
           <button type="submit" class="btn btn-success">{{ page_title }}</button>

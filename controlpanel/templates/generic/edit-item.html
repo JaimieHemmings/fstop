@@ -12,6 +12,7 @@
       <div class="col-sm-12 pt-3 pb-3">
         <form method="POST" action="{% url end_point item.id %}" class="form" enctype="multipart/form-data">
           {% csrf_token %}
+          {{ form.media }}
           {{ form.as_p }}
           <button type="submit" class="btn btn-primary">Update Item</button>
         </form>

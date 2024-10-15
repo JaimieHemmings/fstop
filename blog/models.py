@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 import uuid
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 
 class Article(models.Model):
@@ -13,8 +14,8 @@ class Article(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     exerpt = models.CharField(max_length=255)
-    body = models.TextField()
-    body_continued = models.TextField()
+    body = RichTextField(config_name='default')
+    body_continued = RichTextField(config_name='default')
     date = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(
         upload_to=get_path, default="default.png")
