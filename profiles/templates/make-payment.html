@@ -21,10 +21,10 @@
     <div class="row">
       <div class="col-sm-12">
         <h1 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
-          Make Payment
+          Details
         </h1>
         <p class="color-white-200 mt-3 pb-3">
-          Submit payment for project id: {{ payment_data.id }}
+          View project details
         </p>
       </div>
     </div>
@@ -39,6 +39,7 @@
         <p class="color-white-200">£{{ payment_data.amount }}</p>
       </div>
     </div>
+    {% if payment_data.paid == False %}
     <div class="row background-secondary">
       <div class="col-sm-12 color-white-300 p-3">
         <form method="POST" action="{% url 'make_payment' payment_data.id %}" id="payment-form">
@@ -48,10 +49,25 @@
             <div class="row">
               <div class="col-sm-6">
                 {{ form.full_name }}
+                {% if form.full_name.errors %}
+                  <div class="alert alert-danger">
+                    {{ form.full_name.errors }}
+                  </div>
+                {% endif %}
                 {{ form.email }}
+                {% if form.email.errors %}
+                  <div class="alert alert-danger">
+                    {{ form.email.errors }}
+                  </div>
+                {% endif %}
               </div>
               <div class="col-sm-6">
                 {{ form.phone_number }}
+                {% if form.phone_number.errors %}
+                  <div class="alert alert-danger">
+                    {{ form.phone_number.errors }}
+                  </div>
+                {% endif %}
               </div>
             </div>
           </fieldset>
@@ -59,11 +75,41 @@
           <fieldset class="px-3 mb-5">
             <legend class="fieldset-label color-white-200 mb-3">Address</legend>
             {{ form.street_address1 }}
+            {% if form.street_address1.errors %}
+              <div class="alert alert-danger">
+                {{ form.street_address1.errors }}
+              </div>
+            {% endif %}
             {{ form.street_address2 }}
+            {% if form.street_address2.errors %}
+              <div class="alert alert-danger">
+                {{ form.street_address2.errors }}
+              </div>
+            {% endif %}
             {{ form.town_or_city }}
+            {% if form.town_or_city.errors %}
+              <div class="alert alert-danger">
+                {{ form.town_or_city.errors }}
+              </div>
+            {% endif %}
             {{ form.county }}
+            {% if form.county.errors %}
+              <div class="alert alert-danger">
+                {{ form.county.errors }}
+              </div>
+            {% endif %}
             {{ form.postcode }}
+            {% if form.postcode.errors %}
+              <div class="alert alert-danger">
+                {{ form.postcode.errors }}
+              </div>
+            {% endif %}
             {{ form.country }}
+            {% if form.country.errors %}
+              <div class="alert alert-danger">
+                {{ form.country.errors }}
+              </div>
+            {% endif %}
           </fieldset>
           
           <fieldset class="px-3 mb-5">
@@ -77,7 +123,22 @@
           </div>
         </form>
       </div>
+      <div class="col-sm-12">
+        {% if form.errors %}
+          <div class="alert alert-danger">
+            {{ form.errors }}
+          </div>
+        {% endif %}
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+          <div class="alert alert-danger">
+            {{ error }}
+          </div>
+        {% endfor %}
+        {% endif %}
+      </div>
     </div>
+    {% endif %}
   </div>
 {% endblock %}
 

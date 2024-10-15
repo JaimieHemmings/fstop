@@ -19,7 +19,7 @@ def control_panel(request):
     latest_articles = Article.objects.all().order_by("-date")[:5]
     latest_users = User.objects.all().order_by("-date_joined")[:5]
     latest_reviews = Review.objects.all().order_by("-created_at")[:5]
-    latest_payment_requests = Payment.objects.all().order_by("-date")[:5]
+    latest_payment_requests = Payment.objects.all().order_by("date")[:5]
     # Build context
     context = {
         "total_num_users": total_num_users,

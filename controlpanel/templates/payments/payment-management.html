@@ -28,10 +28,10 @@
             <td>{{ payment.date|date:"d/m/y" }}</td>
             <td>£{{ payment.amount|intcomma }}</td>
             <td>
-              {% if payment == False %}
+              {% if payment.paid == True %}
               <p class="m-0 badge bg-success">Paid</p>
               {% else %}
-              <p class="m-0 badge bg-warning">Pending</p>
+              <p class="m-0 badge bg-warning">Unpaid</p>
               {% endif %}
             </td>
             <td>

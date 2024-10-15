@@ -13,14 +13,14 @@
         <div class="row">
 
           <div class="col-sm-6">
-            <p>Payment ID: {{ payment.payment_id }}</p>
-            <p><strong>User: </strong>{{ payment.email }} - {% if payment.name %}{{ payment.name }}{% else %}No associated name found{% endif %}</p>
+            <p><strong>Payment ID:</strong> {{ payment.payment_id }}</p>
+            <p><strong>User: </strong>{% if payment.name %}{{ payment.name }}{% else %}No associated name found{% endif %}</p>
             <p><strong>Email:</strong> {{ payment.email }}</p>
             <p><strong>Created On:</strong> {{ payment.date|date:"d/m/y" }}</p>
           </div>
           <div class="col-sm-6">
             <p><strong>Amount: </strong>£{{ payment.amount }}</p>
-            <p><strong>Status:</strong> {% if payment.status == True %}<span class="badge bg-success">Paid</span>{% else %}<span class="badge bg-warning">Pending</span>{% endif %}</p>
+            <p><strong>Status:</strong> {% if payment.paid == True %}<span class="badge bg-success">Paid</span>{% else %}<span class="badge bg-warning">Pending</span>{% endif %}</p>
           </div>
           <hr>
           <p><strong>Message:</strong></p>

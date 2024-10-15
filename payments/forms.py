@@ -14,7 +14,6 @@ class PaymentForm(forms.ModelForm):
             'street_address2': forms.TextInput(attrs={'placeholder': 'Street Address 2'}),
             'town_or_city': forms.TextInput(attrs={'placeholder': 'Town or City'}),
             'county': forms.TextInput(attrs={'placeholder': 'County'}),
-            'country': forms.TextInput(attrs={'placeholder': 'Country'}),
             'postcode': forms.TextInput(attrs={'placeholder': 'Postcode'}),
         }
 
@@ -28,16 +27,16 @@ class PaymentForm(forms.ModelForm):
             'street_address2': 'Street Address 2',
             'town_or_city': 'Town or City',
             'county': 'County',
-            'country': 'Country',
             'postcode': 'Postcode',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if self.fields[field].required:
-                placeholder = f'{placeholders[field]} *'
-            else:
-                placeholder = placeholders[field]
+            if field != "country":
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'form form-control mt-3'
             self.fields[field].label = False
