@@ -407,6 +407,8 @@ Proposals for further development:
 
 - Make the SEO meta data like the ```title``` and ```description``` editable in the CMS
 
+- Functionality for the site admin(s) to attach to the order the photos taken from the photoshoot related to that order to allow the client to access and download them directly.
+
 # Technologies Used
 
 ## Languages Used

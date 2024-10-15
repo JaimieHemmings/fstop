@@ -139,6 +139,7 @@ em, i {
 
 p {
   margin: 0 0 2em 0;
+  font-weight: 600;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -161,15 +162,15 @@ h2 {
 }
 
 h3 {
-  font-size: calc(var(--font-size-base) * 1.75);
+  font-size: calc(var(--font-size-base) * 1.25);
 }
 
 h4 {
-  font-size: calc(var(--font-size-base) * 1.5);
+  font-size: calc(var(--font-size-base) * 1);
 }
 
 h5 {
-  font-size: calc(var(--font-size-base) * 1.25);
+  font-size: calc(var(--font-size-base) * 1);
 }
 
 h6 {
@@ -179,15 +180,15 @@ h6 {
 @media screen and (max-width: 736px) {
 
   h1 {
-    font-size: var(--font-size-base) * 2;
+    font-size: calc(var(--font-size-base) * 1.75);
   }
 
   h2 {
-    font-size: var(--font-size-base) * 1.75;
+    font-size: calc(var(--font-size-base) * 1.5);
   }
 
   h3 {
-    font-size: var(--font-size-base) * 1.25;
+    font-size: calc(var(--font-size-base) * 1.25);
   }
 
 }
@@ -247,6 +248,33 @@ input[type="url"],
 select {
   height: 2.75em;
 }
+
+/*
+Cookies Consent Banner
+*/
+
+.ga-consent-banner {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--col-black);
+  z-index: 99999;
+  border-top: 1px solid var(--col-primary);
+  padding-top: 15px;
+  transition:cubic-bezier(1, 0, 0, 1) 0.5s;
+
+  h2 {
+    margin: 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--col-primary);
+    margin-bottom: 5px;
+  }
+}
+
+.ga-consent-banner.show {
+  bottom: 0;
+} 
 
 /*
 Toast Notifications
@@ -477,7 +505,7 @@ Internal Header Styles
   letter-spacing: -0.32px;
   color: var(--col-white-200);
   font-size: var(--font-size-base);
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.875rem 1.25rem;
   border-radius: 0;
   transition: background-color 0.3s ease;
@@ -554,12 +582,7 @@ ul.errorlist li {
   CTA Section Styles
 */
 
-.cta-bg {
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  padding: 50px 15px;
-  position: relative;
+.cta {
 
   &:after {
     content: "F.";
@@ -571,7 +594,22 @@ ul.errorlist li {
     opacity: 0.2;
     font-weight: 700;
     line-height: 1;
+    z-index: 1;
   }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+}
+
+.cta-bg {
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding: 50px 15px;
+  position: relative;
 
   p {
     margin: 0 auto;

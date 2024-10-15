@@ -50,23 +50,42 @@ def make_payment(request, id):
     """
     View to make a payment
     """
-    profile = get_object_or_404(UserProfile, user=request.user)
     payment_data = get_object_or_404(Payment, id=id)
-    form = PaymentForm(instance=payment_data)
 
-    # prefill form street address 1 with data from profile
-    form.data["street_address1"] = profile.street_address1
+    profile = get_object_or_404(UserProfile, user=request.user)
+    form = PaymentForm(initial={
+        "full_name": profile.fname + " " + profile.lname,
+        "email": request.user.email,
+        "country": profile.country,
+        "postcode": profile.postcode,
+        "town_or_city": profile.town_or_city,
+        "street_address1": profile.street_address1,
+        "street_address2": profile.street_address2,
+        "county": profile.county,
+        "save_info": True,
+    })
+
     if settings.DEBUG:
-        STRIPE_PUBLIC_KEY = "abcdef"
+        STRIPE_PUBLIC_KEY = "generic_key"
     else:
         STRIPE_PUBLIC_KEY = settings.STRIPE_PUBLIC_KEY
+
+        
+    payment_amount_stripe = int(payment_data.amount * 100)
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    payment_intent = stripe.PaymentIntent.create(
+        amount=payment_amount_stripe,
+        currency=settings.STRIPE_CURRENCY,
+        description=payment_data.description,
+    )
 
     if request.method == "POST":
         if form.is_valid():
             form.save()
-            stripe_payment_id = 0
+            payment_data = Payment.objects.get(id=id)
+            payment_data.paid = True
             return render(
-                request, "payment-success.html", stripe_payment_id)
+                request, "payment-success.html", payment_data.payment_id)
         else:
             messages.error(
                 request, "Failed to make payment."
@@ -75,7 +94,7 @@ def make_payment(request, id):
         "form": form,
         "payment_data": payment_data,
         "stripe_public_key": STRIPE_PUBLIC_KEY,
-        "client_secret": "aaa",
+        "client_secret": payment_intent.client_secret,
     }
 
     return render(request, "make-payment.html", context)
@@ -90,8 +109,7 @@ def cache_checkout_data(request):
         pid = request.POST.get("client_secret").split("_secret")[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.paymentIntent.modify(pid, metadata={
-            "username": request.user,
-            "save_info": request.POST.get("save_info"),
+            "username": request.user
         })
         return HttpResponse(status=200)
     except Exception as e:

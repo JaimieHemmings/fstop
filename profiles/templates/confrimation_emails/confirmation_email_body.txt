@@ -1,0 +1,12 @@
+Hello {{ payment_data.full_name }},
+
+This is confirmation of payment to the amount of {{ payment_data.amount }} for order:
+{{ payment_data.payment_ id }}.
+
+If you have any questions, please feel free to contact us.
+
+Thank you for choosing us!
+
+Sincerely,
+
+FStops Photography

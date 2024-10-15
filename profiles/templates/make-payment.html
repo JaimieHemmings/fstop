@@ -1,20 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/payment-css.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
 {% block extra_title %}
 | Make Payment
 {% endblock %}
 
 {% block content %}
 
-<section class="container-fluid background-primary section-padding">
+<section
+  class="internal-hero container-fluid section-padding bg-image"
+  style="background-image:url({% static 'img/photographer-on-mountain.webp' %})">
   <div class="container">
-    <div class="row mb-5">
+    <div class="row">
       <div class="col-sm-12">
-        <h1 class="color-white-200 fw-600 text-center">Make Payment</h2>
-        <p class="color-white-300 mt-3 text-center sub-text">Please enter your card details to make a payment</p>
+        <h1 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
+          Make Payment
+        </h1>
+        <p class="color-white-200 mt-3 pb-3">
+          Submit payment for project id: {{ payment_data.id }}
+        </p>
       </div>
     </div>
+  </div>
+</section>
+<section class="container-fluid background-primary section-padding">
+  <div class="container">
     <div class="row">
       <div class="col-sm-12 pt-3 pb-3">
         <p class="color-white-200 pb-3">Payment ID: {{ payment_data.id }}</p>
@@ -27,7 +44,7 @@
         <form method="POST" action="{% url 'make_payment' payment_data.id %}" id="payment-form">
           {% csrf_token %}
           <fieldset class="px-3 mb-3">
-            <legend class="fieldset-label small color-white-200">Details</legend>
+            <legend class="fieldset-label color-white-200">Your Details</legend>
             <div class="row">
               <div class="col-sm-6">
                 {{ form.full_name }}
@@ -40,7 +57,7 @@
           </fieldset>
           
           <fieldset class="px-3 mb-5">
-            <legend class="fieldset-label small color-white-200">Address</legend>
+            <legend class="fieldset-label color-white-200 mb-3">Address</legend>
             {{ form.street_address1 }}
             {{ form.street_address2 }}
             {{ form.town_or_city }}
@@ -50,13 +67,13 @@
           </fieldset>
           
           <fieldset class="px-3 mb-5">
-            <legend class="fieldset-label small color-white-200">Card Details</legend>
+            <legend class="fieldset-label color-white-200 mb-3">Card Details</legend>
             <!-- Stripe Element Placeholders -->
             <div id="card-element" class="mb-3 form-control"></div>
             <div id="card-errors" role="alert"></div>
           </fieldset>
           <div class="d-flex flex-row justify-content-end mt-5">
-            <button type="submit" class="btn btn-custom-red">Pay Now</button>
+            <button type="submit" class="btn btn-custom-red" id="submit-button">Pay Now</button>
           </div>
         </form>
       </div>
@@ -68,5 +85,6 @@
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"client_secret" }}
+<script src="{% static 'js/jquery.min.js' %}" defer></script>
 <script src="{% static 'js/stripe_elements.js' %}" defer></script>
 {% endblock %}

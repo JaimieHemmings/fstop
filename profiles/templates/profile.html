@@ -1,17 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block extra_title %}| Profile{% endblock %}
 {% block content %}
+<section
+  class="internal-hero container-fluid section-padding bg-image"
+  style="background-image:url({% static 'img/photographer-on-mountain.webp' %})">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
+          Profile
+        </h1>
+        <p class="color-white-200 mt-3 pb-3">
+          Update your profile details
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="container-fluid section-padding background-primary mb-3 mt-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h1 class="color-white-200 mb-3">Profile</h1>
-        <hr class="color-white-200">
-      </div>
       <div class="col-md-6 color-white-200">   
-        <h2 class="color-white-200 mb-3">Details</h2>
+        <h2 class="color-white-200 mb-3">User Information</h2>
         <hr class="color-white-200">
-        <p>Update your profile details:</p>
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form }}

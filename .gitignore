@@ -13,3 +13,4 @@ cloudinary_python.txt
 myenv/
 htmlcov/
 media/
+.env

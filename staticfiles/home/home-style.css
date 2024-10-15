@@ -187,11 +187,15 @@ position: relative;
 overflow: hidden;
 z-index: 3;
 
+.container {
+  z-index: 2;
+}
+
   &:after {
     content: "F.";
     font-weight: 700;
     font-size: 50rem;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.05);
     position: absolute;
     top: 0;
     left: 50%;
