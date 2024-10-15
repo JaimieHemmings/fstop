@@ -15,10 +15,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "abcdefg")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
-if "USE_AWS" in os.environ:
-    DEBUG = False
-else:
-    DEBUG = True
+
+DEBUG = os.environ.get("DEBUG", False)
 
 DOMAIN = "www.fstops.co.uk"
 SITE_NAME = "FStops Photography"
