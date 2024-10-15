@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 
 class Payment(models.Model):
     #Generate unique ID for every payment
-    def _generate_payment_id(self):
+    def _generate_payment_id():
         return uuid.uuid4().hex.upper()
 
     payment_id = models.CharField(max_length=32, null=False, editable=False, default=_generate_payment_id)

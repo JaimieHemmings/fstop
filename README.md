@@ -1,5 +1,11 @@
 # FStops Professional Photography Services
 
+> We do this
+> Not because it is easy
+> but because we thought
+> it would be easy
+> -- <cite>Unknown</cite>
+
 ![Image of website on multiple devices](docs/banner.png)
 
 [**Link to the live website**](https://www.fstops.co.uk)

@@ -13,7 +13,7 @@
         <div class="row">
 
           <div class="col-sm-6">
-            
+            <p>Payment ID: {{ payment.payment_id }}</p>
             <p><strong>User: </strong>{{ payment.email }} - {% if payment.name %}{{ payment.name }}{% else %}No associated name found{% endif %}</p>
             <p><strong>Email:</strong> {{ payment.email }}</p>
             <p><strong>Created On:</strong> {{ payment.date|date:"d/m/y" }}</p>
