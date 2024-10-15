@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 
 from payments.models import Payment
 from payments.forms import PaymentForm
-
+from django.utils import timezone
 from .forms import UserProfileForm
 from .models import UserProfile
 
@@ -82,9 +82,12 @@ def make_payment(request, id):
             payment.stripe_payment_id = payment_intent.id
             # Change the payment paid status to true
             payment_data.paid = True
+            # set the paid date to the current date
+            payment_data.paid_date = timezone.now()
+            payment_data.stripe_id = payment_intent.id
             payment_data.save()
             form.save()
-            return redirect(payment_success)
+            return redirect(payment_success, payment_data.id)
         else:
             # display the form with errors
             messages.error(
@@ -126,11 +129,15 @@ def cache_checkout_data(request):
 
 
 @login_required
-def payment_success(request):
+def payment_success(request, id):
     """
     View to display payment success
     """
+    payment_data = get_object_or_404(Payment, id=id)
+    context = {
+        "payment_data": payment_data,
+    }
     messages.success(
         request, f"Payment success!"
         "We will send a confirmation email to your email address.")
-    return render(request, "payment-success.html")
+    return render(request, "payment-success.html", context)

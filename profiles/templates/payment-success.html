@@ -1,6 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
 
 {% block extra_title %}| Payment Success{% endblock %}
 
 {% block content %}
+<section
+  class="internal-hero container-fluid section-padding bg-image"
+  style="background-image:url({% static 'img/photographer-on-mountain.webp' %})">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="color-white-200 fw-600 pt-5 border-b-primary pb-3">
+          Success
+        </h1>
+        <p class="color-white-200 mt-3 pb-3">
+          Thank you for your payment
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container-fluid background-secondary section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 pt-3 pb-3">
+        <h2>Success</h2>
+        <p class="color-white-200 pb-3">Thank you, the payment was succesful, confirmation has been emailed to you.</p>
+        <h3>Project Details</h3>
+        <p>{{ payment_data.description|safe }}</p>
+        <p>{{ payment_data.payment_date }}</p>
+      </div>
+      <div class="col-sm-6 pt-3 pb-3">
+        <h2 class="border-b-primary p-3">Details</h2>
+        <p class="mb-3">{{ payment_data.paid_date|date:"d/m/y" }}</p>
+        <p class="mb-3"><strong>Amount:</strong> £{{ payment_data.amount|intcomma }}</p>
+        <p class="mb-3"><strong>Payment ID:</strong> {{ payment_data.id }}</p>
+        <p class="mb-1">{{ payment_data.full_name }}</p>
+        <p class="m-0">{{ payment_data.street_address1 }}</p>
+        <p class="m-0">{{ payment_data.street_address2 }}</p>
+        <p class="m-0">{{ payment_data.city }}</p>
+        <p class="m-0">{{ payment_data.county }}</p>
+        <p class="m-0">{{ payment_data.postcode }}</p>
+        <p class="m-0">{{ payment_data.country }}</p>
+
+      </div>
+      <div class="col-sm-12 mt-5 mb-5">
+        <div class="d-flex flex-row justify-content-center">
+          <a href="{% url 'home' %}" class="btn btn-custom-red">Home</a>
+          <a href="{% url 'profile_page' %}" class="mx-3 btn btn-custom-red">Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -51,7 +51,7 @@
             <tr>
               <td>{{ payment.date|date:"d/m/y" }}</td>
               <td>£{{ payment.amount }}</td>
-              <td>{% if payment.paid == True %}Paid{% else %}Due{% endif %}</td>
+              <td>{% if payment.paid == True %}Paid{% else %}Outstanding{% endif %}</td>
               <td>
                 <a href="{% url 'make_payment' payment.id %}" class="btn btn-custom-red">View</a>
               </td>

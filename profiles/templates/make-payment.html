@@ -33,10 +33,34 @@
 <section class="container-fluid background-primary section-padding">
   <div class="container">
     <div class="row">
+      <div class="col-sm-12">
+        {% if payment_data.paid == True %}
+        <p class="m-0 badge bg-success">
+            Paid: {{ payment_data.paid_date }}
+        </p>
+        {% endif %}
+      </div>
+      <div class="col-sm-6">
+        <p class="m-0">
+          <strong>ID:</strong> {{ payment_data.id }}</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="color-white-200 m-0">
+          <strong>Amount:</strong> £{{ payment_data.amount }}</p>
+      </div>
+      <div class="col-sm-12 pt-3">
+        {% if payment_data.paid == True %}
+        <p class="mx-0">
+          <strong>Stripe Payment ID:</strong> {{ payment_data.stripe_id }}
+        </p>
+        {% else %}
+        <p class="badge bg-warning m-0" style="color: #000;">
+          Payment Outstanding
+        </p>
+        {% endif %}
+      </div>
       <div class="col-sm-12 pt-3 pb-3">
-        <p class="color-white-200 pb-3">Payment ID: {{ payment_data.id }}</p>
-        <p class="color-white-200 pb-3">{{ payment_data.description }}</p>
-        <p class="color-white-200">£{{ payment_data.amount }}</p>
+        <p>{{ payment_data.description|safe }}</p>
       </div>
     </div>
     {% if payment_data.paid == False %}
