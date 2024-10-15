@@ -14,4 +14,4 @@ myenv/
 htmlcov/
 media/
 .env
-/staticfiles
+staticfiles/
