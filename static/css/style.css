@@ -583,19 +583,6 @@ ul.errorlist li {
 */
 
 .cta {
-
-  &:after {
-    content: "F.";
-    font-size: 20rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: #fff;
-    opacity: 0.2;
-    font-weight: 700;
-    line-height: 1;
-    z-index: 1;
-  }
   
   .container {
     position: relative;
@@ -614,6 +601,24 @@ ul.errorlist li {
   p {
     margin: 0 auto;
   }
+
+  &:after {
+    content: "F.";
+    font-size: 20rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    opacity: 0.2;
+    font-weight: 700;
+    line-height: 1;
+    z-index: 1;
+  }
+}
+
+.cta-bg > * {
+  position: relative;
+  z-index: 2;
 }
 
 @media screen and (min-width: 768px) {
