@@ -11,7 +11,6 @@ from payments.forms import PaymentForm
 from .forms import UserProfileForm
 from .models import UserProfile
 
-# from payments.forms import PaymentForm
 import stripe
 
 
@@ -65,18 +64,13 @@ def make_payment(request, id):
         "save_info": True,
     })
 
-    if settings.DEBUG:
-        STRIPE_PUBLIC_KEY = "generic_key"
-    else:
-        STRIPE_PUBLIC_KEY = settings.STRIPE_PUBLIC_KEY
 
-        
+    STRIPE_PUBLIC_KEY = settings.STRIPE_PUBLIC_KEY
     payment_amount_stripe = int(payment_data.amount * 100)
     stripe.api_key = settings.STRIPE_SECRET_KEY
     payment_intent = stripe.PaymentIntent.create(
         amount=payment_amount_stripe,
         currency=settings.STRIPE_CURRENCY,
-        description=payment_data.description,
     )
 
     if request.method == "POST":
@@ -90,6 +84,12 @@ def make_payment(request, id):
             messages.error(
                 request, "Failed to make payment."
                 "Please ensure the form is valid.")
+            
+    if not STRIPE_PUBLIC_KEY:
+        messages.warning(
+            request, "Stripe public key is missing. "
+            "Did you forget to set it in your environment?")
+        
     context = {
         "form": form,
         "payment_data": payment_data,

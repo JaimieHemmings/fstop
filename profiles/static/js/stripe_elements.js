@@ -47,40 +47,27 @@ card.addEventListener('change', function(event) {
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
+
   ev.preventDefault();
   card.update({ 'disabled': true});
   document.getElementById('submit-button').disabled = true;
 
-  var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
-  var postData = {
-    'csrfmiddlewaretoken': csrfToken,
-    'client_secret': clientSecret,
-  };
-
-  var url = 'cache_checkout_data/';
-
-  $.post(url, postData).done(function() {
-    stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: card,
-      },
-    }).then(function(result) {
-      if (result.error) {
-        // Show an error
-        var errorDiv = document.getElementById('card-errors');
-        var html = `<span>${svgError} ${result.error.message}</span>`
-          errorDiv.innerHTML = html;
-          card.update({ 'disabled': false});
-          document.getElementById('submit-button').disabled = false;
-      } else {
-        // The payment has been processed!
-        if (result.paymentIntent.status === 'succeeded') {
-          form.submit();
-        }
+  stripe.confirmCardPayment(clientSecret, {
+    payment_method: {
+      card: card,
+    }
+  }).then(function(result) {
+    console.log(result);
+    if (result.error) {
+      var errorDiv = document.getElementById('card-errors');
+      var html = `<span>${svgError} ${result.error.message}</span>`;
+      errorDiv.innerHTML = html;
+      card.update({ 'disabled': false});
+      document.getElementById('submit-button').disabled = false;
+    } else {
+      if (result.paymentIntent.status === 'succeeded') {
+        form.submit();
       }
-    });
-  }).fail(function() {
-    // just reload the page, the error will be in django messages
-    location.reload();
+    }
   });
 });
