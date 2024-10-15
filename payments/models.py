@@ -1,10 +1,15 @@
 from django.db import models
 from django_countries.fields import CountryField
 import uuid
+from ckeditor.fields import RichTextField
 
 
 class Payment(models.Model):
-    payment_id = models.CharField(max_length=32, null=False, editable=False, default='')
+    #Generate unique ID for every payment
+    def _generate_payment_id(self):
+        return uuid.uuid4().hex.upper()
+
+    payment_id = models.CharField(max_length=32, null=False, editable=False, default=_generate_payment_id)
 
     full_name = models.CharField(max_length=50, null=False, blank=False, default='')
     email = models.EmailField(max_length=254, null=False, blank=False, default='')
@@ -12,7 +17,7 @@ class Payment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     street_address1 = models.CharField(max_length=80, null=False, blank=False, default='')
-    street_address2 = models.CharField(max_length=80, null=False, blank=False, default='')
+    street_address2 = models.CharField(max_length=80, null=True, blank=True, default='')
     town_or_city = models.CharField(max_length=40, null=False, blank=False, default='')
     county = models.CharField(max_length=80, null=True, blank=True, default='')
     country = CountryField(blank_label='Country *', null=False, blank=False, default='')
@@ -22,7 +27,7 @@ class Payment(models.Model):
     paid = models.BooleanField(default=False)
     paid_date = models.DateTimeField(null=True, blank=True)
     stripe_id = models.CharField(max_length=255, blank=True, null=True)
-    description = models.TextField()
+    description = RichTextField(config_name='default')
 
     def _generate_payment_id(self):
         """

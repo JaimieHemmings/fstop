@@ -71,6 +71,7 @@ def make_payment(request, id):
     payment_intent = stripe.PaymentIntent.create(
         amount=payment_amount_stripe,
         currency=settings.STRIPE_CURRENCY,
+        email=request.user.email,
     )
 
     if request.method == "POST":

@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404
 from home.models import AboutPage
 from home.forms import AboutPageForm
+from django.contrib import messages
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_about_edit(request):
@@ -12,6 +13,7 @@ def cp_cms_about_edit(request):
         form = AboutPageForm(request.POST, request.FILES, instance=page_info)
         if form.is_valid():
             form.save()
+            messages.success(request, "About page updated successfully")
 
     context = {
         "form": form,
