@@ -148,7 +148,9 @@ urlpatterns = [
         name="cp_cms_edit_aerial"),
 
     # Portfolio page URL's
-    path("portfolio/", views.cp_portfolio, name="cp_portfolio"),
+    path("portfolio/",
+         views.cp_portfolio,
+         name="cp_portfolio"),
     path(
         "portfolio/new/",
         views.add_portfolio_image,
@@ -164,11 +166,16 @@ urlpatterns = [
         name="delete_portfolio_image",
     ),
     # Reviews Management URLs
-    path("reviews/", views.cms_manage_reviews, name="cms_manage_reviews"),
-    path("reviews/add", views.cms_add_review, name="add_cms_review"),
+    path("reviews/",
+         views.cms_manage_reviews,
+         name="cms_manage_reviews"),
+    path("reviews/add",
+         views.cms_add_review,
+         name="add_cms_review"),
     path(
         "reviews/<int:review_id>/edit/",
-        views.cms_edit_review, name="cms_edit_review"
+        views.cms_edit_review,
+        name="cms_edit_review"
     ),
     path(
         "reviews/<int:review_id>/delete/",
