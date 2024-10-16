@@ -250,10 +250,11 @@ def cp_cms_delete_slider_image(request, image_id):
     try:
         HomePageSliderImages.objects.get(id=image_id).delete()
         messages.success(request, "Slider image deleted successfully")
+        return redirect(reverse("cp_cms_manage_slider_images"))
     except Exception as e:
         messages.error(request, f"There was an error deleting the slider image: {e}")
+        return redirect(reverse("cp_cms_manage_slider_images"))
                          
-    return redirect(reverse("cp_cms_manage_slider_images"))
 
 
 @user_passes_test(lambda u: u.is_superuser)
