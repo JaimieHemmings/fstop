@@ -247,6 +247,8 @@ def cp_cms_delete_slider_image(request, image_id):
     """
     A view to delete a slider image
     """
+    image = None
+
     try:
         image = get_object_or_404(HomePageSliderImages, id=image_id)
     except HomePageSliderImages.DoesNotExist:
