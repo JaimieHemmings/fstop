@@ -34,7 +34,7 @@ def index(request):
     homepage_trusted_by = get_object_or_404(HomePageTrustedBy, id=1)
     homepage_faqs = get_all_or_404(HomePageFAQ)
     # get all homepage slider images
-    homepage_slider_images = get_all_or_404(HomePageSliderImages)
+    homepage_slider_images = HomePageSliderImages.objects.all()
     homepage_panels = get_all_or_404(HomePagePanel)
     homepage_panels = homepage_panels.order_by("id")
     articles = get_all_or_404(Article)
