@@ -247,9 +247,11 @@ def cp_cms_delete_slider_image(request, image_id):
     """
     A view to delete a slider image
     """
-    image = get_object_or_404(HomePageSliderImages, id=image_id)
-    image.delete()
-    messages.success(request, "Image deleted successfully")
+    try:
+        HomePageSliderImages.objects.get(id=image_id).delete()
+        messages.success(request, "Slider image deleted successfully")
+    except Exception as e:
+        messages.error(request, f"There was an error deleting the slider image: {e}")
                          
     return redirect(reverse("cp_cms_manage_slider_images"))
 
