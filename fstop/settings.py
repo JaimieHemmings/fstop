@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "collectfast",
     "django.contrib.staticfiles",
     "django.contrib.sites",
     # Add sitemap
@@ -197,7 +196,6 @@ if "USE_AWS" in os.environ:
     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
     # Static and media files
     STATICFILES_STORAGE = "custom_storages.StaticStorage"
-    COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
     STATICFILES_LOCATION = "static"
     DEFAULT_FILE_STORAGE = "custom_storages.MediaStorage"
     MEDIAFILES_LOCATION = "media"
