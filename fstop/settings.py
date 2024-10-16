@@ -55,20 +55,6 @@ INSTALLED_APPS = [
     "ckeditor",
 ]
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    },
-    'collectfast': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'collectfast_cache',
-        'TIMEOUT': 60,
-        'OPTIONS': {
-            'MAX_ENTRIES': 10000
-        },
-    },
-}
-
 CKEDITOR_CONFIGS = {
     'default': {
         'width': '100%',
@@ -234,5 +220,3 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000/',
 ]
-
-COLLECTFAST_CACHE = "collectfast"
