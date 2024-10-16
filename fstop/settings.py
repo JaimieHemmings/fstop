@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "abcdefg")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 DOMAIN = "www.fstops.co.uk"
 SITE_NAME = "FStops Photography"
@@ -143,13 +143,16 @@ AUTH_PASSWORD_VALIDATORS = [
         ),
     },
     {
-        "NAME": ("django.contrib.auth." "password_validation.MinimumLengthValidator"),
+        "NAME": ("django.contrib.auth."
+                 "password_validation.MinimumLengthValidator"),
     },
     {
-        "NAME": ("django.contrib.auth." "password_validation.CommonPasswordValidator"),
+        "NAME": ("django.contrib.auth."
+                 "password_validation.CommonPasswordValidator"),
     },
     {
-        "NAME": ("django.contrib.auth." "password_validation.NumericPasswordValidator"),
+        "NAME": ("django.contrib.auth."
+                 "password_validation.NumericPasswordValidator"),
     },
 ]
 
