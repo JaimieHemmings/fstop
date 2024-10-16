@@ -66,4 +66,4 @@ def delete_portfolio_image(request, image_id):
 
     image.delete()
     messages.success(request, "Portfolio image deleted successfully")
-    return redirect(reverse("cp_portfolio"))
+    return redirect("cp_portfolio")
