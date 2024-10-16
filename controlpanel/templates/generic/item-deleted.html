@@ -1,0 +1,25 @@
+{% extends 'cp-base.html' %}
+
+{% block extra_title %}
+| Item Deleted
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-12 d-flex">
+    <div class="card flex-fill">
+      <div class="card-header">
+        <h1 class="card-title mb-0">Success</h1>
+      </div>
+      <div class="card-body text-center">
+        <h2 class="pt-3 mb-3">The item was deleted</h2>
+        <p>The item was successfully deleted from the database.</p>
+      </div>
+      <div class="card-footer p-3">
+        <div class="d-flex flex-row justify-content-end"> 
+          <a href="{% url control_panel %}" class="btn btn-primary">Return to dashboard</a>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
