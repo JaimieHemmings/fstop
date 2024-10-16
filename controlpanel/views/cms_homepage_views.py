@@ -248,9 +248,12 @@ def cp_cms_delete_slider_image(request, image_id):
     """
     A view to delete a slider image
     """
-    HomePageSliderImages.objects.get(id=image_id).delete()
+    try:
+        get_object_or_404(HomePageSliderImages, id=image_id).delete()
+    except Exception as e:
+        messages.error(request, f"There was an error deleting the image: {e}")
+        return redirect(reverse("cp_cms_manage_slider_images"))    
     return render(request, "generic/item-deleted.html")
-                         
 
 
 @user_passes_test(lambda u: u.is_superuser)
