@@ -242,7 +242,6 @@ def cp_cms_delete_slider_image_confirm(request, image_id):
                   "cms-slider-images-confirm-delete.html",
                   context)
 
-
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_delete_slider_image(request, image_id):
     """
@@ -251,6 +250,7 @@ def cp_cms_delete_slider_image(request, image_id):
     image = get_object_or_404(HomePageSliderImages, id=image_id)
     image.delete()
     messages.success(request, "Carousel image deleted successfully")
+    
     return redirect(reverse("cp_cms_manage_slider_images"))
 
 
