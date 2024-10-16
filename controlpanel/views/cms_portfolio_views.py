@@ -62,8 +62,9 @@ def delete_portfolio_image(request, image_id):
     """
     A view to delete a portfolio image
     """
-    image = get_object_or_404(PortfolioImages, id=image_id)
-
-    image.delete()
-    messages.success(request, "Portfolio image deleted successfully")
+    try:
+        PortfolioImages.objects.get(id=image_id).delete()
+        messages.success(request, "Portfolio image deleted successfully")
+    except Exception as e:
+        messages.error(request, f"Error deleting image: {e}")
     return redirect(reverse("cp_portfolio"))
