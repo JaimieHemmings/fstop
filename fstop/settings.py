@@ -55,6 +55,20 @@ INSTALLED_APPS = [
     "ckeditor",
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    'collectfast': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'collectfast_cache',
+        'TIMEOUT': 60,
+        'OPTIONS': {
+            'MAX_ENTRIES': 10000
+        },
+    },
+}
+
 CKEDITOR_CONFIGS = {
     'default': {
         'width': '100%',
