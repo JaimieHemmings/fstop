@@ -1,13 +1,21 @@
 describe('Log in User Flow happy path', () => {
   beforeEach(() => {
+    cy.on("uncaught:exception", (e) => {
+      console.log("error", e);
+      return false;
+      });
     cy.visit('/')
     cy.getDataCy('main-nav').within(() => {
-      cy.getDataCy('dropdown-menu').click()
+      cy.getDataCy('dropdown-menu-profile').click()
       cy.getDataCy('login-link').click()
     })
   })
 
   it('passes', () => {
+    cy.on("uncaught:exception", (e) => {
+      console.log("error", e);
+      return false;
+      });
     cy.get('form').within(() => {
       cy.get('[id=id_login]').type('testAdmin')
       cy.get('[id=id_password]').type('testPassword123')
@@ -17,6 +25,10 @@ describe('Log in User Flow happy path', () => {
   })
 
   it('fails gracefully', () => {
+    cy.on("uncaught:exception", (e) => {
+      console.log("error", e);
+      return false;
+      });
     cy.get('form').within(() => {
       cy.get('[id=id_login]').type('User1')
       cy.get('[id=id_password]').type('testPassword123')

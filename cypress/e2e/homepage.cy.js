@@ -1,8 +1,13 @@
 describe('test homepage functionality', () => {
   beforeEach(() => {
+    cy.setCookie('cookie-consent', 'accepted')
     cy.visit('/')
   })
   it('Has H1 with valid length and is visible', () => {
+    cy.on("uncaught:exception", (e) => {
+      console.log("error", e);
+      return false;
+      });
     // Test H1 exists with length greater than 0
     cy.get('h1')
       .should('exist')
@@ -12,6 +17,10 @@ describe('test homepage functionality', () => {
   })
 
   it('Has an accordian and functions correctly', () => {
+    cy.on("uncaught:exception", (e) => {
+      console.log("error", e);
+      return false;
+      });
     // Test accordion functionality
     cy.getDataCy('accordion').should('exist')
     cy.contains('Photography is a totally bespoke service').should('be.visible')

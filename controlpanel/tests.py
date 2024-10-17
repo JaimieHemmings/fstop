@@ -165,12 +165,12 @@ class UrlsTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_cp_cms_about_home_edit_url(self):
-        path = reverse('cp_cms_about_home_edit', kwargs={'about_id': 1})
+        path = reverse('cp_cms_about_home_edit')
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
     def test_cp_cms_trusted_by_edit_url(self):
-        path = reverse('cp_cms_trusted_by_edit', kwargs={'trusted_by_id': 1})
+        path = reverse('cp_cms_trusted_by_edit')
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
@@ -190,40 +190,40 @@ class UrlsTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_cp_cms_edit_about_section_url(self):
-        path = reverse('cp_cms_edit_about_section', kwargs={'about_id': 1})
+        path = reverse('cp_cms_edit_about_section', kwargs={'panel_id': 1})
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
     def test_cp_cms_delete_about_section_confirm_url(self):
         path = reverse(
-            'cp_cms_delete_about_section_confirm', kwargs={'about_id': 1})
+            'cp_cms_delete_about_section_confirm', kwargs={'panel_id': 1})
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
     def test_cp_cms_delete_about_section_url(self):
-        path = reverse('cp_cms_delete_about_section', kwargs={'about_id': 1})
+        path = reverse('cp_cms_delete_about_section', kwargs={'panel_id': 1})
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
     def test_cp_cms_delete_slider_image_confirm_url(self):
         path = reverse(
-            'cp_cms_delete_slider_image_confirm', kwargs={'slider_id': 1})
+            'cp_cms_delete_slider_image_confirm', kwargs={'image_id': 1})
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
     def test_cp_cms_delete_slider_image_url(self):
-        path = reverse('cp_cms_delete_slider_image', kwargs={'slider_id': 1})
+        path = reverse('cp_cms_delete_slider_image', kwargs={'image_id': 1})
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
     def test_delete_portfolio_image_confirm_url(self):
         path = reverse(
-            'delete_portfolio_image_confirm', kwargs={'portfolio_id': 1})
+            'delete_portfolio_image_confirm', kwargs={'image_id': 1})
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
     def test_delete_portfolio_image_url(self):
-        path = reverse('delete_portfolio_image', kwargs={'portfolio_id': 1})
+        path = reverse('delete_portfolio_image', kwargs={'image_id': 1})
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 

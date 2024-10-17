@@ -10,23 +10,23 @@
 
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle {% if "/services/" in request.path %} active{% endif %}" href="#" role="button"
-  {% if '/services/' in request.path %} aria-current="page" {% endif %} data-bs-toggle="dropdown" aria-expanded="false" data-cy="dropdown-menu">
+  {% if '/services/' in request.path %} aria-current="page" {% endif %} data-bs-toggle="dropdown" aria-expanded="false" data-cy="dropdown-menu-services">
     Services <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
     </svg>    
   </a>
 <ul class="dropdown-menu">
   <li>
-    <a class="dropdown-item" href="{% url 'lifestyle_services' %}">Lifestyle</a>
+    <a class="dropdown-item" href="{% url 'lifestyle_services' %}" data-cy="lifestyle">Lifestyle</a>
   </li>
   <li>
-    <a class="dropdown-item" href="{% url 'event_services' %}">Event</a>
+    <a class="dropdown-item" href="{% url 'event_services' %}" data-cy="event">Event</a>
   </li>
   <li>
-    <a class="dropdown-item" href="{% url 'property_services' %}">Property</a>
+    <a class="dropdown-item" href="{% url 'property_services' %}" data-cy="property">Property</a>
   </li>
   <li>
-    <a class="dropdown-item" href="{% url 'aerial_services' %}">Aerial</a>
+    <a class="dropdown-item" href="{% url 'aerial_services' %}" data-cy="aerial">Aerial</a>
   </li>
 </ul>
 
@@ -61,7 +61,7 @@
 </li>
 
 <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-cy="dropdown-menu">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-cy="dropdown-menu-profile">
     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
     </svg>    
@@ -69,7 +69,7 @@
   <ul class="dropdown-menu">
     {% if user.is_authenticated %}
       {% if user.is_superuser %}
-    <li><a class="dropdown-item" href="{% url 'control_panel' %}">Admin</a></li>
+    <li><a class="dropdown-item" href="{% url 'control_panel' %}" data-cy="admin">Admin</a></li>
     <li><hr class="dropdown-divider"></li>
       {% endif %}
     <li><a class="dropdown-item" href="{% url 'profile_page' %}">Profile</a></li>

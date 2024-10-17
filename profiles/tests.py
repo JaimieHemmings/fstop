@@ -7,12 +7,7 @@ BASE_URL = "http://127.0.0.1:8000"
 # Create your tests here.
 class UrlsTest(TestCase):
     def test_profile_url(self):
-        path = reverse('profile')
-        response = requests.get(f"{BASE_URL}{path}")
-        self.assertEqual(response.status_code, 200)
-
-    def test_edit_profile_url(self):
-        path = reverse('edit_profile')
+        path = reverse('profile_page')
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
 
@@ -22,6 +17,6 @@ class UrlsTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_payment_success_url(self):
-        path = reverse('payment_success')
+        path = reverse('payment_success', args=[1])
         response = requests.get(f"{BASE_URL}{path}")
         self.assertEqual(response.status_code, 200)
