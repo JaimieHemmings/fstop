@@ -48,6 +48,7 @@ FStops Photography is my fourth project in the Code Institutes level 5 Diploma i
       - [Typography](#typography)
       - [Colour Palette](#colour-palette)
       - [Imagery](#imagery)
+- Features(#features)
 - [Future Development, Iteration and Implementation](#future-development-iteration-and-implementation)
 - [Technologies Used](#technologies-used)
   - [Languages Used](#languages-used)
@@ -400,8 +401,56 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 ### Imagery
 
-- Imagery used across the site was sourced either from [Unsplash](https://unsplash.com/) or provided by my brother in law.
+- Imagery used across the site was sourced either from [Unsplash](https://unsplash.com/) or sourced from personal projects.
 
+## Features
+
+- Account Registration
+  - Using the AllAuth plugin, account integration and implementation was easily achieved, allowing users of the website to register for an account by following the links in the navigation menu or directly visiting '/accounts/signup/'.
+  
+- Log In/Out
+  - This functionality was integrated alongside the registration functionality with the implementation of the ALlAuth plugin. The user is able to easily log in or out by using the dedicated and easily accessible links in the navigation menu.
+
+- Email Confirmation
+  - Upon registering for an account the user is sent an email and asked to confirm their email address before being allowed to use their account.
+
+- Password Reset
+  - When logging in, the user is easily able to reset their password using the dedicated links that are easily visible on the login page itself.
+
+- Profile Page
+  - Users are given access to a profile page where they can then update their account details and view a history of payments, as well as make a payment on any outstanding amounts.
+
+- Navigation Functionality
+  - Every page of the website has a navigation menu that conforms with the standards of what is traditionally seen as the conventional method of implementing a navigation menu. This makes it easily recognisable and understood by the user.
+
+- Google Analytics
+  - Google analytics were seemelessy integrated into the website, allowing the admin full access to the google analytics dashboard. In future I would like to use the Google Analytics API to integrate this information directly into the CMS.
+
+- Bespoke CMS
+  - A bespoke CMS was developed allowing the admins to update and edit the content of their website when it is necassary.
+
+- Contact Form
+  - A contact form is implemented on the contact page of the website, allowing all users to submit messages viewable in the admin area of the website, accessible only to admins. The admins can then view and delete these messages as necassaru.
+
+- Invoice Generation
+  - Using the payments section in the admin area, the admin is able to generate a new payment request and assign it to an email address. I implemented this way so that a user account doesn't have to exist for the payment to be assigned to. Instead, once the user creates an account, the payment request will be associated with his email and viewable from their profile area.
+
+- Invoice Payment
+  - Users with outstanding payment requests will be able to view them in their profile area, this will also enable to make a payment seemlessy using Stripes elements integrations.
+
+- Portfolio Management
+  - The content of the portfolio is entirely managed from the content management area, this allows the site owner/admin to easily update the viewable content at their own convenience.
+
+- Blog
+  - The blogging functionality in the CMS allows the Admin of the website to quickly and easily create new content that will be displayed seemlessly on the front page of the website as well as in the News area. I also integrated CKEditor here to allow the Admin to create complex layouts.
+
+- SEO Friendly Design
+  - Great care was taken when developing the site to achieve the best possible technical SEO results.
+  ![SEO Result](docs/seo-result.png)
+    - https://www.seobility.net/en/
+
+- Accessibility Compliance
+  - Great care was taken to ensure that the needs of users with accessibility issues were taken into and accomodated for at every stage of development.
 
 ## Future Development, Iteration and Implementation
 
