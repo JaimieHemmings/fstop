@@ -447,6 +447,7 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 - SEO Friendly Design
   - Great care was taken when developing the site to achieve the best possible technical SEO results.
   ![SEO Result](docs/seo-result.png)
+    - The major downfaill according to this test was a lack of external links leading back to the website, this is not something I can influence.
     - https://www.seobility.net/en/
 
 - Accessibility Compliance
