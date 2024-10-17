@@ -370,6 +370,10 @@ For this project I used the relational model. Below is an overview of the major 
 
 ![Mobile wireframes](docs/wireframes/mobile-wireframes.png)
 
+- Desktop Wireframes
+
+![Desktop Wireframes](docs/wireframes/desktop-wireframes.png)
+
 ## Surface Plane
 
 ### Typography
