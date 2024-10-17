@@ -40,11 +40,16 @@ class CreateArticleForm(forms.ModelForm):
             "body": "Enter the article content before the image break",
             "body_continued": "Enter the remaining content of the article",
             "thumb": "Enter the thumbnail image for the article",
-            "slider_image_one": "Enter the cover image for the article",
-            "slider_image_two": "Enter the cover image for the article",
-            "slider_image_three": "Enter the cover image for the article",
-            "slider_image_four": "Enter the cover image for the article",
-            "body_image": "Enter the body image for the article",
+            "slider_image_one": "Enter the cover image for the article, "
+            "this image will also be displayed in the gallery within the body"
+            " of the article",
+            "slider_image_two": "The second image used in the gallery within "
+            "the body of the article",
+            "slider_image_three": "The third image used in the gallery of the"
+            " article",
+            "slider_image_four": "The fourth item used in the gallery",
+            "body_image": "Enter the body image for the article, displayed "
+            "in the middle of the article",
         }
 
         for field in self.fields:
