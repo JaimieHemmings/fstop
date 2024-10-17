@@ -434,15 +434,19 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 - Invoice Generation
   - Using the payments section in the admin area, the admin is able to generate a new payment request and assign it to an email address. I implemented this way so that a user account doesn't have to exist for the payment to be assigned to. Instead, once the user creates an account, the payment request will be associated with his email and viewable from their profile area.
+    - ![Create Payment View](docs/create-new-payment.png)
 
 - Invoice Payment
   - Users with outstanding payment requests will be able to view them in their profile area, this will also enable to make a payment seemlessy using Stripes elements integrations.
+    - ![Make Payment View](docs/make-payment.png)
 
 - Portfolio Management
   - The content of the portfolio is entirely managed from the content management area, this allows the site owner/admin to easily update the viewable content at their own convenience.
+  - ![Create Portfolio View](docs/create-portfolio-view.png)
 
 - Blog
   - The blogging functionality in the CMS allows the Admin of the website to quickly and easily create new content that will be displayed seemlessly on the front page of the website as well as in the News area. I also integrated CKEditor here to allow the Admin to create complex layouts.
+    - ![Create Article View](docs/create-article-view.png)
 
 - SEO Friendly Design
   - Great care was taken when developing the site to achieve the best possible technical SEO results.
