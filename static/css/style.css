@@ -319,6 +319,12 @@ Utility Classes
   background-attachment: fixed;
 }
 
+@media screen and (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
 .bg-image {
   background-size: cover;
   background-position: center center;
