@@ -38,7 +38,7 @@ Get in touch with FStop Photography for inquiries, bookings, or collaboration op
         </div>
         <form data-cy="contact-form" class="background-secondary p-5" method="POST" action="{% url 'contact' %}">
           {% csrf_token %}
-          {{ form }}
+          {{ form.as_p }}
           <button class="btn btn-custom-red mt-3" type="submit">Submit</button>
         </form>
       </div>
