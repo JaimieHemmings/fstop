@@ -64,7 +64,8 @@ def delete_portfolio_image(request, image_id):
     """
     try:
         PortfolioImages.objects.get(id=image_id).delete()
-        messages.success(request, "Portfolio image deleted successfully")
     except Exception as e:
-        messages.error(request, f"Error deleting image: {e}")
-    return redirect(reverse("cp_portfolio"))
+        messages.error(request, f"An error occurred: {e}")
+        return redirect(reverse("cp_portfolio"))
+    
+    return render(request, "generic/item-deleted.html")

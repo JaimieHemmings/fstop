@@ -85,7 +85,10 @@ def delete_message(request, message_id):
     """
     A view to delete a message
     """
-    message = get_object_or_404(Message, id=message_id)
-    message.delete()
+    try:
+        get_object_or_404(Message, id=message_id).delete()
+    except Exception as e:
+        messages.error(request, f"There was an error deleting the message: {e}")
+        return redirect(reverse(cp_messages))
     messages.success(request, "Message deleted successfully")
-    return redirect(reverse(cp_messages))
+    return render(request, "generic/item-deleted.html")

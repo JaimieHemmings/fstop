@@ -35,7 +35,6 @@ def cp_cms_hero(request):
     """
     home_hero_data = get_object_or_404(HomePageHero, id=1)
     form = HomeHeroForm(instance=home_hero_data)
-
     if request.method == "POST":
         form = HomeHeroForm(
             request.POST, request.FILES, instance=home_hero_data)
@@ -45,11 +44,9 @@ def cp_cms_hero(request):
         else:
             messages.error(
                 request, "There was an error updating the homepage data")
-
     context = {
         "form": form,
     }
-
     return render(request, "cms/home/cms-edit-hero.html", context)
 
 
@@ -60,7 +57,6 @@ def cp_cms_about_home_edit(request):
     """
     about_data = get_object_or_404(HomePageAbout, id=1)
     form = editAboutSectionHomeForm(instance=about_data)
-
     if request.method == "POST":
         form = editAboutSectionHomeForm(
             request.POST, request.FILES, instance=about_data)
@@ -70,11 +66,7 @@ def cp_cms_about_home_edit(request):
         else:
             messages.error(
                 request, "There was an error updating the homepage data")
-
-    context = {
-        "form": form,
-    }
-
+    context = {"form": form,}
     return render(request, "cms/home/cms-edit-about-home.html", context)
 
 
@@ -85,11 +77,9 @@ def cp_cms_trusted_by_edit(request):
     """
     trusted_by_data = get_object_or_404(HomePageTrustedBy, id=1)
     form = HomePageTrustedByForm(instance=trusted_by_data)
-
     context = {
         "form": form,
     }
-
     if request.method == "POST":
         form = HomePageTrustedByForm(
             request.POST, request.FILES, instance=trusted_by_data)
@@ -99,7 +89,6 @@ def cp_cms_trusted_by_edit(request):
         else:
             messages.error(
                 request, "There was an error updating the homepage data")
-
     return render(request, "cms/home/cms-edit-trusted-by.html", context)
 
 
@@ -109,9 +98,7 @@ def cp_cms_faq(request):
     A view to return the CMS homepage about page
     """
     faqs = HomePageFAQ.objects.all()
-    context = {
-        "faqs": faqs,
-    }
+    context = {"faqs": faqs,}
     return render(request, "cms/faqs/cms-faqs.html", context)
 
 
@@ -121,14 +108,12 @@ def cms_add_faq(request):
     A view to add a FAQ
     """
     form = HomePageFAQForm()
-
     if request.method == "POST":
         form = HomePageFAQForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "FAQ added successfully")
             return redirect(reverse("cp_cms_faq"))
-
     context = {
         "form": form,
         "page_title": "Add FAQ",
@@ -142,8 +127,7 @@ def cms_edit_faq(request, faq_id):
     """
     A view to edit a FAQ
     """
-    context = {
-    }
+    context = {}
     faq = get_object_or_404(HomePageFAQ, id=faq_id)
     form = HomePageFAQForm(instance=faq)
     context["faq"] = faq
@@ -162,12 +146,8 @@ def cms_delete_faq_confirm(request, faq_id):
     """
     A view to confirm the deletion of a FAQ
     """
-
     faq = get_object_or_404(HomePageFAQ, id=faq_id)
-
-    context = {
-        "faq": faq,
-    }
+    context = {"faq": faq}
     return render(request, "cms/faqs/cms-faq-confirm-delete.html", context)
 
 
@@ -182,9 +162,6 @@ def cms_delete_faq(request, faq_id):
     return redirect(reverse("cp_cms_faq"))
 
 
-"""
-Homepage Slider Images Management
-"""
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -193,12 +170,11 @@ def cp_cms_manage_slider_images(request):
     A view to return the CMS homepage slider images page
     """
     slider_images = HomePageSliderImages.objects.all()
-
-    context = {
-        "slider_images": slider_images,
-    }
+    context = {"slider_images": slider_images}
     return render(
-        request, "cms/home/slider-images/cms-slider-images.html", context)
+        request,
+        "cms/home/slider-images/cms-slider-images.html",
+        context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -218,13 +194,11 @@ def cp_cms_add_slider_image(request):
             form.save()
             messages.success(request, "Slider image added successfully")
             return redirect(cp_cms_manage_slider_images)
-
     context = {
         "form": form,
         "page_title": "Add Slider Image",
         "end_point": "cp_cms_add_slider_image",
     }
-
     return render(
         request, "generic/add-item.html", context)
 
@@ -258,23 +232,15 @@ def cp_cms_delete_slider_image(request, image_id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_manage_about_section(request):
-
     panels = HomePagePanel.objects.all()
-
-    context = {
-        "panels": panels,
-    }
+    context = {"panels": panels}
     return render(request, "cms/home/about/cms-about-section.html", context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_add_about_section(request):
-
-    context = {
-    }
-
+    context = {}
     form = AddHomePagePanelForm()
-
     if request.method == "POST":
         form = AddHomePagePanelForm(request.POST, request.FILES)
         if form.is_valid():
@@ -283,7 +249,6 @@ def cp_cms_add_about_section(request):
             return redirect(reverse("cp_cms_manage_about_section"))
         else:
             messages.error(request, "There was an error adding the panel")
-
     context["form"] = form
     return render(request,
                   "cms/home/about/cms-add-about-section.html",
@@ -292,10 +257,8 @@ def cp_cms_add_about_section(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_edit_about_section(request, panel_id):
-
     panel = get_object_or_404(HomePagePanel, id=panel_id)
     form = AddHomePagePanelForm(instance=panel)
-
     if request.method == "POST":
         form = AddHomePagePanelForm(
             request.POST, request.FILES, instance=panel)
@@ -305,10 +268,7 @@ def cp_cms_edit_about_section(request, panel_id):
             return redirect(reverse("cp_cms_manage_about_section"))
         else:
             messages.error(request, "There was an error updating the panel")
-
-    context = {
-        "form": form,
-    }
+    context = {"form": form,}
     return render(request,
                   "cms/home/about/cms-edit-about-section.html",
                   context)
@@ -316,12 +276,8 @@ def cp_cms_edit_about_section(request, panel_id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_delete_about_section_confirm(request, panel_id):
-
     panel = get_object_or_404(HomePagePanel, id=panel_id)
-
-    context = {
-        "panel": panel
-    }
+    context = {"panel": panel}
     return render(request,
                   "cms/home/about/cms-confirm-delete-about-section.html",
                   context)
@@ -329,8 +285,9 @@ def cp_cms_delete_about_section_confirm(request, panel_id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def cp_cms_delete_about_section(request, panel_id):
-    panel = get_object_or_404(HomePagePanel, id=panel_id)
-    panel.delete()
-    messages.success(request, "Panel deleted successfully")
-
-    return redirect(reverse("cp_cms_manage_about_section"))
+    try:
+        get_object_or_404(HomePagePanel, id=panel_id).delete()
+    except Exception as e:
+        messages.error(request, f"There was an error deleting the panel: {e}")
+        return redirect(reverse("cp_cms_manage_about_section"))
+    return render(request, "generic/item-deleted.html")
