@@ -348,3 +348,35 @@ z-index: 3;
     }
   }
 }
+
+/*
+  FAQ Section Styles
+*/
+
+.faq {
+  .accordion {
+    .accordion-item {
+      background-color: var(--col-black);
+
+      .accordion-button {
+        background-color: var(--col-black);
+        color: var(--col-white-200);
+        font-size: calc(var(--font-size-base) * 1.25);
+
+        &:after {
+          background-color: var(--col-white-200);
+          border-radius: 50%;
+        }
+      }
+
+      .accordion-button:not(.collapsed) {
+        background-color: var(--col-black);
+        color: var(--col-white-200);
+      }
+
+      .accordion-body {
+        color: var(--col-white-300);
+      }
+    }
+  }
+}

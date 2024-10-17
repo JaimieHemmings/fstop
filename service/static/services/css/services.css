@@ -68,6 +68,17 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .service-parallax {
   &:after {
     background-color: rgba(0, 0, 0, 0.5);
