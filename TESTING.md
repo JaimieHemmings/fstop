@@ -347,7 +347,7 @@ Specific tests can be run for individual apps within the project by using the co
 In order to ensure compatibility amongst all major devices and browsers I tested the site using mobile phones, tablets and a variety of screen sizes as well as FireFox, Chrome, and Edge. Unfortunately I do not have access to a desktop version of Safari so I was unable to test specifically for this.
 
 | Page            | Device/Desktop Dimension | Result         |
-|                 |                          |                |
+|-----------------|--------------------------|----------------|
 | Home            |                          |                |
 |                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-home.png) |
 |                 | Tablet                   | [Screenshot]() |
@@ -408,7 +408,6 @@ In order to ensure compatibility amongst all major devices and browsers I tested
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
-
 
 ### Full Testing
 
