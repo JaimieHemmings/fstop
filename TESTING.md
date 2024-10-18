@@ -344,6 +344,70 @@ Specific tests can be run for individual apps within the project by using the co
 
 ### Responsiveness
 
+In order to ensure compatibility amongst all major devices and browsers I tested the site using mobile phones, tablets and a variety of screen sizes as well as FireFox, Chrome, and Edge. Unfortunately I do not have access to a desktop version of Safari so I was unable to test specifically for this.
+
+| Page            | Device/Desktop Dimension | Result         |
+|                 |                          |                |
+| Home            |                          |                |
+|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-home.png) |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| About           |                          |                |
+|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-about.png) |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| Lifestyle       |                          |                |
+|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-lifestyle.png) |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| Event           |                          |                |
+|                 | Mobile                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| Property        |                          |                |
+|                 | Mobile                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| Aerial          |                          |                |
+|                 | Mobile                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| Portfolio       |                          |                |
+|                 | Mobile                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| News            |                          |                |
+|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-news.png) |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| Article         |                          |                |
+|                 | Mobile                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
+| Contact         |                          |                |
+|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-contact.png) |
+|                 | Tablet                   | [Screenshot]() |
+|                 | 1280x1024                | [Screenshot]() |
+|                 | 1440x900                 | [Screenshot]() |
+|                 | 1920x1080                | [Screenshot]() |
 
 
 ### Full Testing
