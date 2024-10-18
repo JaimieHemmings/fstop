@@ -278,49 +278,60 @@ The major issue identified by my SEO analysis of the website was a lack of exter
 
 I implemented a great amount of automated testing within the inbuilt django test functionality, however I did not aim to hit 100% coverage as more automated testing was done within Cypress to compnesate for that fact.
 
-| Name                                                                       | Stmts | Miss | Cover | Missing                                                                |
-|----------------------------------------------------------------------------|-------|------|-------|------------------------------------------------------------------------|
-| blog\models.py                                                             | 29    | 5    | 83%   | 10-12, 40, 48                                                          |
-| blog\tests.py                                                              | 18    | 4    | 78%   | 20-23                                                                  |
-| blog\urls.py                                                               | 3     | 0    | 100%  |                                                                        |
-| blog\views.py                                                              | 12    | 8    | 33%   | 10-14, 22-29                                                           |
-| controlpanel\models.py                                                     | 1     | 0    | 100%  |                                                                        |
-| controlpanel\urls.py                                                       | 3     | 0    | 100%  |                                                                        |
-| controlpanel\views\articles_views.py                                       | 60    | 42   | 30%   | 16-23, 31-49, 58-79, 88-94, 102-105                                    |
-| controlpanel\views\cms_about_views.py                                      | 16    | 9    | 44%   | 9-24                                                                   |
-| controlpanel\views\cms_homepage_views.py                                   | 166   | 122  | 27%   |                                                                        |
-| controlpanel\views\cms_portfolio_views.py                                  | 34    | 21   | 38%   | 15-20, 29-42, 50-56, 65-71                                             |
-| controlpanel\views\cms_reviews_views.py                                    | 44    | 29   | 34%   | 15-20, 28-41, 49-55, 64-67, 75-90                                      |
-| controlpanel\views\cms_services_views.py                                   | 52    | 37   | 29%   | 10, 15-32, 37-53, 58-74, 79-95                                         |
-| controlpanel\views\dashboard_views.py                                      | 17    | 8    | 53%   | 16-32                                                                  |
-| controlpanel\views\messages_views.py                                       | 49    | 34   | 31%   | 14-25, 33-44, 52-59, 67-80, 88-94                                      |
-| controlpanel\views\payments_views.py                                       | 36    | 24   | 33%   | 16-20, 28-54, 62-66                                                    |
-| fstop\urls.py                                                              | 18    | 2    | 89%   | 21, 33                                                                 |
-| home\forms.py                                                              | 108   | 66   | 39%   | 19-49, 73-145, 161-182, 204-209, 219-231, 241-254, 264-279, 298-330    |
-| home\models.py                                                             | 98    | 20   | 80%   | 14, 23-25, 44, 62, 80, 88, 101-103, 111, 116-118, 130, 135-137, 155    |
-| home\urls.py                                                               | 3     | 0    | 100%  |                                                                        |
-| home\views.py                                                              | 41    | 30   | 27%   | 22-25, 33-56, 63-65, 72-86                                             |
-| payments\forms.py                                                          | 19    | 11   | 42%   | 27-48                                                                  |
-| payments\models.py                                                         | 31    | 6    | 81%   | 10, 42, 49-51, 54                                                      |
-| payments\urls.py                                                           | 3     | 0    | 100%  |                                                                        |
-| payments\views.py                                                          | 3     | 1    | 67%   | 5                                                                      |
-| portfolio\models.py                                                        | 9     | 1    | 89%   | 13                                                                     |      
-| portfolio\tests.py                                                         | 6     | 0    | 100%  |                                                                        |
-| portfolio\urls.py                                                          | 3     | 0    | 100%  |                                                                        |
-| portfolio\views.py                                                         | 7     | 0    | 100%  |                                                                        |
-| profiles\forms.py                                                          | 20    | 12   | 40%   | 26-60                                                                  |
-| profiles\models.py                                                         | 22    | 4    | 82%   | 25, 33-36                                                              |
-| profiles\urls.py                                                           | 4     | 0    | 100%  |                                                                        |
-| profiles\tests.py                                                          | 17    | 0    | 100%  |                                                                        |
-| profiles\urls.py                                                           | 4     | 0    | 100%  |                                                                        |
-| profiles\views.py                                                          | 69    | 49   | 29%   | 22-41, 49-98, 106-118, 126-133                                         |
-| profiles\webhook_handler.py                                                | 25    | 18   | 28%   | 8, 12, 19-44, 51                                                       |
-| profiles\webhooks.py                                                       | 29    | 20   | 31%   | 14-52                                                                  |
-| reviews\models.py                                                          | 9     | 1    | 89%   | 12                                                                     |
-| service\forms.py                                                           | 17    | 10   | 41%   | 11-118                                                                 |
-| service\models.py                                                          | 35    | 4    | 89%   | 9-11, 49                                                               |
-| service\urls.py                                                            | 3     | 0    | 100%  |                                                                        |
-| service\views.py                                                           | 25    | 17   | 32%   | 8, 12-19, 23-30, 34-41, 45-52                                          |
+| Name                                                                       | Stmts | Miss | Cover |
+|----------------------------------------------------------------------------|-------|------|-------|
+| blog\models.py                                                             | 29    | 5    | 83%   |
+| blog\urls.py                                                               | 3     | 0    | 100%  |
+| blog\views.py                                                              | 12    | 8    | 33%   |
+| controlpanel\models.py                                                     | 1     | 0    | 100%  |
+| controlpanel\urls.py                                                       | 3     | 0    | 100%  |
+| controlpanel\views\articles_views.py                                       | 60    | 42   | 30%   |
+| controlpanel\views\cms_about_views.py                                      | 16    | 9    | 44%   |
+| controlpanel\views\cms_homepage_views.py                                   | 166   | 122  | 27%   |
+| controlpanel\views\cms_portfolio_views.py                                  | 34    | 21   | 38%   |
+| controlpanel\views\cms_reviews_views.py                                    | 44    | 29   | 34%   |
+| controlpanel\views\cms_services_views.py                                   | 52    | 37   | 29%   |
+| controlpanel\views\dashboard_views.py                                      | 17    | 8    | 53%   |
+| controlpanel\views\messages_views.py                                       | 49    | 34   | 31%   |
+| controlpanel\views\payments_views.py                                       | 36    | 24   | 33%   |
+| fstop\urls.py                                                              | 18    | 2    | 89%   |
+| home\forms.py                                                              | 108   | 66   | 39%   |
+| home\models.py                                                             | 98    | 20   | 80%   |
+| home\urls.py                                                               | 3     | 0    | 100%  |
+| home\views.py                                                              | 41    | 30   | 27%   |
+| payments\forms.py                                                          | 19    | 11   | 42%   |
+| payments\models.py                                                         | 31    | 6    | 81%   |
+| payments\urls.py                                                           | 3     | 0    | 100%  |
+| payments\views.py                                                          | 3     | 1    | 67%   |
+| portfolio\models.py                                                        | 9     | 1    | 89%   |
+| portfolio\urls.py                                                          | 3     | 0    | 100%  |
+| portfolio\views.py                                                         | 7     | 0    | 100%  |
+| profiles\forms.py                                                          | 20    | 12   | 40%   |
+| profiles\models.py                                                         | 22    | 4    | 82%   |
+| profiles\urls.py                                                           | 4     | 0    | 100%  |
+| profiles\urls.py                                                           | 4     | 0    | 100%  |
+| profiles\views.py                                                          | 69    | 49   | 29%   |
+| profiles\webhook_handler.py                                                | 25    | 18   | 28%   |
+| profiles\webhooks.py                                                       | 29    | 20   | 31%   |
+| reviews\models.py                                                          | 9     | 1    | 89%   |
+| service\forms.py                                                           | 17    | 10   | 41%   |
+| service\models.py                                                          | 35    | 4    | 89%   |
+| service\urls.py                                                            | 3     | 0    | 100%  |
+| service\views.py                                                           | 25    | 17   | 32%   |
+|----------------------------------------------------------------------------|-------|------|-------|
+| TOTAL                                                                      | 1454  | 665  | 54%   |
+
+Additionally, the tests themselves can be run by using the command:
+
+```python manage.py test```
+
+Resulting in the following output:
+
+![Test Results](docs/testing/django-test.png)
+
+Specific tests can be run for individual apps within the project by using the command above suffixed with the app name. For example:
+
+```python manage.py test blog```
 
 ### Cypress End to End Testing
 
