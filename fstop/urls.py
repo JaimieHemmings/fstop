@@ -12,6 +12,7 @@ info_dict_blog = {
     "date_field": "date",
 }
 
+
 class StaticViewSitemap(sitemaps.Sitemap):
     priority = 0.5
     changefreq = "weekly"
@@ -31,6 +32,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
     def location(self, item):
         return reverse(item)
 
+
 sitemaps = {
     "static": StaticViewSitemap,
     "blog": GenericSitemap(info_dict_blog, priority=0.6),
@@ -49,7 +51,7 @@ urlpatterns = [
     path(
         "sitemap.xml",
         sitemap,
-        {"sitemaps": sitemaps },
+        {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
     path("cypress/", include("django_cypress.urls")),

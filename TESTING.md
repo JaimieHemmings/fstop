@@ -112,12 +112,47 @@ In order to validate my JavaScript and ensure there are no bugs I will use [JSHi
 | File                                               | Result   | Screenshot |
 |----------------------------------------------------|----------|------------|
 | profiles/static/js/stripe_elements.js              | 2 Errors | [Screenshot](docs/testing/js-hint-stripe.png) |
-| static/js/ga-consent.js                            | 2 Errors | [Screenshot](docs/testing/ga-consent.png) |
+| static/js/ga-consent.js                            | 1 Errors | [Screenshot](docs/testing/ga-consent.png) |
 | static/js/gallery.js                               | 0 Errors | [Screenshot](docs/testing/gallery.png) |
 
 The only errors found were related to global variables defined outside of the file, for this reason, they will be ignored as I am confident that they are not an issue after manually testing.
 
 ### Python Validation
+
+For validation of my Python code I will be using Code Institutes PEP8 Python Linter [here.](https://pep8ci.herokuapp.com/)
+
+| File                | Result         | Screenshot |
+|---------------------|----------------|------------|
+| fstop/settings.py   | 0 Errors       | [Screenshot](docs/testing/python/blog_views.png) |
+| fstop/urls.py       | 0 Errors       | [Screenshot](docs/testing/python/blog_views.png) |
+| custom_storages.py  | 0 Errors       | [Screenshot](docs/testing/python/custom_storages.png) |
+| **Blog App**        |                |            |
+| views.py            | 0 Errors       | [Screenshot](docs/testing/python/blog_views.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| **controlpanel**    |                |            |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
 ### Lighthouse Report
 #### Desktop
 #### Mobile
