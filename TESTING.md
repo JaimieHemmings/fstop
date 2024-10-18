@@ -69,6 +69,18 @@ In order to ensure I have not missed anything I used a number of tools to valida
 
 ### HTML Validation
 
+| Page               | Errors   | Result     |
+|--------------------|----------|------------|
+| Index              | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2F) |
+| About              | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fabout) |
+| Services/Lifestyle | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fservices%2Flifestyle%2F) |
+| Services/Event     | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fservices%2Fevent%2F) |
+| Services/Property  | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fservices%2Fproperty%2F) |
+| Services/Aerial    | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fservices%2Faerial%2F) |
+| Portfolio          | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fportfolio%2F) |
+| News               | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fnews%2F) |
+| Article            | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fnews%2Funderstanding-the-f-stop%2F) |
+| Contact            | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fcontact%2F) |
 
 
 ### CSS Validation
