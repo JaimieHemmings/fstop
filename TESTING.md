@@ -265,6 +265,10 @@ I have also added Google Analytics to the website. This helps identify popular p
 
 By implementing these SEO best practices, the FStop Photography website is well-positioned to achieve higher rankings on search engines, improve user experience, and attract more organic traffic. This holistic approach ensures that the site is optimized for both search engines and human visitors, resulting in better performance and more engagement.
 
+**Improvements**
+
+The major issue identified by my SEO analysis of the website was a lack of external links to the website and a lack of social media. This are both things that will be improved but require time.
+
 ### WAVE Web Accessibility
 
 
@@ -277,18 +281,7 @@ By implementing these SEO best practices, the FStop Photography website is well-
 
 
 
-### Favicon
-
-
-
-### Navigation
-
-
-
 ## Manual Testing
-
-
-
 ### User Stories
 
 
@@ -306,21 +299,48 @@ By implementing these SEO best practices, the FStop Photography website is well-
 
 
 ## Bugs, Errors &amp; Solutions
-
-
-
 ### Solved Bugs
 
+| Issue | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Solution                                                                                                                                                                                                                                                                                                                                                                 |
+|-------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Initially, I had great difficulty connecting my Django App to use the S3 bucket on deploy to serve static files. Myself and several other students as well as a number of Alumni spent several hours investigating the issue. At one point even my mentor took a look. We investigated my policy set up, the groups and the user permissions among other things in the S3 bucket set up as well as my settings within the app itself with no luck in finding the cause of the issue. | After spending several days on this issue I decided to try a different version of Django. I was using version 5.1 but all the documentation I could find was referencing Django 4.2. I don't how the changes made between these 2 versions of django would influence the functionality here but after switching the version 4.2 of Django my S3 bucket worked perfectly. |
+| 2     | An issue with Chrome prevented my Javascript from working for the consent banner within the Chrome browser. When using Chrome, if the user clicked the accept button on the banner that appears at the bottom of the page to give consent to use cookies, the cookie would not be set in their browser despite the banner disappearing.                                                                                                                                              | This turned out to be caused by a recent update in Chrome forcing the attribute ```sameSite``` to be required when setting cookies. Once I set this within the script, the issue was resolved.                                                                                                                                                                           |
+| 3     | When validating my HTML, I found that the portfolio page and article page had an img with no src or alt value set. This was done intentionally as the functionality was for the image attributes to be set when the user clicks on an image gallery item. However, the accessibility issues this causes did not cross my mind at the time.                                                                                                                                           | In order to resolve this issue I simply set default values as placeholders for the required attributes                                                                                                                                                                                                                                                                   |
+| 4     | A friend came across an error when using the delete functionality within the CMS on Slider Images, Portfolio Images and Messages. When using the delete functionality the suer was redirected to a 404 page but the item would still be deleted. This issue only occured in Chrome.                                                                                                                                                                                                  | A full explanation will be written below.                                                                                                                                                                                                                                                                                                                                |
 
+- Delete functionality resulting in 404
+
+Originally, when deleting an item from the database using the functionality provided within the CMS, the item would be deleted then the user redirected to a 404 page.
+
+For the purpose of the explanation I was use the functionality to delete a Slider Image from the homepage Carousel as the example.
+
+The view was a rather short piece of code, where upon confirmation deletion of the item the user would be referred to the "cp_cms_delete_slider_image" view. This view would then find the image in the database, delete it and redirect the user back to the main management page for all of the images relating to the homepage carousel.
+
+```
+@user_passes_test(lambda u: u.is_superuser)
+def cp_cms_delete_slider_image(request, image_id):
+    """
+    A view to delete a slider image
+    """
+    image = get_object_or_404(HomePageSliderImages, id=image_id)
+    image.delete()
+    messages.success(request, "Carousel image deleted successfully")
+    return redirect("cp_cms_manage_slider_images")
+```
+
+What seemed to actually be happening, and only in Chrome, was that upon confirming their intention to delete the item, the user was irected to the view above where it then fetched the item from the database, deleted it and then seemed to be trying to fetch the same item again but retuning a 404 as it, obviously, no longer existed. This resulted in the error:
+
+```
+Page not found (404)
+No HomePageSliderImages matches the given query.
+Request Method:	GET
+Request URL:	127.0.0.1:8000/control-panel/homepage/carousel-images/86/delete/confirmed/
+Raised by:	controlpanel.views.cms_homepage_views.cp_cms_delete_slider_image
+```
+
+I spent some time investigating this and could not find the root cause, I again called on the help of fellow students, alumni and my mentor, none of which were able to provide any insight. 
+I tried to implement the use of try-except blocks to identify the issue or prevent it with no luck. Therefore in order to remove the issue I refactored the view to instead, find the image, delete it and show a confirmation page instead of redirecting. This solved the original issue.
 
 ### Known Bugs
 
-
-
-
-
-
-
-
-
-
+There are no known bugs.
