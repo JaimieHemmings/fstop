@@ -82,6 +82,7 @@ In order to ensure I have not missed anything I used a number of tools to valida
 | Article            | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fnews%2Funderstanding-the-f-stop%2F) |
 | Contact            | 0 Errors | [W3C Result](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.fstops.co.uk%2Fcontact%2F) |
 
+All custom error pages (404,400,500 etc.) were also manually tested by inserting the raw HTML into the test manually. Each returned 0 errors.
 
 ### CSS Validation
 
@@ -275,7 +276,51 @@ The major issue identified by my SEO analysis of the website was a lack of exter
 
 ### Django Automated Testing
 
+I implemented a great amount of automated testing within the inbuilt django test functionality, however I did not aim to hit 100% coverage as more automated testing was done within Cypress to compnesate for that fact.
 
+| Name                                                                       | Stmts | Miss | Cover | Missing                                                                |
+|----------------------------------------------------------------------------|-------|------|-------|------------------------------------------------------------------------|
+| blog\models.py                                                             | 29    | 5    | 83%   | 10-12, 40, 48                                                          |
+| blog\tests.py                                                              | 18    | 4    | 78%   | 20-23                                                                  |
+| blog\urls.py                                                               | 3     | 0    | 100%  |                                                                        |
+| blog\views.py                                                              | 12    | 8    | 33%   | 10-14, 22-29                                                           |
+| controlpanel\models.py                                                     | 1     | 0    | 100%  |                                                                        |
+| controlpanel\urls.py                                                       | 3     | 0    | 100%  |                                                                        |
+| controlpanel\views\articles_views.py                                       | 60    | 42   | 30%   | 16-23, 31-49, 58-79, 88-94, 102-105                                    |
+| controlpanel\views\cms_about_views.py                                      | 16    | 9    | 44%   | 9-24                                                                   |
+| controlpanel\views\cms_homepage_views.py                                   | 166   | 122  | 27%   |                                                                        |
+| controlpanel\views\cms_portfolio_views.py                                  | 34    | 21   | 38%   | 15-20, 29-42, 50-56, 65-71                                             |
+| controlpanel\views\cms_reviews_views.py                                    | 44    | 29   | 34%   | 15-20, 28-41, 49-55, 64-67, 75-90                                      |
+| controlpanel\views\cms_services_views.py                                   | 52    | 37   | 29%   | 10, 15-32, 37-53, 58-74, 79-95                                         |
+| controlpanel\views\dashboard_views.py                                      | 17    | 8    | 53%   | 16-32                                                                  |
+| controlpanel\views\messages_views.py                                       | 49    | 34   | 31%   | 14-25, 33-44, 52-59, 67-80, 88-94                                      |
+| controlpanel\views\payments_views.py                                       | 36    | 24   | 33%   | 16-20, 28-54, 62-66                                                    |
+| fstop\urls.py                                                              | 18    | 2    | 89%   | 21, 33                                                                 |
+| home\forms.py                                                              | 108   | 66   | 39%   | 19-49, 73-145, 161-182, 204-209, 219-231, 241-254, 264-279, 298-330    |
+| home\models.py                                                             | 98    | 20   | 80%   | 14, 23-25, 44, 62, 80, 88, 101-103, 111, 116-118, 130, 135-137, 155    |
+| home\urls.py                                                               | 3     | 0    | 100%  |                                                                        |
+| home\views.py                                                              | 41    | 30   | 27%   | 22-25, 33-56, 63-65, 72-86                                             |
+| payments\forms.py                                                          | 19    | 11   | 42%   | 27-48                                                                  |
+| payments\models.py                                                         | 31    | 6    | 81%   | 10, 42, 49-51, 54                                                      |
+| payments\urls.py                                                           | 3     | 0    | 100%  |                                                                        |
+| payments\views.py                                                          | 3     | 1    | 67%   | 5                                                                      |
+| portfolio\models.py                                                        | 9     | 1    | 89%   | 13                                                                     |      
+| portfolio\tests.py                                                         | 6     | 0    | 100%  |                                                                        |
+| portfolio\urls.py                                                          | 3     | 0    | 100%  |                                                                        |
+| portfolio\views.py                                                         | 7     | 0    | 100%  |                                                                        |
+| profiles\forms.py                                                          | 20    | 12   | 40%   | 26-60                                                                  |
+| profiles\models.py                                                         | 22    | 4    | 82%   | 25, 33-36                                                              |
+| profiles\urls.py                                                           | 4     | 0    | 100%  |                                                                        |
+| profiles\tests.py                                                          | 17    | 0    | 100%  |                                                                        |
+| profiles\urls.py                                                           | 4     | 0    | 100%  |                                                                        |
+| profiles\views.py                                                          | 69    | 49   | 29%   | 22-41, 49-98, 106-118, 126-133                                         |
+| profiles\webhook_handler.py                                                | 25    | 18   | 28%   | 8, 12, 19-44, 51                                                       |
+| profiles\webhooks.py                                                       | 29    | 20   | 31%   | 14-52                                                                  |
+| reviews\models.py                                                          | 9     | 1    | 89%   | 12                                                                     |
+| service\forms.py                                                           | 17    | 10   | 41%   | 11-118                                                                 |
+| service\models.py                                                          | 35    | 4    | 89%   | 9-11, 49                                                               |
+| service\urls.py                                                            | 3     | 0    | 100%  |                                                                        |
+| service\views.py                                                           | 25    | 17   | 32%   | 8, 12-19, 23-30, 34-41, 45-52                                          |
 
 ### Cypress End to End Testing
 
@@ -291,10 +336,6 @@ The major issue identified by my SEO analysis of the website was a lack of exter
 
 
 ### Full Testing
-
-
-
-### Payment Processing
 
 
 
@@ -328,7 +369,7 @@ def cp_cms_delete_slider_image(request, image_id):
     return redirect("cp_cms_manage_slider_images")
 ```
 
-What seemed to actually be happening, and only in Chrome, was that upon confirming their intention to delete the item, the user was irected to the view above where it then fetched the item from the database, deleted it and then seemed to be trying to fetch the same item again but retuning a 404 as it, obviously, no longer existed. This resulted in the error:
+What seemed to actually be happening, and only in Chrome, was that upon confirming their intention to delete the item, the user was directed to the view above where it then fetched the item from the database, deleted it and then seemed to be trying to fetch the same item again but retuning a 404 as it, obviously, no longer existed. This resulted in the error:
 
 ```
 Page not found (404)
