@@ -106,6 +106,17 @@ Results:
 CSS files that came as part of exteneral packages used (and credited in the main readme) were not tested.
 
 ### JavaScript Validation
+
+In order to validate my JavaScript and ensure there are no bugs I will use [JSHint](https://jshint.com/) to supplement my manual testing of all functionality dependant on the JavaScript code I have written.
+
+| File                                               | Result   | Screenshot |
+|----------------------------------------------------|----------|------------|
+| profiles/static/js/stripe_elements.js              | 2 Errors | [Screenshot](docs/testing/js-hint-stripe.png) |
+| static/js/ga-consent.js                            | 2 Errors | [Screenshot](docs/testing/ga-consent.png) |
+| static/js/gallery.js                               | 0 Errors | [Screenshot](docs/testing/gallery.png) |
+
+The only errors found were related to global variables defined outside of the file, for this reason, they will be ignored as I am confident that they are not an issue after manually testing.
+
 ### Python Validation
 ### Lighthouse Report
 #### Desktop
