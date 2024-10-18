@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 
+
 class Message(models.Model):
     fname = models.CharField(max_length=100, blank=False, null=False)
     lname = models.CharField(max_length=100, blank=False, null=False)
@@ -22,11 +23,12 @@ class HomePageHero(models.Model):
         extension = filename.split(".")[-1]
         filename = f"{filename}-{uuid.uuid4()}.{extension}"
         return f"cms/home/{filename}"
-    
+
     hero_title = models.CharField(max_length=50, blank=False, null=False)
     hero_subtitle = models.TextField(max_length=200, blank=False, null=False)
     hero_image = models.ImageField(upload_to=get_path)
-    hero_image_alt = models.CharField(max_length=100, blank=False, null=False, default="Enter an alt text")
+    hero_image_alt = models.CharField(
+        max_length=100, blank=False, null=False, default="Enter an alt text")
     hero_list_one = models.CharField(max_length=100, blank=False, null=False)
     hero_list_two = models.CharField(max_length=100, blank=False, null=False)
     hero_list_three = models.CharField(max_length=100, blank=False, null=False)
@@ -76,7 +78,7 @@ class HomePageTrustedBy(models.Model):
 
     def __str__(self):
         return f"{ self.trusted_by_title }"
-    
+
 
 class HomePageFAQ(models.Model):
     faq_question = models.CharField(max_length=100, blank=False, null=False)
@@ -107,7 +109,7 @@ class HomePageSliderImages(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-    
+
 
 class HomePagePanel(models.Model):
     def get_path(instance, filename):
@@ -116,22 +118,26 @@ class HomePagePanel(models.Model):
         return f"cms/home/{filename}"
 
     title = models.CharField(max_length=100, blank=False, null=False)
-    image = models.ImageField(upload_to=get_path, blank=False, null=False, default="default.png")
-    image_alt = models.CharField(max_length=100, blank=False, null=False, default="Enter an alt text")
+    image = models.ImageField(
+        upload_to=get_path, blank=False, null=False, default="default.png")
+    image_alt = models.CharField(
+        max_length=100, blank=False, null=False, default="Enter an alt text")
     paragraph = models.TextField(blank=False, null=False)
-    link_to = models.CharField(max_length=100, blank=False, null=False, default="#")
+    link_to = models.CharField(
+        max_length=100, blank=False, null=False, default="#")
 
     def __str__(self):
         return f"{self.title}"
-    
+
 
 class AboutPage(models.Model):
     def get_path(instance, filename):
         extension = filename.split(".")[-1]
         filename = f"{filename}-{uuid.uuid4()}.{extension}"
         return f"cms/about/{filename}"
-    
-    title = models.CharField(max_length=100, blank=False, null=False, editable=True)
+
+    title = models.CharField(
+        max_length=100, blank=False, null=False, editable=True)
 
     hero_title = models.CharField(max_length=100, blank=False, null=False)
     hero_subtitle = models.TextField(max_length=200, blank=False, null=False)
@@ -142,7 +148,8 @@ class AboutPage(models.Model):
 
     body_text = models.TextField(blank=False, null=False)
     body_image = models.ImageField(upload_to=get_path)
-    body_image_alt = models.CharField(max_length=100, blank=False, null=False, default="Enter an alt text")
+    body_image_alt = models.CharField(
+        max_length=100, blank=False, null=False, default="Enter an alt text")
 
     def __str__(self):
         return self.hero_title

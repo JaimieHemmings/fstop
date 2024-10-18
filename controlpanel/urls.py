@@ -124,28 +124,28 @@ urlpatterns = [
     # CMS paths for the about page
     path("about/edit",
          views.cp_cms_about_edit,
-         name="cp_cms_about_edit"),   
+         name="cp_cms_about_edit"),
 
     # CMS Paths for services page
     path("services-pages/",
-        views.cp_cms_manage_services,
-        name="cp_cms_manage_services"),
+         views.cp_cms_manage_services,
+         name="cp_cms_manage_services"),
 
     path("services-pages/edit/lifestyle/",
-        views.cp_cms_edit_lifestyle,
-        name="cp_cms_edit_lifestyle"),
+         views.cp_cms_edit_lifestyle,
+         name="cp_cms_edit_lifestyle"),
 
     path("services-pages/edit/event-product/",
-        views.cp_cms_edit_event,
-        name="cp_cms_edit_event"),
+         views.cp_cms_edit_event,
+         name="cp_cms_edit_event"),
 
     path("services-pages/edit/property-product/",
-        views.cp_cms_edit_property,
-        name="cp_cms_edit_property"),
+         views.cp_cms_edit_property,
+         name="cp_cms_edit_property"),
 
     path("services-pages/edit/aerial-product/",
-        views.cp_cms_edit_aerial,
-        name="cp_cms_edit_aerial"),
+         views.cp_cms_edit_aerial,
+         name="cp_cms_edit_aerial"),
 
     # Portfolio page URL's
     path("portfolio/",

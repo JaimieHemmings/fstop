@@ -54,5 +54,7 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs["placeholder"] = placeholder
-            self.fields[field].widget.attrs["class"] = "form form-control mt-1 mb-3"
+            self.fields[field].widget.attrs["class"] = (
+                "form form-control mt-1 mb-3"
+                )
             self.fields[field].label = labels[field]

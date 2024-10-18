@@ -4,6 +4,7 @@ import requests
 
 BASE_URL = "http://127.0.0.1:8000"
 
+
 # Create your tests here.
 class UrlsTest(TestCase):
     def test_profile_url(self):

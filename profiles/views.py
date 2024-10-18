@@ -22,7 +22,6 @@ def profile_page(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     payments = Payment.objects.filter(email=request.user.email)
     form = UserProfileForm(instance=profile)
-
     if request.method == "POST":
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
@@ -34,13 +33,11 @@ def profile_page(request):
             messages.error(
                 request, "Failed to update profile."
                 "Please ensure the form is valid.")
-
     context = {
         "profile": profile,
         "payments": payments,
         "form": form,
         }
-    
     return render(request, "profile.html", context)
 
 
@@ -51,7 +48,6 @@ def make_payment(request, id):
     """
     payment_data = get_object_or_404(Payment, id=id)
     profile = get_object_or_404(UserProfile, user=request.user)
-    
     form = PaymentForm(initial={
         "full_name": profile.fname + " " + profile.lname,
         "email": request.user.email,
@@ -63,8 +59,6 @@ def make_payment(request, id):
         "county": profile.county,
         "save_info": True,
     })
-
-
     STRIPE_PUBLIC_KEY = settings.STRIPE_PUBLIC_KEY
     payment_amount_stripe = int(payment_data.amount * 100)
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -72,7 +66,6 @@ def make_payment(request, id):
         amount=payment_amount_stripe,
         currency=settings.STRIPE_CURRENCY,
     )
-
     if request.method == "POST":
         form = PaymentForm(request.POST)
         if form.is_valid():
@@ -92,19 +85,16 @@ def make_payment(request, id):
             # display the form with errors
             messages.error(
                 request, "Payment failed. Please ensure the form is valid.")
-            
     if not STRIPE_PUBLIC_KEY:
         messages.warning(
             request, "Stripe public key is missing. "
             "Did you forget to set it in your environment?")
-        
     context = {
         "form": form,
         "payment_data": payment_data,
         "stripe_public_key": STRIPE_PUBLIC_KEY,
         "client_secret": payment_intent.client_secret,
     }
-
     return render(request, "make-payment.html", context)
 
 
@@ -124,7 +114,7 @@ def cache_checkout_data(request):
         messages.error(
             request,
             "Sorry, your payment cannot be processed right now."
-                       "Please try again later.")
+            "Please try again later.")
         return HttpResponse(content=e, status=400)
 
 

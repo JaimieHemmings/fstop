@@ -4,6 +4,7 @@ import requests
 
 BASE_URL = "http://127.0.0.1:8000"
 
+
 class UrlsTest(TestCase):
     def test_event_url(self):
         path = reverse('event_services')

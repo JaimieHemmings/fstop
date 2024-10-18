@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Payment
 
+
 class PaymentAdmin(admin.ModelAdmin):
     readonly_fields = (
         "payment_id", "date", "paid", "paid_date",
@@ -21,5 +22,5 @@ class PaymentAdmin(admin.ModelAdmin):
 
     ordering = ("-date",)
 
-admin.site.register(Payment, PaymentAdmin)
 
+admin.site.register(Payment, PaymentAdmin)

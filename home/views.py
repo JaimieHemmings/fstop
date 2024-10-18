@@ -14,6 +14,7 @@ from .models import (
     AboutPage,
   )
 
+
 def get_all_or_404(model):
     """
     Get all objects of a model or return 404

@@ -1,6 +1,7 @@
 from .models import ServicesPage
 from django import forms
 
+
 class EditServicesPageForm(forms.ModelForm):
     class Meta:
         model = ServicesPage
@@ -22,19 +23,32 @@ class EditServicesPageForm(forms.ModelForm):
             "highlight_one_title": "Enter the title for the first highlight",
             "highlight_one_lead": "Enter the lead for the first highlight",
             "highlight_one_image": "Upload the image for the first highlight",
-            "highlight_one_alt_text": "Enter the alt text for the first highlight image",
-            "highlight_two_title": "Enter the title for the second highlight",
-            "highlight_two_lead": "Enter the lead for the second highlight",
-            "highlight_two_image": "Upload the image for the second highlight",
-            "highlight_two_alt_text": "Enter the alt text for the second highlight image",
-            "service_info_one_title": "Enter the title for the first service info",
-            "service_info_one_lead": "Enter the lead for the first service info",
-            "service_info_one_image": "Upload the image for the first service info",
-            "service_info_one_alt_text": "Enter the alt text for the first service info image",
-            "service_info_two_title": "Enter the title for the second service info",
-            "service_info_two_lead": "Enter the lead for the second service info",
-            "service_info_two_image": "Upload the image for the second service info",
-            "service_info_two_alt_text": "Enter the alt text for the second service info image",
+            "highlight_one_alt_text": ""
+            "Enter the alt text for the first highlight image",
+            "highlight_two_title": ""
+            "Enter the title for the second highlight",
+            "highlight_two_lead": ""
+            "Enter the lead for the second highlight",
+            "highlight_two_image": ""
+            "Upload the image for the second highlight",
+            "highlight_two_alt_text": ""
+            "Enter the alt text for the second highlight image",
+            "service_info_one_title": ""
+            "Enter the title for the first service info",
+            "service_info_one_lead": ""
+            "Enter the lead for the first service info",
+            "service_info_one_image": ""
+            "Upload the image for the first service info",
+            "service_info_one_alt_text": ""
+            "Enter the alt text for the first service info image",
+            "service_info_two_title": ""
+            "Enter the title for the second service info",
+            "service_info_two_lead": ""
+            "Enter the lead for the second service info",
+            "service_info_two_image": ""
+            "Upload the image for the second service info",
+            "service_info_two_alt_text": ""
+            "Enter the alt text for the second service info image",
         }
 
         # Set autofocus on first field to be filled in
@@ -55,19 +69,32 @@ class EditServicesPageForm(forms.ModelForm):
             "highlight_one_title": "Enter the title for the first highlight",
             "highlight_one_lead": "Enter the lead for the first highlight",
             "highlight_one_image": "Upload the image for the first highlight",
-            "highlight_one_alt_text": "Enter the alt text for the first highlight image",
-            "highlight_two_title": "Enter the title for the second highlight",
-            "highlight_two_lead": "Enter the lead for the second highlight",
-            "highlight_two_image": "Upload the image for the second highlight",
-            "highlight_two_alt_text": "Enter the alt text for the second highlight image",
-            "service_info_one_title": "Enter the title for the first service info",
-            "service_info_one_lead": "Enter the lead for the first service info",
-            "service_info_one_image": "Upload the image for the first service info",
-            "service_info_one_alt_text": "Enter the alt text for the first service info image",
-            "service_info_two_title": "Enter the title for the second service info",
-            "service_info_two_lead": "Enter the lead for the second service info",
-            "service_info_two_image": "Upload the image for the second service info",
-            "service_info_two_alt_text": "Enter the alt text for the second service info image",
+            "highlight_one_alt_text": ""
+            "Enter the alt text for the first highlight image",
+            "highlight_two_title": ""
+            "Enter the title for the second highlight",
+            "highlight_two_lead": ""
+            "Enter the lead for the second highlight",
+            "highlight_two_image": ""
+            "Upload the image for the second highlight",
+            "highlight_two_alt_text": ""
+            "Enter the alt text for the second highlight image",
+            "service_info_one_title": ""
+            "Enter the title for the first service info",
+            "service_info_one_lead": ""
+            "Enter the lead for the first service info",
+            "service_info_one_image": ""
+            "Upload the image for the first service info",
+            "service_info_one_alt_text": ""
+            "Enter the alt text for the first service info image",
+            "service_info_two_title": ""
+            "Enter the title for the second service info",
+            "service_info_two_lead": ""
+            "Enter the lead for the second service info",
+            "service_info_two_image": ""
+            "Upload the image for the second service info",
+            "service_info_two_alt_text": ""
+            "Enter the alt text for the second service info image",
         }
 
         for field in self.fields:

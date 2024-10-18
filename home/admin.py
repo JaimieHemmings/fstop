@@ -18,6 +18,7 @@ from reviews.models import Review
 class AboutPageAdmin(admin.ModelAdmin):
     pass
 
+
 class MessageAdmin(admin.ModelAdmin):
     pass
 
@@ -25,29 +26,38 @@ class MessageAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     pass
 
+
 class PortfolioImagesAdmin(admin.ModelAdmin):
     pass
+
 
 class HomePageSliderImagesAdmin(admin.ModelAdmin):
     pass
 
+
 class ReviewAdmin(admin.ModelAdmin):
     pass
+
 
 class HomePageHeroAdmin(admin.ModelAdmin):
     pass
 
+
 class HomePageAboutAdmin(admin.ModelAdmin):
     pass
+
 
 class HomePageTrustedByAdmin(admin.ModelAdmin):
     pass
 
+
 class HomePageFAQAdmin(admin.ModelAdmin):
     pass
 
+
 class HomePagePanelAdmin(admin.ModelAdmin):
     pass
+
 
 admin.site.register(Message, MessageAdmin)
 admin.site.register(Article, ArticleAdmin)

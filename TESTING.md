@@ -126,32 +126,66 @@ For validation of my Python code I will be using Code Institutes PEP8 Python Lin
 | fstop/settings.py   | 0 Errors       | [Screenshot](docs/testing/python/blog_views.png) |
 | fstop/urls.py       | 0 Errors       | [Screenshot](docs/testing/python/blog_views.png) |
 | custom_storages.py  | 0 Errors       | [Screenshot](docs/testing/python/custom_storages.png) |
-| **Blog App**        |                |            |
+| **blog**            |                |            |
 | views.py            | 0 Errors       | [Screenshot](docs/testing/python/blog_views.png) |
 | urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
 | tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
 | models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
 | **controlpanel**    |                |            |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
+| views/*.py          | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| forms.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| apps.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| **home**            |                |            |
+| views.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| forms.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| apps.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| **payments**        |                |            |
+| views.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| forms.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| apps.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| **portfolio**       |                |            |
+| views.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| forms.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| apps.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| **profiles**        |                |            |
+| views.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| forms.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| apps.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| webhooks.py         | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| webhook_handler.py  | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| **reviews**         |                |            |
+| views.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| forms.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| apps.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| webhooks.py         | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| webhook_handler.py  | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| **service**         |                |            |
+| views.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| forms.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| models.py           | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| tests.py            | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| urls.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| apps.py             | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| webhooks.py         | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
+| webhook_handler.py  | 0 Errors       | [Screenshot](docs/testing/python/no-errors.png) |
 
 ### Lighthouse Report
 #### Desktop

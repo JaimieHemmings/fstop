@@ -1,18 +1,24 @@
 from django import forms
 from .models import Payment
 
+
 class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = ('full_name', 'email', 'phone_number', 'street_address1',
-                  'street_address2', 'town_or_city', 'county', 'country', 'postcode')
+                  'street_address2', 'town_or_city',
+                  'county', 'country', 'postcode')
         widgets = {
             'full_name': forms.TextInput(attrs={'placeholder': 'Full Name'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
-            'phone_number': forms.TextInput(attrs={'placeholder': 'Phone Number'}),
-            'street_address1': forms.TextInput(attrs={'placeholder': 'Street Address 1'}),
-            'street_address2': forms.TextInput(attrs={'placeholder': 'Street Address 2'}),
-            'town_or_city': forms.TextInput(attrs={'placeholder': 'Town or City'}),
+            'phone_number': forms.TextInput(
+                attrs={'placeholder': 'Phone Number'}),
+            'street_address1': forms.TextInput(
+                attrs={'placeholder': 'Street Address 1'}),
+            'street_address2': forms.TextInput(
+                attrs={'placeholder': 'Street Address 2'}),
+            'town_or_city': forms.TextInput(
+                attrs={'placeholder': 'Town or City'}),
             'county': forms.TextInput(attrs={'placeholder': 'County'}),
             'postcode': forms.TextInput(attrs={'placeholder': 'Postcode'}),
         }
@@ -40,3 +46,4 @@ class PaymentForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'form form-control mt-3'
             self.fields[field].label = False
+            
