@@ -349,19 +349,19 @@ In order to ensure compatibility amongst all major devices and browsers I tested
 | Page            | Device/Desktop Dimension | Result         |
 |-----------------|--------------------------|----------------|
 | Home            |                          |                |
-|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-home.png) |
+|                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-home.png) |
 |                 | Tablet                   | [Screenshot]() |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
 | About           |                          |                |
-|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-about.png) |
+|                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-about.png) |
 |                 | Tablet                   | [Screenshot]() |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
 | Lifestyle       |                          |                |
-|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-lifestyle.png) |
+|                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-lifestyle.png) |
 |                 | Tablet                   | [Screenshot]() |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
@@ -391,7 +391,7 @@ In order to ensure compatibility amongst all major devices and browsers I tested
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
 | News            |                          |                |
-|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-news.png) |
+|                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-news.png) |
 |                 | Tablet                   | [Screenshot]() |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
