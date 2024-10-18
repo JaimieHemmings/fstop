@@ -3,22 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8WWMK1SPF"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'ad_storage': 'denied',
-      'analytics_storage': 'denied',
-      'wait_for_update': 500,
-    });  
-    gtag('js', new Date());
-    gtag('config', 'G-V8WWMK1SPF');
-  </script>
   {% block meta %}
+  <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="120x120" href="{% static 'apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
@@ -27,7 +13,6 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{% block meta_description %}{% endblock %}">
   {% endblock %}
@@ -64,6 +49,21 @@
   {% endblock %}
 
   <title>FStops {% block extra_title %}{% endblock %}</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8WWMK1SPF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500,
+    });  
+    gtag('js', new Date());
+    gtag('config', 'G-V8WWMK1SPF');
+  </script>
 </head>
 <body>
   {% include 'partials/navigation.html' %}
