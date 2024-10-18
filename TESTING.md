@@ -350,37 +350,19 @@ In order to ensure compatibility amongst all major devices and browsers I tested
 |-----------------|--------------------------|----------------|
 | Home            |                          |                |
 |                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-home.png) |
-|                 | Tablet                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot](docs/responsiveness/home-tablet.png) |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
 | About           |                          |                |
 |                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-about.png) |
-|                 | Tablet                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot](docs/responsiveness/about-tablet.png) |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
 | Lifestyle       |                          |                |
 |                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-lifestyle.png) |
-|                 | Tablet                   | [Screenshot]() |
-|                 | 1280x1024                | [Screenshot]() |
-|                 | 1440x900                 | [Screenshot]() |
-|                 | 1920x1080                | [Screenshot]() |
-| Event           |                          |                |
-|                 | Mobile                   | [Screenshot]() |
-|                 | Tablet                   | [Screenshot]() |
-|                 | 1280x1024                | [Screenshot]() |
-|                 | 1440x900                 | [Screenshot]() |
-|                 | 1920x1080                | [Screenshot]() |
-| Property        |                          |                |
-|                 | Mobile                   | [Screenshot]() |
-|                 | Tablet                   | [Screenshot]() |
-|                 | 1280x1024                | [Screenshot]() |
-|                 | 1440x900                 | [Screenshot]() |
-|                 | 1920x1080                | [Screenshot]() |
-| Aerial          |                          |                |
-|                 | Mobile                   | [Screenshot]() |
-|                 | Tablet                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot](docs/responsiveness/lifestyle-tablet.png) |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
@@ -404,7 +386,7 @@ In order to ensure compatibility amongst all major devices and browsers I tested
 |                 | 1920x1080                | [Screenshot]() |
 | Contact         |                          |                |
 |                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-contact.png) |
-|                 | Tablet                   | [Screenshot]() |
+|                 | Tablet                   | [Screenshot](docs/responsiveness/contact-tablet.png) |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
