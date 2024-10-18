@@ -403,7 +403,7 @@ In order to ensure compatibility amongst all major devices and browsers I tested
 |                 | 1440x900                 | [Screenshot]() |
 |                 | 1920x1080                | [Screenshot]() |
 | Contact         |                          |                |
-|                 | Mobile                   | ![Screenshot](docs/responsiveness/iphone-11-contact.png) |
+|                 | Mobile                   | [Screenshot](docs/responsiveness/iphone-11-contact.png) |
 |                 | Tablet                   | [Screenshot]() |
 |                 | 1280x1024                | [Screenshot]() |
 |                 | 1440x900                 | [Screenshot]() |
