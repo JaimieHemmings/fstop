@@ -53,14 +53,14 @@ Explore the stunning portfolio of FStop Photography, showcasing a diverse collec
 </div>
 
 <div id="port" class="port background-secondary">
-  <button id="close_port" class="btn btn-custom-red">
+  <button id="close-port" class="btn btn-custom-red">
     <span>Close</span><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
       <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
     </svg>
   </button>
   <img id="portImg" src="" alt="">
   <div class="content">
-    <div class="wrapper">
+    <div class="wrapper background-primary">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
@@ -99,13 +99,13 @@ galleryItems.forEach(function(item) {
     portDescription.innerHTML = item.getAttribute('data-description');
     
     // Open the window port
-    port.classList.add('item_open');
+    port.classList.add('item-open');
   });
 });
 
 // Event listener for closing the window port
-document.getElementById('close_port').addEventListener('click', function() {
-  port.classList.remove('item_open');
+document.getElementById('close-port').addEventListener('click', function() {
+  port.classList.remove('item-open');
 });
 
 </script>

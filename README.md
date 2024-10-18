@@ -543,6 +543,8 @@ Proposals for further development:
 
 - [Real Favicon Generator](https://realfavicongenerator.net/) - used to create the site's favicon
 
+- [Stylelint](https://stylelint.io/demo/) - CSS validation
+
 - [Git](https://git-scm.com/) - used for version management
 
 - [GitHub](https://github.com) - use for hosting the projects git repository
