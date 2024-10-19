@@ -408,6 +408,15 @@ In order to supplement my DJango Unit Tests I also implemented a variety of Cypr
 
 Once the project is cloned and set up, while you have the project running locally run the command ```npx cypress open``` and follow the intructions to set up Cypress locally. Then select End to End testing in a browser of your choice using the Cypress GUI then you can find the existing tests in the test environment that Cypress launches.
 
+- Some tests require a superuser accounts login credentials. I created a superuser account in my local SQLite3 database for this purpose. Simply edit the login credentials provided in the .cy.js scripts (./cypress/e2e) with your own.
+
+Alternatively create a local superuser with the following credentials:
+
+username: testAdmin
+password: testPassword123
+
+NOTE: It is important not to create this account in the production database.
+
 ![Cypress Test](docs/cypress/1.gif)
 
 ![Cypress Test](docs/cypress/2.gif)
