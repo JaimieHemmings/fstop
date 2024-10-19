@@ -509,12 +509,34 @@ Using the AllAuth plugin, this feature was easily implemented. Allowing anonymou
 As a returning visitor I want to:
 
 - Easily navigate to new portfolio updates, so that I can quickly view any recent work or projects
+
+The portfolio section is almost an image dump of any images the business has added to that section using the bespoke CMS. It is up to the business how many and in what order they would like this information to be displayed. However, whenever the user visits this section they will see the latest content the business has added to it.
+
+In future I would like to added a more comprehensive management system to this section of the website, allowing better control and guidelines for the site owner/admin to manage the content here to optimise performance of the page as well as present it in a more organised fashion for the end user.
+
 - Quickly find any new blog posts, so that I can stay informed about the photographer’s latest tips, experiences, or insights
+
+The blog feed on the homepage presents the user with the latest 2 blog posts from the news section of the website, allowing them to directly access the latest content. Additionally, the News section of the website features pagination with the content presented chronologically (Newest first) also allowing the user to go back through older content when desired.
+
 - Log in so that I can view past projects, proofs, or completed work
+
+The user is able to login thanks to functionality provided by integrating AllAuth into the website. This allows the user to register and log in, additionally functionality was then added to allow the user to view and manage all completed and outstanding projects within this area.
+
 - Easily find the photographer’s contact information again, so that I can reach out quickly for any new inquiries or bookings
-- See a quick overview of any changes or updates since my last visit, so that I don’t miss anything important
+
+The contact information for the business will be easily accessible at all times on the contact page.
+
+![Contact Info](docs/contact-info.png)
+
 - View any new testimonials or client reviews, so that I can continue to gauge the photographer’s reputation and work quality
+
+New testimonials can be added by the business through the bespoke CMS provided. Once new information is added here it will be displayed on the front end of the website for the end user to view.
+
 - Pay any payment requests sent to me by FStops Photography
+
+Functionality view and pay outstanding invoices was added in the users profile section. Allowing them to see information relating to the project and any outstanding amounts. The client is then able to pay this amount using Stripe which was seemlessly integrated into the website to allow the user to pay the outstanding amount without leaving the website.
+
+![Payment Form](docs/payment-form.png)
 
 As a Superuser of the site I want to:
 

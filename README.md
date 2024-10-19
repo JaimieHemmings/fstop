@@ -234,7 +234,6 @@ As a returning visitor I want to:
 - Quickly find any new blog posts, so that I can stay informed about the photographer’s latest tips, experiences, or insights
 - Log in so that I can view past projects, proofs, or completed work
 - Easily find the photographer’s contact information again, so that I can reach out quickly for any new inquiries or bookings
-- See a quick overview of any changes or updates since my last visit, so that I don’t miss anything important
 - View any new testimonials or client reviews, so that I can continue to gauge the photographer’s reputation and work quality
 - Pay any payment requests sent to me by FStops Photography
 
