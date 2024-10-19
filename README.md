@@ -399,7 +399,7 @@ The website mainly uses a dark theme with highlights of red, as much as possible
 
 ![Colour Palette](docs/colour-palette.png)
 
-*The red here was later substituted for ```#D93600``` for better contrast
+*The red here was later substituted for ```#A82A00``` for better contrast
 
 ### Imagery
 
