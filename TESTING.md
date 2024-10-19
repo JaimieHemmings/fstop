@@ -404,7 +404,23 @@ Specific tests can be run for individual apps within the project by using the co
 
 ### Cypress End to End Testing
 
+In order to supplement my DJango Unit Tests I also implemented a variety of Cypress End to End Testing. A number of these tests can be seen below, however, you can run these tests yourself using Cpyress by cloning this repot (instructions [here](DEPLOYMENT.md)).
 
+Once the project is cloned and set up, while you have the project running locally run the command ```npx cypress open``` and follow the intructions to set up Cypress locally. Then select End to End testing in a browser of your choice using the Cypress GUI then you can find the existing tests in the test environment that Cypress launches.
+
+![Cypress Test](docs/cypress/1.gif)
+
+![Cypress Test](docs/cypress/2.gif)
+
+![Cypress Test](docs/cypress/3.gif)
+
+![Cypress Test](docs/cypress/4.gif)
+
+![Cypress Test](docs/cypress/5.gif)
+
+![Cypress Test](docs/cypress/6.gif)
+
+![Cypress Test](docs/cypress/7.gif)
 
 ## Manual Testing
 ### User Stories
