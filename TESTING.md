@@ -434,7 +434,98 @@ NOTE: It is important not to create this account in the production database.
 ## Manual Testing
 ### User Stories
 
+In order to demonstrate how the project solves each of the user stories identified in the original ReadMe document, I will evidence the user flow that satsifies each of the criteria below:
 
+- Navigate around the site easily and intuitively
+
+In order to satisfy this criteria on the FStops website, I have implemented a navigation system that is well Structured, responsive and intuitive. With the main navigation positioned at the top of the screen on all pages, the user knows exactly where and how to find the navigation menu at all times. Additionally Sub Menus are logically grouped under relevant categories.
+
+![Dropdown Menu Example](docs/dropdown-menu.png)
+
+Additionally, the navigation menu adapts to screens of different sizes, on mobile the navigation menu condenses into a list only accessible via the hamburger menu at the top right of each page. This keeps the overall design of the website free of clutter on smaller screens and conforms to standard conventions and user expectations.
+
+![Mobile Navigation](docs/mobile-nav.png)
+
+- View previous work
+
+There are a number of ways in which the user is able to see examples of FStops Photography's previous work, wither by viewing the portfolio page or by navigating to the News page which is functionally the same as a blog, allowing the sites superusers to display examples of recent work alongside recent events and news.
+
+Each article within the News section has a small gallery, allowing the author of the entry to add several images here for showcasing.
+
+![Article Example of Gallery](docs/news-page-example.png)
+
+- Easily understand what FStop Photography offers, so that I can decide if the services meet my needs
+
+The services and expertise of FStops Photography are prominently displayed around the site, including several sections on the homepage, the about page in particular is dedicated to the expertise of the site owner, the services pages contain detailed information about the services offered as well as the nNews section allowing the site owner to post additional information relating to this.
+
+- Easily find contact information or a contact form, so that I can inquire about booking or ask questions.
+
+A prominent link to the contact page is found within the navigation menu at the top of each page and almost every page has a dedicated call to action directing the user to the contact page to find the full contact information for the business.
+
+![CTA](docs/cta.png)
+
+Additionally, once the user has navigated to the Contact Page, they will find a contact form allowing them to submit a message to the business directly.
+
+![Contact Form Demo](docs/contact-form-demo.png)
+
+- Find engaging and/or informative content
+
+There are a number of engaging elements on the website, ranging from the parallax image slider on the homepage...
+
+![Image Slider Demo](docs/slider.gif)
+
+and also the interactive images within the portfolio and article pages, allowing the user to click on an image to see a new window animate into view displaying the image in a larger format.
+
+On the Portfolio page, when the user does this, it also contains additional information about the image and on the article page there is additional information within the article itself.
+
+- Read testimonials from previous clients, so that I can feel confident in the photographer's abilities
+
+The homepage includes an animated testimonials section, this not only allows the user to see feedback from previous clients but also allows the website owner to add, delete and edit existing testimonials with a no code solution provided by the bespoke CMS.
+
+![Tesimonials](docs/testimonials.png)
+
+- Learn about the photographer’s background and experience, so that I can feel more personally connected and trust their expertise
+
+Through a combination of telling the businesses story through the about page, an overview of their abilities via the various services pages and the blogging functionality. I believe I have more than covered this criteria.
+
+- Access the website on my mobile device with no issues, so that I can have a smooth experience regardless of the device I’m using
+
+With a mobile first design I have ensured that the website looks beautiful on any device and screensize. This is done primarily through the use of media queries and with the help of the built in functionality provided via the Bootstrap CSS framework.
+
+![Mobile View](docs/responsiveness/iphone-11-home.png)
+
+- View and read the photographer’s blog posts, so that I can learn more about their creative process and photography tips
+
+The news section of the website allows the business to add content to the website with a no code solution provided by the bespoke CMS. This provides the end user with fresh and up to date content every time they visit the website. Allowing them to learn more about the business on each visit.
+
+- I want the website to load quickly and function properly, so that I can have a positive browsing experience without frustration
+
+As evidenced by the Lighthouse Test Scores and the comprehensive automated and manual testing done during development we can be certain that the website is fast, responsive and performs well.
+
+- Register an account
+
+Using the AllAuth plugin, this feature was easily implemented. Allowing anonymous users functionality to register, log in and manage their profile.
+
+As a returning visitor I want to:
+
+- Easily navigate to new portfolio updates, so that I can quickly view any recent work or projects
+- Quickly find any new blog posts, so that I can stay informed about the photographer’s latest tips, experiences, or insights
+- Log in so that I can view past projects, proofs, or completed work
+- Easily find the photographer’s contact information again, so that I can reach out quickly for any new inquiries or bookings
+- See a quick overview of any changes or updates since my last visit, so that I don’t miss anything important
+- View any new testimonials or client reviews, so that I can continue to gauge the photographer’s reputation and work quality
+- Pay any payment requests sent to me by FStops Photography
+
+As a Superuser of the site I want to:
+
+- Easily update my portfolio with new images, so that I can showcase my latest work to potential clients
+- Post new blog content, so that I can share my photography tips, creative process, or behind-the-scenes insights with my audience
+- Track website traffic and visitor behavior through analytics, so that I can understand how users engage with my site and optimize their experience
+- Be notified when a visitor submits a contact form inquiry, so that I can respond to potential clients in a timely manner
+- Manage testimonials and reviews on my site, so that I can showcase positive feedback and build trust with new visitors
+- Ensure that the website performs well on both desktop and mobile devices, so that all users have a smooth experience regardless of the device they’re using
+- Ensure the website is secure, so that my clients' data is protected
+- Be able to generate invoices and have them be paid by the client through the clients profile area of the website
 
 ### Responsiveness
 
