@@ -339,7 +339,9 @@ The major issue identified by my SEO analysis of the website was a lack of exter
 
 ### WAVE Web Accessibility
 
+![Wave Result](docs/testing/wave/home.png)
 
+The wave result shows no major issues, the one error that exists is dut to the Bootstrap Navbar I have implemented using an empty link to implement the drop down menu. Also, a couple of warnings about the ALT Text for various images which is easily resolved using the CMS.
 
 ### Django Automated Testing
 
