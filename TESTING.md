@@ -243,7 +243,7 @@ For validation of my Python code I will be using Code Institutes PEP8 Python Lin
 
 **Service Page**
 
-![Lighthouse Service Page](docs/testing/lighthouse/service-desktop.png)
+![Lighthouse Service Page](docs/testing/lighthouse/service-mobile.png)
 
 **Portfolio Page**
 
