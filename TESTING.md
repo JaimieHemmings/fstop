@@ -202,7 +202,74 @@ For validation of my Python code I will be using Code Institutes PEP8 Python Lin
 
 ### Lighthouse Report
 #### Desktop
+
+**Home**
+
+![Lighthouse Homepage](docs/testing/lighthouse/home-desktop.png)
+
+**About**
+
+![Lighthouse About Page](docs/testing/lighthouse/about-desktop.png)
+
+**Service Page**
+
+![Lighthouse Service Page](docs/testing/lighthouse/service-desktop.png)
+
+**Portfolio Page**
+
+![Lighthouse Portfolio Page]()
+
+**News Page**
+
+![Lighthouse News Page]()
+
+**Article Page**
+
+![Lighthouse Article Page]()
+
+**Contact Page**
+
+![Lighthouse Contact Page]()
+
 #### Mobile
+
+**Home**
+
+![Lighthouse Homepage](docs/testing/lighthouse/home-mobile.png)
+
+**About**
+
+![Lighthouse About Page](docs/testing/lighthouse/about-mobile.png)
+
+**Service Page**
+
+![Lighthouse Service Page](docs/testing/lighthouse/service-desktop.png)
+
+**Portfolio Page**
+
+![Lighthouse Portfolio Page]()
+
+**News Page**
+
+![Lighthouse News Page]()
+
+**Article Page**
+
+![Lighthouse Article Page]()
+
+**Contact Page**
+
+![Lighthouse Contact Page]()
+
+##### Conclusion
+
+There are a number of factors at play here and while the overall scores here are decent I believe there is room for improvement. One notable example of something I could implement in future to improve the scores here is to implement Image Source Sets for various images across the site. Providing a number of image sources and allowing the browser to render the appropriate one based on the screen size would allow me to provide images at resolutions more accurate to the dimensions at which it would be displayed, allowing me to use smaller images with better aspect ratios and smaller filesizes for mobile devices, for example.
+
+Another factor that I believe is having a significant impact on the score is the performance hit from Stripes JavaScript. I have bundles their JavaScript file with the base template HTML file, however after inspecting the network tab in my browsers dev tools, it appears that Stripe is still initiating activity sometimes more than 5 seconds into the page load. Further investigation would be required to analyse the true impact of this on the performance.
+
+![Network Performance](docs/testing/lighthouse/network.png)
+
+Ultimately though, I believe I have overall achieved good scores here, especially considering that as a website focused on photography it is naturally going to be relatively heavy in terms of media, likely one of the biggest factors affecting performance is going to be images and therefore this must be taken into account.
 
 ### SEO Implementations
 
