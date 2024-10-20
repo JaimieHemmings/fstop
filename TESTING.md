@@ -541,13 +541,52 @@ Functionality view and pay outstanding invoices was added in the users profile s
 As a Superuser of the site I want to:
 
 - Easily update my portfolio with new images, so that I can showcase my latest work to potential clients
+
+The portfolio sectionof the CMS allows a superuser of the website to add and delete items that display automatically in the Portfolio page of the website.
+
+![Portfolio Admin](docs/testing/portfolio-admin.png)
+
 - Post new blog content, so that I can share my photography tips, creative process, or behind-the-scenes insights with my audience
+
+As a superuser of the website, I am able to use the bespoke CMS to create, edit and delete new articles that automatically update on the homepage of the website and the News area.
+
+![Articles Admin Area](docs/testing/articles-admin.png)
+
 - Track website traffic and visitor behavior through analytics, so that I can understand how users engage with my site and optimize their experience
+
+Google Analytics were integrated into the website. This allows me to view comprehensive analytical data regarding the visitors usage of the website and behavioural trends. In order to comply with GDPR regulations, a consent request was added to the front end of the website, storing a cookie in the users session once they agree to the use of cookies.
+
+![Google Analytics](docs/analytics.jpg)
+
 - Be notified when a visitor submits a contact form inquiry, so that I can respond to potential clients in a timely manner
+
+The control panel area of the website provides context processors for each page, notifying the admin of any unread messages and allows them to view the messages and delete the messages once they are no longer needed.
+
+![Messages Example](docs/testing/messages.png)
+
 - Manage testimonials and reviews on my site, so that I can showcase positive feedback and build trust with new visitors
+
+Testimonials can be viewed, created, edited and deleted in the admin area of the website usin the bespoke CMS. This allows the user to use a no code solution to present information on the front page of the website relating to recent testimonials.
+
+![Testimonials Admin](docs/testing/testimonials-admin.png)
+
 - Ensure that the website performs well on both desktop and mobile devices, so that all users have a smooth experience regardless of the device they’re using
+
+As evidenced by my testing using WAVE, LightHouse, Automated Testing and Manual Testing, the website has been tested for functionality and performance across a variety of devices, browsers and in terms of accessibility and responsiveness.
+
 - Ensure the website is secure, so that my clients' data is protected
+
+A number of methods have been implemented as documented to ensure that the website is secure this includes the use of Cloudflare DNS protections, the SSL security provided by HTTPS, view decorators limiting access to certain areas of the website as well as much more, all documented throughout this readme.
+
 - Be able to generate invoices and have them be paid by the client through the clients profile area of the website
+
+The superuser of the website is able to use the admina rea to generate invoices requesting deposits for upcoming orojects or final payments for completed projects. CKEditor was also implemented here to allow the superuser the ability to use rich text formatting for better presentation.
+
+![Payments Example](docs/testing/payments-example.png)
+
+The client is then able to view and pay these payment requests from ithin their profile section. The payment functionality was implemented using Stripe and makes use of their integrated security systems to prevent fraud and other abuse.
+
+![Make Payment Form](docs/make-payment.png)
 
 ### Responsiveness
 
